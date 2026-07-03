@@ -1,23 +1,640 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DANancy</title>
-  <style>
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      max-width: 640px;
-      margin: 4rem auto;
-      padding: 0 1.5rem;
-      line-height: 1.6;
-      color: #222;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Green Certificate Shortfall Analytics — Nancy Cai</title>
+<style>
+  :root {
+    --surface-1: #fcfcfb;
+    --page: #f9f9f7;
+    --card: #ffffff;
+    --text-primary: #0b0b0b;
+    --text-secondary: #52514e;
+    --text-muted: #898781;
+    --gridline: #e1e0d9;
+    --baseline: #c3c2b7;
+    --border: rgba(11,11,11,0.10);
+    --series-blue: #2a78d6;
+    --series-aqua: #1baf7a;
+    --series-yellow: #eda100;
+    --series-violet: #4a3aa7;
+    --series-orange: #eb6834;
+    --good: #0ca30c;
+    --radius: 12px;
+    --max-w: 1180px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --surface-1: #1a1a19;
+      --page: #0d0d0d;
+      --card: #202020;
+      --text-primary: #ffffff;
+      --text-secondary: #c3c2b7;
+      --text-muted: #898781;
+      --gridline: #2c2c2a;
+      --baseline: #383835;
+      --border: rgba(255,255,255,0.10);
+      --series-blue: #3987e5;
+      --series-aqua: #199e70;
+      --series-yellow: #c98500;
+      --series-violet: #9085e9;
+      --series-orange: #d95926;
+      --good: #0ca30c;
     }
-    h1 { font-size: 2rem; }
-  </style>
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--page);
+    color: var(--text-primary);
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    line-height: 1.55;
+  }
+  a { color: var(--series-blue); }
+  .wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 1.5rem; }
+
+  /* nav */
+  header.site-nav {
+    position: sticky; top: 0; z-index: 20;
+    background: var(--surface-1);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0.9rem 1.5rem; max-width: var(--max-w); margin: 0 auto;
+  }
+  .brand { display: flex; align-items: center; gap: 0.6rem; font-weight: 700; font-size: 1.05rem; }
+  .brand .mark {
+    width: 30px; height: 30px; border-radius: 8px;
+    background: linear-gradient(135deg, var(--series-blue), var(--series-aqua));
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-size: 0.8rem; font-weight: 700;
+  }
+  nav.links { display: flex; gap: 1.4rem; flex-wrap: wrap; }
+  nav.links a {
+    text-decoration: none; color: var(--text-secondary); font-size: 0.92rem; font-weight: 500;
+  }
+  nav.links a:hover { color: var(--series-blue); }
+
+  /* hero */
+  section.hero { padding: 2.5rem 0 1rem; }
+  .hero-grid {
+    display: grid; grid-template-columns: 1fr 300px; gap: 1.75rem; align-items: start;
+  }
+  @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; } }
+  .hero-main {
+    background: var(--surface-1);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2rem;
+  }
+  .eyebrow {
+    display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em;
+    color: var(--series-aqua); text-transform: uppercase; margin-bottom: 0.6rem;
+  }
+  h1.title { font-size: 2rem; line-height: 1.15; margin: 0 0 0.9rem; }
+  h1.title .accent { color: var(--series-aqua); display: block; }
+  .lede { color: var(--text-secondary); max-width: 60ch; margin: 0 0 1.5rem; }
+
+  .stat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.9rem; margin-bottom: 1.5rem; }
+  @media (max-width: 700px) { .stat-row { grid-template-columns: repeat(2, 1fr); } }
+  .stat-tile {
+    background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+    padding: 0.9rem 1rem;
+  }
+  .stat-tile .label { font-size: 0.76rem; color: var(--text-secondary); margin-bottom: 0.3rem; }
+  .stat-tile .value {
+    font-size: 1.5rem; font-weight: 700; line-height: 1.1;
+    font-variant-numeric: proportional-nums;
+  }
+  .stat-tile .value.blue { color: var(--series-blue); }
+  .stat-tile .value.aqua { color: var(--series-aqua); }
+  .stat-tile .sub { font-size: 0.72rem; color: var(--text-muted); margin-top: 0.25rem; }
+
+  .stack-row { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+  .stack-chip {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    font-size: 0.78rem; font-weight: 600; color: var(--text-secondary);
+    background: var(--card); border: 1px solid var(--border);
+    padding: 0.35rem 0.7rem; border-radius: 999px;
+  }
+  .stack-chip .dot { width: 8px; height: 8px; border-radius: 50%; }
+
+  /* bio panel */
+  .bio-panel {
+    background: var(--surface-1); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 1.5rem; height: fit-content;
+  }
+  .avatar {
+    width: 84px; height: 84px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--series-blue), var(--series-violet));
+    color: #fff; display: flex; align-items: center; justify-content: center;
+    font-size: 1.7rem; font-weight: 700; margin-bottom: 1rem;
+  }
+  .bio-panel h2 { margin: 0 0 0.15rem; font-size: 1.3rem; }
+  .bio-panel .role { color: var(--series-blue); font-weight: 600; font-size: 0.88rem; margin-bottom: 0.9rem; }
+  .bio-panel p { font-size: 0.86rem; color: var(--text-secondary); margin: 0 0 0.9rem; }
+  .icon-row { display: flex; gap: 0.6rem; margin-bottom: 1.2rem; }
+  .icon-row a {
+    width: 34px; height: 34px; border-radius: 8px; background: var(--card);
+    border: 1px solid var(--border); display: flex; align-items: center; justify-content: center;
+    text-decoration: none;
+  }
+  .bio-section { margin-bottom: 1.1rem; }
+  .bio-section h3 {
+    font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.04em;
+    color: var(--text-muted); margin: 0 0 0.5rem;
+  }
+  .bio-section ul { margin: 0; padding-left: 1.1rem; font-size: 0.84rem; color: var(--text-secondary); }
+  .bio-section li { margin-bottom: 0.3rem; }
+  .skill-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .skill-chip {
+    font-size: 0.74rem; font-weight: 600; padding: 0.25rem 0.6rem; border-radius: 999px;
+    background: var(--card); border: 1px solid var(--border); color: var(--text-secondary);
+  }
+
+  /* generic section */
+  section.block { padding: 2.5rem 0; border-top: 1px solid var(--border); }
+  .block-head { display: flex; align-items: baseline; gap: 0.6rem; margin-bottom: 0.4rem; }
+  .block-num {
+    width: 28px; height: 28px; border-radius: 50%; background: var(--series-aqua);
+    color: #fff; font-size: 0.82rem; font-weight: 700; display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .block-head h2 { font-size: 1.35rem; margin: 0; }
+  .block-desc { color: var(--text-secondary); margin: 0 0 1.4rem; max-width: 72ch; font-size: 0.92rem; }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  @media (max-width: 900px) { .two-col { grid-template-columns: 1fr; } }
+  .card {
+    background: var(--surface-1); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 1.3rem 1.4rem;
+  }
+  .card h3 { margin: 0 0 0.5rem; font-size: 1rem; }
+  .card .note { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.6rem; }
+
+  /* flow diagram */
+  .flow { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; margin: 1rem 0; }
+  .flow-box {
+    background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+    padding: 0.8rem 1rem; font-size: 0.82rem; min-width: 130px; text-align: center;
+  }
+  .flow-box strong { display: block; font-size: 0.85rem; margin-bottom: 0.2rem; }
+  .flow-box small { color: var(--text-muted); font-size: 0.72rem; }
+  .flow-arrow { color: var(--text-muted); font-size: 1.1rem; }
+
+  /* data model */
+  .schema-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+  .schema-table th, .schema-table td { text-align: left; padding: 0.4rem 0.5rem; border-bottom: 1px solid var(--gridline); }
+  .schema-table th { color: var(--text-muted); font-weight: 600; font-size: 0.72rem; text-transform: uppercase; }
+  .pk { color: var(--series-aqua); font-weight: 700; }
+
+  /* charts */
+  .chart-card { background: var(--surface-1); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.3rem 1.4rem; }
+  .chart-card h3 { margin: 0 0 0.15rem; font-size: 1rem; }
+  .chart-card .chart-note { font-size: 0.8rem; color: var(--text-muted); margin: 0.2rem 0 0.9rem; }
+  .bar-svg { width: 100%; height: auto; overflow: visible; }
+  .bar rect { transition: opacity 0.1s; cursor: pointer; }
+  .bar:hover rect { opacity: 0.75; }
+  .axis-label { fill: var(--text-muted); font-size: 9px; }
+  .gridline { stroke: var(--gridline); stroke-width: 1; }
+  .baseline { stroke: var(--baseline); stroke-width: 1; }
+  .chart-tooltip {
+    position: absolute; pointer-events: none; background: var(--text-primary); color: var(--page);
+    font-size: 0.74rem; padding: 0.35rem 0.55rem; border-radius: 6px; white-space: nowrap;
+    transform: translate(-50%, -115%); opacity: 0; transition: opacity 0.1s; z-index: 5;
+    font-variant-numeric: tabular-nums;
+  }
+  .chart-wrap { position: relative; }
+  details.data-table { margin-top: 0.8rem; }
+  details.data-table summary {
+    font-size: 0.78rem; color: var(--series-blue); cursor: pointer; font-weight: 600;
+  }
+  details.data-table table { width: 100%; margin-top: 0.6rem; border-collapse: collapse; font-size: 0.76rem; }
+  details.data-table th, details.data-table td {
+    text-align: right; padding: 0.25rem 0.4rem; border-bottom: 1px solid var(--gridline);
+    font-variant-numeric: tabular-nums;
+  }
+  details.data-table th:first-child, details.data-table td:first-child { text-align: left; }
+
+  .top-list { list-style: none; margin: 0; padding: 0; }
+  .top-list li {
+    display: flex; align-items: center; gap: 0.7rem; padding: 0.5rem 0; border-bottom: 1px solid var(--gridline);
+    font-size: 0.85rem;
+  }
+  .top-list li:last-child { border-bottom: none; }
+  .top-list .rank { width: 20px; color: var(--text-muted); font-size: 0.78rem; flex-shrink: 0; }
+  .top-list .name { flex: 1; color: var(--text-secondary); }
+  .top-list .amount { font-weight: 700; font-variant-numeric: tabular-nums; color: var(--series-blue); }
+  .bar-bg { background: var(--gridline); border-radius: 4px; height: 6px; margin-top: 3px; overflow: hidden; }
+  .bar-fill { height: 100%; background: var(--series-blue); border-radius: 4px; }
+
+  /* AI mock */
+  .ai-mock { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: start; }
+  @media (max-width: 900px) { .ai-mock { grid-template-columns: 1fr; } }
+  .chat-bubble {
+    background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+    padding: 0.8rem 1rem; font-size: 0.85rem; margin-bottom: 0.8rem;
+  }
+  .chat-bubble.q { color: var(--text-primary); font-weight: 600; }
+  .chat-bubble.a { color: var(--text-secondary); }
+  .chat-bubble .src { display: block; margin-top: 0.4rem; font-size: 0.72rem; color: var(--good); }
+  .example-q { display: block; width: 100%; text-align: left; background: var(--card); border: 1px solid var(--border);
+    border-radius: 8px; padding: 0.6rem 0.8rem; font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 0.5rem; }
+
+  footer.site-footer {
+    border-top: 1px solid var(--border); padding: 2rem 0; margin-top: 1rem;
+    background: var(--surface-1);
+  }
+  .footer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 1.5rem; }
+  @media (max-width: 800px) { .footer-grid { grid-template-columns: 1fr; } }
+  .footer-grid h4 { font-size: 0.85rem; margin: 0 0 0.6rem; }
+  .footer-grid ul { margin: 0; padding-left: 1.1rem; font-size: 0.82rem; color: var(--text-secondary); }
+  .footer-grid li { margin-bottom: 0.35rem; }
+  .footer-bottom {
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;
+    font-size: 0.78rem; color: var(--text-muted); padding-top: 1rem; border-top: 1px solid var(--border);
+  }
+</style>
 </head>
 <body>
-  <h1>Hello, world!</h1>
-  <p>This site is live on GitHub Pages.</p>
+
+<header class="site-nav">
+  <div class="nav-inner">
+    <div class="brand"><span class="mark">NC</span> Nancy Cai</div>
+    <nav class="links">
+      <a href="#overview">Overview</a>
+      <a href="#context">Business Context</a>
+      <a href="#architecture">Architecture</a>
+      <a href="#data-model">Data Model</a>
+      <a href="#dashboard">Dashboard</a>
+      <a href="#ai">AI Assistant</a>
+      <a href="#stack">Tech Stack</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+<section class="hero" id="overview">
+  <div class="hero-grid">
+    <div class="hero-main">
+      <span class="eyebrow">Portfolio Project · 2026 Winter Data Engineering Bootcamp</span>
+      <h1 class="title">Green Certificate<span class="accent">Shortfall Analytics</span></h1>
+      <p class="lede">An end-to-end data platform concept for monitoring Australia's Renewable Energy Certificate (LGC / STC) shortfalls, built on real public register data from the Clean Energy Regulator.</p>
+
+      <div class="stat-row">
+        <div class="stat-tile">
+          <div class="label">Liable Entities — LGC</div>
+          <div class="value blue">69</div>
+          <div class="sub">Unique companies, 2001–2025</div>
+        </div>
+        <div class="stat-tile">
+          <div class="label">Liable Entities — STC</div>
+          <div class="value blue">55</div>
+          <div class="sub">Unique companies, 2011–2024</div>
+        </div>
+        <div class="stat-tile">
+          <div class="label">Total Remaining Shortfall — LGC</div>
+          <div class="value aqua">10.25M</div>
+          <div class="sub">Certificates, all assessment years</div>
+        </div>
+        <div class="stat-tile">
+          <div class="label">Total Shortfall — STC</div>
+          <div class="value aqua">293K</div>
+          <div class="sub">Certificates, all assessment years</div>
+        </div>
+      </div>
+
+      <div class="stack-row">
+        <span class="stack-chip"><span class="dot" style="background:var(--series-blue)"></span>Azure Data Factory</span>
+        <span class="stack-chip"><span class="dot" style="background:var(--series-orange)"></span>Databricks</span>
+        <span class="stack-chip"><span class="dot" style="background:var(--series-yellow)"></span>Power BI</span>
+        <span class="stack-chip"><span class="dot" style="background:var(--series-violet)"></span>AI + MCP</span>
+      </div>
+    </div>
+
+    <aside class="bio-panel">
+      <div class="avatar">NC</div>
+      <h2>Nancy Cai</h2>
+      <div class="role">Senior Data Engineer | Data &amp; AI Educator</div>
+      <p>Senior Data Engineer in Australia's renewable energy industry with 10+ years of experience in data engineering, data platforms, and analytics. Passionate about building real-world data solutions and empowering learners with practical skills.</p>
+
+      <div class="icon-row">
+        <a href="https://www.linkedin.com/in/yangyangcai" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--series-blue)"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+        </a>
+        <a href="https://github.com/DANancy" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--text-secondary)"><path d="M12 2C6.48 2 2 6.58 2 12.2c0 4.5 2.87 8.32 6.84 9.67.5.1.68-.22.68-.49 0-.24-.01-1.04-.01-1.88-2.78.61-3.37-1.21-3.37-1.21-.45-1.17-1.11-1.48-1.11-1.48-.9-.63.07-.62.07-.62 1 .07 1.53 1.04 1.53 1.04.89 1.55 2.34 1.1 2.91.84.09-.66.35-1.1.63-1.36-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.04 1.03-2.76-.1-.26-.45-1.32.1-2.75 0 0 .84-.27 2.75 1.05a9.36 9.36 0 0 1 5 0c1.91-1.32 2.75-1.05 2.75-1.05.55 1.43.2 2.49.1 2.75.64.72 1.03 1.64 1.03 2.76 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.6.69.49A10.02 10.02 0 0 0 22 12.2C22 6.58 17.52 2 12 2z"/></svg>
+        </a>
+      </div>
+
+      <div class="bio-section">
+        <h3>Work Experience</h3>
+        <ul>
+          <li>10+ years in Data &amp; Analytics</li>
+          <li>Senior Data Engineer in Australia's Renewable Energy Industry</li>
+        </ul>
+      </div>
+
+      <div class="bio-section">
+        <h3>Core Skills</h3>
+        <div class="skill-chips">
+          <span class="skill-chip">SQL</span>
+          <span class="skill-chip">Python</span>
+          <span class="skill-chip">Databricks</span>
+          <span class="skill-chip">Microsoft Fabric</span>
+          <span class="skill-chip">Power BI</span>
+          <span class="skill-chip">Data Modeling</span>
+          <span class="skill-chip">Data Engineering</span>
+          <span class="skill-chip">AI &amp; LLM</span>
+        </div>
+      </div>
+
+      <div class="bio-section">
+        <h3>Certifications &amp; Achievements</h3>
+        <ul>
+          <li>Microsoft Certified: Fabric Data Engineer Associate</li>
+          <li>Databricks Certified Data Engineer Associate</li>
+          <li>Shell Energy Australia — Best of 2024 Award</li>
+          <li>AGL Data &amp; Analytics Academy — Top Learner</li>
+          <li>Omdena Lead ML Engineer</li>
+          <li>AI Hackathon Winner</li>
+        </ul>
+      </div>
+
+      <div class="bio-section">
+        <h3>Community &amp; Teaching</h3>
+        <ul>
+          <li>Data Engineering Bootcamp Instructor</li>
+          <li>AI Workshop Instructor</li>
+          <li>Make AI Practical (MAP) — Community Volunteer &amp; Organizer</li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="block" id="context">
+  <div class="block-head"><span class="block-num">1</span><h2>Business Context</h2></div>
+  <p class="block-desc">The Renewable Energy Target scheme requires liable entities — electricity retailers and large energy users — to surrender Large-scale Generation Certificates (LGCs) and Small-scale Technology Certificates (STCs) each year to cover their liability. When an entity fails to surrender enough certificates, a shortfall is recorded and a shortfall charge may apply. The Clean Energy Regulator publishes this as the public <a href="https://cer.gov.au/markets/reports-and-data/certificate-shortfall-register" target="_blank" rel="noopener">Certificate Shortfall Register</a>, updated twice yearly.</p>
+
+  <div class="flow">
+    <div class="flow-box"><strong>Liable Entities</strong><small>Retailers &amp; large energy users</small></div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-box"><strong>Surrender LGCs / STCs</strong><small>Annual obligation</small></div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-box"><strong>Shortfall Charge</strong><small>If under-surrendered</small></div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-box"><strong>Refund / Carry Forward</strong><small>If later remedied</small></div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-box"><strong>Public Register</strong><small>CER shortfall register</small></div>
+  </div>
+</section>
+
+<section class="block" id="architecture">
+  <div class="block-head"><span class="block-num">2</span><h2>Solutions Architecture</h2></div>
+  <p class="block-desc">Conceptual pipeline for turning the CER's published registers into governed, queryable analytics — this project implements the source ingestion and dashboard layers below using the real register data; the orchestration/AI layers illustrate the intended target design.</p>
+  <div class="flow">
+    <div class="flow-box"><strong>CER Registers</strong><small>LGC / STC CSV, biannual</small></div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-box"><strong>Azure Data Factory</strong><small>Ingestion &amp; scheduling</small></div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-box"><strong>Databricks</strong><small>Bronze → Silver → Gold</small></div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-box"><strong>Power BI</strong><small>Semantic model &amp; dashboard</small></div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-box"><strong>AI Layer (MCP)</strong><small>Natural-language querying</small></div>
+  </div>
+</section>
+
+<section class="block" id="data-model">
+  <div class="block-head"><span class="block-num">3</span><h2>Data Model</h2></div>
+  <p class="block-desc">Dimensional model derived from the two source registers' actual published columns.</p>
+  <div class="two-col">
+    <div class="card">
+      <h3>fact_lgc_shortfall</h3>
+      <table class="schema-table">
+        <tr><th>Column</th><th>Type</th></tr>
+        <tr><td class="pk">liable_entity</td><td>dim</td></tr>
+        <tr><td class="pk">assessment_year</td><td>dim</td></tr>
+        <tr><td>lgc_liability</td><td>measure</td></tr>
+        <tr><td>lgcs_accepted_for_surrender</td><td>measure</td></tr>
+        <tr><td>remaining_lgc_shortfall</td><td>measure</td></tr>
+        <tr><td>shortfall_pct_of_liability</td><td>measure</td></tr>
+        <tr><td>shortfall_charge_issued</td><td>flag</td></tr>
+        <tr><td>value_of_shortfall_charge</td><td>measure</td></tr>
+        <tr><td>shortfall_status</td><td>dim</td></tr>
+      </table>
+      <div class="note">Source: LGC certificate shortfall register (CER)</div>
+    </div>
+    <div class="card">
+      <h3>fact_stc_shortfall</h3>
+      <table class="schema-table">
+        <tr><th>Column</th><th>Type</th></tr>
+        <tr><td class="pk">liable_entity</td><td>dim</td></tr>
+        <tr><td class="pk">assessment_year</td><td>dim</td></tr>
+        <tr><td>stc_shortfall</td><td>measure</td></tr>
+        <tr><td>value_of_shortfall_charge</td><td>measure</td></tr>
+      </table>
+      <div class="note">Source: STC certificate shortfall register (CER)</div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="dashboard">
+  <div class="block-head"><span class="block-num">4</span><h2>Dashboard</h2></div>
+  <p class="block-desc">Live figures computed directly from the CER's published LGC and STC shortfall registers (downloaded 2026-07-03).</p>
+
+  <div class="two-col" style="margin-bottom:1.5rem;">
+    <div class="chart-card">
+      <h3>Remaining LGC Shortfall by Assessment Year</h3>
+      <p class="chart-note">Certificates still outstanding, by the year they were assessed.</p>
+      <div class="chart-wrap"><svg class="bar-svg" id="chart-lgc" viewBox="0 0 640 220"></svg><div class="chart-tooltip" id="tt-lgc"></div></div>
+      <details class="data-table"><summary>View data table</summary><table id="table-lgc"></table></details>
+    </div>
+    <div class="chart-card">
+      <h3>STC Shortfall by Assessment Year</h3>
+      <p class="chart-note">Small-scale Technology Certificate shortfall since scheme start (2011).</p>
+      <div class="chart-wrap"><svg class="bar-svg" id="chart-stc" viewBox="0 0 640 220"></svg><div class="chart-tooltip" id="tt-stc"></div></div>
+      <details class="data-table"><summary>View data table</summary><table id="table-stc"></table></details>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="card">
+      <h3>Top Liable Entities — Cumulative LGC Shortfall</h3>
+      <ul class="top-list" id="top-lgc"></ul>
+    </div>
+    <div class="card">
+      <h3>Top Liable Entities — Cumulative STC Shortfall</h3>
+      <ul class="top-list" id="top-stc"></ul>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="ai">
+  <div class="block-head"><span class="block-num">5</span><h2>AI Query Assistant (concept)</h2></div>
+  <p class="block-desc">Illustrative natural-language interface over the Gold layer — the example answers below are computed from the real register data.</p>
+  <div class="ai-mock">
+    <div>
+      <div class="chat-bubble q">Which assessment year has the highest LGC shortfall?</div>
+      <div class="chat-bubble a">2023, with approximately 4.07M certificates in remaining LGC shortfall — the largest of any year on record.<span class="src">Source: Gold layer — fact_lgc_shortfall</span></div>
+      <div class="chat-bubble q">Which liable entity has the largest cumulative LGC shortfall?</div>
+      <div class="chat-bubble a">Red Energy Pty. Limited, with roughly 2.55M certificates in cumulative remaining shortfall across all assessment years.<span class="src">Source: Gold layer — fact_lgc_shortfall</span></div>
+    </div>
+    <div>
+      <span class="example-q">How many liable entities have ever had an STC shortfall?</span>
+      <span class="example-q">Compare LGC and STC shortfall trends since 2020</span>
+      <span class="example-q">Why did STC shortfall spike in 2022?</span>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<footer class="site-footer" id="stack">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h4>Tech Stack</h4>
+        <ul>
+          <li>Azure Data Factory</li>
+          <li>Databricks (Medallion architecture)</li>
+          <li>Power BI</li>
+          <li>AI + MCP</li>
+          <li>Python / Node.js for data prep</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Key Benefits</h4>
+        <ul>
+          <li>End-to-end automated data pipeline</li>
+          <li>Reliable, scalable platform on Azure</li>
+          <li>Medallion architecture for data quality &amp; governance</li>
+          <li>Actionable insights via Power BI dashboards</li>
+          <li>AI-powered natural language querying</li>
+        </ul>
+      </div>
+      <div>
+        <h4>About This Project</h4>
+        <ul>
+          <li>Portfolio project for the 2026 Winter Data Engineering Bootcamp — U PLUS</li>
+          <li>Dashboard figures sourced live from the CER Certificate Shortfall Register</li>
+          <li><a href="https://cer.gov.au/markets/reports-and-data/certificate-shortfall-register" target="_blank" rel="noopener">View source data →</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Nancy Cai</span>
+      <span>Data source: Clean Energy Regulator, Certificate Shortfall Register</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const LGC_YEARS = ["2001","2002","2003","2004","2005","2007","2009","2010","2011","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","2025"];
+const LGC_VALUES = [372,38,13,20,18,9,15671,1606,2427,120,29,10918,233376,16785,54,5235,14804,1967,87744,4073899,3826115,1963154];
+const STC_YEARS = ["2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024"];
+const STC_VALUES = [19772,13304,4342,23623,2847,14801,7039,702,4046,58547,19954,106105,16614,1717];
+
+const TOP_LGC = [["Red Energy Pty. Limited",2550564],["Alinta Energy Retail Sales Pty. Ltd.",2090641],["AGL Sales Pty Limited",2071485],["Alinta Sales Pty Ltd",1130684],["Aurora Energy Pty Ltd",761161],["IPOWER 2 PTY LIMITED / IPOWER PTY LIMITED TA ENGIE",582164]];
+const TOP_STC = [["Qenergy Limited (Receivers & Managers Appointed)",82786],["Blue NRG Pty. Ltd.",27689],["MOJO POWER EAST PTY LTD",25391],["Mojo Power Pty Ltd (Receivers & Managers Appointed)",21749],["BHP Billiton Iron Ore Pty Limited",20520],["Qenergy Limited (In Liquidation)",18703]];
+
+function fmt(n) {
+  if (n >= 1000000) return (n/1000000).toFixed(2).replace(/\.00$/,'') + 'M';
+  if (n >= 1000) return (n/1000).toFixed(1).replace(/\.0$/,'') + 'K';
+  return String(n);
+}
+
+function drawBarChart(svgId, ttId, years, values, color) {
+  const svg = document.getElementById(svgId);
+  const tt = document.getElementById(ttId);
+  const W = 640, H = 220, padL = 34, padB = 26, padT = 14, padR = 6;
+  const innerW = W - padL - padR, innerH = H - padT - padB;
+  const max = Math.max(...values);
+  const n = values.length;
+  const gap = 4;
+  const barW = (innerW - gap * (n - 1)) / n;
+
+  let svgNS = "http://www.w3.org/2000/svg";
+  function el(tag, attrs) {
+    const e = document.createElementNS(svgNS, tag);
+    for (const k in attrs) e.setAttribute(k, attrs[k]);
+    return e;
+  }
+
+  // gridlines (4 bands)
+  for (let i = 0; i <= 4; i++) {
+    const y = padT + innerH - (innerH * i / 4);
+    svg.appendChild(el('line', {x1: padL, x2: W - padR, y1: y, y2: y, class: 'gridline'}));
+    const label = el('text', {x: padL - 6, y: y + 3, class: 'axis-label', 'text-anchor': 'end'});
+    label.textContent = fmt(Math.round(max * i / 4));
+    svg.appendChild(label);
+  }
+  svg.appendChild(el('line', {x1: padL, x2: W - padR, y1: padT + innerH, y2: padT + innerH, class: 'baseline'}));
+
+  const maxIdx = values.indexOf(max);
+
+  values.forEach((v, i) => {
+    const barH = max > 0 ? (v / max) * innerH : 0;
+    const x = padL + i * (barW + gap);
+    const y = padT + innerH - barH;
+    const g = el('g', {class: 'bar'});
+    const rect = el('rect', {x, y, width: barW, height: Math.max(barH,1), rx: Math.min(3, barW/2), fill: color});
+    g.appendChild(rect);
+    svg.appendChild(g);
+
+    g.addEventListener('mousemove', (e) => {
+      const rectEl = svg.getBoundingClientRect();
+      tt.style.left = (e.clientX - rectEl.left) + 'px';
+      tt.style.top = (e.clientY - rectEl.top) + 'px';
+      tt.style.opacity = 1;
+      tt.textContent = years[i] + ': ' + v.toLocaleString() + ' certificates';
+    });
+    g.addEventListener('mouseleave', () => { tt.style.opacity = 0; });
+
+    // x labels — show every 2nd if crowded
+    if (n <= 15 || i % 2 === 0 || i === n - 1) {
+      const lab = el('text', {x: x + barW/2, y: H - 6, class: 'axis-label', 'text-anchor': 'middle'});
+      lab.textContent = years[i].slice(2);
+      svg.appendChild(lab);
+    }
+
+    if (i === maxIdx) {
+      const val = el('text', {x: x + barW/2, y: y - 5, class: 'axis-label', 'text-anchor': 'middle', fill: color, 'font-weight': 700});
+      val.textContent = fmt(v);
+      svg.appendChild(val);
+    }
+  });
+}
+
+function fillTable(tableId, years, values) {
+  const t = document.getElementById(tableId);
+  let html = '<tr><th>Year</th><th>Value</th></tr>';
+  years.forEach((y,i) => html += `<tr><td>${y}</td><td>${values[i].toLocaleString()}</td></tr>`);
+  t.innerHTML = html;
+}
+
+function fillTopList(id, data, color) {
+  const ul = document.getElementById(id);
+  const max = Math.max(...data.map(d => d[1]));
+  ul.innerHTML = data.map((d,i) => `
+    <li>
+      <span class="rank">${i+1}</span>
+      <span class="name">${d[0]}<div class="bar-bg"><div class="bar-fill" style="width:${(d[1]/max*100).toFixed(0)}%;background:${color}"></div></div></span>
+      <span class="amount">${fmt(d[1])}</span>
+    </li>`).join('');
+}
+
+drawBarChart('chart-lgc', 'tt-lgc', LGC_YEARS, LGC_VALUES, getComputedStyle(document.documentElement).getPropertyValue('--series-blue').trim());
+drawBarChart('chart-stc', 'tt-stc', STC_YEARS, STC_VALUES, getComputedStyle(document.documentElement).getPropertyValue('--series-aqua').trim());
+fillTable('table-lgc', LGC_YEARS, LGC_VALUES);
+fillTable('table-stc', STC_YEARS, STC_VALUES);
+fillTopList('top-lgc', TOP_LGC, getComputedStyle(document.documentElement).getPropertyValue('--series-blue').trim());
+fillTopList('top-stc', TOP_STC, getComputedStyle(document.documentElement).getPropertyValue('--series-aqua').trim());
+</script>
+
 </body>
 </html>
