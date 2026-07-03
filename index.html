@@ -20,9 +20,10 @@
     --series-yellow: #eda100;
     --series-violet: #4a3aa7;
     --series-orange: #eb6834;
+    --series-red: #e34948;
     --good: #0ca30c;
-    --radius: 12px;
-    --max-w: 1180px;
+    --radius: 14px;
+    --max-w: 1200px;
   }
   @media (prefers-color-scheme: dark) {
     :root {
@@ -40,6 +41,7 @@
       --series-yellow: #c98500;
       --series-violet: #9085e9;
       --series-orange: #d95926;
+      --series-red: #e66767;
       --good: #0ca30c;
     }
   }
@@ -53,6 +55,7 @@
   }
   a { color: var(--series-blue); }
   .wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 1.5rem; }
+  svg { display: block; }
 
   /* nav */
   header.site-nav {
@@ -62,75 +65,76 @@
   }
   .nav-inner {
     display: flex; align-items: center; justify-content: space-between;
-    padding: 0.9rem 1.5rem; max-width: var(--max-w); margin: 0 auto;
+    padding: 0.9rem 1.5rem; max-width: var(--max-w); margin: 0 auto; gap: 1rem;
   }
+  .brand-group { display: flex; align-items: center; gap: 0.9rem; flex-wrap: wrap; }
   .brand { display: flex; align-items: center; gap: 0.6rem; font-weight: 700; font-size: 1.05rem; }
   .brand .mark {
-    width: 30px; height: 30px; border-radius: 8px;
+    width: 32px; height: 32px; border-radius: 9px;
     background: linear-gradient(135deg, var(--series-blue), var(--series-aqua));
     display: flex; align-items: center; justify-content: center;
-    color: #fff; font-size: 0.8rem; font-weight: 700;
+    color: #fff; font-size: 0.8rem; font-weight: 700; flex-shrink: 0;
   }
-  nav.links { display: flex; gap: 1.4rem; flex-wrap: wrap; }
+  .brand-sub { font-size: 0.85rem; font-weight: 700; color: var(--series-blue); }
+  nav.links { display: flex; gap: 1.3rem; flex-wrap: wrap; }
   nav.links a {
-    text-decoration: none; color: var(--text-secondary); font-size: 0.92rem; font-weight: 500;
+    text-decoration: none; color: var(--text-secondary); font-size: 0.88rem; font-weight: 500;
+    padding-bottom: 3px; border-bottom: 2px solid transparent;
   }
-  nav.links a:hover { color: var(--series-blue); }
+  nav.links a:hover { color: var(--series-blue); border-bottom-color: var(--series-blue); }
 
   /* hero */
   section.hero { padding: 2.5rem 0 1rem; }
-  .hero-grid {
-    display: grid; grid-template-columns: 1fr 300px; gap: 1.75rem; align-items: start;
-  }
+  .hero-grid { display: grid; grid-template-columns: 1fr 300px; gap: 1.75rem; align-items: start; }
   @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; } }
   .hero-main {
+    position: relative; overflow: hidden;
     background: var(--surface-1);
     border: 1px solid var(--border);
     border-radius: var(--radius);
     padding: 2rem;
   }
+  .hero-scene { position: absolute; left: 0; right: 0; bottom: 0; height: 130px; z-index: 0; opacity: 0.55; pointer-events: none; }
+  .hero-main > * { position: relative; z-index: 1; }
   .eyebrow {
     display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em;
     color: var(--series-aqua); text-transform: uppercase; margin-bottom: 0.6rem;
   }
-  h1.title { font-size: 2rem; line-height: 1.15; margin: 0 0 0.9rem; }
+  h1.title { font-size: 2.1rem; line-height: 1.15; margin: 0 0 0.9rem; }
   h1.title .accent { color: var(--series-aqua); display: block; }
-  .lede { color: var(--text-secondary); max-width: 60ch; margin: 0 0 1.5rem; }
+  .lede { color: var(--text-secondary); max-width: 62ch; margin: 0 0 1.5rem; }
 
-  .stat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.9rem; margin-bottom: 1.5rem; }
+  .stat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.9rem; margin-bottom: 1.6rem; }
   @media (max-width: 700px) { .stat-row { grid-template-columns: repeat(2, 1fr); } }
   .stat-tile {
     background: var(--card); border: 1px solid var(--border); border-radius: 10px;
     padding: 0.9rem 1rem;
   }
   .stat-tile .label { font-size: 0.76rem; color: var(--text-secondary); margin-bottom: 0.3rem; }
-  .stat-tile .value {
-    font-size: 1.5rem; font-weight: 700; line-height: 1.1;
-    font-variant-numeric: proportional-nums;
-  }
+  .stat-tile .value { font-size: 1.5rem; font-weight: 700; line-height: 1.1; font-variant-numeric: proportional-nums; }
   .stat-tile .value.blue { color: var(--series-blue); }
   .stat-tile .value.aqua { color: var(--series-aqua); }
   .stat-tile .sub { font-size: 0.72rem; color: var(--text-muted); margin-top: 0.25rem; }
 
-  .stack-row { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+  .stack-row { display: flex; flex-wrap: wrap; gap: 0.7rem; }
   .stack-chip {
-    display: inline-flex; align-items: center; gap: 0.4rem;
-    font-size: 0.78rem; font-weight: 600; color: var(--text-secondary);
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-size: 0.8rem; font-weight: 600; color: var(--text-secondary);
     background: var(--card); border: 1px solid var(--border);
-    padding: 0.35rem 0.7rem; border-radius: 999px;
+    padding: 0.4rem 0.8rem 0.4rem 0.5rem; border-radius: 999px;
   }
-  .stack-chip .dot { width: 8px; height: 8px; border-radius: 50%; }
+  .stack-chip .ico {
+    width: 24px; height: 24px; border-radius: 6px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+  }
 
   /* bio panel */
-  .bio-panel {
-    background: var(--surface-1); border: 1px solid var(--border); border-radius: var(--radius);
-    padding: 1.5rem; height: fit-content;
-  }
-  .avatar {
-    width: 84px; height: 84px; border-radius: 50%;
-    background: linear-gradient(135deg, var(--series-blue), var(--series-violet));
-    color: #fff; display: flex; align-items: center; justify-content: center;
-    font-size: 1.7rem; font-weight: 700; margin-bottom: 1rem;
+  .bio-panel { background: var(--surface-1); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; height: fit-content; }
+  .avatar-photo {
+    width: 100%; aspect-ratio: 4 / 3; border-radius: 10px; margin-bottom: 1rem;
+    background: linear-gradient(160deg, var(--series-blue), var(--series-violet));
+    display: flex; align-items: center; justify-content: center; color: #fff;
+    font-size: 2.2rem; font-weight: 700; letter-spacing: 0.02em;
   }
   .bio-panel h2 { margin: 0 0 0.15rem; font-size: 1.3rem; }
   .bio-panel .role { color: var(--series-blue); font-weight: 600; font-size: 0.88rem; margin-bottom: 0.9rem; }
@@ -144,18 +148,15 @@
   .bio-section { margin-bottom: 1.1rem; }
   .bio-section h3 {
     font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.04em;
-    color: var(--text-muted); margin: 0 0 0.5rem;
+    color: var(--text-muted); margin: 0 0 0.5rem; display: flex; align-items: center; gap: 0.35rem;
   }
   .bio-section ul { margin: 0; padding-left: 1.1rem; font-size: 0.84rem; color: var(--text-secondary); }
   .bio-section li { margin-bottom: 0.3rem; }
   .skill-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-  .skill-chip {
-    font-size: 0.74rem; font-weight: 600; padding: 0.25rem 0.6rem; border-radius: 999px;
-    background: var(--card); border: 1px solid var(--border); color: var(--text-secondary);
-  }
+  .skill-chip { font-size: 0.74rem; font-weight: 600; padding: 0.25rem 0.6rem; border-radius: 999px; background: var(--card); border: 1px solid var(--border); color: var(--text-secondary); }
 
   /* generic section */
-  section.block { padding: 2.5rem 0; border-top: 1px solid var(--border); }
+  section.block { padding: 2.6rem 0; border-top: 1px solid var(--border); }
   .block-head { display: flex; align-items: baseline; gap: 0.6rem; margin-bottom: 0.4rem; }
   .block-num {
     width: 28px; height: 28px; border-radius: 50%; background: var(--series-aqua);
@@ -163,32 +164,76 @@
     flex-shrink: 0;
   }
   .block-head h2 { font-size: 1.35rem; margin: 0; }
-  .block-desc { color: var(--text-secondary); margin: 0 0 1.4rem; max-width: 72ch; font-size: 0.92rem; }
+  .block-desc { color: var(--text-secondary); margin: 0 0 1.4rem; max-width: 74ch; font-size: 0.92rem; }
+  .btn-link {
+    display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.82rem; font-weight: 700;
+    color: var(--series-aqua); text-decoration: none; border: 1px solid var(--border); border-radius: 8px;
+    padding: 0.5rem 0.9rem; background: var(--card);
+  }
+  .btn-link:hover { border-color: var(--series-aqua); }
 
   .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
   @media (max-width: 900px) { .two-col { grid-template-columns: 1fr; } }
-  .card {
-    background: var(--surface-1); border: 1px solid var(--border); border-radius: var(--radius);
-    padding: 1.3rem 1.4rem;
-  }
+  .card { background: var(--surface-1); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.3rem 1.4rem; }
   .card h3 { margin: 0 0 0.5rem; font-size: 1rem; }
   .card .note { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.6rem; }
 
-  /* flow diagram */
-  .flow { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; margin: 1rem 0; }
-  .flow-box {
-    background: var(--card); border: 1px solid var(--border); border-radius: 10px;
-    padding: 0.8rem 1rem; font-size: 0.82rem; min-width: 130px; text-align: center;
+  /* ===== Section 1: REC market diagram ===== */
+  .context-layout { display: grid; grid-template-columns: 1fr 1.3fr; gap: 2rem; align-items: start; }
+  @media (max-width: 950px) { .context-layout { grid-template-columns: 1fr; } }
+  .rec-diagram {
+    display: grid; grid-template-columns: 22px 1fr 22px; gap: 0.7rem;
+    background: var(--surface-1); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.2rem;
   }
-  .flow-box strong { display: block; font-size: 0.85rem; margin-bottom: 0.2rem; }
-  .flow-box small { color: var(--text-muted); font-size: 0.72rem; }
-  .flow-arrow { color: var(--text-muted); font-size: 1.1rem; }
+  .rail { border-radius: 6px; writing-mode: vertical-rl; text-align: center; font-size: 0.68rem; font-weight: 700;
+    letter-spacing: 0.08em; color: #fff; display: flex; align-items: center; justify-content: center; padding: 0.5rem 0; }
+  .rail.supply { background: var(--series-orange); }
+  .rail.demand { background: var(--series-aqua); }
+  .rec-title { grid-column: 2; font-size: 0.78rem; font-weight: 700; color: var(--text-muted); text-align: center; margin-bottom: 0.2rem; }
+  .rec-grid { grid-column: 2; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.6rem; font-size: 0.72rem; }
+  .rec-box {
+    background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 0.5rem 0.6rem;
+    text-align: center; color: var(--text-secondary); font-weight: 600; display: flex; flex-direction: column; justify-content: center; min-height: 46px;
+  }
+  .rec-box small { font-weight: 400; color: var(--text-muted); display: block; font-size: 0.64rem; margin-top: 0.15rem; }
+  .rec-box.accent { border-color: var(--series-blue); color: var(--series-blue); }
+  .rec-box.registry { grid-column: span 3; background: var(--page); border-style: dashed; }
+  .rec-arrow-row { grid-column: 2; text-align: center; color: var(--text-muted); font-size: 0.8rem; }
+
+  /* ===== Section 2: architecture pipeline ===== */
+  .pipeline { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; position: relative; margin-top: 1rem; }
+  @media (max-width: 950px) { .pipeline { grid-template-columns: 1fr; } }
+  .pipe-stage { position: relative; padding: 0 0.6rem; }
+  .pipe-card {
+    background: var(--surface-1); border: 1px solid var(--border); border-radius: 10px; padding: 0.9rem 0.9rem;
+    font-size: 0.78rem; min-height: 168px;
+  }
+  .pipe-card .pipe-icon { width: 30px; height: 30px; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 0.5rem; }
+  .pipe-card strong { display: block; font-size: 0.85rem; margin-bottom: 0.45rem; }
+  .pipe-card ul { margin: 0; padding-left: 1rem; color: var(--text-secondary); }
+  .pipe-card li { margin-bottom: 0.2rem; }
+  .pipe-connector {
+    display: none;
+  }
+  @media (min-width: 951px) {
+    .pipe-connector {
+      display: block; position: absolute; top: 30px; right: -8px; width: 16px; height: 12px; z-index: 2;
+    }
+  }
+  .medallion-row { display: flex; gap: 0.35rem; margin-bottom: 0.5rem; }
+  .medallion { display: flex; flex-direction: column; align-items: center; gap: 0.2rem; font-size: 0.62rem; color: var(--text-muted); }
+  .feedback-loop {
+    margin-top: 1rem; padding: 0.6rem 1rem; border: 1px dashed var(--border); border-radius: 8px;
+    font-size: 0.72rem; color: var(--text-muted); text-align: center;
+  }
 
   /* data model */
   .schema-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
   .schema-table th, .schema-table td { text-align: left; padding: 0.4rem 0.5rem; border-bottom: 1px solid var(--gridline); }
   .schema-table th { color: var(--text-muted); font-weight: 600; font-size: 0.72rem; text-transform: uppercase; }
   .pk { color: var(--series-aqua); font-weight: 700; }
+  .card h3.with-icon { display: flex; align-items: center; gap: 0.5rem; }
+  .table-badge { width: 22px; height: 22px; border-radius: 5px; background: var(--series-blue); flex-shrink: 0; }
 
   /* charts */
   .chart-card { background: var(--surface-1); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.3rem 1.4rem; }
@@ -208,50 +253,68 @@
   }
   .chart-wrap { position: relative; }
   details.data-table { margin-top: 0.8rem; }
-  details.data-table summary {
-    font-size: 0.78rem; color: var(--series-blue); cursor: pointer; font-weight: 600;
-  }
+  details.data-table summary { font-size: 0.78rem; color: var(--series-blue); cursor: pointer; font-weight: 600; }
   details.data-table table { width: 100%; margin-top: 0.6rem; border-collapse: collapse; font-size: 0.76rem; }
   details.data-table th, details.data-table td {
-    text-align: right; padding: 0.25rem 0.4rem; border-bottom: 1px solid var(--gridline);
-    font-variant-numeric: tabular-nums;
+    text-align: right; padding: 0.25rem 0.4rem; border-bottom: 1px solid var(--gridline); font-variant-numeric: tabular-nums;
   }
   details.data-table th:first-child, details.data-table td:first-child { text-align: left; }
 
   .top-list { list-style: none; margin: 0; padding: 0; }
-  .top-list li {
-    display: flex; align-items: center; gap: 0.7rem; padding: 0.5rem 0; border-bottom: 1px solid var(--gridline);
-    font-size: 0.85rem;
-  }
+  .top-list li { display: flex; align-items: center; gap: 0.7rem; padding: 0.5rem 0; border-bottom: 1px solid var(--gridline); font-size: 0.85rem; }
   .top-list li:last-child { border-bottom: none; }
   .top-list .rank { width: 20px; color: var(--text-muted); font-size: 0.78rem; flex-shrink: 0; }
   .top-list .name { flex: 1; color: var(--text-secondary); }
-  .top-list .amount { font-weight: 700; font-variant-numeric: tabular-nums; color: var(--series-blue); }
+  .top-list .amount { font-weight: 700; font-variant-numeric: tabular-nums; }
   .bar-bg { background: var(--gridline); border-radius: 4px; height: 6px; margin-top: 3px; overflow: hidden; }
-  .bar-fill { height: 100%; background: var(--series-blue); border-radius: 4px; }
+  .bar-fill { height: 100%; border-radius: 4px; }
+
+  .dash-recap { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.9rem; margin-bottom: 1.5rem; }
+  @media (max-width: 700px) { .dash-recap { grid-template-columns: repeat(2, 1fr); } }
 
   /* AI mock */
-  .ai-mock { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: start; }
-  @media (max-width: 900px) { .ai-mock { grid-template-columns: 1fr; } }
-  .chat-bubble {
-    background: var(--card); border: 1px solid var(--border); border-radius: 10px;
-    padding: 0.8rem 1rem; font-size: 0.85rem; margin-bottom: 0.8rem;
-  }
+  .ai-layout { display: grid; grid-template-columns: 1fr 260px; gap: 1.75rem; align-items: start; }
+  @media (max-width: 950px) { .ai-layout { grid-template-columns: 1fr; } }
+  .chat-row { display: flex; gap: 0.6rem; margin-bottom: 0.9rem; align-items: flex-start; }
+  .chat-avatar { width: 30px; height: 30px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 0.68rem; font-weight: 700; }
+  .chat-avatar.bot { background: var(--series-violet); }
+  .chat-avatar.user { background: var(--series-blue); }
+  .chat-bubble { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 0.7rem 0.9rem; font-size: 0.85rem; flex: 1; }
   .chat-bubble.q { color: var(--text-primary); font-weight: 600; }
   .chat-bubble.a { color: var(--text-secondary); }
   .chat-bubble .src { display: block; margin-top: 0.4rem; font-size: 0.72rem; color: var(--good); }
   .example-q { display: block; width: 100%; text-align: left; background: var(--card); border: 1px solid var(--border);
     border-radius: 8px; padding: 0.6rem 0.8rem; font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 0.5rem; }
-
-  footer.site-footer {
-    border-top: 1px solid var(--border); padding: 2rem 0; margin-top: 1rem;
-    background: var(--surface-1);
+  .ai-orb { position: relative; width: 220px; height: 220px; margin: 0 auto 1rem; }
+  .ai-orb-ring { position: absolute; inset: 0; border-radius: 50%; border: 1px dashed var(--border); }
+  .ai-orb-core {
+    position: absolute; inset: 55px; border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, var(--series-violet), #2b2270);
+    display: flex; align-items: center; justify-content: center; color: #fff;
   }
+  .ai-orb-chip {
+    position: absolute; width: 42px; height: 42px; border-radius: 10px; background: var(--card);
+    border: 1px solid var(--border); display: flex; align-items: center; justify-content: center;
+  }
+
+  /* footer */
+  footer.site-footer { border-top: 1px solid var(--border); padding: 2.2rem 0; margin-top: 1rem; background: var(--surface-1); }
+  .stack-strip { display: flex; flex-wrap: wrap; gap: 1.6rem; margin-bottom: 2rem; }
+  .stack-item { display: flex; flex-direction: column; align-items: center; gap: 0.4rem; width: 84px; }
+  .stack-item .ico { width: 38px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; }
+  .stack-item span { font-size: 0.68rem; text-align: center; color: var(--text-secondary); font-weight: 600; }
   .footer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 1.5rem; }
   @media (max-width: 800px) { .footer-grid { grid-template-columns: 1fr; } }
   .footer-grid h4 { font-size: 0.85rem; margin: 0 0 0.6rem; }
-  .footer-grid ul { margin: 0; padding-left: 1.1rem; font-size: 0.82rem; color: var(--text-secondary); }
-  .footer-grid li { margin-bottom: 0.35rem; }
+  .footer-grid ul { margin: 0; padding: 0; list-style: none; font-size: 0.82rem; color: var(--text-secondary); }
+  .footer-grid li { margin-bottom: 0.45rem; display: flex; gap: 0.45rem; }
+  .footer-grid .benefit-list li::before { content: ""; width: 14px; height: 14px; margin-top: 2px; flex-shrink: 0; border-radius: 50%;
+    background: var(--good); display: inline-block; }
+  .connect-row { display: flex; align-items: center; gap: 0.7rem; margin-top: 0.9rem; }
+  .btn-solid {
+    display: inline-flex; align-items: center; gap: 0.4rem; background: var(--series-aqua); color: #fff;
+    font-size: 0.8rem; font-weight: 700; padding: 0.5rem 0.9rem; border-radius: 8px; text-decoration: none;
+  }
   .footer-bottom {
     display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;
     font-size: 0.78rem; color: var(--text-muted); padding-top: 1rem; border-top: 1px solid var(--border);
@@ -262,7 +325,10 @@
 
 <header class="site-nav">
   <div class="nav-inner">
-    <div class="brand"><span class="mark">NC</span> Nancy Cai</div>
+    <div class="brand-group">
+      <div class="brand"><span class="mark">NC</span> Nancy Cai</div>
+      <span class="brand-sub">2026 Winter Data Engineering Bootcamp</span>
+    </div>
     <nav class="links">
       <a href="#overview">Overview</a>
       <a href="#context">Business Context</a>
@@ -280,6 +346,16 @@
 <section class="hero" id="overview">
   <div class="hero-grid">
     <div class="hero-main">
+      <svg class="hero-scene" viewBox="0 0 800 130" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0,90 C120,50 220,110 340,70 C460,35 560,95 680,60 C740,45 780,55 800,50 L800,130 L0,130 Z" fill="var(--series-aqua)" opacity="0.18"/>
+        <path d="M0,110 C140,80 260,125 400,95 C540,68 640,120 800,90 L800,130 L0,130 Z" fill="var(--series-blue)" opacity="0.14"/>
+        <g stroke="var(--text-muted)" stroke-width="1.4" opacity="0.5">
+          <line x1="700" y1="118" x2="700" y2="55"/>
+          <line x1="700" y1="55" x2="680" y2="40"/>
+          <line x1="700" y1="55" x2="722" y2="42"/>
+          <line x1="700" y1="55" x2="700" y2="30"/>
+        </g>
+      </svg>
       <span class="eyebrow">Portfolio Project · 2026 Winter Data Engineering Bootcamp</span>
       <h1 class="title">Green Certificate<span class="accent">Shortfall Analytics</span></h1>
       <p class="lede">An end-to-end data platform concept for monitoring Australia's Renewable Energy Certificate (LGC / STC) shortfalls, built on real public register data from the Clean Energy Regulator.</p>
@@ -308,15 +384,23 @@
       </div>
 
       <div class="stack-row">
-        <span class="stack-chip"><span class="dot" style="background:var(--series-blue)"></span>Azure Data Factory</span>
-        <span class="stack-chip"><span class="dot" style="background:var(--series-orange)"></span>Databricks</span>
-        <span class="stack-chip"><span class="dot" style="background:var(--series-yellow)"></span>Power BI</span>
-        <span class="stack-chip"><span class="dot" style="background:var(--series-violet)"></span>AI + MCP</span>
+        <span class="stack-chip"><span class="ico" style="background:var(--series-blue)">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M3 21V9l9-6 9 6v12H3z"/><path d="M9 21v-8h6v8"/></svg>
+        </span>Azure Data Factory</span>
+        <span class="stack-chip"><span class="ico" style="background:var(--series-red)">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 3 3 8l9 5 9-5-9-5z"/><path d="M3 13l9 5 9-5"/><path d="M3 18l9 5 9-5"/></svg>
+        </span>Databricks</span>
+        <span class="stack-chip"><span class="ico" style="background:var(--series-yellow)">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M4 20V10"/><path d="M11 20V4"/><path d="M18 20v-7"/></svg>
+        </span>Power BI</span>
+        <span class="stack-chip"><span class="ico" style="background:var(--series-violet)">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>
+        </span>AI + MCP</span>
       </div>
     </div>
 
     <aside class="bio-panel">
-      <div class="avatar">NC</div>
+      <div class="avatar-photo">NC</div>
       <h2>Nancy Cai</h2>
       <div class="role">Senior Data Engineer | Data &amp; AI Educator</div>
       <p>Senior Data Engineer in Australia's renewable energy industry with 10+ years of experience in data engineering, data platforms, and analytics. Passionate about building real-world data solutions and empowering learners with practical skills.</p>
@@ -378,35 +462,136 @@
 
 <section class="block" id="context">
   <div class="block-head"><span class="block-num">1</span><h2>Business Context</h2></div>
-  <p class="block-desc">The Renewable Energy Target scheme requires liable entities — electricity retailers and large energy users — to surrender Large-scale Generation Certificates (LGCs) and Small-scale Technology Certificates (STCs) each year to cover their liability. When an entity fails to surrender enough certificates, a shortfall is recorded and a shortfall charge may apply. The Clean Energy Regulator publishes this as the public <a href="https://cer.gov.au/markets/reports-and-data/certificate-shortfall-register" target="_blank" rel="noopener">Certificate Shortfall Register</a>, updated twice yearly.</p>
+  <div class="context-layout">
+    <div>
+      <p class="block-desc">The Renewable Energy Certificate (REC) market supports Australia's clean energy transition. Liable entities must surrender certificates (LGCs or STCs) to meet their obligations. When they fall short, a shortfall charge applies. This project delivers insights into shortfalls, refunds, and trends to support better decision making.</p>
+      <a class="btn-link" href="https://cer.gov.au/markets/reports-and-data/certificate-shortfall-register" target="_blank" rel="noopener">Learn More About REC Market →</a>
+    </div>
+    <div class="rec-diagram">
+      <div class="rail supply">SUPPLY</div>
+      <div class="rec-title">Renewable Energy Certificate Market</div>
+      <div class="rail demand">DEMAND</div>
 
-  <div class="flow">
-    <div class="flow-box"><strong>Liable Entities</strong><small>Retailers &amp; large energy users</small></div>
-    <span class="flow-arrow">→</span>
-    <div class="flow-box"><strong>Surrender LGCs / STCs</strong><small>Annual obligation</small></div>
-    <span class="flow-arrow">→</span>
-    <div class="flow-box"><strong>Shortfall Charge</strong><small>If under-surrendered</small></div>
-    <span class="flow-arrow">→</span>
-    <div class="flow-box"><strong>Refund / Carry Forward</strong><small>If later remedied</small></div>
-    <span class="flow-arrow">→</span>
-    <div class="flow-box"><strong>Public Register</strong><small>CER shortfall register</small></div>
+      <div class="rec-grid">
+        <div class="rec-box">Small-scale<small>Homes &amp; small businesses</small></div>
+        <div class="rec-box">Agent</div>
+        <div class="rec-box">Government purchases<small>e.g. Battery STCs</small></div>
+
+        <div class="rec-box">Large-scale<small>Power stations</small></div>
+        <div class="rec-box">Aggregator</div>
+        <div class="rec-box accent">STC Clearing House</div>
+      </div>
+
+      <div class="rec-arrow-row">↓ ↓ ↓</div>
+
+      <div class="rec-grid">
+        <div class="rec-box registry">REC Registry — Small-scale technology certificate (STC) · Large-scale generation certificate (LGC)</div>
+      </div>
+
+      <div class="rec-arrow-row">↓ ↓</div>
+
+      <div class="rec-grid">
+        <div class="rec-box accent">Liable Entities<small>Electricity retailers</small></div>
+        <div class="rec-box">Exemption Certificate</div>
+        <div class="rec-box">Companies conducting ETTE activities<small>Emission producers</small></div>
+      </div>
+
+      <div class="rec-grid" style="margin-top:0.6rem;">
+        <div class="rec-box registry">Non-RET cancellations <small>e.g. voluntary, state &amp; territory obligations</small></div>
+      </div>
+    </div>
   </div>
 </section>
 
 <section class="block" id="architecture">
   <div class="block-head"><span class="block-num">2</span><h2>Solutions Architecture</h2></div>
   <p class="block-desc">Conceptual pipeline for turning the CER's published registers into governed, queryable analytics — this project implements the source ingestion and dashboard layers below using the real register data; the orchestration/AI layers illustrate the intended target design.</p>
-  <div class="flow">
-    <div class="flow-box"><strong>CER Registers</strong><small>LGC / STC CSV, biannual</small></div>
-    <span class="flow-arrow">→</span>
-    <div class="flow-box"><strong>Azure Data Factory</strong><small>Ingestion &amp; scheduling</small></div>
-    <span class="flow-arrow">→</span>
-    <div class="flow-box"><strong>Databricks</strong><small>Bronze → Silver → Gold</small></div>
-    <span class="flow-arrow">→</span>
-    <div class="flow-box"><strong>Power BI</strong><small>Semantic model &amp; dashboard</small></div>
-    <span class="flow-arrow">→</span>
-    <div class="flow-box"><strong>AI Layer (MCP)</strong><small>Natural-language querying</small></div>
+
+  <div class="pipeline">
+    <div class="pipe-stage">
+      <div class="pipe-card">
+        <div class="pipe-icon" style="background:var(--text-muted)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 10h16M10 4v16"/></svg>
+        </div>
+        <strong>Source Systems</strong>
+        <ul>
+          <li>REC Registry</li>
+          <li>Liable Entities</li>
+          <li>Reference Data</li>
+          <li>External Systems</li>
+        </ul>
+      </div>
+      <svg class="pipe-connector" viewBox="0 0 16 12"><path d="M0 6h14M9 1l5 5-5 5" stroke="var(--text-muted)" stroke-width="1.6" fill="none"/></svg>
+    </div>
+
+    <div class="pipe-stage">
+      <div class="pipe-card">
+        <div class="pipe-icon" style="background:var(--series-blue)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M3 21V9l9-6 9 6v12H3z"/><path d="M9 21v-8h6v8"/></svg>
+        </div>
+        <strong>Azure Data Factory</strong>
+        <ul>
+          <li>Ingestion</li>
+          <li>Orchestration</li>
+          <li>Scheduling</li>
+          <li>Monitoring</li>
+        </ul>
+      </div>
+      <svg class="pipe-connector" viewBox="0 0 16 12"><path d="M0 6h14M9 1l5 5-5 5" stroke="var(--text-muted)" stroke-width="1.6" fill="none"/></svg>
+    </div>
+
+    <div class="pipe-stage">
+      <div class="pipe-card">
+        <div class="pipe-icon" style="background:var(--series-red)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 3 3 8l9 5 9-5-9-5z"/><path d="M3 13l9 5 9-5"/></svg>
+        </div>
+        <strong>Databricks <small style="font-weight:400;color:var(--text-muted)">(Medallion)</small></strong>
+        <div class="medallion-row">
+          <div class="medallion"><svg width="20" height="20" viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="8" ry="3" fill="#b06b3a"/><path d="M4 6v10c0 1.7 3.6 3 8 3s8-1.3 8-3V6" fill="#c98a54"/></svg>Bronze</div>
+          <div class="medallion"><svg width="20" height="20" viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="8" ry="3" fill="#9ba3ab"/><path d="M4 6v10c0 1.7 3.6 3 8 3s8-1.3 8-3V6" fill="#c2c8cd"/></svg>Silver</div>
+          <div class="medallion"><svg width="20" height="20" viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="8" ry="3" fill="#c98500"/><path d="M4 6v10c0 1.7 3.6 3 8 3s8-1.3 8-3V6" fill="#eda100"/></svg>Gold</div>
+        </div>
+        <ul>
+          <li>Raw ingestion</li>
+          <li>Cleansed &amp; standardized</li>
+          <li>Business model, aggregated</li>
+        </ul>
+      </div>
+      <svg class="pipe-connector" viewBox="0 0 16 12"><path d="M0 6h14M9 1l5 5-5 5" stroke="var(--text-muted)" stroke-width="1.6" fill="none"/></svg>
+    </div>
+
+    <div class="pipe-stage">
+      <div class="pipe-card">
+        <div class="pipe-icon" style="background:var(--series-yellow)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M4 20V10"/><path d="M11 20V4"/><path d="M18 20v-7"/></svg>
+        </div>
+        <strong>Power BI</strong>
+        <ul>
+          <li>Semantic model</li>
+          <li>Reports</li>
+          <li>Dashboards</li>
+          <li>Insights</li>
+        </ul>
+      </div>
+      <svg class="pipe-connector" viewBox="0 0 16 12"><path d="M0 6h14M9 1l5 5-5 5" stroke="var(--text-muted)" stroke-width="1.6" fill="none"/></svg>
+    </div>
+
+    <div class="pipe-stage">
+      <div class="pipe-card">
+        <div class="pipe-icon" style="background:var(--series-violet)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>
+        </div>
+        <strong>AI Layer (MCP)</strong>
+        <ul>
+          <li>MCP Server</li>
+          <li>Query Bot</li>
+          <li>Dashboard Assistant</li>
+          <li>NLQ &amp; Insights</li>
+        </ul>
+      </div>
+    </div>
   </div>
+  <div class="feedback-loop">↩ Metadata, Lineage, Monitoring &amp; Security — spans every stage of the pipeline</div>
 </section>
 
 <section class="block" id="data-model">
@@ -414,7 +599,7 @@
   <p class="block-desc">Dimensional model derived from the two source registers' actual published columns.</p>
   <div class="two-col">
     <div class="card">
-      <h3>fact_lgc_shortfall</h3>
+      <h3 class="with-icon"><span class="table-badge" style="background:var(--series-blue)"></span>fact_lgc_shortfall</h3>
       <table class="schema-table">
         <tr><th>Column</th><th>Type</th></tr>
         <tr><td class="pk">liable_entity</td><td>dim</td></tr>
@@ -430,7 +615,7 @@
       <div class="note">Source: LGC certificate shortfall register (CER)</div>
     </div>
     <div class="card">
-      <h3>fact_stc_shortfall</h3>
+      <h3 class="with-icon"><span class="table-badge" style="background:var(--series-aqua)"></span>fact_stc_shortfall</h3>
       <table class="schema-table">
         <tr><th>Column</th><th>Type</th></tr>
         <tr><td class="pk">liable_entity</td><td>dim</td></tr>
@@ -447,6 +632,13 @@
   <div class="block-head"><span class="block-num">4</span><h2>Dashboard</h2></div>
   <p class="block-desc">Live figures computed directly from the CER's published LGC and STC shortfall registers (downloaded 2026-07-03).</p>
 
+  <div class="dash-recap">
+    <div class="stat-tile"><div class="label">Liable Entities — LGC</div><div class="value blue">69</div></div>
+    <div class="stat-tile"><div class="label">Liable Entities — STC</div><div class="value blue">55</div></div>
+    <div class="stat-tile"><div class="label">Total Remaining Shortfall — LGC</div><div class="value aqua">10.25M</div></div>
+    <div class="stat-tile"><div class="label">Total Shortfall — STC</div><div class="value aqua">293K</div></div>
+  </div>
+
   <div class="two-col" style="margin-bottom:1.5rem;">
     <div class="chart-card">
       <h3>Remaining LGC Shortfall by Assessment Year</h3>
@@ -462,7 +654,7 @@
     </div>
   </div>
 
-  <div class="two-col">
+  <div class="two-col" style="margin-bottom:1.5rem;">
     <div class="card">
       <h3>Top Liable Entities — Cumulative LGC Shortfall</h3>
       <ul class="top-list" id="top-lgc"></ul>
@@ -472,19 +664,49 @@
       <ul class="top-list" id="top-stc"></ul>
     </div>
   </div>
+
+  <a class="btn-link" href="https://cer.gov.au/markets/reports-and-data/certificate-shortfall-register" target="_blank" rel="noopener">View Source Register →</a>
 </section>
 
 <section class="block" id="ai">
   <div class="block-head"><span class="block-num">5</span><h2>AI Query Assistant (concept)</h2></div>
   <p class="block-desc">Illustrative natural-language interface over the Gold layer — the example answers below are computed from the real register data.</p>
-  <div class="ai-mock">
+  <div class="ai-layout">
     <div>
-      <div class="chat-bubble q">Which assessment year has the highest LGC shortfall?</div>
-      <div class="chat-bubble a">2023, with approximately 4.07M certificates in remaining LGC shortfall — the largest of any year on record.<span class="src">Source: Gold layer — fact_lgc_shortfall</span></div>
-      <div class="chat-bubble q">Which liable entity has the largest cumulative LGC shortfall?</div>
-      <div class="chat-bubble a">Red Energy Pty. Limited, with roughly 2.55M certificates in cumulative remaining shortfall across all assessment years.<span class="src">Source: Gold layer — fact_lgc_shortfall</span></div>
+      <div class="chat-row">
+        <div class="chat-avatar user">NC</div>
+        <div class="chat-bubble q">Which assessment year has the highest LGC shortfall?</div>
+      </div>
+      <div class="chat-row">
+        <div class="chat-avatar bot">AI</div>
+        <div class="chat-bubble a">2023, with approximately 4.07M certificates in remaining LGC shortfall — the largest of any year on record.<span class="src">Source: Gold layer — fact_lgc_shortfall</span></div>
+      </div>
+      <div class="chat-row">
+        <div class="chat-avatar user">NC</div>
+        <div class="chat-bubble q">Which liable entity has the largest cumulative LGC shortfall?</div>
+      </div>
+      <div class="chat-row">
+        <div class="chat-avatar bot">AI</div>
+        <div class="chat-bubble a">Red Energy Pty. Limited, with roughly 2.55M certificates in cumulative remaining shortfall across all assessment years.<span class="src">Source: Gold layer — fact_lgc_shortfall</span></div>
+      </div>
     </div>
     <div>
+      <div class="ai-orb">
+        <div class="ai-orb-ring"></div>
+        <div class="ai-orb-core">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>
+        </div>
+        <div class="ai-orb-chip" style="top:6px; left:50%; transform:translateX(-50%);">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--series-yellow)" stroke-width="2"><path d="M4 20V10"/><path d="M11 20V4"/><path d="M18 20v-7"/></svg>
+        </div>
+        <div class="ai-orb-chip" style="bottom:20px; left:0;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--series-red)" stroke-width="2"><path d="M12 3 3 8l9 5 9-5-9-5z"/><path d="M3 13l9 5 9-5"/></svg>
+        </div>
+        <div class="ai-orb-chip" style="bottom:20px; right:0;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--series-blue)" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 10h16M10 4v16"/></svg>
+        </div>
+      </div>
+      <p style="text-align:center;" class="chart-note">Example Questions</p>
       <span class="example-q">How many liable entities have ever had an STC shortfall?</span>
       <span class="example-q">Compare LGC and STC shortfall trends since 2020</span>
       <span class="example-q">Why did STC shortfall spike in 2022?</span>
@@ -496,20 +718,41 @@
 
 <footer class="site-footer" id="stack">
   <div class="wrap">
+    <div class="stack-strip">
+      <div class="stack-item">
+        <div class="ico" style="background:var(--series-blue)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M3 21V9l9-6 9 6v12H3z"/><path d="M9 21v-8h6v8"/></svg></div>
+        <span>Azure Data Factory</span>
+      </div>
+      <div class="stack-item">
+        <div class="ico" style="background:var(--series-red)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 3 3 8l9 5 9-5-9-5z"/><path d="M3 13l9 5 9-5"/><path d="M3 18l9 5 9-5"/></svg></div>
+        <span>Databricks</span>
+      </div>
+      <div class="stack-item">
+        <div class="ico" style="background:var(--series-aqua)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 3 5 19h14L12 3z"/></svg></div>
+        <span>Delta Lake</span>
+      </div>
+      <div class="stack-item">
+        <div class="ico" style="background:var(--series-yellow)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M4 20V10"/><path d="M11 20V4"/><path d="M18 20v-7"/></svg></div>
+        <span>Power BI</span>
+      </div>
+      <div class="stack-item">
+        <div class="ico" style="background:var(--series-blue)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 2 3 6v6c0 5 3.8 8.7 9 10 5.2-1.3 9-5 9-10V6l-9-4z"/></svg></div>
+        <span>Azure AD</span>
+      </div>
+      <div class="stack-item">
+        <div class="ico" style="background:var(--series-violet)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg></div>
+        <span>MCP</span>
+      </div>
+      <div class="stack-item">
+        <div class="ico" style="background:var(--series-orange)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9 9h.01M15 9h.01"/></svg></div>
+        <span>Python</span>
+      </div>
+    </div>
+
     <div class="footer-grid">
       <div>
-        <h4>Tech Stack</h4>
-        <ul>
-          <li>Azure Data Factory</li>
-          <li>Databricks (Medallion architecture)</li>
-          <li>Power BI</li>
-          <li>AI + MCP</li>
-          <li>Python / Node.js for data prep</li>
-        </ul>
-      </div>
-      <div>
         <h4>Key Benefits</h4>
-        <ul>
+        <ul class="benefit-list">
           <li>End-to-end automated data pipeline</li>
           <li>Reliable, scalable platform on Azure</li>
           <li>Medallion architecture for data quality &amp; governance</li>
@@ -520,10 +763,18 @@
       <div>
         <h4>About This Project</h4>
         <ul>
-          <li>Portfolio project for the 2026 Winter Data Engineering Bootcamp — U PLUS</li>
+          <li>Portfolio project for the 2026 Winter Data Engineering Bootcamp</li>
           <li>Dashboard figures sourced live from the CER Certificate Shortfall Register</li>
           <li><a href="https://cer.gov.au/markets/reports-and-data/certificate-shortfall-register" target="_blank" rel="noopener">View source data →</a></li>
         </ul>
+      </div>
+      <div>
+        <h4>Let's Connect</h4>
+        <div class="connect-row">
+          <a class="btn-solid" href="https://www.linkedin.com/in/yangyangcai" target="_blank" rel="noopener">Let's Connect</a>
+          <a href="https://www.linkedin.com/in/yangyangcai" target="_blank" rel="noopener" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="var(--series-blue)"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></a>
+          <a href="https://github.com/DANancy" target="_blank" rel="noopener" aria-label="GitHub"><svg width="18" height="18" viewBox="0 0 24 24" fill="var(--text-secondary)"><path d="M12 2C6.48 2 2 6.58 2 12.2c0 4.5 2.87 8.32 6.84 9.67.5.1.68-.22.68-.49 0-.24-.01-1.04-.01-1.88-2.78.61-3.37-1.21-3.37-1.21-.45-1.17-1.11-1.48-1.11-1.48-.9-.63.07-.62.07-.62 1 .07 1.53 1.04 1.53 1.04.89 1.55 2.34 1.1 2.91.84.09-.66.35-1.1.63-1.36-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.04 1.03-2.76-.1-.26-.45-1.32.1-2.75 0 0 .84-.27 2.75 1.05a9.36 9.36 0 0 1 5 0c1.91-1.32 2.75-1.05 2.75-1.05.55 1.43.2 2.49.1 2.75.64.72 1.03 1.64 1.03 2.76 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.6.69.49A10.02 10.02 0 0 0 22 12.2C22 6.58 17.52 2 12 2z"/></svg></a>
+        </div>
       </div>
     </div>
     <div class="footer-bottom">
@@ -565,7 +816,6 @@ function drawBarChart(svgId, ttId, years, values, color) {
     return e;
   }
 
-  // gridlines (4 bands)
   for (let i = 0; i <= 4; i++) {
     const y = padT + innerH - (innerH * i / 4);
     svg.appendChild(el('line', {x1: padL, x2: W - padR, y1: y, y2: y, class: 'gridline'}));
@@ -595,7 +845,6 @@ function drawBarChart(svgId, ttId, years, values, color) {
     });
     g.addEventListener('mouseleave', () => { tt.style.opacity = 0; });
 
-    // x labels — show every 2nd if crowded
     if (n <= 15 || i % 2 === 0 || i === n - 1) {
       const lab = el('text', {x: x + barW/2, y: H - 6, class: 'axis-label', 'text-anchor': 'middle'});
       lab.textContent = years[i].slice(2);
@@ -624,16 +873,19 @@ function fillTopList(id, data, color) {
     <li>
       <span class="rank">${i+1}</span>
       <span class="name">${d[0]}<div class="bar-bg"><div class="bar-fill" style="width:${(d[1]/max*100).toFixed(0)}%;background:${color}"></div></div></span>
-      <span class="amount">${fmt(d[1])}</span>
+      <span class="amount" style="color:${color}">${fmt(d[1])}</span>
     </li>`).join('');
 }
 
-drawBarChart('chart-lgc', 'tt-lgc', LGC_YEARS, LGC_VALUES, getComputedStyle(document.documentElement).getPropertyValue('--series-blue').trim());
-drawBarChart('chart-stc', 'tt-stc', STC_YEARS, STC_VALUES, getComputedStyle(document.documentElement).getPropertyValue('--series-aqua').trim());
+const blueVar = getComputedStyle(document.documentElement).getPropertyValue('--series-blue').trim();
+const aquaVar = getComputedStyle(document.documentElement).getPropertyValue('--series-aqua').trim();
+
+drawBarChart('chart-lgc', 'tt-lgc', LGC_YEARS, LGC_VALUES, blueVar);
+drawBarChart('chart-stc', 'tt-stc', STC_YEARS, STC_VALUES, aquaVar);
 fillTable('table-lgc', LGC_YEARS, LGC_VALUES);
 fillTable('table-stc', STC_YEARS, STC_VALUES);
-fillTopList('top-lgc', TOP_LGC, getComputedStyle(document.documentElement).getPropertyValue('--series-blue').trim());
-fillTopList('top-stc', TOP_STC, getComputedStyle(document.documentElement).getPropertyValue('--series-aqua').trim());
+fillTopList('top-lgc', TOP_LGC, blueVar);
+fillTopList('top-stc', TOP_STC, aquaVar);
 </script>
 
 </body>
