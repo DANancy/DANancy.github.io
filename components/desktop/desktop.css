@@ -322,7 +322,7 @@
 .links-heading{max-width:680px;text-align:center}
 .links-heading h2{color:var(--desk-green)}
 .links-heading>p:last-child{margin-top:1rem;color:#65706a;line-height:1.65}
-.links-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.25rem;width:min(920px,100%);margin-top:3rem}
+.links-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.25rem;width:min(820px,100%);margin-top:3rem}
 .links-grid article{display:flex;flex-direction:column;align-items:flex-start;min-height:260px;padding:1.8rem;border:1px solid #d7dfd8;border-radius:16px;background:linear-gradient(145deg,#f7f9f6,#edf2ee);box-shadow:0 10px 24px #2944380d}
 .links-grid article>svg{width:46px;height:46px;padding:11px;border-radius:10px;background:#dff0e7;color:#176044}
 .links-grid h3{margin-top:1.3rem;font-size:1.45rem;color:#254236}
@@ -359,7 +359,6 @@
 .character-contact{overflow:visible}
 .character-contact img{clip-path:circle(50%);object-fit:contain;transform:translate(8px,8px) scale(.78);transform-origin:center}
 @media(max-width:760px){.character-contact img{transform:translate(6px,6px) scale(.76)}}
-@media(max-width:920px) and (min-width:761px){.links-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.links-grid article:last-child{grid-column:1/-1;width:min(440px,100%);justify-self:center}}
 
 /* Three-way contact layout */
 .contact-page .contact-grid{grid-template-columns:repeat(3,minmax(0,1fr));width:min(920px,100%)}
@@ -391,3 +390,34 @@
 @keyframes cloud-drift{from{transform:translate3d(-10vw,0,0)}to{transform:translate3d(calc(100vw + 300px),0,0)}}
 @media(max-width:760px){.pokemon-clouds{opacity:.55}.cloud-eevee{display:none}.pokemon-cloud{scale:.72}.cloud-snorlax{top:78%}}
 @media(prefers-reduced-motion:reduce){.pokemon-cloud{animation:none}.cloud-pikachu{left:8%}.cloud-eevee{left:58%}.cloud-snorlax{left:34%}}
+/* Let background clouds show through the overview without covering content */
+.desktop-shell:has(.overview-window) .overview-window{background:rgba(255,255,255,.78);backdrop-filter:blur(1.5px);-webkit-backdrop-filter:blur(1.5px)}
+.desktop-shell:has(.overview-window) .pokemon-cloud{background:rgba(174,205,194,.72);filter:drop-shadow(0 8px 14px rgba(62,96,77,.12))}
+.desktop-shell:has(.overview-window) .pokemon-cloud i,.desktop-shell:has(.overview-window) .pokemon-cloud i::before,.desktop-shell:has(.overview-window) .pokemon-cloud i::after{background:rgba(174,205,194,.72)}
+@media(max-width:760px){.desktop-shell:has(.overview-window) .overview-window{background:rgba(255,255,255,.84)}.desktop-shell:has(.overview-window) .pokemon-clouds{opacity:.72}}
+@media(forced-colors:active){.desktop-shell:has(.overview-window) .overview-window{background:Canvas}.pokemon-clouds{display:none}}
+/* Clear, correctly branded social footer */
+.tree-centre{left:28%}
+.desktop-footer{width:max-content;max-width:calc(100vw - 2rem);padding:.8rem 1.1rem;border:1px solid rgba(201,216,205,.8);border-radius:18px;background:rgba(249,252,249,.88);box-shadow:0 8px 24px rgba(40,68,51,.1);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.footer-socials a{display:grid}
+.footer-socials svg{display:block;fill:currentColor;stroke:none}
+.footer-socials a:last-child svg{fill:none;stroke:currentColor;stroke-width:2}
+@media(max-width:760px){.desktop-footer{padding:.7rem 1rem}}
+/* OpenAI-generated creature cloud sprites */
+.pokemon-cloud{width:210px;height:210px;border-radius:0;background-color:transparent;background-repeat:no-repeat;background-position:center;background-size:contain;filter:drop-shadow(0 8px 14px rgba(62,96,77,.12))}
+.pokemon-cloud::before,.pokemon-cloud::after,.pokemon-cloud>i{display:none}
+.cloud-pikachu{background-image:url("/assets/cloud-pikachu.webp")}
+.cloud-eevee{width:190px;height:190px;background-image:url("/assets/cloud-eevee.webp")}
+.cloud-snorlax{width:230px;height:230px;background-image:url("/assets/cloud-snorlax.webp")}
+.desktop-shell:has(.overview-window) .pokemon-cloud{background-color:transparent}
+@media(max-width:760px){.pokemon-cloud{width:170px;height:170px}.cloud-snorlax{width:190px;height:190px}}
+/* Additional staggered cloud instances */
+.cloud-four{top:30%;scale:.68;opacity:.58;animation-delay:-41s;animation-duration:88s}
+.cloud-five{top:57%;scale:.58;opacity:.5;animation-delay:-13s;animation-duration:76s}
+.cloud-six{top:5%;scale:.48;opacity:.46;animation-delay:-71s;animation-duration:108s}
+.cloud-seven{top:82%;scale:.7;opacity:.55;animation-delay:-52s;animation-duration:96s}
+.cloud-eight{top:64%;scale:.54;opacity:.5;animation-delay:-7s;animation-duration:104s}
+@media(max-width:760px){.cloud-six,.cloud-seven,.cloud-eight{display:none}.cloud-four{top:36%;scale:.52}}
+@media(prefers-reduced-motion:reduce){.cloud-four{left:72%}.cloud-five{left:18%}.cloud-six{left:82%}.cloud-seven{left:5%}.cloud-eight{left:62%}}
+/* Home plus six toggleable subpage tabs */
+.subpage-nav{grid-template-columns:repeat(7,minmax(0,1fr))}
