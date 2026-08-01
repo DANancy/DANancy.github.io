@@ -42,7 +42,7 @@ export function DesktopPortfolio(){
   const windowLabel=active==="overview"?tr(language,"Portfolio overview","作品集概览"):tr(language,`${activeItem?.label??active} section`,`${activeItem?.labelZh??active}页面`);
   return <main className="desktop-shell" data-language={language} onPointerDown={(event)=>{if(active!=="overview"&&event.target===event.currentTarget)setActive("overview")}}>
     <a className="skip-link" href="#portfolio-window">{tr(language,"Skip to portfolio content","跳到作品集内容")}</a>
-    <div className="desktop-noise" aria-hidden/><div className="fruit-grove" aria-hidden><span className="orchard-hill orchard-hill-back"/><span className="orchard-hill orchard-hill-front"/><span className="fruit-tree tree-left"/><span className="fruit-tree tree-centre"/><span className="fruit-tree tree-right"/></div>
+    <div className="desktop-noise" aria-hidden/><div className="pokemon-clouds" aria-hidden><span className="pokemon-cloud cloud-pikachu"><i/></span><span className="pokemon-cloud cloud-eevee"><i/></span><span className="pokemon-cloud cloud-snorlax"><i/></span></div><div className="fruit-grove" aria-hidden><span className="orchard-hill orchard-hill-back"/><span className="orchard-hill orchard-hill-front"/><span className="fruit-tree tree-left"/><span className="fruit-tree tree-centre"/><span className="fruit-tree tree-right"/></div>
     <div className="window-stage">
     <section ref={windowRef} id="portfolio-window" tabIndex={-1} className={`desktop-window ${active==="overview"?"overview-window":"section-window"}`} aria-label={windowLabel} role="region">
       <WindowBar title={windowTitle(active)}/>

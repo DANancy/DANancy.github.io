@@ -357,8 +357,8 @@
 @media(max-width:760px){.window-stage .character-links{right:56px;top:-36px;width:80px;height:80px;border-width:5px}}
 /* Preserve the complete heart inside the Contact character circle */
 .character-contact{overflow:visible}
-.character-contact img{clip-path:circle(50%);object-fit:contain;transform:translate(6px,6px) scale(.88);transform-origin:center}
-@media(max-width:760px){.character-contact img{transform:translate(4px,4px) scale(.86)}}
+.character-contact img{clip-path:circle(50%);object-fit:contain;transform:translate(8px,8px) scale(.78);transform-origin:center}
+@media(max-width:760px){.character-contact img{transform:translate(6px,6px) scale(.76)}}
 @media(max-width:920px) and (min-width:761px){.links-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.links-grid article:last-child{grid-column:1/-1;width:min(440px,100%);justify-self:center}}
 
 /* Three-way contact layout */
@@ -366,3 +366,28 @@
 .contact-grid article:nth-child(3)>svg{background:#e5d6f3;color:#6d398d}
 .contact-email{display:block;width:100%;margin-top:.75rem;color:#66736c;font-family:var(--font-mono);font-size:.62rem;text-align:center;overflow-wrap:anywhere}
 @media(max-width:900px){.contact-page .contact-grid{grid-template-columns:1fr;width:min(430px,100%)}}
+/* Contact window title bar */
+.desktop-window:has(.contact-page) .window-bar{background:#155b4f;color:#fff;border-bottom-color:#155b4f}
+/* Slowly drifting creature-shaped clouds */
+.pokemon-clouds{position:absolute;z-index:0;inset:0;overflow:hidden;pointer-events:none}
+.pokemon-cloud{position:absolute;left:-240px;width:180px;height:64px;border-radius:48% 55% 45% 52%;background:rgba(255,255,255,.72);filter:drop-shadow(0 8px 12px rgba(72,102,84,.08));animation:cloud-drift 64s linear infinite;will-change:transform}
+.pokemon-cloud::before,.pokemon-cloud::after{content:"";position:absolute;background:inherit}
+.pokemon-cloud::before{left:35px;top:-34px;width:78px;height:72px;border-radius:50%}
+.pokemon-cloud::after{right:18px;top:-20px;width:64px;height:60px;border-radius:50%}
+.pokemon-cloud i,.pokemon-cloud i::before,.pokemon-cloud i::after{position:absolute;display:block;content:""}
+.cloud-pikachu{top:14%;animation-duration:72s}
+.cloud-pikachu i{right:48px;top:-58px;width:50px;height:42px;border-radius:50%;background:rgba(255,255,255,.72)}
+.cloud-pikachu i::before,.cloud-pikachu i::after{top:-34px;width:14px;height:47px;border-radius:80% 20% 65% 30%;background:rgba(255,255,255,.72);transform-origin:bottom}
+.cloud-pikachu i::before{left:2px;rotate:-17deg}.cloud-pikachu i::after{right:2px;rotate:17deg}
+.cloud-eevee{top:43%;width:155px;height:58px;animation-delay:-25s;animation-duration:82s;opacity:.76}
+.cloud-eevee i{left:56px;top:-48px;width:48px;height:44px;border-radius:50%;background:rgba(255,255,255,.72)}
+.cloud-eevee i::before,.cloud-eevee i::after{top:-30px;width:21px;height:43px;background:rgba(255,255,255,.72);clip-path:polygon(50% 0,100% 100%,0 100%)}
+.cloud-eevee i::before{left:-4px;rotate:-20deg}.cloud-eevee i::after{right:-4px;rotate:20deg}
+.cloud-snorlax{top:70%;width:210px;height:80px;animation-delay:-47s;animation-duration:94s;opacity:.68}
+.cloud-snorlax::before{left:55px;top:-55px;width:105px;height:105px}
+.cloud-snorlax i{left:72px;top:-69px;width:72px;height:52px;border-radius:48% 48% 44% 44%;background:rgba(255,255,255,.72)}
+.cloud-snorlax i::before,.cloud-snorlax i::after{top:-13px;width:24px;height:28px;background:rgba(255,255,255,.72);clip-path:polygon(50% 0,100% 100%,0 100%)}
+.cloud-snorlax i::before{left:0;rotate:-15deg}.cloud-snorlax i::after{right:0;rotate:15deg}
+@keyframes cloud-drift{from{transform:translate3d(-10vw,0,0)}to{transform:translate3d(calc(100vw + 300px),0,0)}}
+@media(max-width:760px){.pokemon-clouds{opacity:.55}.cloud-eevee{display:none}.pokemon-cloud{scale:.72}.cloud-snorlax{top:78%}}
+@media(prefers-reduced-motion:reduce){.pokemon-cloud{animation:none}.cloud-pikachu{left:8%}.cloud-eevee{left:58%}.cloud-snorlax{left:34%}}
