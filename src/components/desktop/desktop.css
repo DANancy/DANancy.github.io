@@ -367,35 +367,6 @@
 @media(max-width:900px){.contact-page .contact-grid{grid-template-columns:1fr;width:min(430px,100%)}}
 /* Contact window title bar */
 .desktop-window:has(.contact-page) .window-bar{background:#155b4f;color:#fff;border-bottom-color:#155b4f}
-/* Slowly drifting creature-shaped clouds */
-.wonder-clouds{position:absolute;z-index:0;inset:0;overflow:hidden;pointer-events:none}
-.wonder-cloud{position:absolute;left:-240px;width:180px;height:64px;border-radius:48% 55% 45% 52%;background:rgba(255,255,255,.72);filter:drop-shadow(0 8px 12px rgba(72,102,84,.08));animation:cloud-drift 64s linear infinite;will-change:transform}
-.wonder-cloud::before,.wonder-cloud::after{content:"";position:absolute;background:inherit}
-.wonder-cloud::before{left:35px;top:-34px;width:78px;height:72px;border-radius:50%}
-.wonder-cloud::after{right:18px;top:-20px;width:64px;height:60px;border-radius:50%}
-.wonder-cloud i,.wonder-cloud i::before,.wonder-cloud i::after{position:absolute;display:block;content:""}
-.cloud-sprout{top:14%;animation-duration:72s}
-.cloud-sprout i{right:48px;top:-58px;width:50px;height:42px;border-radius:50%;background:rgba(255,255,255,.72)}
-.cloud-sprout i::before,.cloud-sprout i::after{top:-34px;width:14px;height:47px;border-radius:80% 20% 65% 30%;background:rgba(255,255,255,.72);transform-origin:bottom}
-.cloud-sprout i::before{left:2px;rotate:-17deg}.cloud-sprout i::after{right:2px;rotate:17deg}
-.cloud-wink{top:43%;width:155px;height:58px;animation-delay:-25s;animation-duration:82s;opacity:.76}
-.cloud-wink i{left:56px;top:-48px;width:48px;height:44px;border-radius:50%;background:rgba(255,255,255,.72)}
-.cloud-wink i::before,.cloud-wink i::after{top:-30px;width:21px;height:43px;background:rgba(255,255,255,.72);clip-path:polygon(50% 0,100% 100%,0 100%)}
-.cloud-wink i::before{left:-4px;rotate:-20deg}.cloud-wink i::after{right:-4px;rotate:20deg}
-.cloud-dream{top:70%;width:210px;height:80px;animation-delay:-47s;animation-duration:94s;opacity:.68}
-.cloud-dream::before{left:55px;top:-55px;width:105px;height:105px}
-.cloud-dream i{left:72px;top:-69px;width:72px;height:52px;border-radius:48% 48% 44% 44%;background:rgba(255,255,255,.72)}
-.cloud-dream i::before,.cloud-dream i::after{top:-13px;width:24px;height:28px;background:rgba(255,255,255,.72);clip-path:polygon(50% 0,100% 100%,0 100%)}
-.cloud-dream i::before{left:0;rotate:-15deg}.cloud-dream i::after{right:0;rotate:15deg}
-@keyframes cloud-drift{from{transform:translate3d(-10vw,0,0)}to{transform:translate3d(calc(100vw + 300px),0,0)}}
-@media(max-width:760px){.wonder-clouds{opacity:.55}.cloud-wink{display:none}.wonder-cloud{scale:.72}.cloud-dream{top:78%}}
-@media(prefers-reduced-motion:reduce){.wonder-cloud{animation:none}.cloud-sprout{left:8%}.cloud-wink{left:58%}.cloud-dream{left:34%}}
-/* Let background clouds show through the overview without covering content */
-.desktop-shell:has(.overview-window) .overview-window{background:rgba(255,255,255,.78);backdrop-filter:blur(1.5px);-webkit-backdrop-filter:blur(1.5px)}
-.desktop-shell:has(.overview-window) .wonder-cloud{background:rgba(174,205,194,.72);filter:drop-shadow(0 8px 14px rgba(62,96,77,.12))}
-.desktop-shell:has(.overview-window) .wonder-cloud i,.desktop-shell:has(.overview-window) .wonder-cloud i::before,.desktop-shell:has(.overview-window) .wonder-cloud i::after{background:rgba(174,205,194,.72)}
-@media(max-width:760px){.desktop-shell:has(.overview-window) .overview-window{background:rgba(255,255,255,.84)}.desktop-shell:has(.overview-window) .wonder-clouds{opacity:.72}}
-@media(forced-colors:active){.desktop-shell:has(.overview-window) .overview-window{background:Canvas}.wonder-clouds{display:none}}
 /* Clear, correctly branded social footer */
 .tree-centre{left:28%}
 .desktop-footer{width:max-content;max-width:calc(100vw - 2rem);padding:.8rem 1.1rem;border:1px solid rgba(201,216,205,.8);border-radius:18px;background:rgba(249,252,249,.88);box-shadow:0 8px 24px rgba(40,68,51,.1);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
@@ -403,23 +374,6 @@
 .footer-socials svg{display:block;fill:currentColor;stroke:none}
 .footer-socials a:last-child svg{fill:none;stroke:currentColor;stroke-width:2}
 @media(max-width:760px){.desktop-footer{padding:.7rem 1rem}}
-/* OpenAI-generated creature cloud sprites */
-.wonder-cloud{width:210px;height:210px;border-radius:0;background-color:transparent;background-repeat:no-repeat;background-position:center;background-size:contain;filter:drop-shadow(0 8px 14px rgba(62,96,77,.12))}
-.wonder-cloud::before,.wonder-cloud::after,.wonder-cloud>i{display:none}
-.australian-kookaburra{background-image:url("/assets/australian-cloud-kookaburra.webp")!important}
-.australian-koala{background-image:url("/assets/australian-cloud-koala.webp")!important}
-.australian-kangaroo{background-image:url("/assets/australian-cloud-kangaroo.webp")!important}
-.australian-cockatiel{background-image:url("/assets/australian-cloud-cockatiel.webp")!important}
-.australian-wombat{background-image:url("/assets/australian-cloud-wombat.webp")!important}
-.australian-quokka{background-image:url("/assets/australian-cloud-quokka.webp")!important}
-.australian-platypus{background-image:url("/assets/australian-cloud-platypus.webp")!important}
-.australian-emu{background-image:url("/assets/australian-cloud-emu.webp")!important}
-.australian-lorikeet{background-image:url("/assets/australian-cloud-lorikeet.webp")!important}
-.australian-cockatoo{background-image:url("/assets/australian-cloud-cockatoo.webp")!important}
-.australian-echidna{background-image:url("/assets/australian-cloud-echidna.webp")!important}
-.australian-possum{background-image:url("/assets/australian-cloud-possum.webp")!important}
-.desktop-shell:has(.overview-window) .wonder-cloud{background-color:transparent}
-@media(max-width:760px){.wonder-cloud{width:170px;height:170px}.cloud-dream{width:190px;height:190px}}
 /* Home plus six toggleable subpage tabs */
 .subpage-nav{grid-template-columns:repeat(7,minmax(0,1fr))}
 /* Contact card brand marks */
@@ -432,9 +386,6 @@
 .character-fun{overflow:visible}
 .character-fun img{clip-path:circle(50%);transform:translateY(-7px) scale(1.06);transform-origin:center}
 @media(max-width:760px){.character-fun img{transform:translateY(-4px) scale(1.05)}}
-/* Keep drifting clouds entirely above the orchard */
-.wonder-clouds{bottom:220px;mask-image:linear-gradient(to bottom,#000 0,#000 calc(100% - 60px),transparent 100%);-webkit-mask-image:linear-gradient(to bottom,#000 0,#000 calc(100% - 60px),transparent 100%)}
-@media(max-width:760px){.wonder-clouds{bottom:145px}}
 /* Cover-first horizontal book shelf, matching the animation layout */
 .fun-books{margin-top:2.5rem;padding-top:2.5rem}
 .fun-books>.books-page{padding:0;overflow:hidden}
@@ -447,70 +398,14 @@
 .fun-books .book-entry blockquote{min-height:0;margin-top:auto}
 @media(max-width:900px){.fun-books .book-entry{flex-basis:min(340px,78vw)}}
 @media(max-width:760px){.fun-books{margin-top:1.75rem;padding-top:2rem}.fun-books .book-list{margin-inline:-.85rem;padding-inline:.85rem;scroll-padding-inline:.85rem}.fun-books .book-entry{flex-basis:min(300px,84vw)}}
-/* Soft pastel cloud palette */
-.cloud-one,.cloud-six,.cloud-eleven,.cloud-sixteen{filter:sepia(.22) saturate(1.45) hue-rotate(285deg) drop-shadow(0 8px 14px rgba(169,104,137,.14))}
-.cloud-two,.cloud-seven,.cloud-twelve,.cloud-seventeen{filter:sepia(.2) saturate(1.55) hue-rotate(155deg) drop-shadow(0 8px 14px rgba(89,139,164,.14))}
-.cloud-three,.cloud-eight,.cloud-thirteen,.cloud-eighteen{filter:sepia(.2) saturate(1.5) hue-rotate(215deg) drop-shadow(0 8px 14px rgba(126,111,166,.14))}
-.cloud-four,.cloud-nine,.cloud-fourteen,.cloud-nineteen{filter:sepia(.24) saturate(1.35) hue-rotate(330deg) drop-shadow(0 8px 14px rgba(178,127,94,.14))}
-.cloud-five,.cloud-ten,.cloud-fifteen,.cloud-twenty{filter:sepia(.18) saturate(1.4) hue-rotate(85deg) drop-shadow(0 8px 14px rgba(84,146,117,.14))}
-/* OpenAI-generated original animal cloud sprites */
-.wonder-cloud{width:215px;height:215px;border:0;border-radius:0;background-color:transparent!important;background-repeat:no-repeat!important;background-position:center!important;background-size:contain!important;box-shadow:none;filter:drop-shadow(0 9px 14px rgba(62,96,77,.12))}
-.wonder-cloud::before,.wonder-cloud::after,.wonder-cloud>i{display:none}
-.australian-kookaburra{background-image:url("/assets/australian-cloud-kookaburra.webp")!important}
-.australian-koala{background-image:url("/assets/australian-cloud-koala.webp")!important}
-.australian-kangaroo{background-image:url("/assets/australian-cloud-kangaroo.webp")!important}
-.australian-cockatiel{background-image:url("/assets/australian-cloud-cockatiel.webp")!important}
-.australian-wombat{background-image:url("/assets/australian-cloud-wombat.webp")!important}
-.australian-quokka{background-image:url("/assets/australian-cloud-quokka.webp")!important}
-.australian-platypus{background-image:url("/assets/australian-cloud-platypus.webp")!important}
-.australian-emu{background-image:url("/assets/australian-cloud-emu.webp")!important}
-.australian-lorikeet{background-image:url("/assets/australian-cloud-lorikeet.webp")!important}
-.australian-cockatoo{background-image:url("/assets/australian-cloud-cockatoo.webp")!important}
-.australian-echidna{background-image:url("/assets/australian-cloud-echidna.webp")!important}
-.australian-possum{background-image:url("/assets/australian-cloud-possum.webp")!important}
-.cloud-one,.cloud-two,.cloud-three,.cloud-four,.cloud-five,.cloud-six,.cloud-seven,.cloud-eight,.cloud-nine,.cloud-ten,.cloud-eleven,.cloud-twelve,.cloud-thirteen,.cloud-fourteen,.cloud-fifteen,.cloud-sixteen,.cloud-seventeen,.cloud-eighteen,.cloud-nineteen,.cloud-twenty{filter:drop-shadow(0 9px 14px rgba(62,96,77,.12))}
-@media(max-width:760px){.wonder-cloud{width:175px;height:175px}}
-/* Airier animal clouds that sit quietly behind the portfolio */
-.wonder-cloud{opacity:.72;filter:grayscale(.85) saturate(.2) brightness(1.12) contrast(.72) drop-shadow(0 8px 14px rgba(77,105,88,.1))}
-@media(max-width:760px){.wonder-cloud{opacity:.82}}
-/* Single cloud motion system: full edge-to-edge paths with gentle fades */
-@keyframes cloud-drift-forward{
-  0%{transform:translate3d(-165px,0,0);opacity:.2}
-  3%{opacity:var(--cloud-alpha)}
-  97%{opacity:var(--cloud-alpha)}
-  100%{transform:translate3d(calc(100vw - 55px),0,0);opacity:.2}
-}
-@keyframes cloud-drift-backward{
-  0%{transform:translate3d(calc(100vw - 55px),0,0);opacity:.2}
-  3%{opacity:var(--cloud-alpha)}
-  97%{opacity:var(--cloud-alpha)}
-  100%{transform:translate3d(-165px,0,0);opacity:.2}
-}
-.wonder-cloud{--cloud-alpha:.72;left:0;display:block;opacity:0;transform-origin:center;animation-timing-function:linear;animation-iteration-count:infinite;animation-fill-mode:both;will-change:transform,opacity}
-.cloud-one,.cloud-seven,.cloud-twelve,.cloud-eighteen{top:3%;scale:.4;animation-name:cloud-drift-forward;animation-duration:210s}
-.cloud-one{animation-delay:0s}.cloud-seven{animation-delay:-52.5s}.cloud-twelve{animation-delay:-105s}.cloud-eighteen{animation-delay:-157.5s}
-.cloud-two,.cloud-eight,.cloud-thirteen{top:20%;scale:.41;animation-name:cloud-drift-backward;animation-duration:198s}
-.cloud-two{animation-delay:0s}.cloud-eight{animation-delay:-66s}.cloud-thirteen{animation-delay:-132s}
-.cloud-three,.cloud-nine,.cloud-fourteen,.cloud-nineteen{top:37%;scale:.4;animation-name:cloud-drift-forward;animation-duration:220s}
-.cloud-three{animation-delay:-15s}.cloud-nine{animation-delay:-70s}.cloud-fourteen{animation-delay:-125s}.cloud-nineteen{animation-delay:-180s}
-.cloud-four,.cloud-ten,.cloud-fifteen{top:54%;scale:.41;animation-name:cloud-drift-backward;animation-duration:204s}
-.cloud-four{animation-delay:-20s}.cloud-ten{animation-delay:-88s}.cloud-fifteen{animation-delay:-156s}
-.cloud-five,.cloud-eleven,.cloud-sixteen{top:71%;scale:.42;animation-name:cloud-drift-forward;animation-duration:216s}
-.cloud-five{animation-delay:-25s}.cloud-eleven{animation-delay:-97s}.cloud-sixteen{animation-delay:-169s}
-.cloud-six,.cloud-seventeen,.cloud-twenty{top:87%;scale:.39;animation-name:cloud-drift-backward;animation-duration:208s}
-.cloud-six{animation-delay:-12s}.cloud-seventeen{animation-delay:-81.33s}.cloud-twenty{animation-delay:-150.66s}
-.cloud-one{scale:.34}.cloud-two{scale:.46}.cloud-three{scale:.38}.cloud-four{scale:.5}.cloud-five{scale:.36}.cloud-six{scale:.43}.cloud-seven{scale:.47}.cloud-eight{scale:.35}.cloud-nine{scale:.49}.cloud-ten{scale:.4}.cloud-eleven{scale:.5}.cloud-twelve{scale:.37}.cloud-thirteen{scale:.46}.cloud-fourteen{scale:.33}.cloud-fifteen{scale:.49}.cloud-sixteen{scale:.41}.cloud-seventeen{scale:.35}.cloud-eighteen{scale:.44}.cloud-nineteen{scale:.39}.cloud-twenty{scale:.47}
-@media(max-width:760px){.wonder-cloud{--cloud-alpha:.82}.cloud-one{scale:.32}.cloud-two{scale:.39}.cloud-three{scale:.34}.cloud-four{scale:.4}.cloud-five{scale:.33}.cloud-six{scale:.37}.cloud-seven{scale:.4}.cloud-eight{scale:.32}.cloud-nine{scale:.39}.cloud-ten{scale:.35}.cloud-eleven{scale:.4}.cloud-twelve{scale:.34}.cloud-thirteen,.cloud-fourteen,.cloud-fifteen,.cloud-sixteen,.cloud-seventeen,.cloud-eighteen,.cloud-nineteen,.cloud-twenty{display:none}}
-@media(min-width:761px) and (max-height:650px){.wonder-cloud{width:165px;height:165px}}
-/* Soft cloud body around each subtle animal-shaped centre */
-.wonder-cloud{isolation:isolate;background-size:74% auto!important}
-.wonder-cloud::before,.wonder-cloud::after{content:"";position:absolute;display:block;z-index:-1;background:rgba(255,255,255,.96);filter:blur(.6px)}
-.wonder-cloud::before{left:18%;top:49%;width:64%;height:25%;border-radius:50%;box-shadow:-28px 5px 0 -4px rgba(255,255,255,.92),28px 4px 0 -3px rgba(255,255,255,.94),0 13px 0 -5px rgba(255,255,255,.88)}
-.wonder-cloud::after{left:35%;top:34%;width:31%;height:32%;border-radius:50%;box-shadow:-26px 14px 0 -5px rgba(255,255,255,.94),26px 15px 0 -5px rgba(255,255,255,.92),0 -8px 0 -4px rgba(255,255,255,.9)}
-@media(prefers-reduced-motion:reduce){.wonder-cloud{animation:none;opacity:var(--cloud-alpha)}.cloud-one{transform:translateX(8vw)}.cloud-two{transform:translateX(66vw)}.cloud-three{transform:translateX(28vw)}.cloud-four{transform:translateX(72vw)}.cloud-five{transform:translateX(12vw)}.cloud-six{transform:translateX(58vw)}}/* Story-style book shelf */
+/* Story-style book shelf */
 .story-books-heading{max-width:680px;margin:0 auto 2rem;text-align:center}
 .story-books-heading h2{margin:.7rem 0 .5rem;color:#176b50;font-size:clamp(2rem,4vw,3.25rem);line-height:1.08}
 .story-books-heading>p:last-child{margin:0;color:#65706a;line-height:1.6}
 .fun-books .book-entry{background:linear-gradient(180deg,#fff 0%,#f7faf7 100%);border-radius:20px}
 .fun-books .book-summary{margin-top:.85rem;line-height:1.55}
 @media(max-width:760px){.story-books-heading{margin-bottom:1.4rem;text-align:left}.story-books-heading h2{font-size:2rem}}
+
+/* Keep the overview anchored and visible on every viewport */
+.desktop-shell{overflow-x:hidden}
+.overview-window{display:block;visibility:visible;opacity:1;background:#fff;animation:none}
