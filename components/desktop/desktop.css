@@ -244,3 +244,17 @@
 .desktop-nav button,.subpage-nav button,.desktop-floating-close{touch-action:manipulation}
 @media(prefers-reduced-motion:reduce){.skip-link,.animation-grid article{transition:none}.animation-grid article:hover{transform:none}}
 @media(forced-colors:active){.page-pill,.nav-icon,.style-chips span,.solid-button,.eventbrite-button,.subpage-nav button.active{border:1px solid ButtonText}.desktop-shell :where(a,button):focus-visible{outline:3px solid Highlight}}
+
+/* Balanced short-page and Contact layout */
+.section-window{display:flex;flex-direction:column}
+.section-window>.window-bar,.section-window>.subpage-nav{flex:0 0 auto}
+.section-window>.window-page{flex:1 0 auto}
+.section-window>.subpage-nav{margin-top:auto}
+.contact-page{justify-content:center;min-height:0;padding:3rem clamp(2rem,5vw,4rem) 2.5rem}
+.contact-heading{max-width:650px;margin:0 auto 2rem;text-align:center}
+.contact-heading h2{margin:.75rem 0 0;color:#155b4f;font-size:clamp(2.5rem,5vw,4rem)}
+.contact-heading>p:last-child{margin:.8rem auto 0;color:#65706a;line-height:1.65}
+.contact-page .contact-grid{gap:1.25rem;margin-top:0}
+.contact-grid article{border-radius:16px;background:linear-gradient(145deg,#f5f7f4,#edf1ee);box-shadow:0 10px 24px #2944380d}
+.contact-page .availability{margin-top:2rem}
+@media(max-width:760px){.section-window>.window-page{flex:1 0 auto}.contact-page{justify-content:flex-start;padding:4.5rem 1.25rem 2rem}.contact-heading{margin-bottom:1.5rem}.contact-heading h2{font-size:2.35rem}.contact-page .availability{margin-top:1.5rem;text-align:left}}

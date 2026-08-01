@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Fraunces, Fredoka, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 
 const fraunces = Fraunces({
   variable: "--font-fraunces",
@@ -51,7 +52,7 @@ export default function RootLayout({
       lang="en"
       className={`${fraunces.variable} ${fredoka.variable} ${inter.variable} ${jbMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-void text-text-primary">{children}</body>
+      <body className="min-h-full flex flex-col bg-void text-text-primary">{children}<GoogleAnalytics/></body>
     </html>
   );
 }
