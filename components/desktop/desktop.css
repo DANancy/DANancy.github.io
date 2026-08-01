@@ -420,14 +420,6 @@
 .australian-possum{background-image:url("/assets/australian-cloud-possum.webp")!important}
 .desktop-shell:has(.overview-window) .wonder-cloud{background-color:transparent}
 @media(max-width:760px){.wonder-cloud{width:170px;height:170px}.cloud-dream{width:190px;height:190px}}
-/* Additional staggered cloud instances */
-.cloud-four{top:30%;scale:.68;opacity:.58;animation-delay:-41s;animation-duration:88s}
-.cloud-five{top:57%;scale:.58;opacity:.5;animation-delay:-13s;animation-duration:76s}
-.cloud-six{top:5%;scale:.48;opacity:.46;animation-delay:-71s;animation-duration:108s}
-.cloud-seven{top:82%;scale:.7;opacity:.55;animation-delay:-52s;animation-duration:96s}
-.cloud-eight{top:64%;scale:.54;opacity:.5;animation-delay:-7s;animation-duration:104s}
-@media(max-width:760px){.cloud-six,.cloud-seven,.cloud-eight{display:none}.cloud-four{top:36%;scale:.52}}
-@media(prefers-reduced-motion:reduce){.cloud-four{left:72%}.cloud-five{left:18%}.cloud-six{left:82%}.cloud-seven{left:5%}.cloud-eight{left:62%}}
 /* Home plus six toggleable subpage tabs */
 .subpage-nav{grid-template-columns:repeat(7,minmax(0,1fr))}
 /* Contact card brand marks */
@@ -436,21 +428,6 @@
 /* Align Contact card icons and content */
 .contact-grid article>svg{display:block;flex:0 0 46px;width:46px;height:46px;margin:0}
 .contact-grid article>h3{margin-top:1.4rem}
-/* Adventure Time-inspired cloud sprites */
-/* Even initial distribution keeps a cloud near the left without a startup cluster */
-.cloud-one{top:14%;animation-duration:132s;animation-delay:-7s}
-.cloud-two{top:43%;animation-duration:138s;animation-delay:-32s}
-.cloud-three{top:70%;animation-duration:140s;animation-delay:-70s}
-.cloud-four{top:30%;animation-duration:142s;animation-delay:-109s}
-.cloud-five{top:57%;animation-duration:128s;animation-delay:-110s}
-.cloud-six{top:5%;animation-duration:146s;animation-delay:-60s}
-.cloud-seven{top:82%;animation-duration:150s;animation-delay:-89s}
-.cloud-eight{top:64%;animation-duration:148s;animation-delay:-141s}
-.cloud-nine{top:22%;scale:.68;opacity:.58;animation-duration:126s;animation-delay:-18s}
-.cloud-ten{top:48%;scale:.62;opacity:.54;animation-duration:130s;animation-delay:-42s}
-.cloud-eleven{top:75%;scale:.64;opacity:.56;animation-duration:134s;animation-delay:-91s}
-@media(max-width:760px){.cloud-comet,.cloud-bloom,.cloud-orbit{width:170px;height:170px}.cloud-five,.cloud-six,.cloud-seven,.cloud-eight,.cloud-ten{display:none}.cloud-nine{top:25%;scale:.5}.cloud-eleven{top:72%;scale:.5}}
-@media(prefers-reduced-motion:reduce){.cloud-nine{left:10%}.cloud-ten{left:45%}.cloud-eleven{left:76%}}
 /* Visually center the Just for Fun character inside its circle */
 .character-fun{overflow:visible}
 .character-fun img{clip-path:circle(50%);transform:translateY(-7px) scale(1.06);transform-origin:center}
@@ -470,45 +447,6 @@
 .fun-books .book-entry blockquote{min-height:0;margin-top:auto}
 @media(max-width:900px){.fun-books .book-entry{flex-basis:min(340px,78vw)}}
 @media(max-width:760px){.fun-books{margin-top:1.75rem;padding-top:2rem}.fun-books .book-list{margin-inline:-.85rem;padding-inline:.85rem;scroll-padding-inline:.85rem}.fun-books .book-entry{flex-basis:min(300px,84vw)}}
-/* Alternating, collision-free cloud lanes */
-@keyframes cloud-drift-reverse{from{transform:translate3d(calc(100vw + 300px),0,0)}to{transform:translate3d(-10vw,0,0)}}
-.cloud-one{top:3%;scale:.46;animation-name:cloud-drift;animation-duration:144s;animation-delay:-6s}
-.cloud-seven{top:3%;scale:.44;animation-name:cloud-drift;animation-duration:144s;animation-delay:-78s}
-.cloud-two{top:20%;scale:.44;animation-name:cloud-drift-reverse;animation-duration:150s;animation-delay:-25s}
-.cloud-eight{top:20%;scale:.43;animation-name:cloud-drift-reverse;animation-duration:150s;animation-delay:-100s}
-.cloud-three{top:37%;scale:.44;animation-name:cloud-drift;animation-duration:138s;animation-delay:-42s}
-.cloud-nine{top:37%;scale:.46;animation-name:cloud-drift;animation-duration:138s;animation-delay:-111s}
-.cloud-four{top:54%;scale:.45;animation-name:cloud-drift-reverse;animation-duration:146s;animation-delay:-58s}
-.cloud-ten{top:54%;scale:.45;animation-name:cloud-drift-reverse;animation-duration:146s;animation-delay:-131s}
-.cloud-five{top:71%;scale:.44;animation-name:cloud-drift;animation-duration:152s;animation-delay:-72s}
-.cloud-eleven{top:71%;scale:.46;animation-name:cloud-drift;animation-duration:152s;animation-delay:-148s}
-.cloud-six{top:87%;scale:.42;animation-name:cloud-drift-reverse;animation-duration:160s;animation-delay:-96s}
-@media(max-width:760px){.cloud-one{top:5%}.cloud-three{top:36%}.cloud-four{top:58%}.cloud-nine{top:25%}.cloud-eleven{top:78%}}
-@media(prefers-reduced-motion:reduce){.cloud-one,.cloud-two,.cloud-three,.cloud-four,.cloud-five,.cloud-six,.cloud-seven,.cloud-eight,.cloud-nine,.cloud-ten,.cloud-eleven{animation-name:none}}
-/* More Pokemon clouds, evenly spaced within the collision-free lanes */
-.cloud-one,.cloud-seven,.cloud-twelve{top:3%;scale:.42;animation-name:cloud-drift;animation-duration:180s}
-.cloud-one{animation-delay:0s}.cloud-seven{animation-delay:-60s}.cloud-twelve{animation-delay:-120s}
-.cloud-two,.cloud-eight,.cloud-thirteen{top:20%;scale:.41;animation-name:cloud-drift-reverse;animation-duration:186s}
-.cloud-two{animation-delay:-18s}.cloud-eight{animation-delay:-80s}.cloud-thirteen{animation-delay:-142s}
-.cloud-three,.cloud-nine,.cloud-fourteen{top:37%;scale:.42;animation-name:cloud-drift;animation-duration:174s}
-.cloud-three{animation-delay:-34s}.cloud-nine{animation-delay:-92s}.cloud-fourteen{animation-delay:-150s}
-.cloud-four,.cloud-ten,.cloud-fifteen{top:54%;scale:.41;animation-name:cloud-drift-reverse;animation-duration:183s}
-.cloud-four{animation-delay:-12s}.cloud-ten{animation-delay:-73s}.cloud-fifteen{animation-delay:-134s}
-.cloud-five,.cloud-eleven,.cloud-sixteen{top:71%;scale:.42;animation-name:cloud-drift;animation-duration:189s}
-.cloud-five{animation-delay:-27s}.cloud-eleven{animation-delay:-90s}.cloud-sixteen{animation-delay:-153s}
-.cloud-six,.cloud-seventeen{top:87%;scale:.4;animation-name:cloud-drift-reverse;animation-duration:160s}
-.cloud-six{animation-delay:-36s}.cloud-seventeen{animation-delay:-116s}
-@media(max-width:760px){.cloud-twelve,.cloud-thirteen,.cloud-fifteen,.cloud-seventeen{display:none}.cloud-fourteen{top:36%;scale:.38}.cloud-sixteen{top:78%;scale:.38}}
-@media(prefers-reduced-motion:reduce){.cloud-twelve,.cloud-thirteen,.cloud-fourteen,.cloud-fifteen,.cloud-sixteen,.cloud-seventeen{animation-name:none}}
-/* Princess Bubblegum, Ice King, and Marceline cloud characters */
-.cloud-one,.cloud-seven,.cloud-twelve,.cloud-eighteen{top:3%;scale:.4;animation-name:cloud-drift;animation-duration:220s}
-.cloud-one{animation-delay:0s}.cloud-seven{animation-delay:-55s}.cloud-twelve{animation-delay:-110s}.cloud-eighteen{animation-delay:-165s}
-.cloud-three,.cloud-nine,.cloud-fourteen,.cloud-nineteen{top:37%;scale:.4;animation-name:cloud-drift;animation-duration:216s}
-.cloud-three{animation-delay:-20s}.cloud-nine{animation-delay:-74s}.cloud-fourteen{animation-delay:-128s}.cloud-nineteen{animation-delay:-182s}
-.cloud-six,.cloud-seventeen,.cloud-twenty{top:87%;scale:.39;animation-name:cloud-drift-reverse;animation-duration:192s}
-.cloud-six{animation-delay:-16s}.cloud-seventeen{animation-delay:-80s}.cloud-twenty{animation-delay:-144s}
-@media(max-width:760px){.cloud-ribbon,.cloud-frost,.cloud-melody{width:175px;height:175px}.cloud-nineteen{top:36%;scale:.36}.cloud-eighteen,.cloud-twenty{display:none}}
-@media(prefers-reduced-motion:reduce){.cloud-eighteen,.cloud-nineteen,.cloud-twenty{animation-name:none}}
 /* Soft pastel cloud palette */
 .cloud-one,.cloud-six,.cloud-eleven,.cloud-sixteen{filter:sepia(.22) saturate(1.45) hue-rotate(285deg) drop-shadow(0 8px 14px rgba(169,104,137,.14))}
 .cloud-two,.cloud-seven,.cloud-twelve,.cloud-seventeen{filter:sepia(.2) saturate(1.55) hue-rotate(155deg) drop-shadow(0 8px 14px rgba(89,139,164,.14))}
@@ -535,22 +473,24 @@
 /* Airier animal clouds that sit quietly behind the portfolio */
 .wonder-cloud{opacity:.72;filter:saturate(.58) contrast(.84) drop-shadow(0 7px 12px rgba(62,96,77,.07))}
 @media(max-width:760px){.wonder-cloud{opacity:.82}}
-/* Definitive two-way cloud movement: alternating lanes with collision-free spacing */
-.cloud-one,.cloud-seven,.cloud-twelve,.cloud-eighteen{top:3%;animation-name:cloud-drift;animation-duration:120s;animation-delay:0s;scale:.4}
-.cloud-seven{animation-delay:-30s}.cloud-twelve{animation-delay:-60s}.cloud-eighteen{animation-delay:-90s}
-.cloud-two,.cloud-eight,.cloud-thirteen{top:20%;animation-name:cloud-drift-reverse;animation-duration:108s;animation-delay:-8s;scale:.41}
-.cloud-eight{animation-delay:-44s}.cloud-thirteen{animation-delay:-80s}
-.cloud-three,.cloud-nine,.cloud-fourteen,.cloud-nineteen{top:37%;animation-name:cloud-drift;animation-duration:124s;animation-delay:-12s;scale:.4}
-.cloud-nine{animation-delay:-43s}.cloud-fourteen{animation-delay:-74s}.cloud-nineteen{animation-delay:-105s}
-.cloud-four,.cloud-ten,.cloud-fifteen{top:54%;animation-name:cloud-drift-reverse;animation-duration:112s;animation-delay:-18s;scale:.41}
-.cloud-ten{animation-delay:-55.33s}.cloud-fifteen{animation-delay:-92.66s}
-.cloud-five,.cloud-eleven,.cloud-sixteen{top:71%;animation-name:cloud-drift;animation-duration:118s;animation-delay:-22s;scale:.42}
-.cloud-eleven{animation-delay:-61.33s}.cloud-sixteen{animation-delay:-100.66s}
-.cloud-six,.cloud-seventeen,.cloud-twenty{top:87%;animation-name:cloud-drift-reverse;animation-duration:114s;animation-delay:-10s;scale:.39}
-.cloud-seventeen{animation-delay:-48s}.cloud-twenty{animation-delay:-86s}
-.wonder-cloud{animation-timing-function:linear;animation-iteration-count:infinite}
-@media(prefers-reduced-motion:reduce){.wonder-cloud{animation:none}}
-/* Story-style book shelf */
+/* Single cloud motion system: six separated lanes moving in both directions */
+@keyframes cloud-drift-forward{from{transform:translate3d(-260px,0,0)}to{transform:translate3d(calc(100vw + 40px),0,0)}}
+@keyframes cloud-drift-backward{from{transform:translate3d(calc(100vw + 40px),0,0)}to{transform:translate3d(-260px,0,0)}}
+.wonder-cloud{left:0;display:block;transform-origin:center;animation-timing-function:linear;animation-iteration-count:infinite}
+.cloud-one,.cloud-seven,.cloud-twelve,.cloud-eighteen{top:3%;scale:.4;animation-name:cloud-drift-forward;animation-duration:120s}
+.cloud-one{animation-delay:0s}.cloud-seven{animation-delay:-30s}.cloud-twelve{animation-delay:-60s}.cloud-eighteen{animation-delay:-90s}
+.cloud-two,.cloud-eight,.cloud-thirteen{top:20%;scale:.41;animation-name:cloud-drift-backward;animation-duration:108s}
+.cloud-two{animation-delay:-8s}.cloud-eight{animation-delay:-44s}.cloud-thirteen{animation-delay:-80s}
+.cloud-three,.cloud-nine,.cloud-fourteen,.cloud-nineteen{top:37%;scale:.4;animation-name:cloud-drift-forward;animation-duration:124s}
+.cloud-three{animation-delay:-12s}.cloud-nine{animation-delay:-43s}.cloud-fourteen{animation-delay:-74s}.cloud-nineteen{animation-delay:-105s}
+.cloud-four,.cloud-ten,.cloud-fifteen{top:54%;scale:.41;animation-name:cloud-drift-backward;animation-duration:112s}
+.cloud-four{animation-delay:-18s}.cloud-ten{animation-delay:-55.33s}.cloud-fifteen{animation-delay:-92.66s}
+.cloud-five,.cloud-eleven,.cloud-sixteen{top:71%;scale:.42;animation-name:cloud-drift-forward;animation-duration:118s}
+.cloud-five{animation-delay:-22s}.cloud-eleven{animation-delay:-61.33s}.cloud-sixteen{animation-delay:-100.66s}
+.cloud-six,.cloud-seventeen,.cloud-twenty{top:87%;scale:.39;animation-name:cloud-drift-backward;animation-duration:114s}
+.cloud-six{animation-delay:-10s}.cloud-seventeen{animation-delay:-48s}.cloud-twenty{animation-delay:-86s}
+@media(max-width:760px){.cloud-thirteen,.cloud-fourteen,.cloud-fifteen,.cloud-sixteen,.cloud-seventeen,.cloud-eighteen,.cloud-nineteen,.cloud-twenty{display:none}}
+@media(prefers-reduced-motion:reduce){.wonder-cloud{animation:none}.cloud-one{transform:translateX(8vw)}.cloud-two{transform:translateX(66vw)}.cloud-three{transform:translateX(28vw)}.cloud-four{transform:translateX(72vw)}.cloud-five{transform:translateX(12vw)}.cloud-six{transform:translateX(58vw)}}/* Story-style book shelf */
 .story-books-heading{max-width:680px;margin:0 auto 2rem;text-align:center}
 .story-books-heading h2{margin:.7rem 0 .5rem;color:#176b50;font-size:clamp(2rem,4vw,3.25rem);line-height:1.08}
 .story-books-heading>p:last-child{margin:0;color:#65706a;line-height:1.6}
