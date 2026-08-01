@@ -1,4 +1,3 @@
-/* eslint-disable */
 export const wiseCss = `
 /* ============================================================
    Design system: ported from DESIGN-wise.md (Wise-derived tokens)

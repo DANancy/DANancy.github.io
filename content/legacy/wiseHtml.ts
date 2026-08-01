@@ -1,4 +1,3 @@
-/* eslint-disable */
 export const wiseBodyHtml = `
 <header class="site-nav">
   <div class="nav-inner">
