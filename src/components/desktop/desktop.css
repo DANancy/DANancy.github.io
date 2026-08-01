@@ -336,9 +336,9 @@
 .link-card-icon{display:grid;place-items:center;width:50px;height:50px;border-radius:16px;background:color-mix(in srgb,var(--card-accent) 13%,white);color:var(--card-accent)}
 .link-card-icon svg{width:24px;height:24px}
 .link-card-number{color:#a0aba4;font-family:var(--font-mono);font-size:.7rem;letter-spacing:.12em}
-.link-category{margin-top:1.6rem;color:var(--card-accent);font-family:var(--font-mono);font-size:.62rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase}
-.links-grid h3{margin-top:.55rem;color:#203e31;font-size:clamp(1.35rem,2vw,1.65rem);line-height:1.2}
-.link-description{margin-top:.7rem;color:#66716b;line-height:1.6}
+.link-category{min-height:2.4em;margin-top:1.6rem;color:var(--card-accent);font-family:var(--font-mono);font-size:.62rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase}
+.links-grid h3{min-height:2.4em;margin-top:.55rem;color:#203e31;font-size:clamp(1.35rem,2vw,1.65rem);line-height:1.2}
+.link-description{min-height:5.1em;margin-top:.7rem;color:#66716b;line-height:1.6}
 .links-grid a{display:flex;align-items:center;justify-content:space-between;width:100%;min-height:48px;margin-top:auto;padding-top:1.2rem;border-top:1px solid #dbe3dd;color:var(--card-accent);font-weight:750}
 .links-grid a svg{transition:transform .2s ease}.links-grid a:hover svg{transform:translate(3px,-3px)}
 @media(max-width:760px){.fun-books>.books-page{padding-top:2.5rem}.links-page{padding:4.5rem 1rem 1.5rem}.links-heading{text-align:left}.links-heading-mark{justify-content:flex-start}.links-heading h2{font-size:2.6rem}.links-heading>p:last-child{margin-left:0}.links-grid{grid-template-columns:1fr;gap:1rem;margin-top:2rem}.link-card{min-height:250px;padding:1.35rem;border-radius:20px}}
