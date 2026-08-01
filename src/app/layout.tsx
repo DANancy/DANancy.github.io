@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Fraunces, Fredoka, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import { GoogleAnalytics } from "@/components/GoogleAnalytics";
+import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 
 const fraunces = Fraunces({
   variable: "--font-fraunces",

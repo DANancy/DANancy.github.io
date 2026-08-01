@@ -471,26 +471,37 @@
 .cloud-one,.cloud-two,.cloud-three,.cloud-four,.cloud-five,.cloud-six,.cloud-seven,.cloud-eight,.cloud-nine,.cloud-ten,.cloud-eleven,.cloud-twelve,.cloud-thirteen,.cloud-fourteen,.cloud-fifteen,.cloud-sixteen,.cloud-seventeen,.cloud-eighteen,.cloud-nineteen,.cloud-twenty{filter:drop-shadow(0 9px 14px rgba(62,96,77,.12))}
 @media(max-width:760px){.wonder-cloud{width:175px;height:175px}}
 /* Airier animal clouds that sit quietly behind the portfolio */
-.wonder-cloud{opacity:.72;filter:saturate(.58) contrast(.84) drop-shadow(0 7px 12px rgba(62,96,77,.07))}
+.wonder-cloud{opacity:.72;filter:grayscale(1) contrast(0) brightness(2) drop-shadow(0 8px 14px rgba(77,105,88,.1))}
 @media(max-width:760px){.wonder-cloud{opacity:.82}}
-/* Single cloud motion system: six separated lanes moving in both directions */
-@keyframes cloud-drift-forward{from{transform:translate3d(-260px,0,0)}to{transform:translate3d(calc(100vw + 40px),0,0)}}
-@keyframes cloud-drift-backward{from{transform:translate3d(calc(100vw + 40px),0,0)}to{transform:translate3d(-260px,0,0)}}
-.wonder-cloud{left:0;display:block;transform-origin:center;animation-timing-function:linear;animation-iteration-count:infinite}
-.cloud-one,.cloud-seven,.cloud-twelve,.cloud-eighteen{top:3%;scale:.4;animation-name:cloud-drift-forward;animation-duration:120s}
-.cloud-one{animation-delay:0s}.cloud-seven{animation-delay:-30s}.cloud-twelve{animation-delay:-60s}.cloud-eighteen{animation-delay:-90s}
-.cloud-two,.cloud-eight,.cloud-thirteen{top:20%;scale:.41;animation-name:cloud-drift-backward;animation-duration:108s}
-.cloud-two{animation-delay:-8s}.cloud-eight{animation-delay:-44s}.cloud-thirteen{animation-delay:-80s}
-.cloud-three,.cloud-nine,.cloud-fourteen,.cloud-nineteen{top:37%;scale:.4;animation-name:cloud-drift-forward;animation-duration:124s}
-.cloud-three{animation-delay:-12s}.cloud-nine{animation-delay:-43s}.cloud-fourteen{animation-delay:-74s}.cloud-nineteen{animation-delay:-105s}
-.cloud-four,.cloud-ten,.cloud-fifteen{top:54%;scale:.41;animation-name:cloud-drift-backward;animation-duration:112s}
-.cloud-four{animation-delay:-18s}.cloud-ten{animation-delay:-55.33s}.cloud-fifteen{animation-delay:-92.66s}
-.cloud-five,.cloud-eleven,.cloud-sixteen{top:71%;scale:.42;animation-name:cloud-drift-forward;animation-duration:118s}
-.cloud-five{animation-delay:-22s}.cloud-eleven{animation-delay:-61.33s}.cloud-sixteen{animation-delay:-100.66s}
-.cloud-six,.cloud-seventeen,.cloud-twenty{top:87%;scale:.39;animation-name:cloud-drift-backward;animation-duration:114s}
-.cloud-six{animation-delay:-10s}.cloud-seventeen{animation-delay:-48s}.cloud-twenty{animation-delay:-86s}
-@media(max-width:760px){.cloud-thirteen,.cloud-fourteen,.cloud-fifteen,.cloud-sixteen,.cloud-seventeen,.cloud-eighteen,.cloud-nineteen,.cloud-twenty{display:none}}
-@media(prefers-reduced-motion:reduce){.wonder-cloud{animation:none}.cloud-one{transform:translateX(8vw)}.cloud-two{transform:translateX(66vw)}.cloud-three{transform:translateX(28vw)}.cloud-four{transform:translateX(72vw)}.cloud-five{transform:translateX(12vw)}.cloud-six{transform:translateX(58vw)}}/* Story-style book shelf */
+/* Single cloud motion system: full edge-to-edge paths with gentle fades */
+@keyframes cloud-drift-forward{
+  0%{transform:translate3d(-260px,0,0);opacity:0}
+  7%{opacity:var(--cloud-alpha)}
+  93%{opacity:var(--cloud-alpha)}
+  100%{transform:translate3d(calc(100vw + 260px),0,0);opacity:0}
+}
+@keyframes cloud-drift-backward{
+  0%{transform:translate3d(calc(100vw + 260px),0,0);opacity:0}
+  7%{opacity:var(--cloud-alpha)}
+  93%{opacity:var(--cloud-alpha)}
+  100%{transform:translate3d(-260px,0,0);opacity:0}
+}
+.wonder-cloud{--cloud-alpha:.72;left:0;display:block;opacity:0;transform-origin:center;animation-timing-function:linear;animation-iteration-count:infinite;animation-fill-mode:both;will-change:transform,opacity}
+.cloud-one,.cloud-seven,.cloud-twelve,.cloud-eighteen{top:3%;scale:.4;animation-name:cloud-drift-forward;animation-duration:210s}
+.cloud-one{animation-delay:0s}.cloud-seven{animation-delay:-52.5s}.cloud-twelve{animation-delay:-105s}.cloud-eighteen{animation-delay:-157.5s}
+.cloud-two,.cloud-eight,.cloud-thirteen{top:20%;scale:.41;animation-name:cloud-drift-backward;animation-duration:198s}
+.cloud-two{animation-delay:-12s}.cloud-eight{animation-delay:-78s}.cloud-thirteen{animation-delay:-144s}
+.cloud-three,.cloud-nine,.cloud-fourteen,.cloud-nineteen{top:37%;scale:.4;animation-name:cloud-drift-forward;animation-duration:220s}
+.cloud-three{animation-delay:-20s}.cloud-nine{animation-delay:-75s}.cloud-fourteen{animation-delay:-130s}.cloud-nineteen{animation-delay:-185s}
+.cloud-four,.cloud-ten,.cloud-fifteen{top:54%;scale:.41;animation-name:cloud-drift-backward;animation-duration:204s}
+.cloud-four{animation-delay:-24s}.cloud-ten{animation-delay:-92s}.cloud-fifteen{animation-delay:-160s}
+.cloud-five,.cloud-eleven,.cloud-sixteen{top:71%;scale:.42;animation-name:cloud-drift-forward;animation-duration:216s}
+.cloud-five{animation-delay:-30s}.cloud-eleven{animation-delay:-102s}.cloud-sixteen{animation-delay:-174s}
+.cloud-six,.cloud-seventeen,.cloud-twenty{top:87%;scale:.39;animation-name:cloud-drift-backward;animation-duration:208s}
+.cloud-six{animation-delay:-18s}.cloud-seventeen{animation-delay:-87.33s}.cloud-twenty{animation-delay:-156.66s}
+.cloud-one{scale:.32}.cloud-two{scale:.48}.cloud-three{scale:.38}.cloud-four{scale:.54}.cloud-five{scale:.35}.cloud-six{scale:.46}.cloud-seven{scale:.5}.cloud-eight{scale:.33}.cloud-nine{scale:.52}.cloud-ten{scale:.4}.cloud-eleven{scale:.57}.cloud-twelve{scale:.36}.cloud-thirteen{scale:.49}.cloud-fourteen{scale:.31}.cloud-fifteen{scale:.55}.cloud-sixteen{scale:.42}.cloud-seventeen{scale:.34}.cloud-eighteen{scale:.47}.cloud-nineteen{scale:.37}.cloud-twenty{scale:.51}
+@media(max-width:760px){.wonder-cloud{--cloud-alpha:.82}.cloud-thirteen,.cloud-fourteen,.cloud-fifteen,.cloud-sixteen,.cloud-seventeen,.cloud-eighteen,.cloud-nineteen,.cloud-twenty{display:none}}
+@media(prefers-reduced-motion:reduce){.wonder-cloud{animation:none;opacity:var(--cloud-alpha)}.cloud-one{transform:translateX(8vw)}.cloud-two{transform:translateX(66vw)}.cloud-three{transform:translateX(28vw)}.cloud-four{transform:translateX(72vw)}.cloud-five{transform:translateX(12vw)}.cloud-six{transform:translateX(58vw)}}/* Story-style book shelf */
 .story-books-heading{max-width:680px;margin:0 auto 2rem;text-align:center}
 .story-books-heading h2{margin:.7rem 0 .5rem;color:#176b50;font-size:clamp(2rem,4vw,3.25rem);line-height:1.08}
 .story-books-heading>p:last-child{margin:0;color:#65706a;line-height:1.6}

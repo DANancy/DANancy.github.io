@@ -2,7 +2,7 @@
 import Image, { type StaticImageData } from "next/image";
 import { useEffect,useRef,useState } from "react";
 import { Archive,BookOpen,BriefcaseBusiness,CalendarDays,Compass,ExternalLink,Flower2,Gamepad2,Globe2,GraduationCap,House,Lightbulb,Presentation,Store,Link as LinkIcon,Mail,MapPin,Network,PartyPopper,Send,Sparkles,Star,Terminal,Tv,Wrench,X } from "lucide-react";
-import { navigation,projects,type DesktopSection } from "@/content/desktop";
+import { navigation,projects,type DesktopSection } from "@/data/desktop";
 import characterImage from "@/assets/web/yangyang-character.webp";
 import aboutCharacter from "@/assets/web/character-about.png";
 import workCharacter from "@/assets/web/character-work.png";

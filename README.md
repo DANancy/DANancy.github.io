@@ -15,9 +15,25 @@ The Next.js static export is written to `out/`. GitHub Pages deployment runs thr
 
 ## Content and assets
 
-- Window content and navigation: `content/desktop.ts`
-- Main interaction component: `components/desktop/DesktopPortfolio.tsx`
-- Visual system: `components/desktop/desktop.css`
-- Source and rendered images: `assets/` (imported through Next.js)
+- Routes and global styles: `src/app/`
+- Window content and navigation: `src/data/desktop.ts`
+- Main interaction component: `src/components/desktop/DesktopPortfolio.tsx`
+- Visual system: `src/components/desktop/desktop.css`
+- Analytics integration: `src/components/analytics/GoogleAnalytics.tsx`
+- Imported application images: `src/assets/`
+- URL-addressable static images: `public/assets/`
 
-The character is a single cropped pose derived from `assets/yangyangcai.jpg`; the full character sheet is not displayed or copied into the public site.
+The `@/` TypeScript alias points to `src/`. Personal source material and design references remain outside the application structure and are not included in production unless explicitly imported.
+
+## Project structure
+
+```text
+src/
+  app/          Next.js routes and layout
+  assets/       Images imported by components
+  components/   Reusable interface components
+  content/      Long-form and legacy page content
+  data/         Structured navigation and project data
+public/
+  assets/       Static files referenced by URL
+```
