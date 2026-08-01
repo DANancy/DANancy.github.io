@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-labelledby="title">
+  <title id="title">Location adventure</title>
+  <rect width="96" height="96" rx="22" fill="#e6f2eb"/>
+  <path d="M22 73c10-9 17-3 25-11 8-8 10-17 24-19" fill="none" stroke="#2d7658" stroke-width="6" stroke-linecap="round" stroke-dasharray="3 11"/>
+  <path d="M67 18c-11 0-19 8-19 18 0 14 19 32 19 32s19-18 19-32c0-10-8-18-19-18Z" fill="#ffb64a" stroke="#8b5b13" stroke-width="3"/>
+  <circle cx="67" cy="36" r="7" fill="#fff7e8"/>
+  <path d="m18 68 7-16 7 16-7 11Z" fill="#7fc7a2" stroke="#2d7658" stroke-width="3" stroke-linejoin="round"/>
+</svg>

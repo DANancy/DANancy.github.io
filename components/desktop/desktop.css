@@ -357,45 +357,45 @@
 @media(max-width:760px){.window-stage .character-links{right:56px;top:-36px;width:80px;height:80px;border-width:5px}}
 /* Preserve the complete heart inside the Contact character circle */
 .character-contact{overflow:visible}
-.character-contact img{clip-path:circle(50%);object-fit:contain;transform:translate(8px,8px) scale(.78);transform-origin:center}
-@media(max-width:760px){.character-contact img{transform:translate(6px,6px) scale(.76)}}
+.character-contact img{clip-path:circle(50%);object-fit:contain;transform:translate(12px,10px) scale(.88);transform-origin:center}
+@media(max-width:760px){.character-contact img{transform:translate(8px,7px) scale(.86)}}
 
 /* Three-way contact layout */
 .contact-page .contact-grid{grid-template-columns:repeat(3,minmax(0,1fr));width:min(920px,100%)}
 .contact-grid article:nth-child(3)>svg{background:#e5d6f3;color:#6d398d}
-.contact-email{display:block;width:100%;margin-top:.75rem;color:#66736c;font-family:var(--font-mono);font-size:.62rem;text-align:center;overflow-wrap:anywhere}
+
 @media(max-width:900px){.contact-page .contact-grid{grid-template-columns:1fr;width:min(430px,100%)}}
 /* Contact window title bar */
 .desktop-window:has(.contact-page) .window-bar{background:#155b4f;color:#fff;border-bottom-color:#155b4f}
 /* Slowly drifting creature-shaped clouds */
-.pokemon-clouds{position:absolute;z-index:0;inset:0;overflow:hidden;pointer-events:none}
-.pokemon-cloud{position:absolute;left:-240px;width:180px;height:64px;border-radius:48% 55% 45% 52%;background:rgba(255,255,255,.72);filter:drop-shadow(0 8px 12px rgba(72,102,84,.08));animation:cloud-drift 64s linear infinite;will-change:transform}
-.pokemon-cloud::before,.pokemon-cloud::after{content:"";position:absolute;background:inherit}
-.pokemon-cloud::before{left:35px;top:-34px;width:78px;height:72px;border-radius:50%}
-.pokemon-cloud::after{right:18px;top:-20px;width:64px;height:60px;border-radius:50%}
-.pokemon-cloud i,.pokemon-cloud i::before,.pokemon-cloud i::after{position:absolute;display:block;content:""}
-.cloud-pikachu{top:14%;animation-duration:72s}
-.cloud-pikachu i{right:48px;top:-58px;width:50px;height:42px;border-radius:50%;background:rgba(255,255,255,.72)}
-.cloud-pikachu i::before,.cloud-pikachu i::after{top:-34px;width:14px;height:47px;border-radius:80% 20% 65% 30%;background:rgba(255,255,255,.72);transform-origin:bottom}
-.cloud-pikachu i::before{left:2px;rotate:-17deg}.cloud-pikachu i::after{right:2px;rotate:17deg}
-.cloud-eevee{top:43%;width:155px;height:58px;animation-delay:-25s;animation-duration:82s;opacity:.76}
-.cloud-eevee i{left:56px;top:-48px;width:48px;height:44px;border-radius:50%;background:rgba(255,255,255,.72)}
-.cloud-eevee i::before,.cloud-eevee i::after{top:-30px;width:21px;height:43px;background:rgba(255,255,255,.72);clip-path:polygon(50% 0,100% 100%,0 100%)}
-.cloud-eevee i::before{left:-4px;rotate:-20deg}.cloud-eevee i::after{right:-4px;rotate:20deg}
-.cloud-snorlax{top:70%;width:210px;height:80px;animation-delay:-47s;animation-duration:94s;opacity:.68}
-.cloud-snorlax::before{left:55px;top:-55px;width:105px;height:105px}
-.cloud-snorlax i{left:72px;top:-69px;width:72px;height:52px;border-radius:48% 48% 44% 44%;background:rgba(255,255,255,.72)}
-.cloud-snorlax i::before,.cloud-snorlax i::after{top:-13px;width:24px;height:28px;background:rgba(255,255,255,.72);clip-path:polygon(50% 0,100% 100%,0 100%)}
-.cloud-snorlax i::before{left:0;rotate:-15deg}.cloud-snorlax i::after{right:0;rotate:15deg}
+.wonder-clouds{position:absolute;z-index:0;inset:0;overflow:hidden;pointer-events:none}
+.wonder-cloud{position:absolute;left:-240px;width:180px;height:64px;border-radius:48% 55% 45% 52%;background:rgba(255,255,255,.72);filter:drop-shadow(0 8px 12px rgba(72,102,84,.08));animation:cloud-drift 64s linear infinite;will-change:transform}
+.wonder-cloud::before,.wonder-cloud::after{content:"";position:absolute;background:inherit}
+.wonder-cloud::before{left:35px;top:-34px;width:78px;height:72px;border-radius:50%}
+.wonder-cloud::after{right:18px;top:-20px;width:64px;height:60px;border-radius:50%}
+.wonder-cloud i,.wonder-cloud i::before,.wonder-cloud i::after{position:absolute;display:block;content:""}
+.cloud-sprout{top:14%;animation-duration:72s}
+.cloud-sprout i{right:48px;top:-58px;width:50px;height:42px;border-radius:50%;background:rgba(255,255,255,.72)}
+.cloud-sprout i::before,.cloud-sprout i::after{top:-34px;width:14px;height:47px;border-radius:80% 20% 65% 30%;background:rgba(255,255,255,.72);transform-origin:bottom}
+.cloud-sprout i::before{left:2px;rotate:-17deg}.cloud-sprout i::after{right:2px;rotate:17deg}
+.cloud-wink{top:43%;width:155px;height:58px;animation-delay:-25s;animation-duration:82s;opacity:.76}
+.cloud-wink i{left:56px;top:-48px;width:48px;height:44px;border-radius:50%;background:rgba(255,255,255,.72)}
+.cloud-wink i::before,.cloud-wink i::after{top:-30px;width:21px;height:43px;background:rgba(255,255,255,.72);clip-path:polygon(50% 0,100% 100%,0 100%)}
+.cloud-wink i::before{left:-4px;rotate:-20deg}.cloud-wink i::after{right:-4px;rotate:20deg}
+.cloud-dream{top:70%;width:210px;height:80px;animation-delay:-47s;animation-duration:94s;opacity:.68}
+.cloud-dream::before{left:55px;top:-55px;width:105px;height:105px}
+.cloud-dream i{left:72px;top:-69px;width:72px;height:52px;border-radius:48% 48% 44% 44%;background:rgba(255,255,255,.72)}
+.cloud-dream i::before,.cloud-dream i::after{top:-13px;width:24px;height:28px;background:rgba(255,255,255,.72);clip-path:polygon(50% 0,100% 100%,0 100%)}
+.cloud-dream i::before{left:0;rotate:-15deg}.cloud-dream i::after{right:0;rotate:15deg}
 @keyframes cloud-drift{from{transform:translate3d(-10vw,0,0)}to{transform:translate3d(calc(100vw + 300px),0,0)}}
-@media(max-width:760px){.pokemon-clouds{opacity:.55}.cloud-eevee{display:none}.pokemon-cloud{scale:.72}.cloud-snorlax{top:78%}}
-@media(prefers-reduced-motion:reduce){.pokemon-cloud{animation:none}.cloud-pikachu{left:8%}.cloud-eevee{left:58%}.cloud-snorlax{left:34%}}
+@media(max-width:760px){.wonder-clouds{opacity:.55}.cloud-wink{display:none}.wonder-cloud{scale:.72}.cloud-dream{top:78%}}
+@media(prefers-reduced-motion:reduce){.wonder-cloud{animation:none}.cloud-sprout{left:8%}.cloud-wink{left:58%}.cloud-dream{left:34%}}
 /* Let background clouds show through the overview without covering content */
 .desktop-shell:has(.overview-window) .overview-window{background:rgba(255,255,255,.78);backdrop-filter:blur(1.5px);-webkit-backdrop-filter:blur(1.5px)}
-.desktop-shell:has(.overview-window) .pokemon-cloud{background:rgba(174,205,194,.72);filter:drop-shadow(0 8px 14px rgba(62,96,77,.12))}
-.desktop-shell:has(.overview-window) .pokemon-cloud i,.desktop-shell:has(.overview-window) .pokemon-cloud i::before,.desktop-shell:has(.overview-window) .pokemon-cloud i::after{background:rgba(174,205,194,.72)}
-@media(max-width:760px){.desktop-shell:has(.overview-window) .overview-window{background:rgba(255,255,255,.84)}.desktop-shell:has(.overview-window) .pokemon-clouds{opacity:.72}}
-@media(forced-colors:active){.desktop-shell:has(.overview-window) .overview-window{background:Canvas}.pokemon-clouds{display:none}}
+.desktop-shell:has(.overview-window) .wonder-cloud{background:rgba(174,205,194,.72);filter:drop-shadow(0 8px 14px rgba(62,96,77,.12))}
+.desktop-shell:has(.overview-window) .wonder-cloud i,.desktop-shell:has(.overview-window) .wonder-cloud i::before,.desktop-shell:has(.overview-window) .wonder-cloud i::after{background:rgba(174,205,194,.72)}
+@media(max-width:760px){.desktop-shell:has(.overview-window) .overview-window{background:rgba(255,255,255,.84)}.desktop-shell:has(.overview-window) .wonder-clouds{opacity:.72}}
+@media(forced-colors:active){.desktop-shell:has(.overview-window) .overview-window{background:Canvas}.wonder-clouds{display:none}}
 /* Clear, correctly branded social footer */
 .tree-centre{left:28%}
 .desktop-footer{width:max-content;max-width:calc(100vw - 2rem);padding:.8rem 1.1rem;border:1px solid rgba(201,216,205,.8);border-radius:18px;background:rgba(249,252,249,.88);box-shadow:0 8px 24px rgba(40,68,51,.1);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
@@ -404,13 +404,22 @@
 .footer-socials a:last-child svg{fill:none;stroke:currentColor;stroke-width:2}
 @media(max-width:760px){.desktop-footer{padding:.7rem 1rem}}
 /* OpenAI-generated creature cloud sprites */
-.pokemon-cloud{width:210px;height:210px;border-radius:0;background-color:transparent;background-repeat:no-repeat;background-position:center;background-size:contain;filter:drop-shadow(0 8px 14px rgba(62,96,77,.12))}
-.pokemon-cloud::before,.pokemon-cloud::after,.pokemon-cloud>i{display:none}
-.cloud-pikachu{background-image:url("/assets/cloud-pikachu.webp")}
-.cloud-eevee{width:190px;height:190px;background-image:url("/assets/cloud-eevee.webp")}
-.cloud-snorlax{width:230px;height:230px;background-image:url("/assets/cloud-snorlax.webp")}
-.desktop-shell:has(.overview-window) .pokemon-cloud{background-color:transparent}
-@media(max-width:760px){.pokemon-cloud{width:170px;height:170px}.cloud-snorlax{width:190px;height:190px}}
+.wonder-cloud{width:210px;height:210px;border-radius:0;background-color:transparent;background-repeat:no-repeat;background-position:center;background-size:contain;filter:drop-shadow(0 8px 14px rgba(62,96,77,.12))}
+.wonder-cloud::before,.wonder-cloud::after,.wonder-cloud>i{display:none}
+.australian-kookaburra{background-image:url("/assets/australian-cloud-kookaburra.webp")!important}
+.australian-koala{background-image:url("/assets/australian-cloud-koala.webp")!important}
+.australian-kangaroo{background-image:url("/assets/australian-cloud-kangaroo.webp")!important}
+.australian-cockatiel{background-image:url("/assets/australian-cloud-cockatiel.webp")!important}
+.australian-wombat{background-image:url("/assets/australian-cloud-wombat.webp")!important}
+.australian-quokka{background-image:url("/assets/australian-cloud-quokka.webp")!important}
+.australian-platypus{background-image:url("/assets/australian-cloud-platypus.webp")!important}
+.australian-emu{background-image:url("/assets/australian-cloud-emu.webp")!important}
+.australian-lorikeet{background-image:url("/assets/australian-cloud-lorikeet.webp")!important}
+.australian-cockatoo{background-image:url("/assets/australian-cloud-cockatoo.webp")!important}
+.australian-echidna{background-image:url("/assets/australian-cloud-echidna.webp")!important}
+.australian-possum{background-image:url("/assets/australian-cloud-possum.webp")!important}
+.desktop-shell:has(.overview-window) .wonder-cloud{background-color:transparent}
+@media(max-width:760px){.wonder-cloud{width:170px;height:170px}.cloud-dream{width:190px;height:190px}}
 /* Additional staggered cloud instances */
 .cloud-four{top:30%;scale:.68;opacity:.58;animation-delay:-41s;animation-duration:88s}
 .cloud-five{top:57%;scale:.58;opacity:.5;animation-delay:-13s;animation-duration:76s}
@@ -421,3 +430,108 @@
 @media(prefers-reduced-motion:reduce){.cloud-four{left:72%}.cloud-five{left:18%}.cloud-six{left:82%}.cloud-seven{left:5%}.cloud-eight{left:62%}}
 /* Home plus six toggleable subpage tabs */
 .subpage-nav{grid-template-columns:repeat(7,minmax(0,1fr))}
+/* Contact card brand marks */
+.contact-grid article>svg{fill:currentColor;stroke:none}
+.contact-grid article:nth-child(3)>svg{fill:none;stroke:currentColor;stroke-width:2}
+/* Align Contact card icons and content */
+.contact-grid article>svg{display:block;flex:0 0 46px;width:46px;height:46px;margin:0}
+.contact-grid article>h3{margin-top:1.4rem}
+/* Adventure Time-inspired cloud sprites */
+/* Even initial distribution keeps a cloud near the left without a startup cluster */
+.cloud-one{top:14%;animation-duration:132s;animation-delay:-7s}
+.cloud-two{top:43%;animation-duration:138s;animation-delay:-32s}
+.cloud-three{top:70%;animation-duration:140s;animation-delay:-70s}
+.cloud-four{top:30%;animation-duration:142s;animation-delay:-109s}
+.cloud-five{top:57%;animation-duration:128s;animation-delay:-110s}
+.cloud-six{top:5%;animation-duration:146s;animation-delay:-60s}
+.cloud-seven{top:82%;animation-duration:150s;animation-delay:-89s}
+.cloud-eight{top:64%;animation-duration:148s;animation-delay:-141s}
+.cloud-nine{top:22%;scale:.68;opacity:.58;animation-duration:126s;animation-delay:-18s}
+.cloud-ten{top:48%;scale:.62;opacity:.54;animation-duration:130s;animation-delay:-42s}
+.cloud-eleven{top:75%;scale:.64;opacity:.56;animation-duration:134s;animation-delay:-91s}
+@media(max-width:760px){.cloud-comet,.cloud-bloom,.cloud-orbit{width:170px;height:170px}.cloud-five,.cloud-six,.cloud-seven,.cloud-eight,.cloud-ten{display:none}.cloud-nine{top:25%;scale:.5}.cloud-eleven{top:72%;scale:.5}}
+@media(prefers-reduced-motion:reduce){.cloud-nine{left:10%}.cloud-ten{left:45%}.cloud-eleven{left:76%}}
+/* Visually center the Just for Fun character inside its circle */
+.character-fun{overflow:visible}
+.character-fun img{clip-path:circle(50%);transform:translateY(-7px) scale(1.06);transform-origin:center}
+@media(max-width:760px){.character-fun img{transform:translateY(-4px) scale(1.05)}}
+/* Keep drifting clouds entirely above the orchard */
+.wonder-clouds{bottom:220px;mask-image:linear-gradient(to bottom,#000 0,#000 calc(100% - 60px),transparent 100%);-webkit-mask-image:linear-gradient(to bottom,#000 0,#000 calc(100% - 60px),transparent 100%)}
+@media(max-width:760px){.wonder-clouds{bottom:145px}}
+/* Cover-first horizontal book shelf, matching the animation layout */
+.fun-books{margin-top:2.5rem;padding-top:2.5rem}
+.fun-books>.books-page{padding:0;overflow:hidden}
+.fun-books .book-list{display:flex;gap:1rem;overflow-x:auto;padding:.25rem .1rem 1rem;scroll-snap-type:x mandatory;scrollbar-width:thin}
+.fun-books .book-entry{display:flex;flex:0 0 calc((100% - 2rem)/3);flex-direction:column;align-items:stretch;min-width:0;padding:1rem;gap:1rem;scroll-snap-align:start}
+.fun-books .book-entry>img{width:100%;height:auto;aspect-ratio:3/4;margin:0;padding:.45rem;object-fit:contain}
+.fun-books .book-entry-copy{display:flex;flex:1;flex-direction:column}
+.fun-books .book-entry-copy h3{min-height:0;margin:.65rem 0 0;font-size:1.5rem}
+.fun-books .book-entry-copy .book-author,.fun-books .book-entry-copy .book-subtitle,.fun-books .book-summary{min-height:0}
+.fun-books .book-entry blockquote{min-height:0;margin-top:auto}
+@media(max-width:900px){.fun-books .book-entry{flex-basis:min(340px,78vw)}}
+@media(max-width:760px){.fun-books{margin-top:1.75rem;padding-top:2rem}.fun-books .book-list{margin-inline:-.85rem;padding-inline:.85rem;scroll-padding-inline:.85rem}.fun-books .book-entry{flex-basis:min(300px,84vw)}}
+/* Alternating, collision-free cloud lanes */
+@keyframes cloud-drift-reverse{from{transform:translate3d(calc(100vw + 300px),0,0)}to{transform:translate3d(-10vw,0,0)}}
+.cloud-one{top:3%;scale:.46;animation-name:cloud-drift;animation-duration:144s;animation-delay:-6s}
+.cloud-seven{top:3%;scale:.44;animation-name:cloud-drift;animation-duration:144s;animation-delay:-78s}
+.cloud-two{top:20%;scale:.44;animation-name:cloud-drift-reverse;animation-duration:150s;animation-delay:-25s}
+.cloud-eight{top:20%;scale:.43;animation-name:cloud-drift-reverse;animation-duration:150s;animation-delay:-100s}
+.cloud-three{top:37%;scale:.44;animation-name:cloud-drift;animation-duration:138s;animation-delay:-42s}
+.cloud-nine{top:37%;scale:.46;animation-name:cloud-drift;animation-duration:138s;animation-delay:-111s}
+.cloud-four{top:54%;scale:.45;animation-name:cloud-drift-reverse;animation-duration:146s;animation-delay:-58s}
+.cloud-ten{top:54%;scale:.45;animation-name:cloud-drift-reverse;animation-duration:146s;animation-delay:-131s}
+.cloud-five{top:71%;scale:.44;animation-name:cloud-drift;animation-duration:152s;animation-delay:-72s}
+.cloud-eleven{top:71%;scale:.46;animation-name:cloud-drift;animation-duration:152s;animation-delay:-148s}
+.cloud-six{top:87%;scale:.42;animation-name:cloud-drift-reverse;animation-duration:160s;animation-delay:-96s}
+@media(max-width:760px){.cloud-one{top:5%}.cloud-three{top:36%}.cloud-four{top:58%}.cloud-nine{top:25%}.cloud-eleven{top:78%}}
+@media(prefers-reduced-motion:reduce){.cloud-one,.cloud-two,.cloud-three,.cloud-four,.cloud-five,.cloud-six,.cloud-seven,.cloud-eight,.cloud-nine,.cloud-ten,.cloud-eleven{animation-name:none}}
+/* More Pokemon clouds, evenly spaced within the collision-free lanes */
+.cloud-one,.cloud-seven,.cloud-twelve{top:3%;scale:.42;animation-name:cloud-drift;animation-duration:180s}
+.cloud-one{animation-delay:0s}.cloud-seven{animation-delay:-60s}.cloud-twelve{animation-delay:-120s}
+.cloud-two,.cloud-eight,.cloud-thirteen{top:20%;scale:.41;animation-name:cloud-drift-reverse;animation-duration:186s}
+.cloud-two{animation-delay:-18s}.cloud-eight{animation-delay:-80s}.cloud-thirteen{animation-delay:-142s}
+.cloud-three,.cloud-nine,.cloud-fourteen{top:37%;scale:.42;animation-name:cloud-drift;animation-duration:174s}
+.cloud-three{animation-delay:-34s}.cloud-nine{animation-delay:-92s}.cloud-fourteen{animation-delay:-150s}
+.cloud-four,.cloud-ten,.cloud-fifteen{top:54%;scale:.41;animation-name:cloud-drift-reverse;animation-duration:183s}
+.cloud-four{animation-delay:-12s}.cloud-ten{animation-delay:-73s}.cloud-fifteen{animation-delay:-134s}
+.cloud-five,.cloud-eleven,.cloud-sixteen{top:71%;scale:.42;animation-name:cloud-drift;animation-duration:189s}
+.cloud-five{animation-delay:-27s}.cloud-eleven{animation-delay:-90s}.cloud-sixteen{animation-delay:-153s}
+.cloud-six,.cloud-seventeen{top:87%;scale:.4;animation-name:cloud-drift-reverse;animation-duration:160s}
+.cloud-six{animation-delay:-36s}.cloud-seventeen{animation-delay:-116s}
+@media(max-width:760px){.cloud-twelve,.cloud-thirteen,.cloud-fifteen,.cloud-seventeen{display:none}.cloud-fourteen{top:36%;scale:.38}.cloud-sixteen{top:78%;scale:.38}}
+@media(prefers-reduced-motion:reduce){.cloud-twelve,.cloud-thirteen,.cloud-fourteen,.cloud-fifteen,.cloud-sixteen,.cloud-seventeen{animation-name:none}}
+/* Princess Bubblegum, Ice King, and Marceline cloud characters */
+.cloud-one,.cloud-seven,.cloud-twelve,.cloud-eighteen{top:3%;scale:.4;animation-name:cloud-drift;animation-duration:220s}
+.cloud-one{animation-delay:0s}.cloud-seven{animation-delay:-55s}.cloud-twelve{animation-delay:-110s}.cloud-eighteen{animation-delay:-165s}
+.cloud-three,.cloud-nine,.cloud-fourteen,.cloud-nineteen{top:37%;scale:.4;animation-name:cloud-drift;animation-duration:216s}
+.cloud-three{animation-delay:-20s}.cloud-nine{animation-delay:-74s}.cloud-fourteen{animation-delay:-128s}.cloud-nineteen{animation-delay:-182s}
+.cloud-six,.cloud-seventeen,.cloud-twenty{top:87%;scale:.39;animation-name:cloud-drift-reverse;animation-duration:192s}
+.cloud-six{animation-delay:-16s}.cloud-seventeen{animation-delay:-80s}.cloud-twenty{animation-delay:-144s}
+@media(max-width:760px){.cloud-ribbon,.cloud-frost,.cloud-melody{width:175px;height:175px}.cloud-nineteen{top:36%;scale:.36}.cloud-eighteen,.cloud-twenty{display:none}}
+@media(prefers-reduced-motion:reduce){.cloud-eighteen,.cloud-nineteen,.cloud-twenty{animation-name:none}}
+/* Soft pastel cloud palette */
+.cloud-one,.cloud-six,.cloud-eleven,.cloud-sixteen{filter:sepia(.22) saturate(1.45) hue-rotate(285deg) drop-shadow(0 8px 14px rgba(169,104,137,.14))}
+.cloud-two,.cloud-seven,.cloud-twelve,.cloud-seventeen{filter:sepia(.2) saturate(1.55) hue-rotate(155deg) drop-shadow(0 8px 14px rgba(89,139,164,.14))}
+.cloud-three,.cloud-eight,.cloud-thirteen,.cloud-eighteen{filter:sepia(.2) saturate(1.5) hue-rotate(215deg) drop-shadow(0 8px 14px rgba(126,111,166,.14))}
+.cloud-four,.cloud-nine,.cloud-fourteen,.cloud-nineteen{filter:sepia(.24) saturate(1.35) hue-rotate(330deg) drop-shadow(0 8px 14px rgba(178,127,94,.14))}
+.cloud-five,.cloud-ten,.cloud-fifteen,.cloud-twenty{filter:sepia(.18) saturate(1.4) hue-rotate(85deg) drop-shadow(0 8px 14px rgba(84,146,117,.14))}
+/* OpenAI-generated original animal cloud sprites */
+.wonder-cloud{width:215px;height:215px;border:0;border-radius:0;background-color:transparent!important;background-repeat:no-repeat!important;background-position:center!important;background-size:contain!important;box-shadow:none;filter:drop-shadow(0 9px 14px rgba(62,96,77,.12))}
+.wonder-cloud::before,.wonder-cloud::after,.wonder-cloud>i{display:none}
+.australian-kookaburra{background-image:url("/assets/australian-cloud-kookaburra.webp")!important}
+.australian-koala{background-image:url("/assets/australian-cloud-koala.webp")!important}
+.australian-kangaroo{background-image:url("/assets/australian-cloud-kangaroo.webp")!important}
+.australian-cockatiel{background-image:url("/assets/australian-cloud-cockatiel.webp")!important}
+.australian-wombat{background-image:url("/assets/australian-cloud-wombat.webp")!important}
+.australian-quokka{background-image:url("/assets/australian-cloud-quokka.webp")!important}
+.australian-platypus{background-image:url("/assets/australian-cloud-platypus.webp")!important}
+.australian-emu{background-image:url("/assets/australian-cloud-emu.webp")!important}
+.australian-lorikeet{background-image:url("/assets/australian-cloud-lorikeet.webp")!important}
+.australian-cockatoo{background-image:url("/assets/australian-cloud-cockatoo.webp")!important}
+.australian-echidna{background-image:url("/assets/australian-cloud-echidna.webp")!important}
+.australian-possum{background-image:url("/assets/australian-cloud-possum.webp")!important}
+.cloud-one,.cloud-two,.cloud-three,.cloud-four,.cloud-five,.cloud-six,.cloud-seven,.cloud-eight,.cloud-nine,.cloud-ten,.cloud-eleven,.cloud-twelve,.cloud-thirteen,.cloud-fourteen,.cloud-fifteen,.cloud-sixteen,.cloud-seventeen,.cloud-eighteen,.cloud-nineteen,.cloud-twenty{filter:drop-shadow(0 9px 14px rgba(62,96,77,.12))}
+@media(max-width:760px){.wonder-cloud{width:175px;height:175px}}
+/* Airier animal clouds that sit quietly behind the portfolio */
+.wonder-cloud{opacity:.72;filter:saturate(.58) contrast(.84) drop-shadow(0 7px 12px rgba(62,96,77,.07))}
+@media(max-width:760px){.wonder-cloud{opacity:.82}}
