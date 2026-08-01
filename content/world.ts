@@ -1,62 +1,19 @@
 export type ZoneId = "forest" | "ruins" | "village";
-
-export interface WorldLandmark {
-  id: string;
-  zone: ZoneId;
-  title: string;
-  eyebrow: string;
-  summary: string;
-  details: string[];
-  technologies?: string[];
-  href?: string;
-  x: number;
-  y: number;
-  symbol: string;
-}
-
+export interface WorldLandmark { id:string; zone:ZoneId; title:string; eyebrow:string; summary:string; details:string[]; technologies?:string[]; x:number; y:number; symbol:string }
 export const zones = {
-  forest: { title: "Data Forest", subtitle: "Platforms, patterns & engineering", color: "#66b89b" },
-  ruins: { title: "Project Ruins", subtitle: "Ideas made tangible", color: "#d5a85b" },
-  village: { title: "Make AI Practical Village", subtitle: "Leadership, learning & community", color: "#bd8a74" },
-} satisfies Record<ZoneId, { title: string; subtitle: string; color: string }>;
-
-export const worldLandmarks: WorldLandmark[] = [
-  {
-    id: "data-platforms", zone: "forest", title: "Enterprise Data Grove", eyebrow: "Technology landmark",
-    summary: "End-to-end data platforms that turn complicated enterprise sources into trusted, useful products.",
-    details: ["Cloud architecture, ingestion, modelling, governance, analytics, and delivery considered as one system.", "Experience spans Azure, AWS, Databricks, Snowflake, Salesforce, SAP, automation, and reporting."],
-    technologies: ["Python", "SQL", "PySpark", "Azure", "Databricks", "Snowflake", "Power BI", "CI/CD"],
-    href: "/technology", x: 19, y: 43, symbol: "◇",
-  },
-  {
-    id: "green-certificate", zone: "ruins", title: "Green Certificate Data Platform", eyebrow: "Featured project",
-    summary: "An end-to-end renewable certificate analytics platform built around a medallion data architecture.",
-    details: ["Models public certificate shortfall data into Bronze, Silver, and Gold layers for clear compliance reporting.", "Pairs practical data engineering with Power BI and a safe, client-side AI query experience."],
-    technologies: ["Azure Data Factory", "Databricks", "Python", "SQL", "Power BI", "MCP"],
-    href: "/projects/green-certificate-shortfall-analytics", x: 48, y: 35, symbol: "△",
-  },
-  {
-    id: "knowledge-agent", zone: "ruins", title: "Knowledge Agent", eyebrow: "Featured project",
-    summary: "A connected knowledge workflow for finding useful context and turning it into action.",
-    details: ["Explores retrieval, knowledge graphs, MCP, and human-in-the-loop AI workflows.", "Designed around practical answers, transparent sources, and maintainable system boundaries."],
-    technologies: ["Knowledge graphs", "MCP", "RAG", "Claude", "Codex"], x: 63, y: 60, symbol: "✦",
-  },
-  {
-    id: "winter-bootcamp", zone: "ruins", title: "Data Engineering Winter Bootcamp", eyebrow: "Featured project",
-    summary: "A practical learning journey that helps people build modern data engineering foundations.",
-    details: ["Twelve guided learning markers take students from fundamentals to an end-to-end platform mindset.", "The emphasis is confidence through building: concrete exercises, shared learning, and useful feedback."],
-    technologies: ["Teaching", "Python", "SQL", "Data modelling", "Cloud"], x: 43, y: 70, symbol: "▥",
-  },
-  {
-    id: "map-board", zone: "village", title: "Board Member, Make AI Practical", eyebrow: "Leadership landmark",
-    summary: "Helping guide a non-profit focused on making AI learning practical, accessible, and useful.",
-    details: ["I support strategic direction, workshops, community learning, and hands-on experiences that help people turn AI knowledge into real outcomes.", "Initiatives include Knowledge Agent workshops, AI roundtables, bootcamps, lunch-and-learns, and volunteer-led education."],
-    technologies: ["Strategy", "Community leadership", "AI education", "Workshops"], x: 82, y: 40, symbol: "⌂",
-  },
+  forest:{title:"Data Forest",subtitle:"Platforms, patterns & engineering",color:"#66b89b"},
+  ruins:{title:"Project Ruins",subtitle:"Ideas made tangible",color:"#d5a85b"},
+  village:{title:"Make AI Practical Village",subtitle:"Leadership, learning & community",color:"#bd8a74"},
+} satisfies Record<ZoneId,{title:string;subtitle:string;color:string}>;
+export const worldLandmarks:WorldLandmark[] = [
+  {id:"data-platforms",zone:"forest",title:"Enterprise Data Grove",eyebrow:"Technology landmark",summary:"End-to-end data platforms that turn complicated enterprise sources into trusted, useful products.",details:["Cloud architecture, ingestion, modelling, governance, analytics, and delivery considered as one system.","Experience spans Azure, AWS, Databricks, Snowflake, Salesforce, SAP, automation, and reporting."],technologies:["Python","SQL","PySpark","Azure","Databricks","Snowflake","Power BI","CI/CD"],x:19,y:43,symbol:"◇"},
+  {id:"green-certificate",zone:"ruins",title:"Green Certificate Data Platform",eyebrow:"Featured project",summary:"An end-to-end renewable certificate analytics platform built around a medallion data architecture.",details:["Models public certificate shortfall data into Bronze, Silver, and Gold layers for clear compliance reporting.","Pairs practical data engineering with Power BI and a safe, client-side AI query experience."],technologies:["Azure Data Factory","Databricks","Python","SQL","Power BI","MCP"],x:48,y:35,symbol:"△"},
+  {id:"knowledge-agent",zone:"ruins",title:"Knowledge Agent",eyebrow:"Featured project",summary:"A connected knowledge workflow for finding useful context and turning it into action.",details:["Explores retrieval, knowledge graphs, MCP, and human-in-the-loop AI workflows.","Designed around practical answers, transparent sources, and maintainable system boundaries."],technologies:["Knowledge graphs","MCP","RAG","Claude","Codex"],x:63,y:60,symbol:"✦"},
+  {id:"winter-bootcamp",zone:"ruins",title:"Data Engineering Winter Bootcamp",eyebrow:"Featured project",summary:"A practical learning journey that helps people build modern data engineering foundations.",details:["Twelve guided learning markers take students from fundamentals to an end-to-end platform mindset.","The emphasis is confidence through building: concrete exercises, shared learning, and useful feedback."],technologies:["Teaching","Python","SQL","Data modelling","Cloud"],x:43,y:70,symbol:"▥"},
+  {id:"map-board",zone:"village",title:"Board Member, Make AI Practical",eyebrow:"Leadership landmark",summary:"Helping guide a non-profit focused on making AI learning practical, accessible, and useful.",details:["I support strategic direction, workshops, community learning, and hands-on experiences that help people turn AI knowledge into real outcomes.","Initiatives include Knowledge Agent workshops, AI roundtables, bootcamps, lunch-and-learns, and volunteer-led education."],technologies:["Strategy","Community leadership","AI education","Workshops"],x:82,y:40,symbol:"⌂"},
 ];
-
 export const simpleSections = [
-  { title: "What I build", body: "Practical data and AI solutions across cloud platforms, enterprise systems, analytics, automation, and community learning.", items: ["Enterprise data platforms", "AI-powered engineering", "Cloud architecture", "Analytics and automation"] },
-  { title: "How I lead", body: "As a Board Member of Make AI Practical, I help shape accessible learning experiences that move AI from theory into useful practice.", items: ["Strategic contribution", "Workshops and roundtables", "Teaching and community events", "Knowledge sharing"] },
-  { title: "What I explore", body: "My current interests connect system design with human learning and creative practice.", items: ["Knowledge agents and MCP", "Enterprise AI", "Energy and sustainability", "Pottery, travel, books, games, and fantasy"] },
+  {title:"What I build",body:"Practical data and AI solutions across cloud platforms, enterprise systems, analytics, automation, and community learning.",items:["Enterprise data platforms","AI-powered engineering","Cloud architecture","Analytics and automation"]},
+  {title:"How I lead",body:"As a Board Member of Make AI Practical, I help shape accessible learning experiences that move AI from theory into useful practice.",items:["Strategic contribution","Workshops and roundtables","Teaching and community events","Knowledge sharing"]},
+  {title:"What I explore",body:"My current interests connect system design with human learning and creative practice.",items:["Knowledge agents and MCP","Enterprise AI","Energy and sustainability","Pottery, travel, books, games, and fantasy"]},
 ];
