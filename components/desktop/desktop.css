@@ -535,3 +535,25 @@
 /* Airier animal clouds that sit quietly behind the portfolio */
 .wonder-cloud{opacity:.72;filter:saturate(.58) contrast(.84) drop-shadow(0 7px 12px rgba(62,96,77,.07))}
 @media(max-width:760px){.wonder-cloud{opacity:.82}}
+/* Definitive two-way cloud movement: alternating lanes with collision-free spacing */
+.cloud-one,.cloud-seven,.cloud-twelve,.cloud-eighteen{top:3%;animation-name:cloud-drift;animation-duration:120s;animation-delay:0s;scale:.4}
+.cloud-seven{animation-delay:-30s}.cloud-twelve{animation-delay:-60s}.cloud-eighteen{animation-delay:-90s}
+.cloud-two,.cloud-eight,.cloud-thirteen{top:20%;animation-name:cloud-drift-reverse;animation-duration:108s;animation-delay:-8s;scale:.41}
+.cloud-eight{animation-delay:-44s}.cloud-thirteen{animation-delay:-80s}
+.cloud-three,.cloud-nine,.cloud-fourteen,.cloud-nineteen{top:37%;animation-name:cloud-drift;animation-duration:124s;animation-delay:-12s;scale:.4}
+.cloud-nine{animation-delay:-43s}.cloud-fourteen{animation-delay:-74s}.cloud-nineteen{animation-delay:-105s}
+.cloud-four,.cloud-ten,.cloud-fifteen{top:54%;animation-name:cloud-drift-reverse;animation-duration:112s;animation-delay:-18s;scale:.41}
+.cloud-ten{animation-delay:-55.33s}.cloud-fifteen{animation-delay:-92.66s}
+.cloud-five,.cloud-eleven,.cloud-sixteen{top:71%;animation-name:cloud-drift;animation-duration:118s;animation-delay:-22s;scale:.42}
+.cloud-eleven{animation-delay:-61.33s}.cloud-sixteen{animation-delay:-100.66s}
+.cloud-six,.cloud-seventeen,.cloud-twenty{top:87%;animation-name:cloud-drift-reverse;animation-duration:114s;animation-delay:-10s;scale:.39}
+.cloud-seventeen{animation-delay:-48s}.cloud-twenty{animation-delay:-86s}
+.wonder-cloud{animation-timing-function:linear;animation-iteration-count:infinite}
+@media(prefers-reduced-motion:reduce){.wonder-cloud{animation:none}}
+/* Story-style book shelf */
+.story-books-heading{max-width:680px;margin:0 auto 2rem;text-align:center}
+.story-books-heading h2{margin:.7rem 0 .5rem;color:#176b50;font-size:clamp(2rem,4vw,3.25rem);line-height:1.08}
+.story-books-heading>p:last-child{margin:0;color:#65706a;line-height:1.6}
+.fun-books .book-entry{background:linear-gradient(180deg,#fff 0%,#f7faf7 100%);border-radius:20px}
+.fun-books .book-summary{margin-top:.85rem;line-height:1.55}
+@media(max-width:760px){.story-books-heading{margin-bottom:1.4rem;text-align:left}.story-books-heading h2{font-size:2rem}}
