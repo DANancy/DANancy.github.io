@@ -56,7 +56,7 @@
 .game-card-link{color:inherit;text-decoration:none;transition:.2s}
 .conference-window{grid-column:1/-1;display:grid;grid-template-columns:auto 1fr auto;gap:1.5rem;align-items:center;padding:1.6rem;border:1px solid #cdd8cf;border-radius:13px;background:linear-gradient(110deg,#edf5ef,#fff4db)}
 .conference-mark{display:grid;place-items:center;width:68px;height:68px;border-radius:16px;background:#2b7254;color:#fff}
-.contact-page .contact-grid{grid-template-columns:1fr;width:min(430px,100%)}
+.contact-page .contact-grid{grid-template-columns:repeat(2,minmax(0,1fr));width:min(760px,100%)}
 @media(max-width:760px){.window-stage{width:100%}.window-stage .character-overview{left:50%;top:-58px}.window-stage .character-about,.window-stage .character-work,.window-stage .character-community,.window-stage .character-books,.window-stage .character-fun,.window-stage .character-contact{right:12px;top:-42px}.section-window{height:calc(100dvh - 5.5rem);max-height:calc(100dvh - 5.5rem)}.work-page .project-grid,.book-addition,.conference-window{grid-template-columns:1fr}.language-switch{right:12px;top:12px}}
 @media(prefers-reduced-motion:reduce){.desktop-floating-close:hover .sunflower-close>svg:first-child{transform:none}}
 
@@ -133,8 +133,8 @@
 @media(max-width:760px){.travel-window{padding:1.15rem}.travel-map svg{min-width:580px;translate:-90px 0}.travel-places{grid-template-columns:1fr}.travel-heading h3{font-size:1.35rem}}
 
 /* Balanced Community two-panel layout */
-.community-page{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(340px,.92fr);gap:1.5rem;align-items:start;padding-top:4rem}
-.community-copy{margin:0;padding:2rem;border:1px solid #d9e2db;border-radius:22px;background:linear-gradient(145deg,#fff,#f5f8f5);box-shadow:0 14px 32px #2d493812}
+.community-page{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(340px,.92fr);gap:1.5rem;align-items:stretch;padding-top:4rem}
+.community-copy{display:flex;flex-direction:column;height:100%;margin:0;padding:2rem;border:1px solid #d9e2db;border-radius:22px;background:linear-gradient(145deg,#fff,#f5f8f5);box-shadow:0 14px 32px #2d493812}
 .community-copy h2{margin:.9rem 0 0;font-size:clamp(2.8rem,4.5vw,4.4rem);line-height:1;color:#155b4f}
 .community-copy .page-lead{margin-top:1.25rem;font-size:1rem;line-height:1.65}
 .community-copy .community-manifesto{margin-top:1.2rem}
@@ -143,12 +143,12 @@
 .community-actions{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
 .community-actions a{width:100%;min-height:46px;padding:0 .8rem;text-align:center}
 .community-actions .eventbrite-button{grid-column:1/-1}
-.community-page .curriculum-card{align-self:start;margin:0;padding:1rem;border:1px solid #d9e2db;border-radius:22px;background:#f5f8f5;box-shadow:0 14px 32px #2d493812}
-.community-page .curriculum-card img{margin:0;border-radius:14px;box-shadow:none}
-.community-page .curriculum-card h3{margin:0;padding:1.1rem 1.1rem .55rem;border:0;border-radius:0;background:transparent}
-.community-page .curriculum-card ul{margin:0;padding:.1rem 1.1rem .6rem;border:0;border-radius:0;background:transparent}
-@media(max-width:900px){.community-page{grid-template-columns:1fr;padding-top:4rem}.community-copy,.community-page .curriculum-card{width:min(680px,100%);margin-inline:auto}}
-@media(max-width:760px){.community-page{padding-top:4.2rem}.community-copy{padding:1.35rem;border-radius:18px}.community-actions{grid-template-columns:1fr}.community-actions .eventbrite-button{grid-column:auto}.community-page .curriculum-card{padding:.75rem;border-radius:18px}}
+.community-page .curriculum-card{align-self:stretch;grid-template-columns:minmax(145px,.82fr) minmax(0,1.18fr);grid-template-rows:auto 1fr;gap:0;height:100%;margin:0;padding:1rem;border:1px solid #d9e2db;border-radius:22px;background:#f5f8f5;box-shadow:0 14px 32px #2d493812}
+.community-page .curriculum-card img{grid-column:1;grid-row:1/3;width:100%;height:100%;min-height:0;margin:0;border-radius:14px;object-fit:contain;object-position:center top;box-shadow:none}
+.community-page .curriculum-card h3{grid-column:2;grid-row:1;margin:0;padding:1.1rem 1.1rem .55rem;border:0;border-radius:0;background:transparent}
+.community-page .curriculum-card ul{grid-column:2;grid-row:2;margin:0;padding:.1rem 1.1rem .6rem;border:0;border-radius:0;background:transparent}
+@media(max-width:900px){.community-page{grid-template-columns:1fr;padding-top:4rem}.community-copy,.community-page .curriculum-card{width:min(680px,100%);margin-inline:auto}.community-page .curriculum-card{grid-template-columns:minmax(180px,.7fr) minmax(0,1.3fr)}}
+@media(max-width:760px){.community-page{padding-top:4.2rem}.community-copy{padding:1.35rem;border-radius:18px}.community-actions{grid-template-columns:1fr}.community-actions .eventbrite-button{grid-column:auto}.community-page .curriculum-card{grid-template-columns:1fr;grid-template-rows:auto auto auto;height:auto;padding:.75rem;border-radius:18px}.community-page .curriculum-card img{grid-column:1;grid-row:1;width:100%;height:auto}.community-page .curriculum-card h3{grid-column:1;grid-row:2}.community-page .curriculum-card ul{grid-column:1;grid-row:3}}
 
 /* Consistent reading journal */
 .books-heading{text-align:center;margin-bottom:2.5rem}
@@ -189,16 +189,18 @@
 
 /* Illustrated travel atlas */
 .travel-window{background:linear-gradient(145deg,#f9fbf8,#eaf3ed);box-shadow:0 16px 34px #29483812}
-.travel-map{position:relative;isolation:isolate;min-height:340px;border:1px solid #8fb6ac;border-radius:22px;background:radial-gradient(circle at 76% 22%,#8dd2c333 0 8%,transparent 9%),radial-gradient(circle at 20% 78%,#f1cc6830 0 10%,transparent 11%),linear-gradient(145deg,#164f53,#0c3c45 58%,#12333e);box-shadow:inset 0 0 50px #061f294d,0 14px 28px #173d4024}
-.travel-map::before{content:"N  Ã¢â€ â€˜";position:absolute;z-index:2;right:18px;top:17px;display:grid;place-items:center;width:52px;height:52px;border:1px solid #f5d67b88;border-radius:50%;background:#0d343dcc;color:#f7d77b;font-family:var(--font-mono);font-size:.62rem;font-weight:800;letter-spacing:.08em;box-shadow:0 5px 16px #061c244d}
-.travel-map::after{content:"ASIAÃ¢â‚¬â€œPACIFIC JOURNEY";position:absolute;z-index:2;left:18px;bottom:16px;padding:.4rem .65rem;border:1px solid #ffffff30;border-radius:999px;background:#0b3139b8;color:#d8eee8;font-family:var(--font-mono);font-size:.54rem;letter-spacing:.16em}
-.travel-map svg{position:relative;z-index:1;padding:1rem;filter:drop-shadow(0 10px 16px #041f2852)}
+.travel-map{position:relative;isolation:isolate;min-height:340px;border:1px solid #c9d9d4;border-radius:22px;background-color:#f3f8f6;background-image:linear-gradient(#91aaa20f 1px,transparent 1px),linear-gradient(90deg,#91aaa20f 1px,transparent 1px),radial-gradient(circle at 28% 26%,#fff 0 16%,transparent 42%),linear-gradient(145deg,#f8fbf9,#e9f2ef);background-size:32px 32px,32px 32px,auto,auto;box-shadow:inset 0 0 45px #9eb8af18,0 14px 28px #29443a14}
+.travel-map::before{content:"N  ↑";position:absolute;z-index:2;right:18px;top:17px;display:grid;place-items:center;width:52px;height:52px;border:1px solid #9fb7ae;border-radius:50%;background:#ffffffd9;color:#236553;font-family:var(--font-mono);font-size:.62rem;font-weight:800;letter-spacing:.08em;box-shadow:0 5px 14px #29443a14}
+.travel-map::after{content:"ASIA PACIFIC JOURNEY";position:absolute;z-index:2;left:18px;bottom:16px;padding:.4rem .65rem;border:1px solid #b9cbc4;border-radius:999px;background:#ffffffd9;color:#397061;font-family:var(--font-mono);font-size:.54rem;letter-spacing:.16em}
+.travel-map svg{position:relative;z-index:1;padding:1rem;filter:drop-shadow(0 8px 13px #47675b24)}
 .travel-map svg::selection{background:transparent}
-.travel-map .map-land{fill:#b9d2bb;stroke:#dcebd6;stroke-width:2.5}
-.travel-map .map-island{fill:#e4c979;stroke:#f5e1a2;stroke-width:1.5}
-.travel-map .map-route{stroke:#ffd56a;stroke-width:4;stroke-dasharray:8 10;filter:drop-shadow(0 0 5px #ffc746aa);animation:travel-route 14s linear infinite}
-.travel-map .map-pin circle{fill:#ffca4d;stroke:#fff7d5;stroke-width:5;filter:drop-shadow(0 0 7px #ffd766)}
-.travel-map .map-pin text{fill:#fff;font-size:16px;paint-order:stroke;stroke:#123b40;stroke-width:5px;stroke-linejoin:round}
+.travel-map .map-country{fill:#c9ddd2;stroke:#688f82;stroke-width:2.2;stroke-linejoin:round}
+.travel-map .map-country .map-detail{fill:#dbe8e1;stroke-width:1.5}
+.travel-map .bali-shape{fill:#e9cf87;stroke:#a9852b}
+.travel-map .nz-shape{fill:#bcd8ca}
+.travel-map .map-route{stroke:#d79525;stroke-width:3.5;stroke-dasharray:8 10;filter:drop-shadow(0 2px 2px #d7952550);animation:travel-route 14s linear infinite}
+.travel-map .map-pin circle{fill:#e6a932;stroke:#fff;stroke-width:4;filter:drop-shadow(0 2px 4px #6c572955)}
+.travel-map .map-pin text{fill:#264f43;font-size:16px;paint-order:stroke;stroke:#f3f8f6;stroke-width:5px;stroke-linejoin:round}
 .travel-places article{border-color:#ccdbd0;background:linear-gradient(145deg,#fff,#f4f8f4);box-shadow:0 7px 16px #2948380c;transition:transform .2s ease,border-color .2s ease}
 .travel-places article:hover{transform:translateY(-3px);border-color:#8fb6a0}
 .travel-places svg{padding:3px;border-radius:6px;background:#dff0e6}
@@ -217,3 +219,5 @@
 .book-published{display:flex;align-items:center;gap:.45rem;margin-top:.7rem;color:#4d695b;font-family:var(--font-mono);font-size:.65rem;font-weight:700}
 .book-published svg{width:15px;height:15px;color:#b77a0d}
 
+
+@media(max-width:760px){.contact-page .contact-grid{grid-template-columns:1fr;width:min(430px,100%)}}
