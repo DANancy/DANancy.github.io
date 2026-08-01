@@ -1,15 +1,6 @@
 import Link from "next/link";
-import "@/components/world/world.css";
+import "@/components/desktop/desktop.css";
 
-export default function NotFound() {
-  return (
-    <main className="simple-portfolio grid min-h-[100dvh] place-items-center px-6 text-center">
-      <section>
-        <p className="world-eyebrow">Lost in the mist</p>
-        <h1 className="mt-4 font-[family-name:var(--font-display)] text-5xl">This path has drifted away.</h1>
-        <p className="mx-auto mt-5 max-w-lg text-lg">Return to the floating world and keep exploring.</p>
-        <Link className="world-primary-button mt-8" href="/">Fly home →</Link>
-      </section>
-    </main>
-  );
+export default function NotFound(){
+  return <main className="desktop-shell grid place-items-center"><section className="desktop-window max-w-2xl text-center"><header className="window-bar"><div className="traffic"><i/><i/><i/></div><b>not_found.log</b><span/></header><div className="window-page"><p className="page-pill">404</p><h1 className="mt-6 text-5xl font-bold">This window is missing.</h1><p className="page-lead mx-auto">Return to the overview and choose another file.</p><Link className="solid-button mt-8" href="/">Open overview</Link></div></section></main>;
 }

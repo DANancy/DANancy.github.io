@@ -1,7 +1,6 @@
-import { MagicalStart } from "@/components/world/MagicalStart";
-import "@/components/world/world.css";
-import "@/components/world/start.css";
+import { DesktopPortfolio } from "@/components/desktop/DesktopPortfolio";
+import "@/components/desktop/desktop.css";
 
-export default function HomePage() {
-  return <MagicalStart />;
+export default function HomePage(){
+  return <DesktopPortfolio/>;
 }
