@@ -60,3 +60,75 @@
 @media(max-width:760px){.window-stage{width:100%}.window-stage .character-overview{left:50%;top:-58px}.window-stage .character-about,.window-stage .character-work,.window-stage .character-community,.window-stage .character-books,.window-stage .character-fun,.window-stage .character-contact{right:12px;top:-42px}.section-window{height:calc(100dvh - 5.5rem);max-height:calc(100dvh - 5.5rem)}.work-page .project-grid,.book-addition,.conference-window{grid-template-columns:1fr}.language-switch{right:12px;top:12px}}
 @media(prefers-reduced-motion:reduce){.desktop-floating-close:hover .sunflower-close>svg:first-child{transform:none}}
 
+/* Playful About interests */
+.beyond-work{margin-top:3rem;padding:2.25rem;border:1px solid #dce4dd;border-radius:24px;background:linear-gradient(145deg,#f7faf6,#eef5ef);position:relative;overflow:hidden}
+.beyond-work::after{content:"";position:absolute;right:-70px;top:-85px;width:210px;height:210px;border-radius:50%;background:#f6d36b22;pointer-events:none}
+.beyond-work>h3{margin:.9rem 0 0;font-size:clamp(1.8rem,3vw,2.65rem);letter-spacing:-.035em;color:#194d39}
+.beyond-work>p:not(.page-pill){max-width:660px;margin:.6rem 0 0;color:#66716b;line-height:1.65}
+.beyond-work .beyond-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.15rem;margin-top:2rem}
+.beyond-work .beyond-grid article{position:relative;isolation:isolate;display:flex;flex-direction:column;align-items:flex-start;min-height:245px;padding:1.5rem;border:1px solid #d7e2da;border-radius:20px;background:#fff;box-shadow:0 12px 28px #3155410d;transition:transform .22s ease,box-shadow .22s ease}
+.beyond-work .beyond-grid article::after{content:"";position:absolute;z-index:-1;right:-35px;bottom:-42px;width:125px;height:125px;border-radius:50%;background:currentColor;opacity:.07}
+.beyond-work .beyond-grid article:nth-child(1){color:#176044;background:linear-gradient(150deg,#fff 56%,#e1f4e9)}
+.beyond-work .beyond-grid article:nth-child(2){color:#74408a;background:linear-gradient(150deg,#fff 56%,#f0e5f5)}
+.beyond-work .beyond-grid article:nth-child(3){color:#986200;background:linear-gradient(150deg,#fff 56%,#fff1c8)}
+.beyond-work .beyond-grid article:hover{transform:translateY(-5px) rotate(-.4deg);box-shadow:0 18px 34px #3155411a}
+.beyond-work .interest-icon{display:grid;place-items:center;width:58px;height:58px;margin:0 0 2rem;border:0;border-radius:17px;background:#dff2e7;color:#176044;box-shadow:inset 0 0 0 1px #cde4d6}
+.beyond-work article:nth-child(2) .interest-icon{background:#eee0f4;color:#74408a;box-shadow:inset 0 0 0 1px #dfcce8}
+.beyond-work article:nth-child(3) .interest-icon{background:#ffedba;color:#986200;box-shadow:inset 0 0 0 1px #f0da9a}
+.beyond-work .interest-icon svg{width:27px;height:27px;padding:0;border:0;background:transparent;color:inherit}
+.beyond-work .beyond-grid b{color:#202723;font-size:1.05rem;line-height:1.25}
+.beyond-work .beyond-grid small{margin-top:.65rem;color:#5e6963;font-size:.79rem;line-height:1.65}
+@media(max-width:850px){.beyond-work .beyond-grid{grid-template-columns:1fr}.beyond-work .beyond-grid article{min-height:190px}.beyond-work .interest-icon{margin-bottom:1.2rem}}
+@media(max-width:760px){.beyond-work{padding:1.35rem;border-radius:18px}.beyond-work>h3{font-size:1.8rem}}
+@media(prefers-reduced-motion:reduce){.beyond-work .beyond-grid article{transition:none}.beyond-work .beyond-grid article:hover{transform:none}}
+
+.community-manifesto{max-width:720px;margin:1.35rem 0 0;padding:1rem 1.2rem;border-left:4px solid #e1ad2f;border-radius:0 10px 10px 0;background:#fff7dd;color:#4d574f;line-height:1.6}
+.community-manifesto strong{color:#155b4f;font-weight:800}
+
+/* Community poster: show the complete artwork and separate supporting content */
+.curriculum-card{display:grid;gap:1rem;overflow:visible;border:0;border-radius:0;background:transparent}
+.curriculum-card img{display:block;width:100%;height:auto;max-height:none;object-fit:contain;border:1px solid #eadfd4;border-radius:18px;background:#fff;box-shadow:0 16px 36px #493b2b1a}
+.curriculum-card h3{margin:0;padding:1.25rem 1.4rem .65rem;border:1px solid #d7e0d8;border-bottom:0;border-radius:15px 15px 0 0;background:#f1f5f1;color:#245c47}
+.curriculum-card ul{margin:-1rem 0 0;padding:.25rem 1.4rem 1.25rem;border:1px solid #d7e0d8;border-top:0;border-radius:0 0 15px 15px;background:#f1f5f1}
+.curriculum-card li:last-child{border-bottom:0}
+@media(max-width:760px){.curriculum-card img{max-width:430px;margin:auto}.curriculum-card h3,.curriculum-card ul{width:min(430px,100%);margin-left:auto;margin-right:auto}}
+
+/* Just for Fun event ticket */
+.conference-window{position:relative;grid-column:1/-1;display:grid;grid-template-columns:78px minmax(0,1fr) auto;gap:1.5rem;align-items:center;padding:1.65rem 1.8rem;overflow:hidden;border:1px solid #d9d5c5;border-radius:18px;background:#fff;box-shadow:0 12px 28px #493f2910}
+.conference-window::before{content:"";position:absolute;inset:0 auto 0 0;width:7px;background:linear-gradient(#e9b43f,#2c795b)}
+.conference-window::after{content:"";position:absolute;right:120px;top:-70px;width:170px;height:170px;border-radius:50%;background:#f6d86c1c;pointer-events:none}
+.conference-mark{display:grid;place-items:center;width:72px;height:72px;border-radius:20px;background:#e6f2eb;color:#237153;rotate:-3deg}
+.conference-mark svg{width:30px;height:30px}
+.conference-window .page-pill{padding:.3rem .65rem;background:#fff1c9;color:#8c5c00}
+.conference-window h3{margin:.55rem 0 0;font-size:1.65rem;letter-spacing:-.025em;color:#1d2b24}
+.conference-window p:not(.page-pill){max-width:620px;margin:.4rem 0 0;color:#606b65;font-size:.88rem;line-height:1.55}
+.conference-meta{display:flex;flex-wrap:wrap;gap:.55rem;margin-top:1rem}
+.conference-meta span{display:inline-flex;align-items:center;gap:.4rem;padding:.45rem .65rem;border:1px solid #dbe4dc;border-radius:999px;background:#f6f8f5;color:#4e5d55;font-family:var(--font-mono);font-size:.6rem}
+.conference-meta svg{width:14px;height:14px;color:#247254}
+.conference-window>a{position:relative;z-index:1;display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-width:140px;padding:.9rem 1rem;border-radius:10px;background:#267455;color:#fff;font-family:var(--font-mono);font-size:.68rem;font-weight:700;box-shadow:0 8px 16px #205b4324;transition:transform .2s ease,background .2s ease}
+.conference-window>a:hover{background:#175e43;transform:translateY(-2px)}
+@media(max-width:760px){.conference-window{grid-template-columns:58px 1fr;padding:1.35rem}.conference-mark{width:58px;height:58px;border-radius:16px}.conference-window>a{grid-column:1/-1;width:100%}.conference-window::after{display:none}}
+@media(prefers-reduced-motion:reduce){.conference-window>a{transition:none}.conference-window>a:hover{transform:none}}
+
+/* Asia-Pacific travel map */
+.travel-window{grid-column:1/-1;margin-top:.2rem;padding:1.7rem;border:1px solid #d5dfd7;border-radius:20px;background:linear-gradient(145deg,#f7faf7,#edf5f0)}
+.travel-heading{display:flex;align-items:center;gap:1rem}
+.travel-icon{display:grid;place-items:center;flex:0 0 58px;width:58px;height:58px;border-radius:17px;background:#267455;color:#fff;rotate:-4deg}
+.travel-icon svg{width:26px;height:26px}
+.travel-heading h3{margin:.5rem 0 0;font-size:1.6rem;color:#204f3d}
+.travel-heading>div>p:last-child{margin:.35rem 0 0;color:#66716b;font-size:.85rem}
+.travel-map{overflow:hidden;margin-top:1.5rem;border:1px solid #cddbd1;border-radius:16px;background:linear-gradient(#e8f4ef,#f8f4de)}
+.travel-map svg{display:block;width:100%;height:auto;max-height:360px}
+.map-land{fill:#d4dfce;stroke:#afc1b2;stroke-width:2}
+.map-island{fill:#c8d8ca}
+.map-route{fill:none;stroke:#d69826;stroke-width:3;stroke-linecap:round;stroke-dasharray:7 9;opacity:.8}
+.map-pin circle{fill:#e5a62c;stroke:#fff;stroke-width:4;filter:drop-shadow(0 2px 3px #34493b55)}
+.map-pin text{fill:#28483b;font-family:var(--font-mono);font-size:15px;font-weight:800}
+.travel-places{display:grid;grid-template-columns:1.7fr 1.2fr 1fr .8fr;gap:.8rem;margin-top:1rem}
+.travel-places article{display:grid;grid-template-columns:auto 1fr;gap:.2rem .55rem;padding:1rem;border:1px solid #d6e0d8;border-radius:13px;background:#fff}
+.travel-places svg{grid-row:1/3;width:18px;height:18px;color:#267455}
+.travel-places b{font-size:.82rem;color:#26362e}
+.travel-places p{margin:0;color:#68736d;font-size:.68rem;line-height:1.55}
+@media(max-width:900px){.travel-places{grid-template-columns:1fr 1fr}}
+@media(max-width:760px){.travel-window{padding:1.15rem}.travel-map svg{min-width:580px;translate:-90px 0}.travel-places{grid-template-columns:1fr}.travel-heading h3{font-size:1.35rem}}
+
