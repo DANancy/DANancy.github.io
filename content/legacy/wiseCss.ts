@@ -6,14 +6,14 @@ export const wiseCss = `
    aliases (--page, --surface-1, --card, --text-*, --series-*,
    --border, --good, etc.) are what the rest of this file and the
    inline styles/JS in index.html actually consume, and are the
-   ONLY tokens that should appear in theme-aware rules — they swap
+   ONLY tokens that should appear in theme-aware rules : they swap
    under prefers-color-scheme: dark. Raw primitives (--ink,
    --canvas, --canvas-soft, ...) are reserved for elements that are
    intentionally fixed regardless of theme: the hero band, the
    footer band (both use the brand's polarity-flipped "dark"
-   variant — ink bg + lime-green text), and self-contained badges/
+   variant : ink bg + lime-green text), and self-contained badges/
    chips whose own bg+text pair doesn't need to invert.
-   Wise Sans is proprietary and unavailable — per DESIGN-wise.md's
+   Wise Sans is proprietary and unavailable : per DESIGN-wise.md's
    own documented substitute, Inter at weight 900 stands in for the
    brand's heavy display voice; Inter is genuinely open-licensed
    (SIL OFL) so it's loaded for real via Google Fonts rather than
@@ -51,7 +51,7 @@ export const wiseCss = `
   /* ---- spacing scale ---- */
   --sp-xxs: 2px; --sp-xs: 4px; --sp-sm: 8px; --sp-md: 12px; --sp-lg: 16px; --sp-xl: 24px; --sp-2xl: 32px; --sp-3xl: 48px;
 
-  /* ---- font stack: Wise Sans is proprietary/unavailable — Inter (loaded via Google Fonts
+  /* ---- font stack: Wise Sans is proprietary/unavailable : Inter (loaded via Google Fonts
      above) is the brand's own documented substitute, real weight 900 for the hero voice ---- */
   --font-display: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-code: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
@@ -111,7 +111,7 @@ a { color: var(--good); }
 .wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--sp-xl); }
 svg { display: block; }
 
-/* nav — stays solid white/canvas even against the sage page, per nav-bar spec */
+/* nav : stays solid white/canvas even against the sage page, per nav-bar spec */
 header.site-nav {
   position: sticky; top: 0; z-index: 20;
   background: var(--surface-1);
@@ -138,7 +138,7 @@ nav.links a {
 }
 nav.links a:hover { color: var(--good); border-bottom-color: var(--good); }
 
-/* hero — the polarity-flipped "hero-band-dark": ink bg + Wise-green headline, always dark */
+/* hero : the polarity-flipped "hero-band-dark": ink bg + Wise-green headline, always dark */
 section.hero { padding: var(--sp-xl) 0 var(--sp-md); }
 .hero-grid { display: grid; grid-template-columns: 1fr 300px; gap: var(--sp-xl); align-items: start; }
 @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; } }
@@ -172,14 +172,14 @@ h1.title .accent { color: #ffe09a; display: block; }
 .stat-tile .value.aqua { color: var(--good); }
 .stat-tile .sub { font-size: 0.75rem; color: var(--text-muted); margin-top: var(--sp-xs); }
 
-/* hero stat tiles sit on the fixed-ink band — white cards floating on ink, not theme-aware */
+/* hero stat tiles sit on the fixed-ink band : white cards floating on ink, not theme-aware */
 .hero-main .stat-tile { background: var(--canvas); }
 .hero-main .stat-tile .label { color: var(--body-ink); }
 .hero-main .stat-tile .sub { color: var(--mute); }
 .hero-main .stat-tile .value.blue { color: #1a7fb0; }
 .hero-main .stat-tile .value.aqua { color: var(--positive-deep); }
 
-/* self-contained pale-green badge — own bg+text pair, no theme swap needed */
+/* self-contained pale-green badge : own bg+text pair, no theme swap needed */
 .stack-row { display: flex; flex-wrap: wrap; gap: var(--sp-sm); margin-bottom: var(--sp-lg); }
 .stack-chip {
   display: inline-flex; align-items: center; gap: var(--sp-xs);
@@ -381,7 +381,7 @@ details.data-table th:first-child, details.data-table td:first-child { text-alig
   border: none; display: flex; align-items: center; justify-content: center;
 }
 
-/* footer — polarity-flipped "hero-band-dark" bookend: ink bg, always dark */
+/* footer : polarity-flipped "hero-band-dark" bookend: ink bg, always dark */
 footer.site-footer { padding: var(--sp-3xl) 0; margin-top: var(--sp-md); background: var(--ink); color: var(--canvas-soft); }
 .stack-strip { display: flex; flex-wrap: wrap; gap: var(--sp-lg); margin-bottom: var(--sp-xl); }
 .stack-item { display: flex; flex-direction: column; align-items: center; gap: var(--sp-xs); width: 84px; }

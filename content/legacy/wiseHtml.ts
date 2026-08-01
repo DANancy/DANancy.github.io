@@ -61,7 +61,7 @@ export const wiseBodyHtml = `
       <div class="context-layout">
         <div>
           <h3 class="req-heading">Business Problem</h3>
-          <p class="block-desc">Liable entities under Australia's Renewable Energy Target scheme — electricity retailers and large energy users — must surrender enough Large-scale Generation Certificates (LGCs) and Small-scale Technology Certificates (STCs) each year to cover their obligations. When they fall short, a shortfall charge applies and the shortfall is recorded on the Clean Energy Regulator's public register. That register is published as a flat, biannual spreadsheet with no easy way to see <em>who</em> is falling short, <em>how</em> shortfalls trend over time, or <em>which</em> entities carry the largest outstanding balances — so regulators, analysts, and the liable entities themselves have no single place to monitor this compliance risk.</p>
+          <p class="block-desc">Liable entities under Australia's Renewable Energy Target scheme, electricity retailers and large energy users, must surrender enough Large-scale Generation Certificates (LGCs) and Small-scale Technology Certificates (STCs) each year to cover their obligations. When they fall short, a shortfall charge applies and the shortfall is recorded on the Clean Energy Regulator's public register. That register is published as a flat, biannual spreadsheet with no easy way to see <em>who</em> is falling short, <em>how</em> shortfalls trend over time, or <em>which</em> entities carry the largest outstanding balances, so regulators, analysts, and the liable entities themselves have no single place to monitor this compliance risk.</p>
           <a class="btn-link" href="https://cer.gov.au/markets/reports-and-data/certificate-shortfall-register" target="_blank" rel="noopener">Learn More About REC Market →</a>
         </div>
         <div class="rec-diagram-img">
@@ -81,7 +81,7 @@ export const wiseBodyHtml = `
           </ul>
           <p class="req-label muted">Out of scope</p>
           <ul class="req-list">
-            <li>Real-time register updates — CER publishes twice yearly; this reflects a point-in-time snapshot (2026-07-03)</li>
+            <li>Real-time register updates, CER publishes twice yearly; this reflects a point-in-time snapshot (2026-07-03)</li>
             <li>Forecasting or predicting future shortfalls</li>
             <li>Certificate types outside LGC/STC (e.g. ACCUs)</li>
           </ul>
@@ -102,11 +102,11 @@ export const wiseBodyHtml = `
         <div class="card">
           <h3 class="req-heading">Non-Functional Requirements</h3>
           <ul class="req-list numbered">
-            <li><strong>NFR1</strong> Core browsing works entirely client-side on static hosting — no backend required</li>
+            <li><strong>NFR1</strong> Core browsing works entirely client-side on static hosting, no backend required</li>
             <li><strong>NFR2</strong> Usable on both desktop and mobile viewports</li>
             <li><strong>NFR3</strong> AI Query degrades gracefully to a local rule-based fallback if no AI backend is configured, so it never appears broken</li>
             <li><strong>NFR4</strong> No secret credentials exposed in client-side code (AI backend key stays server-side)</li>
-            <li><strong>NFR5</strong> Meets basic accessibility practice — sufficient color contrast, non-color-only indicators, dark/light mode support</li>
+            <li><strong>NFR5</strong> Meets basic accessibility practice, sufficient color contrast, non-color-only indicators, dark/light mode support</li>
           </ul>
         </div>
       </div>
@@ -114,7 +114,7 @@ export const wiseBodyHtml = `
 
     <section class="block" id="architecture">
       <div class="block-head"><span class="block-num">2</span><h2>Solutions Architecture</h2></div>
-      <p class="block-desc">Conceptual pipeline for turning the CER's published registers into governed, queryable analytics — this project implements the source ingestion and dashboard layers below using the real register data; the orchestration/AI layers illustrate the intended target design.</p>
+      <p class="block-desc">Conceptual pipeline for turning the CER's published registers into governed, queryable analytics, this project implements the source ingestion and dashboard layers below using the real register data; the orchestration/AI layers illustrate the intended target design.</p>
 
       <div class="pipeline">
         <div class="pipe-stage">
@@ -200,7 +200,7 @@ export const wiseBodyHtml = `
           </div>
         </div>
       </div>
-      <div class="feedback-loop">↩ Metadata, Lineage, Monitoring &amp; Security — spans every stage of the pipeline</div>
+      <div class="feedback-loop">↩ Metadata, Lineage, Monitoring &amp; Security, spans every stage of the pipeline</div>
     </section>
     </div>
 
@@ -238,8 +238,8 @@ export const wiseBodyHtml = `
         <ul>
           <li>Microsoft Certified: Fabric Data Engineer Associate</li>
           <li>Databricks Certified Data Engineer Associate</li>
-          <li>Shell Energy Australia — Best of 2024 Award</li>
-          <li>AGL Data &amp; Analytics Academy — Top Learner</li>
+          <li>Shell Energy Australia, Best of 2024 Award</li>
+          <li>AGL Data &amp; Analytics Academy, Top Learner</li>
           <li>Omdena Lead ML Engineer</li>
           <li>AI Hackathon Winner</li>
         </ul>
@@ -250,7 +250,7 @@ export const wiseBodyHtml = `
         <ul>
           <li>Data Engineering Bootcamp Instructor</li>
           <li>AI Workshop Instructor</li>
-          <li>Make AI Practical (MAP) — Community Volunteer &amp; Organizer</li>
+          <li>Make AI Practical (MAP), Community Volunteer &amp; Organizer</li>
         </ul>
       </div>
     </aside>
@@ -336,10 +336,10 @@ export const wiseBodyHtml = `
   <p class="block-desc">Live figures computed directly from the CER's published LGC and STC shortfall registers (downloaded 2026-07-03).</p>
 
   <div class="dash-recap">
-    <div class="stat-tile"><div class="label">Liable Entities — LGC</div><div class="value blue">69</div></div>
-    <div class="stat-tile"><div class="label">Liable Entities — STC</div><div class="value blue">55</div></div>
-    <div class="stat-tile"><div class="label">Total Remaining Shortfall — LGC</div><div class="value aqua">10.25M</div></div>
-    <div class="stat-tile"><div class="label">Total Shortfall — STC</div><div class="value aqua">293K</div></div>
+    <div class="stat-tile"><div class="label">Liable Entities, LGC</div><div class="value blue">69</div></div>
+    <div class="stat-tile"><div class="label">Liable Entities, STC</div><div class="value blue">55</div></div>
+    <div class="stat-tile"><div class="label">Total Remaining Shortfall, LGC</div><div class="value aqua">10.25M</div></div>
+    <div class="stat-tile"><div class="label">Total Shortfall, STC</div><div class="value aqua">293K</div></div>
   </div>
 
   <div class="two-col" style="margin-bottom:1.5rem;">
@@ -359,11 +359,11 @@ export const wiseBodyHtml = `
 
   <div class="two-col" style="margin-bottom:1.5rem;">
     <div class="card">
-      <h3>Top Liable Entities — Cumulative LGC Shortfall</h3>
+      <h3>Top Liable Entities, Cumulative LGC Shortfall</h3>
       <ul class="top-list" id="top-lgc"></ul>
     </div>
     <div class="card">
-      <h3>Top Liable Entities — Cumulative STC Shortfall</h3>
+      <h3>Top Liable Entities, Cumulative STC Shortfall</h3>
       <ul class="top-list" id="top-stc"></ul>
     </div>
   </div>
@@ -373,7 +373,7 @@ export const wiseBodyHtml = `
 
 <section class="block" id="ai">
   <div class="block-head"><span class="block-num">5</span><h2>AI Query Assistant</h2></div>
-  <p class="block-desc">Ask a question about the register data below — answered instantly by a rule-based engine running entirely in your browser against the real CER figures (no external AI call, so no API key or server involved).</p>
+  <p class="block-desc">Ask a question about the register data below, answered instantly by a rule-based engine running entirely in your browser against the real CER figures (no external AI call, so no API key or server involved).</p>
   <div class="ai-layout">
     <div>
       <div class="chat-thread" id="chat-thread">
@@ -383,7 +383,7 @@ export const wiseBodyHtml = `
         </div>
         <div class="chat-row">
           <div class="chat-avatar bot">AI</div>
-          <div class="chat-bubble a">2023, with approximately 4.07M certificates in remaining LGC shortfall — the largest of any year on record.<span class="src">Source: Gold layer — fact_lgc_shortfall</span></div>
+          <div class="chat-bubble a">2023, with approximately 4.07M certificates in remaining LGC shortfall, the largest of any year on record.<span class="src">Source: Gold layer, fact_lgc_shortfall</span></div>
         </div>
       </div>
       <form id="ask-form" class="ask-row">

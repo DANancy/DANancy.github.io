@@ -25,8 +25,8 @@ const jbMono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://yangyangcai.me"),
   title: {
-    default: "Yangyang Cai — Make AI practical.",
-    template: "%s — Yangyang Cai",
+    default: "Yangyang Cai | Make AI practical.",
+    template: "%s | Yangyang Cai",
   },
   description:
     "Yangyang Cai is a Senior Data Engineer in Melbourne who believes AI should amplify engineers, not replace them. Explore the work, the notes, and the person.",

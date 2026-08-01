@@ -157,21 +157,21 @@ export default function GreenCertificateLegacyPage() {
         test: (q) => /highest|largest|peak|max/.test(q) && /lgc/.test(q) && !/stc/.test(q),
         answer: () => {
           const m = maxYear(LGC_YEARS, LGC_VALUES);
-          return `${m.year} had the highest remaining LGC shortfall — about ${fmt(m.value)} certificates (${m.value.toLocaleString()}).`;
+          return `${m.year} had the highest remaining LGC shortfall, about ${fmt(m.value)} certificates (${m.value.toLocaleString()}).`;
         },
       },
       {
         test: (q) => /highest|largest|peak|max|spike/.test(q) && /stc/.test(q) && !/lgc/.test(q),
         answer: () => {
           const m = maxYear(STC_YEARS, STC_VALUES);
-          return `${m.year} had the highest STC shortfall — about ${fmt(m.value)} certificates (${m.value.toLocaleString()}), roughly double the next-highest year.`;
+          return `${m.year} had the highest STC shortfall, about ${fmt(m.value)} certificates (${m.value.toLocaleString()}), roughly double the next-highest year.`;
         },
       },
       {
         test: (q) => /lowest|smallest|min/.test(q) && /lgc/.test(q),
         answer: () => {
           const m = minYear(LGC_YEARS, LGC_VALUES);
-          return `${m.year} had the lowest recorded LGC shortfall — just ${m.value.toLocaleString()} certificates.`;
+          return `${m.year} had the lowest recorded LGC shortfall, just ${m.value.toLocaleString()} certificates.`;
         },
       },
       {
@@ -203,17 +203,17 @@ export default function GreenCertificateLegacyPage() {
         answer: () => {
           const lm = maxYear(LGC_YEARS, LGC_VALUES);
           const sm = maxYear(STC_YEARS, STC_VALUES);
-          return `LGC shortfall is far larger in absolute terms — ${fmt(LGC_TOTAL)} total vs ${fmt(STC_TOTAL)} for STC — and has spiked sharply since 2022, peaking in ${lm.year}. STC shortfall is smaller and steadier, peaking in ${sm.year} at ${fmt(sm.value)}.`;
+          return `LGC shortfall is far larger in absolute terms, ${fmt(LGC_TOTAL)} total vs ${fmt(STC_TOTAL)} for STC, and has spiked sharply since 2022, peaking in ${lm.year}. STC shortfall is smaller and steadier, peaking in ${sm.year} at ${fmt(sm.value)}.`;
         },
       },
       {
         test: (q) => /spike|jump|increase/.test(q) && /2022/.test(q),
-        answer: () => `STC shortfall peaked in 2022 at ${STC_VALUES[STC_YEARS.indexOf("2022")].toLocaleString()} certificates — the highest of any year in the register — before falling back in 2023–2024.`,
+        answer: () => `STC shortfall peaked in 2022 at ${STC_VALUES[STC_YEARS.indexOf("2022")].toLocaleString()} certificates, the highest of any year in the register, before falling back in 2023–2024.`,
       },
       {
         test: (q) => /2023|2024|2025/.test(q) && /lgc/.test(q),
         answer: () =>
-          `LGC shortfall in 2023–2025: ${["2023", "2024", "2025"].map((y) => `${y}: ${LGC_VALUES[LGC_YEARS.indexOf(y)].toLocaleString()}`).join(", ")} certificates — by far the highest sustained period in the register.`,
+          `LGC shortfall in 2023–2025: ${["2023", "2024", "2025"].map((y) => `${y}: ${LGC_VALUES[LGC_YEARS.indexOf(y)].toLocaleString()}`).join(", ")} certificates, by far the highest sustained period in the register.`,
       },
     ];
 

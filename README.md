@@ -1,4 +1,4 @@
-# Yangyang Cai â€” Desktop Portfolio
+# Yangyang Cai: Desktop Portfolio
 
 A static, single-page portfolio inspired by a calm desktop workspace. The overview loads first; About, Work, Community, Books, Just for Fun, and Contact open as separate in-page windows without route changes.
 
