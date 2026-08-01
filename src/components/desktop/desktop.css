@@ -357,8 +357,8 @@
 @media(max-width:760px){.window-stage .character-links{right:56px;top:-36px;width:80px;height:80px;border-width:5px}}
 /* Preserve the complete heart inside the Contact character circle */
 .character-contact{overflow:visible}
-.character-contact img{clip-path:circle(50%);object-fit:contain;transform:translate(12px,10px) scale(.88);transform-origin:center}
-@media(max-width:760px){.character-contact img{transform:translate(8px,7px) scale(.86)}}
+.character-contact img{clip-path:circle(50%);object-fit:contain;transform:translate(7px,8px) scale(1.1);transform-origin:center}
+@media(max-width:760px){.character-contact img{transform:translate(5px,6px) scale(1.08)}}
 
 /* Three-way contact layout */
 .contact-page .contact-grid{grid-template-columns:repeat(3,minmax(0,1fr));width:min(920px,100%)}
@@ -488,19 +488,25 @@
 }
 .wonder-cloud{--cloud-alpha:.72;left:0;display:block;opacity:0;transform-origin:center;animation-timing-function:linear;animation-iteration-count:infinite;animation-fill-mode:both;will-change:transform,opacity}
 .cloud-one,.cloud-seven,.cloud-twelve,.cloud-eighteen{top:3%;scale:.4;animation-name:cloud-drift-forward;animation-duration:210s}
-.cloud-one{animation-delay:0s}.cloud-seven{animation-delay:-52.5s}.cloud-twelve{animation-delay:-105s}.cloud-eighteen{animation-delay:-157.5s}
+.cloud-one{animation-delay:0s}.cloud-seven{animation-delay:52.5s}.cloud-twelve{animation-delay:105s}.cloud-eighteen{animation-delay:157.5s}
 .cloud-two,.cloud-eight,.cloud-thirteen{top:20%;scale:.41;animation-name:cloud-drift-backward;animation-duration:198s}
-.cloud-two{animation-delay:-12s}.cloud-eight{animation-delay:-78s}.cloud-thirteen{animation-delay:-144s}
+.cloud-two{animation-delay:2s}.cloud-eight{animation-delay:68s}.cloud-thirteen{animation-delay:134s}
 .cloud-three,.cloud-nine,.cloud-fourteen,.cloud-nineteen{top:37%;scale:.4;animation-name:cloud-drift-forward;animation-duration:220s}
-.cloud-three{animation-delay:-20s}.cloud-nine{animation-delay:-75s}.cloud-fourteen{animation-delay:-130s}.cloud-nineteen{animation-delay:-185s}
+.cloud-three{animation-delay:4s}.cloud-nine{animation-delay:59s}.cloud-fourteen{animation-delay:114s}.cloud-nineteen{animation-delay:169s}
 .cloud-four,.cloud-ten,.cloud-fifteen{top:54%;scale:.41;animation-name:cloud-drift-backward;animation-duration:204s}
-.cloud-four{animation-delay:-24s}.cloud-ten{animation-delay:-92s}.cloud-fifteen{animation-delay:-160s}
+.cloud-four{animation-delay:6s}.cloud-ten{animation-delay:74s}.cloud-fifteen{animation-delay:142s}
 .cloud-five,.cloud-eleven,.cloud-sixteen{top:71%;scale:.42;animation-name:cloud-drift-forward;animation-duration:216s}
-.cloud-five{animation-delay:-30s}.cloud-eleven{animation-delay:-102s}.cloud-sixteen{animation-delay:-174s}
+.cloud-five{animation-delay:8s}.cloud-eleven{animation-delay:80s}.cloud-sixteen{animation-delay:152s}
 .cloud-six,.cloud-seventeen,.cloud-twenty{top:87%;scale:.39;animation-name:cloud-drift-backward;animation-duration:208s}
-.cloud-six{animation-delay:-18s}.cloud-seventeen{animation-delay:-87.33s}.cloud-twenty{animation-delay:-156.66s}
-.cloud-one{scale:.32}.cloud-two{scale:.48}.cloud-three{scale:.38}.cloud-four{scale:.54}.cloud-five{scale:.35}.cloud-six{scale:.46}.cloud-seven{scale:.5}.cloud-eight{scale:.33}.cloud-nine{scale:.52}.cloud-ten{scale:.4}.cloud-eleven{scale:.57}.cloud-twelve{scale:.36}.cloud-thirteen{scale:.49}.cloud-fourteen{scale:.31}.cloud-fifteen{scale:.55}.cloud-sixteen{scale:.42}.cloud-seventeen{scale:.34}.cloud-eighteen{scale:.47}.cloud-nineteen{scale:.37}.cloud-twenty{scale:.51}
-@media(max-width:760px){.wonder-cloud{--cloud-alpha:.82}.cloud-thirteen,.cloud-fourteen,.cloud-fifteen,.cloud-sixteen,.cloud-seventeen,.cloud-eighteen,.cloud-nineteen,.cloud-twenty{display:none}}
+.cloud-six{animation-delay:10s}.cloud-seventeen{animation-delay:79.33s}.cloud-twenty{animation-delay:148.66s}
+.cloud-one{scale:.28}.cloud-two{scale:.39}.cloud-three{scale:.32}.cloud-four{scale:.43}.cloud-five{scale:.3}.cloud-six{scale:.37}.cloud-seven{scale:.41}.cloud-eight{scale:.29}.cloud-nine{scale:.42}.cloud-ten{scale:.34}.cloud-eleven{scale:.44}.cloud-twelve{scale:.31}.cloud-thirteen{scale:.4}.cloud-fourteen{scale:.27}.cloud-fifteen{scale:.43}.cloud-sixteen{scale:.35}.cloud-seventeen{scale:.29}.cloud-eighteen{scale:.38}.cloud-nineteen{scale:.33}.cloud-twenty{scale:.41}
+@media(max-width:760px){.wonder-cloud{--cloud-alpha:.82}.cloud-one{scale:.25}.cloud-two{scale:.32}.cloud-three{scale:.27}.cloud-four{scale:.34}.cloud-five{scale:.26}.cloud-six{scale:.31}.cloud-seven{scale:.33}.cloud-eight{scale:.24}.cloud-nine{scale:.34}.cloud-ten{scale:.28}.cloud-eleven{scale:.33}.cloud-twelve{scale:.26}.cloud-thirteen,.cloud-fourteen,.cloud-fifteen,.cloud-sixteen,.cloud-seventeen,.cloud-eighteen,.cloud-nineteen,.cloud-twenty{display:none}}
+@media(min-width:761px) and (max-height:650px){.wonder-cloud{width:165px;height:165px}}
+/* Soft cloud body around each subtle animal-shaped centre */
+.wonder-cloud{isolation:isolate;background-size:62% auto!important}
+.wonder-cloud::before,.wonder-cloud::after{content:"";position:absolute;display:block;z-index:-1;background:rgba(255,255,255,.96);filter:blur(.6px)}
+.wonder-cloud::before{left:18%;top:49%;width:64%;height:25%;border-radius:50%;box-shadow:-28px 5px 0 -4px rgba(255,255,255,.92),28px 4px 0 -3px rgba(255,255,255,.94),0 13px 0 -5px rgba(255,255,255,.88)}
+.wonder-cloud::after{left:35%;top:34%;width:31%;height:32%;border-radius:50%;box-shadow:-26px 14px 0 -5px rgba(255,255,255,.94),26px 15px 0 -5px rgba(255,255,255,.92),0 -8px 0 -4px rgba(255,255,255,.9)}
 @media(prefers-reduced-motion:reduce){.wonder-cloud{animation:none;opacity:var(--cloud-alpha)}.cloud-one{transform:translateX(8vw)}.cloud-two{transform:translateX(66vw)}.cloud-three{transform:translateX(28vw)}.cloud-four{transform:translateX(72vw)}.cloud-five{transform:translateX(12vw)}.cloud-six{transform:translateX(58vw)}}/* Story-style book shelf */
 .story-books-heading{max-width:680px;margin:0 auto 2rem;text-align:center}
 .story-books-heading h2{margin:.7rem 0 .5rem;color:#176b50;font-size:clamp(2rem,4vw,3.25rem);line-height:1.08}
