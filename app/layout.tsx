@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fraunces, Inter, JetBrains_Mono } from "next/font/google";
+import { Fraunces, Fredoka, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -8,6 +8,12 @@ const fraunces = Fraunces({
   weight: "variable",
   style: ["normal", "italic"],
   axes: ["opsz", "SOFT"],
+});
+
+const fredoka = Fredoka({
+  variable: "--font-fredoka",
+  subsets: ["latin"],
+  weight: ["600"],
 });
 
 const inter = Inter({
@@ -43,7 +49,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${fraunces.variable} ${inter.variable} ${jbMono.variable} h-full antialiased`}
+      className={`${fraunces.variable} ${fredoka.variable} ${inter.variable} ${jbMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-void text-text-primary">{children}</body>
     </html>
