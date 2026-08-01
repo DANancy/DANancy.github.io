@@ -132,3 +132,23 @@
 @media(max-width:900px){.travel-places{grid-template-columns:1fr 1fr}}
 @media(max-width:760px){.travel-window{padding:1.15rem}.travel-map svg{min-width:580px;translate:-90px 0}.travel-places{grid-template-columns:1fr}.travel-heading h3{font-size:1.35rem}}
 
+/* data_lover.zip — building-block project board */
+.work-page{background-image:linear-gradient(#e5ebe6 1px,transparent 1px),linear-gradient(90deg,#e5ebe6 1px,transparent 1px);background-size:28px 28px;background-position:-1px -1px}
+.work-page>h2{display:inline-block;position:relative;padding-bottom:.45rem;color:#185b42}
+.work-page>h2::after{content:"";position:absolute;left:0;bottom:0;width:72%;height:7px;border-radius:4px;background:repeating-linear-gradient(90deg,#e2ad2c 0 22px,#f4cb5d 22px 25px)}
+.work-page .project-grid{gap:1.8rem;padding-top:.5rem}
+.work-page .project-grid article{--brick:#dff1e7;--brick-edge:#b7d9c5;position:relative;min-height:300px;padding:3rem 1.55rem 1.5rem;border:0;border-radius:12px;background:var(--brick);box-shadow:0 9px 0 var(--brick-edge),0 16px 28px #304b3b18,inset 0 1px 0 #fff8;transition:transform .2s ease,box-shadow .2s ease}
+.work-page .project-grid article:nth-child(2){--brick:#ffedba;--brick-edge:#dfc06c}
+.work-page .project-grid article:nth-child(3){--brick:#dcecf4;--brick-edge:#aacbd9}
+.work-page .project-grid article:nth-child(4){--brick:#f7dfd8;--brick-edge:#d8afa3}
+.work-page .project-grid article::before{content:"";position:absolute;left:18px;right:58px;top:13px;height:20px;background:radial-gradient(circle at 10px 10px,var(--brick) 0 7px,var(--brick-edge) 7.5px 9px,transparent 9.5px);background-size:28px 20px;filter:drop-shadow(0 2px 0 #fff8)}
+.work-page .project-grid article:hover{transform:translateY(-4px) rotate(-.25deg);box-shadow:0 13px 0 var(--brick-edge),0 22px 34px #304b3b20,inset 0 1px 0 #fff8}
+.work-page .project-icon{border:2px solid #ffffffb8;border-radius:8px;box-shadow:0 4px 0 #244b3720}
+.work-page .project-grid h3{margin-top:1.35rem;color:#203329}
+.work-page .project-grid p{color:#48594f}
+.work-page .project-grid article>div:last-child span{background:#ffffffa8;color:#355c49;box-shadow:inset 0 0 0 1px #ffffffc7}
+.work-page .project-visit{border:0;background:#fff;color:#195f43;box-shadow:0 3px 0 #adc6b6}
+.work-page .card-link{top:15px;right:20px;color:#486457}
+@media(max-width:760px){.work-page .project-grid{gap:1.6rem}.work-page .project-grid article{min-height:280px}}
+@media(prefers-reduced-motion:reduce){.work-page .project-grid article{transition:none}.work-page .project-grid article:hover{transform:none}}
+

@@ -69,7 +69,8 @@ function OnlineRating({score,source,href,compact=false}:{score:string;source:str
 
 function Contact({language}:{language:Language}){return <div className="window-page contact-page"><div className="contact-grid"><article><LinkIcon/><h3>LinkedIn</h3><p>{tr(language,"Professional journey, community work, and engineering updates.","职业经历、社区工作和工程动态。")}</p><a href="https://www.linkedin.com" target="_blank" rel="noreferrer">{tr(language,"Visit profile","访问主页")} <ExternalLink size={15}/></a></article></div><p className="availability"><MapPin size={15}/> {tr(language,"Melbourne · Available for thoughtful collaborations","墨尔本 · 期待有意义的合作")}</p></div>}
 
-function windowTitle(section:DesktopSection){return({overview:"sunshine.exe",about:"about_me.md",work:"projects_lover.zip",community:"community.makeaipractical.com",books:"library.db",fun:"personal_atelier.app",contact:"connect.exe"})[section]}
+function windowTitle(section:DesktopSection){return({overview:"sunshine.exe",about:"about_me.md",work:"data_lover.zip",community:"community.makeaipractical.com",books:"library.db",fun:"personal_atelier.app",contact:"connect.exe"})[section]}
+
 
 
 
