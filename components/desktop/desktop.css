@@ -132,23 +132,47 @@
 @media(max-width:900px){.travel-places{grid-template-columns:1fr 1fr}}
 @media(max-width:760px){.travel-window{padding:1.15rem}.travel-map svg{min-width:580px;translate:-90px 0}.travel-places{grid-template-columns:1fr}.travel-heading h3{font-size:1.35rem}}
 
-/* data_lover.zip — building-block project board */
-.work-page{background-image:linear-gradient(#e5ebe6 1px,transparent 1px),linear-gradient(90deg,#e5ebe6 1px,transparent 1px);background-size:28px 28px;background-position:-1px -1px}
-.work-page>h2{display:inline-block;position:relative;padding-bottom:.45rem;color:#185b42}
-.work-page>h2::after{content:"";position:absolute;left:0;bottom:0;width:72%;height:7px;border-radius:4px;background:repeating-linear-gradient(90deg,#e2ad2c 0 22px,#f4cb5d 22px 25px)}
-.work-page .project-grid{gap:1.8rem;padding-top:.5rem}
-.work-page .project-grid article{--brick:#dff1e7;--brick-edge:#b7d9c5;position:relative;min-height:300px;padding:3rem 1.55rem 1.5rem;border:0;border-radius:12px;background:var(--brick);box-shadow:0 9px 0 var(--brick-edge),0 16px 28px #304b3b18,inset 0 1px 0 #fff8;transition:transform .2s ease,box-shadow .2s ease}
-.work-page .project-grid article:nth-child(2){--brick:#ffedba;--brick-edge:#dfc06c}
-.work-page .project-grid article:nth-child(3){--brick:#dcecf4;--brick-edge:#aacbd9}
-.work-page .project-grid article:nth-child(4){--brick:#f7dfd8;--brick-edge:#d8afa3}
-.work-page .project-grid article::before{content:"";position:absolute;left:18px;right:58px;top:13px;height:20px;background:radial-gradient(circle at 10px 10px,var(--brick) 0 7px,var(--brick-edge) 7.5px 9px,transparent 9.5px);background-size:28px 20px;filter:drop-shadow(0 2px 0 #fff8)}
-.work-page .project-grid article:hover{transform:translateY(-4px) rotate(-.25deg);box-shadow:0 13px 0 var(--brick-edge),0 22px 34px #304b3b20,inset 0 1px 0 #fff8}
-.work-page .project-icon{border:2px solid #ffffffb8;border-radius:8px;box-shadow:0 4px 0 #244b3720}
-.work-page .project-grid h3{margin-top:1.35rem;color:#203329}
-.work-page .project-grid p{color:#48594f}
-.work-page .project-grid article>div:last-child span{background:#ffffffa8;color:#355c49;box-shadow:inset 0 0 0 1px #ffffffc7}
-.work-page .project-visit{border:0;background:#fff;color:#195f43;box-shadow:0 3px 0 #adc6b6}
-.work-page .card-link{top:15px;right:20px;color:#486457}
-@media(max-width:760px){.work-page .project-grid{gap:1.6rem}.work-page .project-grid article{min-height:280px}}
-@media(prefers-reduced-motion:reduce){.work-page .project-grid article{transition:none}.work-page .project-grid article:hover{transform:none}}
+/* Balanced Community two-panel layout */
+.community-page{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(340px,.92fr);gap:1.5rem;align-items:start;padding-top:4rem}
+.community-copy{margin:0;padding:2rem;border:1px solid #d9e2db;border-radius:22px;background:linear-gradient(145deg,#fff,#f5f8f5);box-shadow:0 14px 32px #2d493812}
+.community-copy h2{margin:.9rem 0 0;font-size:clamp(2.8rem,4.5vw,4.4rem);line-height:1;color:#155b4f}
+.community-copy .page-lead{margin-top:1.25rem;font-size:1rem;line-height:1.65}
+.community-copy .community-manifesto{margin-top:1.2rem}
+.community-copy .event-facts{gap:.75rem;margin:1.4rem 0}
+.community-copy .event-facts span{padding:1rem;background:#fff}
+.community-actions{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
+.community-actions a{width:100%;min-height:46px;padding:0 .8rem;text-align:center}
+.community-actions .eventbrite-button{grid-column:1/-1}
+.community-page .curriculum-card{align-self:start;margin:0;padding:1rem;border:1px solid #d9e2db;border-radius:22px;background:#f5f8f5;box-shadow:0 14px 32px #2d493812}
+.community-page .curriculum-card img{margin:0;border-radius:14px;box-shadow:none}
+.community-page .curriculum-card h3{margin:0;padding:1.1rem 1.1rem .55rem;border:0;border-radius:0;background:transparent}
+.community-page .curriculum-card ul{margin:0;padding:.1rem 1.1rem .6rem;border:0;border-radius:0;background:transparent}
+@media(max-width:900px){.community-page{grid-template-columns:1fr;padding-top:4rem}.community-copy,.community-page .curriculum-card{width:min(680px,100%);margin-inline:auto}}
+@media(max-width:760px){.community-page{padding-top:4.2rem}.community-copy{padding:1.35rem;border-radius:18px}.community-actions{grid-template-columns:1fr}.community-actions .eventbrite-button{grid-column:auto}.community-page .curriculum-card{padding:.75rem;border-radius:18px}}
+
+/* Consistent reading journal */
+.books-heading{text-align:center;margin-bottom:2.5rem}
+.books-heading h2{margin:.85rem 0 0;color:#155b4f;font-size:clamp(2.5rem,5vw,4.2rem)}
+.books-heading>p:last-child{max-width:680px;margin:.8rem auto 0;color:#65706a;line-height:1.65}
+.book-list{display:grid;gap:1.5rem}
+.book-entry{display:grid;grid-template-columns:230px minmax(0,1fr);gap:2.25rem;align-items:center;padding:1.6rem;border:1px solid #d9e1da;border-radius:20px;background:linear-gradient(145deg,#fff,#f5f8f5);box-shadow:0 12px 28px #304b3b10}
+.book-entry>img{display:block;width:100%;height:310px;padding:.65rem;border:1px solid #e1e3dc;border-radius:13px;background:#fff;object-fit:contain;box-shadow:0 10px 22px #283c3020}
+.book-entry-copy h3{margin:.7rem 0 0;font-size:clamp(1.8rem,3.6vw,2.8rem);line-height:1.1;color:#20372c}
+.book-entry-copy .book-author{margin-top:.45rem;color:#9a6500;font-family:var(--font-mono);font-size:.72rem;font-weight:700}
+.book-entry-copy .book-subtitle{margin-top:.45rem;color:#65706a;font-size:.82rem}
+.book-summary{max-width:690px;margin-top:1rem;color:#515e57;font-size:.9rem;line-height:1.65}
+.book-entry blockquote{display:flex;flex-direction:column;gap:.6rem;margin:1.2rem 0 0;padding:1.1rem 1.25rem;border-left:4px solid #d8a934;border-radius:0 11px 11px 0;background:#fff7df;color:#38473f;font-family:Georgia,serif;font-size:.95rem;line-height:1.55}
+.book-entry blockquote cite{color:#7b6b47;font-family:var(--font-mono);font-size:.58rem;font-style:normal;letter-spacing:.05em}
+@media(max-width:760px){.book-entry{grid-template-columns:1fr;gap:1.4rem;padding:1.1rem}.book-entry>img{width:min(240px,100%);height:320px;margin:auto}.book-entry-copy h3{font-size:2rem}}
+
+/* Four-part life beyond work */
+.beyond-work .beyond-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.beyond-work .beyond-grid article:nth-child(4){color:#37689b;background:linear-gradient(150deg,#fff 56%,#e2eff9)}
+.beyond-work article:nth-child(4) .interest-icon{background:#dcecf8;color:#37689b;box-shadow:inset 0 0 0 1px #c7deef}
+@media(max-width:760px){.beyond-work .beyond-grid{grid-template-columns:1fr}}
+
+/* Work card link and tag separation */
+.work-page .project-grid article{overflow:hidden}
+.work-page .project-visit{display:flex;position:relative;z-index:1;flex-wrap:wrap;align-items:center;max-width:100%;min-height:42px;height:auto;margin:1rem 0;padding:.65rem .85rem;white-space:normal;line-height:1.35;text-align:left}
+.work-page .project-grid article>div:last-child{position:relative;z-index:1;margin-top:auto;padding-top:.25rem}
 
