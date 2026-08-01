@@ -176,3 +176,10 @@
 .work-page .project-visit{display:flex;position:relative;z-index:1;flex-wrap:wrap;align-items:center;max-width:100%;min-height:42px;height:auto;margin:1rem 0;padding:.65rem .85rem;white-space:normal;line-height:1.35;text-align:left}
 .work-page .project-grid article>div:last-child{position:relative;z-index:1;margin-top:auto;padding-top:.25rem}
 
+/* Circular overview character portrait */
+.character-overview{border-radius:50%;overflow:visible}
+.character-overview img{border-radius:50%;clip-path:circle(50% at 50% 50%)}
+
+/* Heart-holding Books character */
+.books-character-heart{position:absolute;z-index:3;left:50%;bottom:14%;width:35px;height:35px;translate:-50% 0;fill:#f06f86;color:#d94e68;filter:drop-shadow(0 3px 3px #7f344b33);pointer-events:none}
+
