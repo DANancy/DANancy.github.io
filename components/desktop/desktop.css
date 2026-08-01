@@ -183,3 +183,37 @@
 /* Heart-holding Books character */
 .books-character-heart{position:absolute;z-index:3;left:50%;bottom:14%;width:35px;height:35px;translate:-50% 0;fill:#f06f86;color:#d94e68;filter:drop-shadow(0 3px 3px #7f344b33);pointer-events:none}
 
+/* Keep the complete Books character artwork inside its circular frame */
+.character-books img{padding:10px;object-fit:contain;background:#fff}
+@media(max-width:760px){.character-books img{padding:7px}}
+
+/* Illustrated travel atlas */
+.travel-window{background:linear-gradient(145deg,#f9fbf8,#eaf3ed);box-shadow:0 16px 34px #29483812}
+.travel-map{position:relative;isolation:isolate;min-height:340px;border:1px solid #8fb6ac;border-radius:22px;background:radial-gradient(circle at 76% 22%,#8dd2c333 0 8%,transparent 9%),radial-gradient(circle at 20% 78%,#f1cc6830 0 10%,transparent 11%),linear-gradient(145deg,#164f53,#0c3c45 58%,#12333e);box-shadow:inset 0 0 50px #061f294d,0 14px 28px #173d4024}
+.travel-map::before{content:"N  Ã¢â€ â€˜";position:absolute;z-index:2;right:18px;top:17px;display:grid;place-items:center;width:52px;height:52px;border:1px solid #f5d67b88;border-radius:50%;background:#0d343dcc;color:#f7d77b;font-family:var(--font-mono);font-size:.62rem;font-weight:800;letter-spacing:.08em;box-shadow:0 5px 16px #061c244d}
+.travel-map::after{content:"ASIAÃ¢â‚¬â€œPACIFIC JOURNEY";position:absolute;z-index:2;left:18px;bottom:16px;padding:.4rem .65rem;border:1px solid #ffffff30;border-radius:999px;background:#0b3139b8;color:#d8eee8;font-family:var(--font-mono);font-size:.54rem;letter-spacing:.16em}
+.travel-map svg{position:relative;z-index:1;padding:1rem;filter:drop-shadow(0 10px 16px #041f2852)}
+.travel-map svg::selection{background:transparent}
+.travel-map .map-land{fill:#b9d2bb;stroke:#dcebd6;stroke-width:2.5}
+.travel-map .map-island{fill:#e4c979;stroke:#f5e1a2;stroke-width:1.5}
+.travel-map .map-route{stroke:#ffd56a;stroke-width:4;stroke-dasharray:8 10;filter:drop-shadow(0 0 5px #ffc746aa);animation:travel-route 14s linear infinite}
+.travel-map .map-pin circle{fill:#ffca4d;stroke:#fff7d5;stroke-width:5;filter:drop-shadow(0 0 7px #ffd766)}
+.travel-map .map-pin text{fill:#fff;font-size:16px;paint-order:stroke;stroke:#123b40;stroke-width:5px;stroke-linejoin:round}
+.travel-places article{border-color:#ccdbd0;background:linear-gradient(145deg,#fff,#f4f8f4);box-shadow:0 7px 16px #2948380c;transition:transform .2s ease,border-color .2s ease}
+.travel-places article:hover{transform:translateY(-3px);border-color:#8fb6a0}
+.travel-places svg{padding:3px;border-radius:6px;background:#dff0e6}
+@keyframes travel-route{to{stroke-dashoffset:-180}}
+@media(max-width:760px){.travel-map{min-height:275px}.travel-map::before{right:10px;top:10px;width:44px;height:44px}.travel-map::after{left:10px;bottom:10px}.travel-map svg{padding:.5rem}}
+@media(prefers-reduced-motion:reduce){.travel-map .map-route{animation:none}.travel-places article{transition:none}.travel-places article:hover{transform:none}}
+
+/* Balanced Life Beyond Work cards */
+.beyond-work .beyond-grid{grid-auto-rows:1fr;gap:1rem}
+.beyond-work .beyond-grid article{height:100%;min-height:215px;padding:1.4rem}
+.beyond-work .interest-icon{flex:0 0 auto;margin-bottom:1.25rem}
+.beyond-work .beyond-grid b{font-size:1.08rem;letter-spacing:-.01em}
+.beyond-work .beyond-grid small{max-width:34rem;margin-top:.6rem;font-size:.8rem;line-height:1.6}
+@media(max-width:760px){.beyond-work .beyond-grid article{min-height:175px}.beyond-work .interest-icon{margin-bottom:1rem}}
+
+.book-published{display:flex;align-items:center;gap:.45rem;margin-top:.7rem;color:#4d695b;font-family:var(--font-mono);font-size:.65rem;font-weight:700}
+.book-published svg{width:15px;height:15px;color:#b77a0d}
+

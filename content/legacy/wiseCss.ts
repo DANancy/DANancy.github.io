@@ -144,8 +144,8 @@ section.hero { padding: var(--sp-xl) 0 var(--sp-md); }
 @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; } }
 .hero-main {
   position: relative; overflow: hidden;
-  background: var(--ink);
-  color: var(--canvas-soft);
+  background: linear-gradient(135deg, #176b5b 0%, #23836d 58%, #2e9a78 100%);
+  color: #ffffff;
   border-radius: var(--r-xl);
   padding: var(--sp-3xl) var(--sp-xl);
 }
@@ -153,11 +153,11 @@ section.hero { padding: var(--sp-xl) 0 var(--sp-md); }
 .hero-main > * { position: relative; z-index: 1; }
 .eyebrow {
   display: inline-block; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.04em;
-  color: var(--primary); text-transform: uppercase; margin-bottom: var(--sp-sm);
+  color: #ffe09a; text-transform: uppercase; margin-bottom: var(--sp-sm);
 }
-h1.title { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 900; line-height: 1.08; letter-spacing: -0.01em; margin: 0 0 var(--sp-md); color: var(--canvas-soft); }
-h1.title .accent { color: var(--primary); display: block; }
-.lede { font-size: 1.25rem; font-weight: 400; line-height: 1.5; color: var(--canvas-soft); opacity: 0.8; max-width: 62ch; margin: 0 0 var(--sp-xl); }
+h1.title { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 900; line-height: 1.08; letter-spacing: -0.01em; margin: 0 0 var(--sp-md); color: #ffffff; text-shadow: 0 2px 10px rgba(4,45,36,0.22); }
+h1.title .accent { color: #ffe09a; display: block; }
+.lede { font-size: 1.25rem; font-weight: 400; line-height: 1.5; color: #f2fffa; opacity: 0.8; max-width: 62ch; margin: 0 0 var(--sp-xl); }
 
 /* stat tiles: theme-aware by default (used standalone in the Dashboard section) */
 .stat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--sp-md); margin-bottom: var(--sp-xl); }
@@ -409,3 +409,4 @@ footer.site-footer { padding: var(--sp-3xl) 0; margin-top: var(--sp-md); backgro
   font-size: 0.75rem; color: var(--canvas-soft); opacity: 0.65; padding-top: var(--sp-md); border-top: 1px solid rgba(255,255,255,0.12);
 }
 `;
+
