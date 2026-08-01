@@ -13,7 +13,7 @@ const fraunces = Fraunces({
 const fredoka = Fredoka({
   variable: "--font-fredoka",
   subsets: ["latin"],
-  weight: ["600"],
+  weight: ["400", "600"],
 });
 
 const inter = Inter({
