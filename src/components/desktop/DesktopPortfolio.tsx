@@ -8,6 +8,7 @@ import aboutCharacter from "@/assets/web/character-about.png";
 import workCharacter from "@/assets/web/character-work.png";
 import communityCharacter from "@/assets/web/character-community.png";
 import funCharacter from "@/assets/web/character-fun.png";
+import linksCharacter from "@/assets/web/character-books.png";
 import contactCharacter from "@/assets/web/character-contact.png";
 import mercyBookImage from "@/assets/仁慈的关系.jpg";
 import nexusBookImage from "@/assets/智人之上.jpg";
@@ -29,7 +30,7 @@ import jianLaiImage from "@/assets/donghua-jian-lai.jpg";
 const navIcons={overview:House,about:Compass,work:Archive,community:Network,fun:PartyPopper,links:Globe2,contact:Send};
 type Language="en"|"zh";
 const tr=(language:Language,en:string,zh:string)=>language==="zh"?zh:en;
-const characterPoses:Record<DesktopSection,StaticImageData>={overview:characterImage,about:aboutCharacter,work:workCharacter,community:funCharacter,fun:communityCharacter,links:aboutCharacter,contact:contactCharacter};
+const characterPoses:Record<DesktopSection,StaticImageData>={overview:characterImage,about:aboutCharacter,work:workCharacter,community:funCharacter,fun:communityCharacter,links:linksCharacter,contact:contactCharacter};
 
 export function DesktopPortfolio(){
   const[active,setActive]=useState<DesktopSection>("overview");
