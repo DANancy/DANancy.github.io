@@ -13,7 +13,7 @@
 .desktop-window:has(.books-page) .window-bar{background:#155b4f;color:#fff;border-bottom-color:#155b4f}
 .desktop-window:has(.work-page) .window-bar>button,
 .desktop-window:has(.books-page) .window-bar>button{color:#fff}
-.desktop-window:has(.contact-page){width:min(900px,calc(100vw - 3rem));margin-top:4rem}
+.desktop-window:has(.contact-page){width:100%;margin-top:0}
 .contact-page{min-height:360px;padding:2.8rem 3rem 2rem}
 .contact-grid{margin-top:0}
 .character-contact{right:max(calc(50% - 450px + 22px),3vw);top:4rem}
@@ -258,3 +258,74 @@
 .contact-grid article{border-radius:16px;background:linear-gradient(145deg,#f5f7f4,#edf1ee);box-shadow:0 10px 24px #2944380d}
 .contact-page .availability{margin-top:2rem}
 @media(max-width:760px){.section-window>.window-page{flex:1 0 auto}.contact-page{justify-content:flex-start;padding:4.5rem 1.25rem 2rem}.contact-heading{margin-bottom:1.5rem}.contact-heading h2{font-size:2.35rem}.contact-page .availability{margin-top:1.5rem;text-align:left}}
+
+/* Phone layout audit */
+@media(max-width:760px){
+  .desktop-shell{min-height:100svh;padding:4rem .55rem max(1.5rem,env(safe-area-inset-bottom));overflow-x:hidden}
+  .window-stage,.desktop-window{max-width:100%}
+  .section-window{height:calc(100svh - 4.65rem);max-height:calc(100svh - 4.65rem);border-radius:11px}
+  .window-bar{height:44px;padding:0 44px 0 12px}
+  .window-bar>b{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;letter-spacing:.14em}
+  .window-page{min-width:0;padding:4rem 1rem 1.5rem}
+  .window-page h2{overflow-wrap:anywhere}
+  .window-stage .character-about,.window-stage .character-work,.window-stage .character-community,.window-stage .character-books,.window-stage .character-fun,.window-stage .character-contact{right:8px;top:-36px;width:80px;height:80px;border-width:5px}
+  .desktop-floating-close{right:12px;top:calc(4rem + 4px);width:36px;height:36px}
+  .subpage-nav{overscroll-behavior-x:contain;scrollbar-width:thin;padding:.5rem .5rem max(.5rem,env(safe-area-inset-bottom))}
+  .subpage-nav button{min-width:78px;min-height:52px}
+  .fun-page{padding-inline:.85rem}
+  .fun-heading h2{font-size:clamp(2.25rem,12vw,3rem)}
+  .fun-heading>p:last-child{font-size:.92rem}
+  .fun-grid{gap:1rem;margin-top:2rem}
+  .pottery-window,.games-window,.conference-window,.animation-window{min-width:0;border-radius:16px}
+  .pottery-images{grid-template-columns:1fr;gap:.75rem;padding:1rem}
+  .pottery-images img,.pottery-images img:last-child{grid-column:auto;width:100%;height:auto;aspect-ratio:4/3}
+  .mini-tags{flex-wrap:wrap;padding:0 1rem 1rem}
+  .games-window{padding-bottom:1rem}
+  .game-card{align-items:flex-start;gap:.75rem;margin:1rem 1rem 0;padding:.75rem}
+  .game-card img{flex:0 0 58px;width:58px;height:58px}
+  .game-card>span{min-width:0;overflow-wrap:anywhere}
+  .game-card>a{display:grid;place-items:center;flex:0 0 40px;width:40px;height:40px;margin:-.25rem -.25rem 0 0}
+  .online-rating.compact{max-width:100%;flex-wrap:wrap;white-space:normal}
+  .games-window blockquote{margin:1rem;padding:1rem}
+  .games-window .games-note{width:calc(100% - 2rem);margin:1rem 1rem 0}
+  .conference-window{grid-template-columns:48px minmax(0,1fr);gap:.85rem;padding:1.1rem}
+  .conference-mark{width:48px;height:48px}
+  .conference-window h3{font-size:1.4rem}
+  .conference-meta{gap:.5rem}
+  .conference-meta span{align-items:flex-start}
+  .conference-window>a{min-width:0;min-height:48px}
+  .animation-window{padding:1rem}
+  .animation-window>header{gap:.75rem}
+  .animation-mark{flex-basis:48px;width:48px;height:48px}
+  .animation-grid{margin-inline:-1rem;padding:0 1rem .65rem;scroll-padding-inline:1rem;-webkit-overflow-scrolling:touch}
+  .animation-grid article{flex-basis:min(48vw,180px)}
+  .animation-grid article>div{min-height:70px;padding:.75rem}
+  .animation-grid b{font-size:.75rem}
+  .community-copy .event-facts{grid-template-columns:1fr}
+  .community-page .curriculum-card{width:100%}
+  .book-entry>img{height:auto;aspect-ratio:3/4}
+  .contact-grid article{padding:1.35rem}
+  .contact-grid a,.community-actions a,.eventbrite-button{min-height:48px}
+}
+@media(max-width:380px){.desktop-nav{gap:2rem 1.25rem}.overview-content h1{font-size:2.1rem}.game-card{margin-inline:.75rem}.games-window blockquote{margin-inline:.75rem}.games-window .games-note{width:calc(100% - 1.5rem);margin-inline:.75rem}}
+
+/* Keep the overview character clear of the mobile window title */
+@media(max-width:760px){.window-stage .character-overview{left:50%;top:54px;width:96px;height:96px;translate:-50% 0;border-width:5px}.overview-content{padding-top:8.25rem}}
+@media(max-width:380px){.window-stage .character-overview{top:52px;width:90px;height:90px}.overview-content{padding-top:7.8rem}}
+
+/* Reading journal merged into Just for Fun */
+.fun-books{grid-column:1/-1;margin-top:1rem;border-top:1px solid var(--desk-line)}
+.fun-books>.books-page{min-height:0;padding:3.5rem 0 0}
+.fun-books .books-heading{text-align:center}
+.fun-books .books-heading>p:last-child{max-width:720px;margin:.8rem auto 2.5rem;color:#65706a;line-height:1.65}
+.links-page{display:flex;flex-direction:column;align-items:center}
+.links-heading{max-width:680px;text-align:center}
+.links-heading h2{color:var(--desk-green)}
+.links-heading>p:last-child{margin-top:1rem;color:#65706a;line-height:1.65}
+.links-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.25rem;width:min(820px,100%);margin-top:3rem}
+.links-grid article{display:flex;flex-direction:column;align-items:flex-start;min-height:260px;padding:1.8rem;border:1px solid #d7dfd8;border-radius:16px;background:linear-gradient(145deg,#f7f9f6,#edf2ee);box-shadow:0 10px 24px #2944380d}
+.links-grid article>svg{width:46px;height:46px;padding:11px;border-radius:10px;background:#dff0e7;color:#176044}
+.links-grid h3{margin-top:1.3rem;font-size:1.45rem;color:#254236}
+.links-grid p{margin-top:.65rem;color:#606b65;line-height:1.6}
+.links-grid a{display:flex;align-items:center;justify-content:center;gap:.45rem;width:100%;min-height:48px;margin-top:auto;border:1px solid #9db5a6;border-radius:8px;color:#155b4f;font-weight:700}
+@media(max-width:760px){.fun-books>.books-page{padding-top:2.5rem}.links-grid{grid-template-columns:1fr}.links-page{padding-top:4.5rem}.links-grid article{min-height:230px}}

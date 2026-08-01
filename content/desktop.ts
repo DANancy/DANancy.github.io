@@ -1,4 +1,4 @@
-export type DesktopSection = "overview" | "about" | "work" | "community" | "books" | "fun" | "contact";
+export type DesktopSection = "overview" | "about" | "work" | "community" | "fun" | "links" | "contact";
 
 export const projects: { title:string; description:string; tags:string[]; tone:string; href?:string; linkLabel?:string; titleZh:string; descriptionZh:string; linkLabelZh?:string }[] = [
   { title:"Senior Data Engineer", titleZh:"高级数据工程师", description:"Working in renewable energy, I design reliable, scalable data platforms and translate complex business needs into practical engineering outcomes.", descriptionZh:"我在可再生能源行业工作，负责设计可靠、可扩展的数据平台，并将复杂的业务需求转化为实用的工程成果。", tags:["Data Platforms","Cloud","Leadership"], tone:"mint", href:"https://www.smartestenergy.com/en_AU/", linkLabel:"Visit SmartestEnergy Australia", linkLabelZh:"访问 SmartestEnergy Australia" },
@@ -11,7 +11,7 @@ export const skills = ["Python","SQL","PySpark","Azure","AWS","Databricks","Snow
 
 export const navigation: { id:Exclude<DesktopSection,"overview">; label:string; labelZh:string; tone:string }[] = [
   {id:"about",label:"About",labelZh:"关于我",tone:"mint"},{id:"work",label:"Work",labelZh:"工作",tone:"amber"},{id:"community",label:"Community",labelZh:"社区",tone:"cyan"},
-  {id:"books",label:"Books",labelZh:"阅读",tone:"purple"},{id:"fun",label:"Just for fun",labelZh:"兴趣",tone:"yellow"},{id:"contact",label:"Contact me",labelZh:"联系我",tone:"pink"},
+  {id:"fun",label:"Just for fun",labelZh:"兴趣",tone:"yellow"},{id:"links",label:"Links",labelZh:"链接",tone:"purple"},{id:"contact",label:"Contact me",labelZh:"联系我",tone:"pink"},
 ];
 
 
