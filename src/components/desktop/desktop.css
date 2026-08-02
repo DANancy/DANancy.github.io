@@ -774,13 +774,13 @@
 @media(min-width:761px){
   .work-page .project-grid article{display:flex;align-items:stretch}
   .work-page .project-grid h3{display:block;min-height:3.15em;margin-top:1.35rem}
-  .work-page .project-grid article>p{min-height:7.4em;margin-top:.55rem}
+  .work-page .project-grid article>p{min-height:12.5em;margin-top:.55rem}
   .work-page .project-visit{align-self:flex-start;min-height:42px;margin:.8rem 0 0}
   .work-page .project-grid article>div:last-child{align-content:flex-start;align-self:stretch;margin-top:.9rem;padding-top:0}
 }
 @media(min-width:761px) and (max-width:1000px){
   .work-page .project-grid h3{min-height:4.5em}
-  .work-page .project-grid article>p{min-height:10em}
+  .work-page .project-grid article>p{min-height:17em}
 }
 @media(max-width:760px){
   .work-page .project-grid h3,.work-page .project-grid article>p{min-height:0}
