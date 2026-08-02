@@ -446,8 +446,17 @@
 .omdena-project-links a{display:flex;align-items:center;justify-content:space-between;gap:.75rem;min-height:44px;padding:.7rem .85rem;border:1px solid #c9d9ce;border-radius:9px;background:#fff;color:#216047;font-size:.78rem;font-weight:700;line-height:1.35}
 .omdena-project-links a:last-child{justify-content:center;background:#f2f6f3}
 .omdena-project-links a span{min-width:0;overflow-wrap:anywhere}
+.omdena-featured{grid-template-columns:1fr}
+.omdena-featured article{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(260px,.9fr);grid-template-rows:auto auto 1fr auto auto;column-gap:1.5rem;align-items:start}
+.omdena-featured .omdena-date,.omdena-featured h4,.omdena-featured article>p,.omdena-featured .omdena-tags,.omdena-featured .omdena-project-links{grid-column:1}
+.omdena-featured article>img{grid-column:2;grid-row:1/6;height:100%;max-height:430px;margin:0;object-fit:contain}
+.omdena-more{margin-top:1.8rem}
+.omdena-more>h4{color:#315f4c;font-family:var(--font-mono);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase}
+.omdena-projects-compact{grid-template-columns:repeat(3,minmax(0,1fr));margin-top:.8rem}
+.omdena-projects-compact article{height:100%}
 .link-card.blue{--card-accent:#315fa0}
 .links-grid .link-card:last-child:nth-child(odd){grid-column:1/-1;min-height:250px}
+@media(max-width:1000px){.omdena-featured article{display:flex}.omdena-featured article>img{height:auto;max-height:none;margin:1rem 0}.omdena-projects-compact{grid-template-columns:1fr}}
 @media(max-width:760px){.omdena-experience{margin-top:2.5rem;padding:1rem}.omdena-heading{align-items:flex-start;flex-direction:column;gap:1rem}.omdena-heading>a{width:100%}.omdena-projects{grid-template-columns:1fr}.omdena-projects article{padding:1.1rem}.links-grid .link-card:last-child:nth-child(odd){grid-column:auto;min-height:250px}}
 /* Heart-led Mutoo collection */
 .loved-links{position:relative;z-index:1;width:min(960px,100%);margin-top:3rem;padding:1.6rem;border:1px solid #ead5d8;border-radius:22px;background:linear-gradient(135deg,#fff8f8 0%,#fffdf7 100%);box-shadow:0 14px 32px rgba(105,54,60,.07)}
@@ -480,15 +489,24 @@
 .friends-shelf h3{margin:.6rem 0 .45rem;color:#593a2f;font-size:clamp(1.8rem,3vw,2.6rem)}.friends-shelf-subtitle{color:#a1513c;font-size:1rem;font-weight:700;line-height:1.55}.friends-shelf>div>p:not(.friends-shelf-label):not(.friends-shelf-subtitle){max-width:600px;margin-top:.9rem;color:#685f59;line-height:1.65}
 .friends-shelf a{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;min-height:46px;margin-top:1.3rem;padding:.75rem 1rem;border-radius:8px;background:#bd5b43;color:#fff;font-weight:750}
 @media(max-width:760px){.friends-shelf{grid-template-columns:1fr;gap:1.4rem;padding:1rem}.friends-shelf>img{width:min(220px,72vw);margin:auto}.friends-shelf a{width:100%}}
-/* Active learning roadmap */
-.learning-roadmap{margin-top:1.5rem;padding:1.5rem;border:1px solid #d7dde0;border-radius:18px;background:linear-gradient(135deg,#f8faf9 0%,#f7f5fb 100%)}
-.learning-roadmap>header{max-width:720px;margin-bottom:1.2rem}.learning-roadmap>header h3{margin:.55rem 0 .35rem;color:#29463a;font-size:clamp(1.7rem,3vw,2.35rem)}.learning-roadmap>header>p:last-child{color:#65706a;line-height:1.55}
-.learning-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}.learning-card{--learning-accent:#65558d;display:flex;flex-direction:column;align-items:flex-start;min-width:0;min-height:350px;padding:1.3rem;border:1px solid #d9d6e5;border-radius:14px;background:rgba(255,255,255,.9)}.learning-card.orange{--learning-accent:#b86632;border-color:#ead7c8}.learning-card.green{--learning-accent:#24765c;border-color:#cce1d8}.learning-card.blue{--learning-accent:#315fa0;border-color:#ced9e9}
-.learning-card-icon{display:grid;place-items:center;width:48px;height:48px;border-radius:14px;background:color-mix(in srgb,var(--learning-accent) 14%,white);color:var(--learning-accent)}.learning-card-icon svg{width:23px;height:23px}.learning-card-label{margin-top:1rem;color:var(--learning-accent);text-transform:uppercase;letter-spacing:.12em;font-family:var(--font-mono);font-size:.58rem;font-weight:800}
-.learning-card h4{min-height:2.4em;margin:.4rem 0 .6rem;color:#35323d;font-size:1.3rem;line-height:1.2}.learning-card>p:not(.learning-card-label){min-height:6.2em;color:#65626b;line-height:1.58}.learning-card>div{display:flex;flex-wrap:wrap;gap:.4rem;margin:.9rem 0}.learning-card>div span{padding:.3rem .55rem;border-radius:999px;background:color-mix(in srgb,var(--learning-accent) 11%,white);color:var(--learning-accent);font-family:var(--font-mono);font-size:.54rem;font-weight:750}
-.learning-card>a{display:flex;align-items:center;justify-content:space-between;width:100%;min-height:44px;margin-top:auto;padding-top:.8rem;border-top:1px solid #e2dfe7;color:var(--learning-accent);font-weight:750}
-@media(max-width:980px){.learning-grid{grid-template-columns:1fr}.learning-card{min-height:290px}.learning-card h4,.learning-card>p:not(.learning-card-label){min-height:0}}
-@media(max-width:760px){.learning-roadmap{padding:1rem}}
+/* Compact horizontal learning shelf */
+.learning-roadmap{margin-top:1.5rem;padding:1.25rem;border:1px solid #d7dde0;border-radius:18px;background:linear-gradient(135deg,#f8faf9 0%,#f7f5fb 100%)}
+.learning-roadmap>header{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,.72fr);column-gap:2rem;align-items:end;margin-bottom:1rem}
+.learning-roadmap>header .page-pill{grid-column:1/-1;width:max-content}
+.learning-roadmap>header h3{margin:.5rem 0 0;color:#29463a;font-size:clamp(1.45rem,2.5vw,2rem)}
+.learning-roadmap>header>p:last-child{color:#65706a;line-height:1.5}
+.learning-grid{display:flex;gap:.85rem;overflow-x:auto;padding:.15rem .1rem .8rem;scroll-snap-type:x mandatory;scrollbar-width:thin}
+.learning-card{--learning-accent:#65558d;display:grid;grid-template-columns:42px minmax(0,1fr);grid-template-rows:auto auto auto 1fr auto;flex:0 0 min(310px,78vw);min-width:0;min-height:245px;padding:1rem;border:1px solid #d9d6e5;border-radius:14px;background:rgba(255,255,255,.92);scroll-snap-align:start}
+.learning-card.orange{--learning-accent:#b86632;border-color:#ead7c8}.learning-card.green{--learning-accent:#24765c;border-color:#cce1d8}.learning-card.blue{--learning-accent:#315fa0;border-color:#ced9e9}
+.learning-card-icon{display:grid;grid-column:1;grid-row:1/3;place-items:center;width:36px;height:36px;border-radius:11px;background:color-mix(in srgb,var(--learning-accent) 14%,white);color:var(--learning-accent)}
+.learning-card-icon svg{width:19px;height:19px}
+.learning-card-label{grid-column:2;margin:0;color:var(--learning-accent);text-transform:uppercase;letter-spacing:.1em;font-family:var(--font-mono);font-size:.55rem;font-weight:800}
+.learning-card h4{grid-column:2;min-height:0;margin:.28rem 0 .65rem;color:#35323d;font-size:1.05rem;line-height:1.25}
+.learning-card>p:not(.learning-card-label){grid-column:1/-1;min-height:0;color:#65626b;font-size:.78rem;line-height:1.5}
+.learning-card>div{display:flex;grid-column:1/-1;flex-wrap:wrap;align-content:start;gap:.35rem;margin:.7rem 0}
+.learning-card>div span{padding:.25rem .48rem;border-radius:999px;background:color-mix(in srgb,var(--learning-accent) 11%,white);color:var(--learning-accent);font-family:var(--font-mono);font-size:.5rem;font-weight:750}
+.learning-card>a{display:flex;grid-column:1/-1;align-items:center;justify-content:space-between;width:100%;min-height:36px;margin-top:auto;padding-top:.6rem;border-top:1px solid #e2dfe7;color:var(--learning-accent);font-size:.78rem;font-weight:750}
+@media(max-width:760px){.learning-roadmap{padding:1rem}.learning-roadmap>header{display:block}.learning-roadmap>header>p:last-child{margin-top:.45rem}.learning-grid{margin-inline:-.85rem;padding-inline:.85rem;scroll-padding-inline:.85rem}.learning-card{flex-basis:min(290px,84vw)}}
 /* Personal working principles */
 .personal-principles{margin-top:2.2rem}
 .principles-heading{color:#7e8982;text-transform:uppercase;letter-spacing:.16em;font-family:var(--font-mono);font-size:.68rem;font-weight:700}
@@ -553,7 +571,7 @@
   .link-card{min-height:250px;padding:1.4rem}
   .loved-links{margin-top:2rem;padding:1.3rem}
   .loved-links article{min-height:225px}
-  .learning-card{min-height:300px}
+  .learning-card{min-height:245px}
 }
 
 @media(max-width:760px){
@@ -737,4 +755,8 @@
 .about-page>.page-intro + h3{margin-top:0}
 @media(max-width:760px){
   .page-intro,.contact-page>.page-intro{margin-bottom:1.35rem}
+}
+/* Align Contact's header with the other desktop page introductions. */
+@media(min-width:901px){
+  .desktop-window:has(.contact-page) .contact-page{padding-top:2.5rem}
 }
