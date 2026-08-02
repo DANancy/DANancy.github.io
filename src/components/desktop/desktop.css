@@ -350,8 +350,8 @@
 @media(max-width:760px){.window-stage .character-about,.window-stage .character-work,.window-stage .character-community,.window-stage .character-books,.window-stage .character-fun,.window-stage .character-links,.window-stage .character-contact{right:56px}}
 /* Soft orchard desktop scene */
 .desktop-shell{background:radial-gradient(circle at 78% 10%,#fff8d8 0,transparent 18%),linear-gradient(180deg,#eef7f1 0%,#f8f7ef 58%,#e7f0e4 100%)}
-.fruit-grove{position:absolute;z-index:0;inset:auto 0 0;height:150px;overflow:hidden;pointer-events:none}
-.backyard-orchard{object-fit:cover;object-position:center 72%;opacity:.84;filter:saturate(.82) contrast(.94)}
+.fruit-grove{position:absolute;z-index:0;inset:auto 0 0;height:150px;overflow:hidden;pointer-events:none;background:transparent;-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 32%,#000 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 32%,#000 100%)}
+.backyard-orchard{object-fit:cover;object-position:center 72%;opacity:.86;filter:saturate(.95) contrast(.94) brightness(1.02);mix-blend-mode:darken}
 .backyard-sign{position:absolute;z-index:2;left:50%;bottom:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;width:144px;height:58px;translate:-50% 0;border:2px solid #775839;border-radius:50% 50% 10px 10px;background:linear-gradient(180deg,#c79a65,#aa7747);color:#fffaf0;box-shadow:0 5px 0 -2px #6b4d34,0 10px 20px #29453424}
 .backyard-sign::before,.backyard-sign::after{content:"";position:absolute;top:52px;width:8px;height:38px;border-radius:0 0 4px 4px;background:#775839}.backyard-sign::before{left:24px}.backyard-sign::after{right:24px}
 .backyard-sign b{font-family:Georgia,serif;font-size:.9rem;line-height:1}.backyard-sign small{margin-top:.25rem;font-family:var(--font-mono);font-size:.42rem;font-weight:800;letter-spacing:.15em}
