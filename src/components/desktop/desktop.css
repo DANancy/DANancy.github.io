@@ -641,3 +641,16 @@
   .language-switch{left:50%;right:auto;top:max(8px,env(safe-area-inset-top))}
   .desktop-floating-close{top:calc(max(4.25rem,env(safe-area-inset-top) + 3.75rem) + 2px)}
 }
+/* Clean portfolio background after removing the orchard scene. */
+@media(min-width:761px){
+  .overview-window{height:min(680px,calc(100dvh - 9.5rem));max-height:min(680px,calc(100dvh - 9.5rem));min-height:440px}
+  .section-window{height:min(780px,calc(100dvh - 6.5rem));max-height:min(780px,calc(100dvh - 6.5rem));min-height:0}
+  .desktop-footer{position:absolute;z-index:3;left:50%;bottom:1rem;width:max-content;margin:0;transform:translateX(-50%)}
+}
+@media(max-height:680px) and (min-width:761px){
+  .overview-window{height:calc(100dvh - 8.5rem);max-height:calc(100dvh - 8.5rem);min-height:0}
+  .section-window{height:calc(100dvh - 5.5rem);max-height:calc(100dvh - 5.5rem)}
+}
+@media(max-width:760px){
+  .desktop-footer{position:relative;left:auto;bottom:auto;width:max-content;max-width:calc(100vw - 2rem);margin:1.25rem auto 0;transform:none}
+}
