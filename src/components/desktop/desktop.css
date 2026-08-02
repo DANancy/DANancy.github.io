@@ -793,6 +793,7 @@
   .omdena-projects-compact article>p{min-height:11.35em;margin:0}
   .omdena-projects-compact .omdena-tags{align-content:flex-start;min-height:4.5em;margin:.8rem 0}
   .omdena-projects-compact .omdena-project-links{margin-top:0}
+  .omdena-projects-compact .omdena-project-links a:first-child{min-height:64px}
 }
 @media(max-width:1000px){
   .omdena-projects-compact h4,.omdena-projects-compact article>p,.omdena-projects-compact .omdena-tags{min-height:0}
