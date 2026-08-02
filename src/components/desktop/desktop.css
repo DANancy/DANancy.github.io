@@ -777,12 +777,14 @@
   .work-page .project-grid article{display:flex;align-items:stretch}
   .work-page .project-grid h3{display:block;min-height:3.15em;margin-top:1.35rem}
   .work-page .project-grid article>p{min-height:12.5em;margin-top:.55rem}
+  .work-page .project-grid article:nth-child(-n+2)>p{min-height:17em}
   .work-page .project-visit{align-self:flex-start;min-height:42px;margin:.8rem 0 0}
   .work-page .project-grid article>div:last-child{align-content:flex-start;align-self:stretch;margin-top:.9rem;padding-top:0}
 }
 @media(min-width:761px) and (max-width:1000px){
   .work-page .project-grid h3{min-height:4.5em}
   .work-page .project-grid article>p{min-height:17em}
+  .work-page .project-grid article:nth-child(-n+2)>p{min-height:24em}
 }
 @media(max-width:760px){
   .work-page .project-grid h3,.work-page .project-grid article>p{min-height:0}
@@ -820,7 +822,8 @@
 /* Matched Work-card image previews. */
 .project-preview{width:100%;margin:.8rem 0 0;overflow:hidden;border:1px solid #d7dfd8;border-radius:10px;background:#fff}
 .project-preview img{display:block;width:100%;height:auto;aspect-ratio:2.18/1;object-fit:cover;object-position:center}
-@media(min-width:761px){.work-page .project-grid article:has(.project-preview)>p{min-height:11.6em}.work-page .project-grid article:has(.project-preview) .project-preview{flex:0 0 auto}}
+@media(min-width:1001px){.work-page .project-grid article:has(.project-preview)>p{min-height:15.5em}.work-page .project-grid article:has(.project-preview) .project-preview{flex:0 0 auto}}
+@media(min-width:761px) and (max-width:1000px){.work-page .project-grid article:has(.project-preview)>p{min-height:22em}.work-page .project-grid article:has(.project-preview) .project-preview{flex:0 0 auto}}
 @media(max-width:760px){.project-preview{margin-top:.75rem}}
 /* Final accessibility and responsive consistency pass. */
 .desktop-window:focus-visible{outline:3px solid #176044;outline-offset:4px}
