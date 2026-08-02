@@ -814,17 +814,6 @@
 .community-values article:nth-child(1)>svg{background:#e5f0e9;color:#28694f}
 .community-values article:nth-child(2)>svg{background:#e8eef5;color:#3f6382}
 .community-values article:nth-child(3)>svg{background:#f2eaf5;color:#755080}
-/* Data Engineering Bootcamp lifecycle feature. */
-.bootcamp-lifecycle{margin-top:1.4rem;padding:1.25rem;border:1px solid #d6dfd8;border-radius:18px;background:linear-gradient(145deg,#fbfcf9,#f3f7f3)}
-.bootcamp-lifecycle>header{display:grid;grid-template-columns:minmax(260px,.72fr) minmax(0,1.28fr);gap:.35rem 1.5rem;align-items:end}
-.bootcamp-lifecycle .page-pill{grid-column:1/-1;width:max-content}
-.bootcamp-lifecycle h3{margin:.45rem 0 0;color:#285441;font-size:clamp(1.35rem,2.5vw,2rem)}
-.bootcamp-lifecycle header>p:last-child{color:#647069;font-size:.84rem;line-height:1.55}
-.bootcamp-lifecycle figure{margin:1rem 0 0}
-.bootcamp-lifecycle figure>a{display:block;overflow:hidden;border:1px solid #d8ded7;border-radius:12px;background:#fff;box-shadow:0 10px 24px rgba(37,65,49,.07)}
-.bootcamp-lifecycle img{display:block;width:100%;height:auto}
-.bootcamp-lifecycle figcaption{margin-top:.5rem;color:#748078;font-family:var(--font-mono);font-size:.58rem;text-align:right}
-@media(max-width:760px){.bootcamp-lifecycle{padding:.9rem;border-radius:15px}.bootcamp-lifecycle>header{display:block}.bootcamp-lifecycle header>p:last-child{margin-top:.55rem}.bootcamp-lifecycle figure{margin-top:.8rem}.bootcamp-lifecycle figcaption{text-align:left}}
 /* Matched Work-card image previews. */
 .project-preview{width:100%;margin:.8rem 0 0;overflow:hidden;border:1px solid #d7dfd8;border-radius:10px;background:#fff}
 .project-preview img{display:block;width:100%;height:auto;aspect-ratio:2.18/1;object-fit:cover;object-position:center}
@@ -840,7 +829,7 @@
 @media(max-width:760px){
   .footer-socials a{width:44px;height:44px}
   .desktop-footer{min-height:44px}
-  .project-grid article,.omdena-projects article,.learning-card,.bootcamp-lifecycle,.community-copy,.community-page .curriculum-card{border-radius:16px}
+  .project-grid article,.omdena-projects article,.learning-card,.community-copy,.community-page .curriculum-card{border-radius:16px}
   .project-preview img{aspect-ratio:2.18/1;object-fit:cover}
 }
 @media(prefers-reduced-motion:reduce){
