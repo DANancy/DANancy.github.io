@@ -841,5 +841,5 @@
   .desktop-shell{position:relative;inset:auto;width:100%;height:auto;min-height:100dvh;overflow-x:hidden;overflow-y:visible}
   .window-stage{height:calc(100dvh - 5.5rem - env(safe-area-inset-top));min-height:520px}
   .window-stage .desktop-window{overscroll-behavior-y:auto}
-  .language-switch{position:fixed!important;inset:calc(env(safe-area-inset-top) + 8px) 0 auto!important;width:max-content;margin-inline:auto;transform:none!important;will-change:auto}
+  .language-switch{position:absolute!important;inset:calc(env(safe-area-inset-top) + 8px) 0 auto!important;width:max-content;margin-inline:auto;transform:none!important;will-change:auto}
 }
