@@ -327,6 +327,12 @@ export const wiseBodyHtml = `
         </g>
       </g>
     </svg>
+    <div class="mobile-model-grid" aria-label="Mobile data model summary">
+      <article><strong>dim_liable_entity</strong><span>liable_entity: string (primary key)</span></article>
+      <article><strong>dim_assessment_year</strong><span>assessment_year: integer (primary key)</span></article>
+      <article><strong>fact_lgc_shortfall</strong><span>Entity and year foreign keys, liability, surrendered certificates, remaining shortfall, percentage, charge status and value.</span></article>
+      <article><strong>fact_stc_shortfall</strong><span>Entity and year foreign keys, STC shortfall and shortfall charge value.</span></article>
+    </div>
     <div class="note">Sources: LGC and STC certificate shortfall registers (CER). {PK} = dimension key, {FK} = foreign key into the dimension.</div>
   </div>
 </section>

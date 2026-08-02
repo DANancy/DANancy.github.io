@@ -724,7 +724,7 @@
 
 /* Let the complete Contact content scroll on shorter desktop viewports. */
 @media(min-width:761px){
-  .desktop-window.section-window:has(.contact-page){overflow-x:hidden;overflow-y:auto;scrollbar-gutter:stable}
-  .desktop-window:has(.contact-page) .contact-page{flex:0 0 auto;min-height:620px}
+  .desktop-window.section-window:has(.contact-page){overflow-x:hidden;overflow-y:scroll;scrollbar-gutter:stable;scroll-padding-bottom:7rem}
+  .desktop-window:has(.contact-page) .contact-page{flex:0 0 auto;min-height:620px;padding-bottom:7rem}
   .desktop-window:has(.contact-page)>.subpage-nav{position:sticky;z-index:7;bottom:0;background:rgba(248,250,248,.98);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
 }
