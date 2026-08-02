@@ -52,8 +52,9 @@ export const wiseCss = `
 
   /* ---- font stack: Wise Sans is proprietary/unavailable : Inter (loaded via Google Fonts
      above) is the brand's own documented substitute, real weight 900 for the hero voice ---- */
-  --font-display: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-code: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --font-display: var(--font-fredoka), var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-body: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-code: var(--font-jbmono), "JetBrains Mono", ui-monospace, monospace;
 
   /* ---- semantic aliases: theme-aware, used throughout the stylesheet + inline HTML/JS ---- */
   --page: var(--canvas-soft);
@@ -102,7 +103,7 @@ body {
   margin: 0;
   background: var(--page);
   color: var(--text-primary);
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-size: 16px;
   line-height: 1.5;
 }
@@ -154,7 +155,7 @@ section.hero { padding: var(--sp-xl) 0 var(--sp-md); }
   display: inline-block; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.04em;
   color: #ffe09a; text-transform: uppercase; margin-bottom: var(--sp-sm);
 }
-h1.title { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 900; line-height: 1.08; letter-spacing: -0.01em; margin: 0 0 var(--sp-md); color: #ffffff; text-shadow: 0 2px 10px rgba(4,45,36,0.22); }
+h1.title { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 600; line-height: 1.08; letter-spacing: -0.01em; margin: 0 0 var(--sp-md); color: #ffffff; text-shadow: 0 2px 10px rgba(4,45,36,0.22); }
 h1.title .accent { color: #ffe09a; display: block; }
 .lede { font-size: 1.25rem; font-weight: 400; line-height: 1.5; color: #f2fffa; opacity: 0.8; max-width: 62ch; margin: 0 0 var(--sp-xl); }
 
@@ -166,7 +167,7 @@ h1.title .accent { color: #ffe09a; display: block; }
   padding: var(--sp-lg);
 }
 .stat-tile .label { font-size: 0.8125rem; font-weight: 400; color: var(--text-secondary); margin-bottom: var(--sp-xs); }
-.stat-tile .value { font-size: 1.5rem; font-weight: 900; line-height: 1.1; font-variant-numeric: proportional-nums; }
+.stat-tile .value { font-size: 1.5rem; font-weight: 700; line-height: 1.1; font-variant-numeric: proportional-nums; }
 .stat-tile .value.blue { color: var(--series-blue); }
 .stat-tile .value.aqua { color: var(--good); }
 .stat-tile .sub { font-size: 0.75rem; color: var(--text-muted); margin-top: var(--sp-xs); }
@@ -203,7 +204,7 @@ h1.title .accent { color: #ffe09a; display: block; }
   display: flex; align-items: center; justify-content: center; color: var(--canvas);
   font-size: 1.7rem; font-weight: 700; letter-spacing: 0.02em;
 }
-.bio-panel h2 { font-family: var(--font-display); margin: 0 0 2px; font-size: 1.5rem; font-weight: 900; line-height: 1.2; color: var(--text-primary); }
+.bio-panel h2 { font-family: var(--font-display); margin: 0 0 2px; font-size: 1.5rem; font-weight: 600; line-height: 1.2; color: var(--text-primary); }
 .bio-panel .role { color: var(--good); font-weight: 600; font-size: 0.875rem; margin-bottom: var(--sp-md); }
 .bio-panel p { font-size: 0.875rem; line-height: 1.5; color: var(--text-secondary); margin: 0 0 var(--sp-md); }
 .icon-row { display: flex; gap: var(--sp-sm); margin-bottom: var(--sp-xl); }
@@ -233,7 +234,7 @@ section.block { padding: var(--sp-3xl) 0; }
   color: var(--on-primary); font-size: 0.8125rem; font-weight: 700; display: flex; align-items: center; justify-content: center;
   flex-shrink: 0;
 }
-.block-head h2 { font-family: var(--font-display); font-size: 1.75rem; font-weight: 900; line-height: 1.2; letter-spacing: -0.01em; margin: 0; color: var(--text-primary); }
+.block-head h2 { font-family: var(--font-display); font-size: 1.75rem; font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; margin: 0; color: var(--text-primary); }
 .block-desc { color: var(--text-secondary); font-size: 1rem; line-height: 1.5; margin: 0 0 var(--sp-lg); max-width: 74ch; }
 .btn-link {
   display: inline-flex; align-items: center; gap: var(--sp-xs); font-size: 1rem; font-weight: 600;
@@ -245,13 +246,13 @@ section.block { padding: var(--sp-3xl) 0; }
 .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-xl); }
 @media (max-width: 900px) { .two-col { grid-template-columns: 1fr; } }
 .card { background: var(--surface-1); border-radius: var(--r-xl); padding: var(--sp-xl); }
-.card h3 { font-family: var(--font-display); margin: 0 0 var(--sp-sm); font-size: 1.125rem; font-weight: 700; line-height: 1.3; color: var(--text-primary); }
+.card h3 { font-family: var(--font-display); margin: 0 0 var(--sp-sm); font-size: 1.125rem; font-weight: 600; line-height: 1.3; color: var(--text-primary); }
 .card .note { font-size: 0.8125rem; color: var(--text-muted); margin-top: var(--sp-sm); }
 
 /* ===== Section 1: Business Context ===== */
 .context-layout { display: grid; grid-template-columns: 1fr 1.2fr; gap: var(--sp-xl); align-items: start; margin-bottom: var(--sp-xl); }
 @media (max-width: 950px) { .context-layout { grid-template-columns: 1fr; } }
-.req-heading { font-family: var(--font-display); font-size: 1.125rem; font-weight: 700; line-height: 1.3; margin: 0 0 var(--sp-sm); color: var(--text-primary); }
+.req-heading { font-family: var(--font-display); font-size: 1.125rem; font-weight: 600; line-height: 1.3; margin: 0 0 var(--sp-sm); color: var(--text-primary); }
 .rec-diagram-img {
   background: var(--surface-1); border-radius: var(--r-xl); padding: var(--sp-sm);
 }
@@ -276,7 +277,7 @@ section.block { padding: var(--sp-3xl) 0; }
   font-size: 0.8125rem; min-height: 168px;
 }
 .pipe-card .pipe-icon { width: 30px; height: 30px; border-radius: var(--r-md); display: flex; align-items: center; justify-content: center; margin-bottom: var(--sp-xs); }
-.pipe-card strong { display: block; font-family: var(--font-display); font-size: 0.9375rem; font-weight: 700; margin-bottom: var(--sp-xs); color: var(--text-primary); }
+.pipe-card strong { display: block; font-family: var(--font-display); font-size: 0.9375rem; font-weight: 600; margin-bottom: var(--sp-xs); color: var(--text-primary); }
 .pipe-card ul { margin: 0; padding-left: 1rem; color: var(--text-secondary); }
 .pipe-card li { margin-bottom: 3px; }
 .pipe-connector { display: none; }
@@ -305,7 +306,7 @@ code { font-family: var(--font-code); background: var(--card); border: none; bor
 
 /* charts */
 .chart-card { background: var(--surface-1); border-radius: var(--r-xl); padding: var(--sp-xl); }
-.chart-card h3 { font-family: var(--font-display); margin: 0 0 2px; font-size: 1.125rem; font-weight: 700; line-height: 1.3; color: var(--text-primary); }
+.chart-card h3 { font-family: var(--font-display); margin: 0 0 2px; font-size: 1.125rem; font-weight: 600; line-height: 1.3; color: var(--text-primary); }
 .chart-card .chart-note { font-size: 0.8125rem; color: var(--text-muted); margin: 3px 0 var(--sp-md); }
 .bar-svg { width: 100%; height: auto; overflow: visible; }
 .bar rect { transition: opacity 0.1s; cursor: pointer; }
@@ -388,7 +389,7 @@ footer.site-footer { padding: var(--sp-3xl) 0; margin-top: var(--sp-md); backgro
 .stack-item span { font-size: 0.6875rem; text-align: center; color: var(--canvas-soft); opacity: 0.8; font-weight: 600; }
 .footer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-xl); margin-bottom: var(--sp-xl); }
 @media (max-width: 800px) { .footer-grid { grid-template-columns: 1fr; } }
-.footer-grid h4 { font-family: var(--font-display); font-size: 0.875rem; font-weight: 700; margin: 0 0 var(--sp-sm); color: var(--canvas-soft); }
+.footer-grid h4 { font-family: var(--font-display); font-size: 0.875rem; font-weight: 600; margin: 0 0 var(--sp-sm); color: var(--canvas-soft); }
 .footer-grid ul { margin: 0; padding: 0; list-style: none; font-size: 0.8125rem; color: var(--canvas-soft); opacity: 0.75; }
 .footer-grid li { margin-bottom: var(--sp-sm); display: flex; gap: var(--sp-xs); }
 .footer-grid ul a { color: var(--primary); opacity: 1; }

@@ -668,3 +668,11 @@
   .desktop-nav{row-gap:clamp(.85rem,1.6vh,1.2rem);margin-top:clamp(1.1rem,2vh,1.5rem)}
   .desktop-nav button{gap:.55rem}
 }
+/* Keep Working Style and Principles typography consistent. */
+.principles-heading{font-weight:400;letter-spacing:.12em}
+.style-chips span,.principles-grid strong{font-family:var(--font-mono);font-size:.72rem;font-weight:550;letter-spacing:.01em;line-height:1.35}
+/* Consistent typography roles across the complete portfolio. */
+.window-page>h1,.window-page>h2,.community-copy h2,.fun-heading h2,.links-heading h2,.contact-heading h2,.story-books-heading h2,.books-heading h2{font-family:var(--font-fredoka),var(--font-sans);font-weight:600;letter-spacing:-.025em}
+.window-page h3,.window-page h4,.project-grid h3,.book-entry-copy h3,.links-grid h3,.learning-card h4,.omdena-projects h4,.contact-grid h3{font-family:var(--font-sans);font-weight:600}
+.book-entry blockquote{font-family:var(--font-sans);font-weight:400}
+.window-bar>b,.desktop-nav b,.subpage-nav button,.page-pill,.window-page>h3,.principles-heading,.style-chips span,.principles-grid strong,.project-visit,.online-rating,.community-actions a,.eventbrite-button,.fun-window-bar,.link-category,.link-card-number,.omdena-date,.omdena-tags span,.learning-card-label,.learning-card>div span,.friends-shelf-label,.fde-highlights span,.book-author,.book-published{font-family:var(--font-mono);font-weight:600}

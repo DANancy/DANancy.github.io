@@ -234,3 +234,9 @@ body {
   background: var(--color-elevated);
   border-radius: 999px;
 }
+
+.not-found-title {
+  font-family: var(--font-fredoka), var(--font-sans);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
