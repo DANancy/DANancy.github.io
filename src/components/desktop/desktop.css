@@ -714,3 +714,17 @@
   .community-layout{gap:1rem}
   .contact-page>.page-intro{padding-right:4.75rem}
 }
+/* Keep the language control anchored while the mobile portfolio scrolls. */
+@media(max-width:760px){
+  html:has(.desktop-shell),body:has(.desktop-shell){height:100%;overflow:hidden;overscroll-behavior:none}
+  .desktop-shell{position:fixed;inset:0;width:100%;height:100dvh;min-height:0;overflow-x:hidden;overflow-y:auto;overscroll-behavior-y:contain;-webkit-overflow-scrolling:touch}
+  .section-window{height:auto!important;max-height:none!important;overflow:visible!important;scrollbar-gutter:auto}
+  .language-switch{position:fixed!important;z-index:100;top:calc(env(safe-area-inset-top) + 8px)!important;left:50%!important;right:auto!important;transform:translate3d(-50%,0,0);will-change:transform}
+}
+
+/* Let the complete Contact content scroll on shorter desktop viewports. */
+@media(min-width:761px){
+  .desktop-window.section-window:has(.contact-page){overflow-x:hidden;overflow-y:auto;scrollbar-gutter:stable}
+  .desktop-window:has(.contact-page) .contact-page{flex:0 0 auto;min-height:620px}
+  .desktop-window:has(.contact-page)>.subpage-nav{position:sticky;z-index:7;bottom:0;background:rgba(248,250,248,.98);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+}

@@ -469,5 +469,34 @@ footer.site-footer { padding: 2.5rem 0 2rem; margin-top: var(--sp-md); border-to
   .stat-tile .label { min-height: 0; }
   .hero-main { padding-inline: 15px; }
   .card, .chart-card { padding: 14px; }
+}
+/* Show complete project information within the mobile viewport. */
+@media (max-width: 700px) {
+  html, body { width: 100%; max-width: 100%; overflow-x: clip; }
+  .wrap, .nav-inner, .hero-grid, .hero-main, .hero-side, .card, .chart-card,
+  .two-col, .context-layout, .req-grid, .pipeline, .ai-layout, .footer-grid {
+    width: 100%; min-width: 0; max-width: 100%;
+  }
+  .schema-table {
+    display: table; width: 100%; max-width: 100%; table-layout: fixed;
+    overflow: visible; white-space: normal;
+  }
+  .schema-table th, .schema-table td {
+    padding: 8px 6px; overflow-wrap: anywhere; word-break: break-word;
+  }
+  .uml-wrap, .chart-wrap {
+    width: 100%; max-width: 100%; margin-inline: 0; padding-inline: 0;
+    overflow: visible;
+  }
+  .uml-svg, .bar-svg {
+    display: block; width: 100%; min-width: 0; max-width: 100%; height: auto;
+  }
+  details.data-table { width: 100%; max-width: 100%; overflow: visible; }
+  details.data-table table { width: 100%; min-width: 0; table-layout: fixed; }
+  details.data-table th, details.data-table td {
+    padding: 7px 5px; overflow-wrap: anywhere; word-break: break-word;
+  }
+  .stack-strip { flex-wrap: wrap; }
+  .stack-item { flex: 1 1 74px; width: auto; min-width: 0; }
 }`;
 
