@@ -499,8 +499,10 @@
 @media(max-width:560px){.principles-grid{grid-template-columns:1fr}.principles-grid article{min-height:52px;padding:.65rem .85rem}}/* Keep Overview geometry stable across languages */
 .overview-content h1{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.22em;width:100%;min-height:1.15em}
 .desktop-nav{width:min(760px,100%);grid-template-columns:repeat(3,minmax(0,1fr))}
-.desktop-nav button{min-width:0}
-@media(max-width:760px){.overview-content h1{min-height:2.15em}.desktop-nav{width:100%;grid-template-columns:repeat(2,minmax(0,1fr))}}
+.desktop-nav button{min-width:0;min-height:88px}
+.desktop-nav b{width:100%}
+@media(min-width:761px){.overview-content h1{height:1.15em}.window-status{display:grid;grid-template-columns:1fr 1fr 1fr}.window-status .status-right{justify-self:end}}
+@media(max-width:760px){.overview-content h1{height:2.15em;min-height:2.15em}.desktop-nav{width:100%;grid-template-columns:repeat(2,minmax(0,1fr))}}
 /* Keep repeated principles readable in the Overview status bar */
 @media(max-width:760px){.window-status{gap:.65rem;padding:0 .8rem;font-size:.48rem}.window-status span:nth-child(2){display:none}}
 /* Keep the complete Contact page visible inside the shared desktop window. */
