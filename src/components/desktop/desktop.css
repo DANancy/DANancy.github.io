@@ -443,7 +443,8 @@
 .omdena-projects article>a:last-child{width:100%;margin-top:auto;padding-top:.65rem}
 .omdena-project-links{display:grid;gap:.55rem;width:100%;margin-top:auto}
 .omdena-project-links a{display:flex;align-items:center;justify-content:space-between;gap:.75rem;min-height:44px;padding:.7rem .85rem;border:1px solid #c9d9ce;border-radius:9px;background:#fff;color:#216047;font-size:.78rem;font-weight:700;line-height:1.35}
-.omdena-project-links a:last-child{justify-content:center;background:#f2f6f3}
+.omdena-project-links a:last-child{position:relative;justify-content:center;padding-right:2.75rem;padding-left:2.75rem;background:#f2f6f3;text-align:center}
+.omdena-project-links a:last-child>svg{position:absolute;right:1rem;top:50%;flex:0 0 auto;transform:translateY(-50%)}
 .omdena-project-links a span{min-width:0;overflow-wrap:anywhere}
 .omdena-featured{grid-template-columns:1fr}
 .omdena-featured article{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(260px,.9fr);grid-template-rows:auto auto 1fr auto auto;column-gap:1.5rem;align-items:start}
@@ -807,6 +808,7 @@
 @media(max-width:760px){.community-values article{grid-template-columns:34px minmax(0,1fr);padding:.75rem}.community-values article>svg{width:34px;height:34px;padding:8px}}
 /* Replace the mission callout with plain, sourced community information. */
 .community-summary{margin:0;padding:0 0 1rem;border-bottom:1px solid #dce4de;color:#59665f;font-size:.9rem;line-height:1.62}
+.community-workshop-note{margin:1rem 0 0;color:#59665f;font-size:.86rem;line-height:1.6}
 .community-values{margin-top:1rem}
 .community-values article{border-color:#dde4df;background:#fff}
 .community-values article:nth-child(1)>svg{background:#e5f0e9;color:#28694f}
