@@ -23,6 +23,7 @@ export const wiseBodyHtml = `
 <section class="hero" id="overview">
   <div class="hero-grid">
     <aside class="bio-panel" id="profile">
+      <div class="bio-intro">
       <div class="avatar-photo">YC</div>
       <h2>Yangyang Cai</h2>
       <div class="role">Senior Data Engineer | Data &amp; AI Lecturer, Make AI Practical</div>
@@ -35,6 +36,8 @@ export const wiseBodyHtml = `
         <a href="https://github.com/DANancy" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--text-secondary)"><path d="M12 2C6.48 2 2 6.58 2 12.2c0 4.5 2.87 8.32 6.84 9.67.5.1.68-.22.68-.49 0-.24-.01-1.04-.01-1.88-2.78.61-3.37-1.21-3.37-1.21-.45-1.17-1.11-1.48-1.11-1.48-.9-.63.07-.62.07-.62 1 .07 1.53 1.04 1.53 1.04.89 1.55 2.34 1.1 2.91.84.09-.66.35-1.1.63-1.36-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.04 1.03-2.76-.1-.26-.45-1.32.1-2.75 0 0 .84-.27 2.75 1.05a9.36 9.36 0 0 1 5 0c1.91-1.32 2.75-1.05 2.75-1.05.55 1.43.2 2.49.1 2.75.64.72 1.03 1.64 1.03 2.76 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.6.69.49A10.02 10.02 0 0 0 22 12.2C22 6.58 17.52 2 12 2z"/></svg>
         </a>
+      </div>
+
       </div>
 
       <div class="bio-section">
