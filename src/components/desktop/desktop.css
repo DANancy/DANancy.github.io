@@ -498,3 +498,68 @@
 @media(max-width:760px){.overview-content h1{min-height:2.15em}.desktop-nav{width:100%;grid-template-columns:repeat(2,minmax(0,1fr))}}
 /* Keep repeated principles readable in the Overview status bar */
 @media(max-width:760px){.window-status{gap:.65rem;padding:0 .8rem;font-size:.48rem}.window-status span:nth-child(2){display:none}}
+/* Keep the complete Contact page visible inside the shared desktop window. */
+@media(min-width:901px){
+  .desktop-window:has(.contact-page){overflow:hidden}
+  .desktop-window:has(.contact-page) .contact-page{flex:1 1 auto;min-height:0;padding:1.35rem 3rem 1rem;justify-content:flex-start}
+  .contact-page .contact-heading{margin-bottom:1rem}
+  .contact-page .contact-heading h2{margin-top:.35rem;font-size:clamp(2.4rem,4vw,3.35rem);line-height:1}
+  .contact-page .contact-heading>p:last-child{margin-top:.5rem;font-size:.9rem;line-height:1.45}
+  .contact-page .contact-grid{gap:1rem}
+  .contact-page .contact-grid article{min-height:0;padding:1.15rem}
+  .contact-page .contact-grid article>svg{flex-basis:40px;width:40px;height:40px;padding:9px}
+  .contact-page .contact-grid article>h3{margin-top:.75rem;font-size:1.2rem}
+  .contact-page .contact-grid article>p{min-height:2.9em;margin:.35rem 0 .75rem;font-size:.82rem;line-height:1.45}
+  .contact-page .contact-grid article>a{min-height:42px;padding:.7rem}
+}
+/* Shared desktop frame size with visible scrolling only when required. */
+@media(min-width:761px){
+  .section-window{height:min(780px,calc(100dvh - 7rem));max-height:min(780px,calc(100dvh - 7rem));overflow-x:hidden;overflow-y:auto;scrollbar-gutter:stable;scrollbar-width:thin;scrollbar-color:#718079 #edf1ee}
+  .section-window::-webkit-scrollbar{width:10px}
+  .section-window::-webkit-scrollbar-track{background:#edf1ee}
+  .section-window::-webkit-scrollbar-thumb{border:2px solid #edf1ee;border-radius:999px;background:#718079}
+  .section-window::-webkit-scrollbar-thumb:hover{background:#52635a}
+  .desktop-window:has(.contact-page){scrollbar-gutter:auto;overflow:hidden}
+}
+/* Compact, consistent spacing rhythm across portfolio pages. */
+@media(min-width:901px){
+  .section-window>.window-page:not(.contact-page){padding:2.5rem clamp(2rem,4vw,3.5rem) 2rem}
+  .section-window>.window-page:not(.contact-page)>h2{margin-top:1rem}
+  .section-window>.window-page:not(.contact-page)>.page-lead{margin-top:1rem}
+  .section-window>.window-page:not(.contact-page)>h3{margin-top:2rem}
+  .section-window>.window-page:not(.contact-page)>hr{margin-top:2.5rem}
+  .personal-principles{margin-top:1.5rem}
+  .beyond-work{margin-top:2rem;padding:1.6rem}
+  .beyond-work .beyond-grid{gap:1rem;margin-top:1.25rem}
+  .beyond-work .beyond-grid article{min-height:190px;padding:1.2rem}
+  .work-page .project-grid{gap:1.1rem;margin-top:2rem}
+  .work-page .project-grid article{min-height:260px;padding:1.35rem}
+  .omdena-experience{margin-top:2.5rem;padding:1.5rem}
+  .omdena-projects article{padding:1.15rem}
+  .community-page{gap:1.25rem;padding-top:2.5rem}
+  .community-copy{padding:1.5rem}
+  .event-facts{margin:1.5rem 0}
+  .fun-grid{gap:1.15rem;margin-top:2rem}
+  .pottery-images{padding:1.15rem}
+  .links-grid{margin-top:2rem}
+  .link-card{min-height:250px;padding:1.4rem}
+  .loved-links{margin-top:2rem;padding:1.3rem}
+  .loved-links article{min-height:225px}
+  .learning-card{min-height:300px}
+}
+
+@media(max-width:760px){
+  .section-window>.window-page:not(.contact-page){padding:3.5rem 1rem 1.25rem}
+  .section-window>.window-page:not(.contact-page)>hr{margin-top:2.5rem}
+  .personal-principles,.beyond-work,.omdena-experience,.loved-links{margin-top:1.5rem}
+  .beyond-work{padding:1.15rem}
+  .community-page{padding-top:3.5rem}
+  .fun-grid,.links-grid{margin-top:1.5rem}
+}
+/* One-screen desktop composition; long content scrolls inside its window. */
+@media(min-width:761px){
+  .desktop-shell{height:100dvh;min-height:100dvh;padding:clamp(3rem,6vh,4.5rem) 1.5rem 0;overflow:hidden}
+  .overview-window{height:clamp(500px,64dvh,620px);min-height:0}
+  .fruit-grove{position:absolute;z-index:1;inset:auto 0 0;width:100%;height:clamp(220px,30dvh,300px);margin:0}
+  .desktop-footer{position:absolute;z-index:3;left:50%;bottom:clamp(7.5rem,16vh,10rem);width:max-content;margin:0;transform:translateX(-50%)}
+}
