@@ -52,7 +52,7 @@ export const wiseCss = `
 
   /* ---- font stack: Wise Sans is proprietary/unavailable : Inter (loaded via Google Fonts
      above) is the brand's own documented substitute, real weight 900 for the hero voice ---- */
-  --font-display: var(--font-fredoka), var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-display: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-body: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-code: var(--font-jbmono), "JetBrains Mono", ui-monospace, monospace;
 
@@ -155,7 +155,7 @@ section.hero { padding: var(--sp-xl) 0 var(--sp-md); }
   display: inline-block; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.04em;
   color: #ffe09a; text-transform: uppercase; margin-bottom: var(--sp-sm);
 }
-h1.title { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 600; line-height: 1.08; letter-spacing: -0.01em; margin: 0 0 var(--sp-md); color: #ffffff; text-shadow: 0 2px 10px rgba(4,45,36,0.22); }
+h1.title { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 500; line-height: 1.08; letter-spacing: -0.01em; margin: 0 0 var(--sp-md); color: #ffffff; text-shadow: 0 2px 10px rgba(4,45,36,0.22); }
 h1.title .accent { color: #ffe09a; display: block; }
 .lede { font-size: 1.25rem; font-weight: 400; line-height: 1.5; color: #f2fffa; opacity: 0.8; max-width: 62ch; margin: 0 0 var(--sp-xl); }
 

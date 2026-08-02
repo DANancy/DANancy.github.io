@@ -415,11 +415,16 @@
 .fun-books>.fun-window-bar{background:#dfeae3!important;color:#285a45!important;border-bottom-color:#cbdacf!important}
 .conference-window::before{display:none!important}
 .conference-body{position:relative;z-index:1;display:grid;grid-template-columns:78px minmax(0,1fr) auto;gap:1.5rem;align-items:center;padding:1.65rem 1.8rem}
+.conference-copy{min-width:0}
+.conference-window .conference-cta{display:block;min-width:190px;padding:1rem 1.1rem;border:1px solid #c9d8cd;border-radius:14px;background:#f4f8f4;color:#185f45;box-shadow:none;text-align:left;transition:border-color .2s ease,background .2s ease,transform .2s ease}
+.conference-window .conference-cta span{display:block;color:#728079;font-family:var(--font-mono);font-size:.55rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+.conference-window .conference-cta strong{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-top:.45rem;font-family:var(--font-sans);font-size:.9rem;font-weight:600}
+.conference-window .conference-cta:hover{border-color:#74a38b;background:#eaf3ed;color:#0d573d;transform:translateY(-2px)}
 .animation-window-body{padding:1.7rem}
 .animation-window-body>header{display:flex;align-items:center;gap:1rem;margin-bottom:1.35rem}
 .fun-books{grid-column:1/-1;margin-top:0!important}
 .fun-books>.books-page{min-height:0;padding:1.7rem!important;overflow:hidden}
-@media(max-width:760px){.fun-window-frame{border-radius:14px!important}.fun-window-bar{padding:.78rem 1rem!important}.conference-body{grid-template-columns:48px minmax(0,1fr);gap:.85rem;padding:1.1rem}.conference-body>a{grid-column:1/-1;width:100%}.animation-window-body{padding:1rem}.animation-window-body>header{align-items:flex-start;gap:.75rem}.fun-books{margin-top:0!important}.fun-books>.books-page{padding:1rem!important}}
+@media(max-width:760px){.fun-window-frame{border-radius:14px!important}.fun-window-bar{padding:.78rem 1rem!important}.conference-body{grid-template-columns:48px minmax(0,1fr);gap:.85rem;padding:1.1rem}.conference-body>.conference-cta{grid-column:1/-1;width:100%;min-width:0}.animation-window-body{padding:1rem}.animation-window-body>header{align-items:flex-start;gap:.75rem}.fun-books{margin-top:0!important}.fun-books>.books-page{padding:1rem!important}}
 /* Keep the overview anchored and visible on every viewport */
 .desktop-shell{overflow-x:hidden}
 .overview-window{display:block;visibility:visible;opacity:1;background:#fff;animation:none}
@@ -676,3 +681,5 @@
 .window-page h3,.window-page h4,.project-grid h3,.book-entry-copy h3,.links-grid h3,.learning-card h4,.omdena-projects h4,.contact-grid h3{font-family:var(--font-sans);font-weight:600}
 .book-entry blockquote{font-family:var(--font-sans);font-weight:400}
 .window-bar>b,.desktop-nav b,.subpage-nav button,.page-pill,.window-page>h3,.principles-heading,.style-chips span,.principles-grid strong,.project-visit,.online-rating,.community-actions a,.eventbrite-button,.fun-window-bar,.link-category,.link-card-number,.omdena-date,.omdena-tags span,.learning-card-label,.learning-card>div span,.friends-shelf-label,.fde-highlights span,.book-author,.book-published{font-family:var(--font-mono);font-weight:600}
+/* Keep every content-page heading lighter than the playful Overview greeting. */
+.window-page>h1,.window-page>h2,.community-copy h2,.fun-heading h2,.links-heading h2,.contact-heading h2,.story-books-heading h2,.books-heading h2{font-family:var(--font-sans);font-size:clamp(2.15rem,3.8vw,3.55rem);font-weight:500;line-height:1.08;letter-spacing:-.035em;color:#36584a}
