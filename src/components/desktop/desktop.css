@@ -781,7 +781,7 @@
   .work-page .project-grid article>p{min-height:12.5em;margin-top:.55rem}
   .work-page .project-grid article:nth-child(-n+2)>p{min-height:14em}
   .work-page .project-visit{align-self:flex-start;min-height:42px;margin:.8rem 0 0}
-  .work-page .project-grid article>div:last-child{align-content:flex-start;align-self:stretch;margin-top:.9rem;padding-top:0}
+  .work-page .project-grid article>div:last-child{align-content:flex-start;align-self:stretch;margin-top:.7rem;padding-top:0}
 }
 @media(min-width:761px) and (max-width:1000px){
   .work-page .project-grid h3{min-height:4.5em}
@@ -790,7 +790,7 @@
 }
 @media(max-width:760px){
   .work-page .project-grid h3,.work-page .project-grid article>p{min-height:0}
-  .work-page .project-grid article>div:last-child{margin-top:.9rem}
+  .work-page .project-grid article>div:last-child{margin-top:.7rem}
 }
 /* Align compact Omdena collaboration cards. */
 @media(min-width:1001px){
