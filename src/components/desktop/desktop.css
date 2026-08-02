@@ -760,3 +760,13 @@
 @media(min-width:901px){
   .desktop-window:has(.contact-page) .contact-page{padding-top:2.5rem}
 }
+/* Mobile Overview scrolls inside its stationary window frame. */
+@media(max-width:760px){
+  .window-stage .overview-window{display:flex;flex-direction:column;overflow-x:hidden;overflow-y:auto;scrollbar-width:thin;scrollbar-color:#718079 #edf1ee}
+  .overview-window>.window-bar{flex:0 0 auto}
+  .overview-window>.overview-content{flex:0 0 auto}
+  .overview-window>.window-status{position:relative;inset:auto;flex:0 0 auto;width:100%;min-height:44px;margin-top:0;border-radius:0 0 12px 12px}
+  .overview-window::-webkit-scrollbar{width:8px}
+  .overview-window::-webkit-scrollbar-track{background:#edf1ee}
+  .overview-window::-webkit-scrollbar-thumb{border:2px solid #edf1ee;border-radius:999px;background:#718079}
+}

@@ -6,8 +6,8 @@ export const wiseBodyHtml = `
       <span class="brand-sub">Independent Bootcamp Portfolio Demo</span>
     </div>
     <nav class="links">
-      <a href="#overview">Overview</a>
       <a href="#profile">Profile</a>
+      <a href="#overview">Overview</a>
       <a href="#context">Business Context</a>
       <a href="#architecture">Architecture</a>
       <a href="#data-model">Data Model</a>
@@ -22,6 +22,56 @@ export const wiseBodyHtml = `
 
 <section class="hero" id="overview">
   <div class="hero-grid">
+    <aside class="bio-panel" id="profile">
+      <div class="avatar-photo">YC</div>
+      <h2>Yangyang Cai</h2>
+      <div class="role">Senior Data Engineer | Data &amp; AI Lecturer, Make AI Practical</div>
+      <p>Senior Data Engineer in Australia's renewable energy industry with 10+ years of experience in data engineering, data platforms, and analytics. Passionate about building real-world data solutions and empowering learners with practical skills.</p>
+
+      <div class="icon-row">
+        <a href="https://www.linkedin.com/in/yangyangcai" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--series-blue)"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+        </a>
+        <a href="https://github.com/DANancy" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--text-secondary)"><path d="M12 2C6.48 2 2 6.58 2 12.2c0 4.5 2.87 8.32 6.84 9.67.5.1.68-.22.68-.49 0-.24-.01-1.04-.01-1.88-2.78.61-3.37-1.21-3.37-1.21-.45-1.17-1.11-1.48-1.11-1.48-.9-.63.07-.62.07-.62 1 .07 1.53 1.04 1.53 1.04.89 1.55 2.34 1.1 2.91.84.09-.66.35-1.1.63-1.36-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.04 1.03-2.76-.1-.26-.45-1.32.1-2.75 0 0 .84-.27 2.75 1.05a9.36 9.36 0 0 1 5 0c1.91-1.32 2.75-1.05 2.75-1.05.55 1.43.2 2.49.1 2.75.64.72 1.03 1.64 1.03 2.76 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.6.69.49A10.02 10.02 0 0 0 22 12.2C22 6.58 17.52 2 12 2z"/></svg>
+        </a>
+      </div>
+
+      <div class="bio-section">
+        <h3>Core Skills</h3>
+        <div class="skill-chips">
+          <span class="skill-chip">SQL</span>
+          <span class="skill-chip">Python</span>
+          <span class="skill-chip">Databricks</span>
+          <span class="skill-chip">Microsoft Fabric</span>
+          <span class="skill-chip">Power BI</span>
+          <span class="skill-chip">Data Modeling</span>
+          <span class="skill-chip">Data Engineering</span>
+          <span class="skill-chip">AI &amp; LLM</span>
+        </div>
+      </div>
+
+      <div class="bio-section">
+        <h3>Certifications &amp; Achievements</h3>
+        <ul>
+          <li>Microsoft Certified: Fabric Data Engineer Associate</li>
+          <li>Databricks Certified Data Engineer Associate</li>
+          <li>Shell Energy Australia, Best of 2024 Award</li>
+          <li>AGL Data &amp; Analytics Academy, Top Learner</li>
+          <li>Omdena Lead ML Engineer</li>
+          <li>AI Hackathon Winner</li>
+        </ul>
+      </div>
+
+      <div class="bio-section">
+        <h3>Community &amp; Teaching</h3>
+        <ul>
+          <li>Data Engineering Bootcamp Instructor</li>
+          <li>AI Workshop Instructor</li>
+          <li>Make AI Practical (MAP), Community Volunteer &amp; Organizer</li>
+        </ul>
+      </div>
+    </aside>
     <div class="hero-left-col">
     <div class="hero-main">
       <svg class="hero-scene" viewBox="0 0 800 130" preserveAspectRatio="none" aria-hidden="true">
@@ -205,56 +255,7 @@ export const wiseBodyHtml = `
     </section>
     </div>
 
-    <aside class="bio-panel" id="profile">
-      <div class="avatar-photo">YC</div>
-      <h2>Yangyang Cai</h2>
-      <div class="role">Senior Data Engineer | Data &amp; AI Lecturer, Make AI Practical</div>
-      <p>Senior Data Engineer in Australia's renewable energy industry with 10+ years of experience in data engineering, data platforms, and analytics. Passionate about building real-world data solutions and empowering learners with practical skills.</p>
 
-      <div class="icon-row">
-        <a href="https://www.linkedin.com/in/yangyangcai" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--series-blue)"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
-        </a>
-        <a href="https://github.com/DANancy" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--text-secondary)"><path d="M12 2C6.48 2 2 6.58 2 12.2c0 4.5 2.87 8.32 6.84 9.67.5.1.68-.22.68-.49 0-.24-.01-1.04-.01-1.88-2.78.61-3.37-1.21-3.37-1.21-.45-1.17-1.11-1.48-1.11-1.48-.9-.63.07-.62.07-.62 1 .07 1.53 1.04 1.53 1.04.89 1.55 2.34 1.1 2.91.84.09-.66.35-1.1.63-1.36-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.04 1.03-2.76-.1-.26-.45-1.32.1-2.75 0 0 .84-.27 2.75 1.05a9.36 9.36 0 0 1 5 0c1.91-1.32 2.75-1.05 2.75-1.05.55 1.43.2 2.49.1 2.75.64.72 1.03 1.64 1.03 2.76 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.6.69.49A10.02 10.02 0 0 0 22 12.2C22 6.58 17.52 2 12 2z"/></svg>
-        </a>
-      </div>
-
-      <div class="bio-section">
-        <h3>Core Skills</h3>
-        <div class="skill-chips">
-          <span class="skill-chip">SQL</span>
-          <span class="skill-chip">Python</span>
-          <span class="skill-chip">Databricks</span>
-          <span class="skill-chip">Microsoft Fabric</span>
-          <span class="skill-chip">Power BI</span>
-          <span class="skill-chip">Data Modeling</span>
-          <span class="skill-chip">Data Engineering</span>
-          <span class="skill-chip">AI &amp; LLM</span>
-        </div>
-      </div>
-
-      <div class="bio-section">
-        <h3>Certifications &amp; Achievements</h3>
-        <ul>
-          <li>Microsoft Certified: Fabric Data Engineer Associate</li>
-          <li>Databricks Certified Data Engineer Associate</li>
-          <li>Shell Energy Australia, Best of 2024 Award</li>
-          <li>AGL Data &amp; Analytics Academy, Top Learner</li>
-          <li>Omdena Lead ML Engineer</li>
-          <li>AI Hackathon Winner</li>
-        </ul>
-      </div>
-
-      <div class="bio-section">
-        <h3>Community &amp; Teaching</h3>
-        <ul>
-          <li>Data Engineering Bootcamp Instructor</li>
-          <li>AI Workshop Instructor</li>
-          <li>Make AI Practical (MAP), Community Volunteer &amp; Organizer</li>
-        </ul>
-      </div>
-    </aside>
   </div>
 </section>
 
