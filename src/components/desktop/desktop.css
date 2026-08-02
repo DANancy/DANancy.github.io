@@ -654,3 +654,17 @@
 @media(max-width:760px){
   .desktop-footer{position:relative;left:auto;bottom:auto;width:max-content;max-width:calc(100vw - 2rem);margin:1.25rem auto 0;transform:none}
 }
+/* Original fruit-tree artwork, retained as a quiet background layer. */
+.original-fruit-background{position:absolute;z-index:0;inset:auto 0 0;height:clamp(150px,22dvh,220px);overflow:hidden;pointer-events:none;-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 36%,#000 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 36%,#000 100%)}
+.original-fruit-background img{object-fit:cover;object-position:center 58%;opacity:.5;filter:saturate(.78) brightness(1.08)}
+@media(max-width:760px){
+  .original-fruit-background{position:relative;width:calc(100% + 1.1rem);height:135px;margin:1rem -.55rem calc(-1 * max(1.5rem,env(safe-area-inset-bottom)));}
+  .original-fruit-background img{object-position:center 62%;opacity:.42}
+  .desktop-footer{z-index:3;margin-top:-104px}
+}
+/* Balance the Overview between its title bar and status bar. */
+@media(min-width:761px){
+  .overview-content{padding:clamp(2rem,3.5vh,2.75rem) 2rem 4.75rem}
+  .desktop-nav{row-gap:clamp(1.15rem,2.25vh,1.65rem);margin-top:clamp(1.5rem,2.5vh,2rem)}
+  .desktop-nav button{gap:.55rem}
+}

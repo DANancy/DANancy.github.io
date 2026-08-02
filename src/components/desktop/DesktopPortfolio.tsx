@@ -10,6 +10,7 @@ import communityCharacter from "@/assets/web/character-community.png";
 import funCharacter from "@/assets/web/character-fun.png";
 import linksCharacter from "@/assets/web/character-links.png";
 import contactCharacter from "@/assets/web/character-contact.png";
+import backyardOrchard from "@/assets/web/yangyang-backyard-orchard.webp";
 import mercyBookImage from "@/assets/仁慈的关系.jpg";
 import nexusBookImage from "@/assets/智人之上.jpg";
 import alchemistBookImage from "@/assets/牧羊少年奇幻之旅.jpg";
@@ -61,6 +62,7 @@ export function DesktopPortfolio(){
     <Character key={active} active={active} language={language}/>
     {active!=="overview"&&<button className="desktop-floating-close" onClick={()=>setActive("overview")} aria-label={tr(language,`Close ${activeItem?.label??active} window`,`关闭${activeItem?.labelZh??active}窗口`)}><span className="sunflower-close" aria-hidden="true"><Flower2/><X/></span></button>}
     </div>
+    <div className="original-fruit-background" aria-hidden><Image src={backyardOrchard} alt="" fill sizes="100vw"/></div>
     {active==="overview"&&<footer className="desktop-footer"><div className="footer-socials"><a href="https://www.linkedin.com/in/yangyangcai" target="_blank" rel="noreferrer" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45Z"/></svg></a><a href="https://github.com/DANancy" target="_blank" rel="noreferrer" aria-label="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .7a11.5 11.5 0 0 0-3.64 22.4c.58.1.79-.25.79-.56v-2.23c-3.22.7-3.9-1.37-3.9-1.37-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.17.08 1.78 1.2 1.78 1.2 1.04 1.78 2.72 1.27 3.39.97.1-.75.4-1.27.74-1.56-2.57-.29-5.27-1.28-5.27-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.16 1.18a10.96 10.96 0 0 1 5.75 0c2.2-1.49 3.16-1.18 3.16-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.71 5.38-5.29 5.67.42.36.79 1.06.79 2.14v3.05c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .7Z"/></svg></a><a href="mailto:yangyangcai.au@gmail.com" aria-label="Email Yangyang"><Mail aria-hidden="true"/></a></div><span>&copy; 2026 {tr(language,"Yangyang Cai","蔡阳阳")}</span></footer>}
   </main>;
 }
