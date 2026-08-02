@@ -825,7 +825,7 @@
 .project-preview{width:100%;aspect-ratio:2.18/1;margin:.8rem 0 0;overflow:hidden;border:1px solid #d7dfd8;border-radius:10px;background:#fff}
 .project-preview img{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
 .project-grid article:nth-child(3) .project-preview img{object-fit:contain}
-@media(min-width:1001px){.work-page .project-grid article:has(.project-preview)>p{min-height:8em}.work-page .project-grid article:has(.project-preview) .project-preview{flex:0 0 auto}}
+@media(min-width:1001px){.work-page .project-grid article:has(.project-preview)>p{min-height:10em}.work-page .project-grid article:has(.project-preview) .project-preview{flex:0 0 auto}}
 @media(min-width:761px) and (max-width:1000px){.work-page .project-grid article:has(.project-preview)>p{min-height:12em}.work-page .project-grid article:has(.project-preview) .project-preview{flex:0 0 auto}}
 @media(max-width:760px){.project-preview{margin-top:.75rem}}
 /* Final accessibility and responsive consistency pass. */
