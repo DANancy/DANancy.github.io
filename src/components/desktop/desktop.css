@@ -350,8 +350,8 @@
 @media(max-width:760px){.window-stage .character-about,.window-stage .character-work,.window-stage .character-community,.window-stage .character-books,.window-stage .character-fun,.window-stage .character-links,.window-stage .character-contact{right:56px}}
 /* Soft orchard desktop scene */
 .desktop-shell{background:radial-gradient(circle at 78% 10%,#fff8d8 0,transparent 18%),linear-gradient(180deg,#eef7f1 0%,#f8f7ef 58%,#e7f0e4 100%)}
-.fruit-grove{position:absolute;z-index:0;inset:auto 0 0;height:230px;overflow:hidden;pointer-events:none}
-.backyard-orchard{object-fit:cover;object-position:center 62%;opacity:.84;filter:saturate(.82) contrast(.94)}
+.fruit-grove{position:absolute;z-index:0;inset:auto 0 0;height:150px;overflow:hidden;pointer-events:none}
+.backyard-orchard{object-fit:cover;object-position:center 72%;opacity:.84;filter:saturate(.82) contrast(.94)}
 .backyard-sign{position:absolute;z-index:2;left:50%;bottom:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;width:144px;height:58px;translate:-50% 0;border:2px solid #775839;border-radius:50% 50% 10px 10px;background:linear-gradient(180deg,#c79a65,#aa7747);color:#fffaf0;box-shadow:0 5px 0 -2px #6b4d34,0 10px 20px #29453424}
 .backyard-sign::before,.backyard-sign::after{content:"";position:absolute;top:52px;width:8px;height:38px;border-radius:0 0 4px 4px;background:#775839}.backyard-sign::before{left:24px}.backyard-sign::after{right:24px}
 .backyard-sign b{font-family:Georgia,serif;font-size:.9rem;line-height:1}.backyard-sign small{margin-top:.25rem;font-family:var(--font-mono);font-size:.42rem;font-weight:800;letter-spacing:.15em}
@@ -361,11 +361,11 @@
 .footer-socials a:hover{translate:0 -3px;background:#176044}
 .footer-socials svg{width:19px;height:19px}.footer-socials a>span{display:block;font-family:var(--font-mono);font-size:.78rem;font-weight:800;letter-spacing:-.06em}
 .desktop-footer>span{display:block;font-size:.72rem}
-@media(max-width:760px){.fruit-grove{height:155px}.backyard-orchard{object-position:center 68%;opacity:.78}.backyard-sign{bottom:8px;width:112px;height:46px}.backyard-sign::before,.backyard-sign::after{top:42px;height:30px}.backyard-sign::before{left:19px}.backyard-sign::after{right:19px}.backyard-sign b{font-size:.72rem}.backyard-sign small{font-size:.34rem}.desktop-footer{margin-top:1.5rem}.desktop-footer>span{display:block}}
+@media(max-width:760px){.fruit-grove{height:105px}.backyard-orchard{object-position:center 76%;opacity:.78}.backyard-sign{bottom:8px;width:104px;height:42px}.backyard-sign::before,.backyard-sign::after{top:38px;height:24px}.backyard-sign::before{left:18px}.backyard-sign::after{right:18px}.backyard-sign b{font-size:.68rem}.backyard-sign small{font-size:.32rem}.desktop-footer{margin-top:1.5rem}.desktop-footer>span{display:block}}
 @media(prefers-reduced-motion:reduce){.footer-socials a{transition:none}.footer-socials a:hover{translate:none}}
 /* Explicit Links character anchor */
-.window-stage .character-links{position:absolute;right:64px;top:-64px;width:145px;height:145px;border-radius:50%;rotate:4deg}
-@media(max-width:760px){.window-stage .character-links{right:56px;top:-36px;width:80px;height:80px;border-width:5px}}
+.window-stage .character-links{position:absolute;right:64px;top:-48px;width:170px;height:170px;border-radius:50%;rotate:4deg}
+@media(max-width:760px){.window-stage .character-links{right:56px;top:-22px;width:96px;height:96px;border-width:5px}}
 /* Preserve the complete heart inside the Contact character circle */
 .character-contact{overflow:visible}
 .character-contact img{clip-path:circle(50%);object-fit:contain;transform:translate(7px,8px) scale(1.1);transform-origin:center}
@@ -497,11 +497,11 @@
 .personal-principles{margin-top:2.2rem}
 .principles-heading{color:#7e8982;text-transform:uppercase;letter-spacing:.16em;font-family:var(--font-mono);font-size:.68rem;font-weight:700}
 .principles-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.8rem;margin-top:1rem}
-.principles-grid article{display:flex;align-items:center;gap:.7rem;min-width:0;min-height:72px;padding:1rem;border-radius:11px;background:#287a59;color:#fff}
+.principles-grid article{display:flex;align-items:center;gap:.65rem;min-width:0;min-height:56px;padding:.7rem .9rem;border-radius:11px;background:#287a59;color:#fff}
 .principles-grid article:nth-child(2){background:#31736f}.principles-grid article:nth-child(3){background:#ffb443;color:#674700}.principles-grid article:nth-child(4){background:#765a91}
 .principles-grid article>svg{flex:0 0 auto;width:22px;height:22px}.principles-grid strong{font-family:var(--font-mono);font-size:.72rem;line-height:1.35}
 @media(max-width:900px){.principles-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:560px){.principles-grid{grid-template-columns:1fr}.principles-grid article{min-height:62px}}/* Keep Overview geometry stable across languages */
+@media(max-width:560px){.principles-grid{grid-template-columns:1fr}.principles-grid article{min-height:52px;padding:.65rem .85rem}}/* Keep Overview geometry stable across languages */
 .overview-content h1{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.22em;width:100%;min-height:1.15em}
 .desktop-nav{width:min(760px,100%);grid-template-columns:repeat(3,minmax(0,1fr))}
 .desktop-nav button{min-width:0}
