@@ -7,6 +7,7 @@ export const wiseBodyHtml = `
     </div>
     <nav class="links">
       <a href="#overview">Overview</a>
+      <a href="#profile">Profile</a>
       <a href="#context">Business Context</a>
       <a href="#architecture">Architecture</a>
       <a href="#data-model">Data Model</a>
@@ -204,7 +205,7 @@ export const wiseBodyHtml = `
     </section>
     </div>
 
-    <aside class="bio-panel">
+    <aside class="bio-panel" id="profile">
       <div class="avatar-photo">YC</div>
       <h2>Yangyang Cai</h2>
       <div class="role">Senior Data Engineer | Data &amp; AI Lecturer, Make AI Practical</div>

@@ -442,12 +442,13 @@
 .omdena-projects p{color:#5e6963;line-height:1.62}
 .omdena-projects article>img{display:block;width:100%;height:auto;max-height:none;margin:1rem 0;border:1px solid #dce4dd;border-radius:9px;background:#fff;object-fit:contain;object-position:center}
 .omdena-projects article>a:last-child{width:100%;margin-top:auto;padding-top:.65rem}
-.omdena-reading{margin-top:1.5rem}.omdena-reading>h4{margin-bottom:.8rem;color:#234437;font-size:1.15rem}
-.omdena-reading>div{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.65rem}
-.omdena-reading a{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:52px;padding:.8rem 1rem;border:1px solid #d1ddd4;border-radius:9px;background:#fff;color:#2f5e4b;font-size:.85rem;font-weight:700}
+.omdena-project-links{display:grid;gap:.55rem;width:100%;margin-top:auto}
+.omdena-project-links a{display:flex;align-items:center;justify-content:space-between;gap:.75rem;min-height:44px;padding:.7rem .85rem;border:1px solid #c9d9ce;border-radius:9px;background:#fff;color:#216047;font-size:.78rem;font-weight:700;line-height:1.35}
+.omdena-project-links a:last-child{justify-content:center;background:#f2f6f3}
+.omdena-project-links a span{min-width:0;overflow-wrap:anywhere}
 .link-card.blue{--card-accent:#315fa0}
 .links-grid .link-card:last-child:nth-child(odd){grid-column:1/-1;min-height:250px}
-@media(max-width:760px){.omdena-experience{margin-top:2.5rem;padding:1rem}.omdena-heading{align-items:flex-start;flex-direction:column;gap:1rem}.omdena-heading>a{width:100%}.omdena-projects,.omdena-reading>div{grid-template-columns:1fr}.omdena-projects article{padding:1.1rem}.links-grid .link-card:last-child:nth-child(odd){grid-column:auto;min-height:250px}}
+@media(max-width:760px){.omdena-experience{margin-top:2.5rem;padding:1rem}.omdena-heading{align-items:flex-start;flex-direction:column;gap:1rem}.omdena-heading>a{width:100%}.omdena-projects{grid-template-columns:1fr}.omdena-projects article{padding:1.1rem}.links-grid .link-card:last-child:nth-child(odd){grid-column:auto;min-height:250px}}
 /* Heart-led Mutoo collection */
 .loved-links{position:relative;z-index:1;width:min(960px,100%);margin-top:3rem;padding:1.6rem;border:1px solid #ead5d8;border-radius:22px;background:linear-gradient(135deg,#fff8f8 0%,#fffdf7 100%);box-shadow:0 14px 32px rgba(105,54,60,.07)}
 .loved-links>header{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;padding:.2rem .2rem 1.25rem}
@@ -714,17 +715,26 @@
   .community-layout{gap:1rem}
   .contact-page>.page-intro{padding-right:4.75rem}
 }
-/* Keep the language control anchored while the mobile portfolio scrolls. */
+/* Keep the frame, title bar and character still while window content scrolls. */
 @media(max-width:760px){
   html:has(.desktop-shell),body:has(.desktop-shell){height:100%;overflow:hidden;overscroll-behavior:none}
-  .desktop-shell{position:fixed;inset:0;width:100%;height:100dvh;min-height:0;overflow-x:hidden;overflow-y:auto;overscroll-behavior-y:contain;-webkit-overflow-scrolling:touch}
-  .section-window{height:auto!important;max-height:none!important;overflow:visible!important;scrollbar-gutter:auto}
+  .desktop-shell{position:fixed;inset:0;width:100%;height:100dvh;min-height:0;overflow:hidden}
+  .window-stage{height:calc(100dvh - 5.5rem - env(safe-area-inset-top));min-height:0}
+  .window-stage .desktop-window{height:100%;min-height:0!important;max-height:100%!important;overflow-x:hidden;overflow-y:auto;overscroll-behavior-y:contain;-webkit-overflow-scrolling:touch}
+  .window-stage .window-bar{position:sticky;top:0}
+  .section-window>.subpage-nav{position:sticky;z-index:7;bottom:0;background:rgba(248,250,248,.98);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
   .language-switch{position:fixed!important;z-index:100;top:calc(env(safe-area-inset-top) + 8px)!important;left:50%!important;right:auto!important;transform:translate3d(-50%,0,0);will-change:transform}
 }
-
 /* Let the complete Contact content scroll on shorter desktop viewports. */
 @media(min-width:761px){
-  .desktop-window.section-window:has(.contact-page){overflow-x:hidden;overflow-y:scroll;scrollbar-gutter:stable;scroll-padding-bottom:7rem}
-  .desktop-window:has(.contact-page) .contact-page{flex:0 0 auto;min-height:620px;padding-bottom:7rem}
-  .desktop-window:has(.contact-page)>.subpage-nav{position:sticky;z-index:7;bottom:0;background:rgba(248,250,248,.98);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+  .desktop-window.section-window:has(.contact-page){overflow:hidden;scrollbar-gutter:auto}
+  .desktop-window:has(.contact-page) .contact-page{flex:1 1 auto;min-height:0;padding-bottom:2rem;overflow-x:hidden;overflow-y:auto;scrollbar-gutter:stable}
+  .desktop-window:has(.contact-page)>.subpage-nav{position:relative;z-index:7;bottom:auto;background:rgba(248,250,248,.98);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+}
+/* Consistent spacing from every page subtitle to its first content section. */
+.page-intro,.contact-page>.page-intro{min-height:0;margin-bottom:1.75rem}
+.page-intro + :is(.project-grid,.community-layout,.fun-grid,.loved-links,.contact-grid){margin-top:0}
+.about-page>.page-intro + h3{margin-top:0}
+@media(max-width:760px){
+  .page-intro,.contact-page>.page-intro{margin-bottom:1.35rem}
 }

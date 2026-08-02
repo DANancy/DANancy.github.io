@@ -140,8 +140,19 @@ nav.links a:hover { color: var(--good); border-bottom-color: var(--good); }
 
 /* hero : the polarity-flipped "hero-band-dark": ink bg + Wise-green headline, always dark */
 section.hero { padding: var(--sp-xl) 0 var(--sp-md); }
-.hero-grid { display: grid; grid-template-columns: 1fr 300px; gap: var(--sp-xl); align-items: start; }
-@media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; } }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: var(--sp-xl); align-items: start; }
+.hero-left-col { display: contents; }
+.hero-main { grid-column: 1; grid-row: 1; min-width: 0; }
+.hero-grid > .bio-panel { grid-column: 2; grid-row: 1; min-width: 0; }
+.hero-grid > #context { grid-column: 1 / -1; grid-row: 2; min-width: 0; }
+.hero-grid > #architecture { grid-column: 1 / -1; grid-row: 3; min-width: 0; }
+@media (max-width: 900px) {
+  .hero-grid { grid-template-columns: minmax(0, 1fr); }
+  .hero-main { grid-column: 1; grid-row: 1; }
+  .hero-grid > .bio-panel { grid-column: 1; grid-row: 2; }
+  .hero-grid > #context { grid-column: 1; grid-row: 3; }
+  .hero-grid > #architecture { grid-column: 1; grid-row: 4; }
+}
 .hero-main {
   position: relative; overflow: hidden;
   background: linear-gradient(135deg, #176b5b 0%, #23836d 58%, #2e9a78 100%);
@@ -194,6 +205,7 @@ h1.title .accent { color: #ffe09a; display: block; }
 }
 
 /* bio panel */
+.bio-panel[id] { scroll-margin-top: 76px; }
 .bio-panel {
   background: var(--surface-1); border-radius: var(--r-xl); padding: var(--sp-xl);
   height: fit-content; position: sticky; top: 76px;
@@ -421,7 +433,7 @@ footer.site-footer { padding: 2.5rem 0 2rem; margin-top: var(--sp-md); border-to
   .brand-sub { width: 100%; padding-left: 40px; font-size: 0.7rem; }
   nav.links { width: calc(100% + 28px); margin: 9px -14px 0; padding: 0 14px 10px; gap: 18px; flex-wrap: nowrap; overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: thin; }
   nav.links a { flex: 0 0 auto; min-height: 36px; display: inline-flex; align-items: center; white-space: nowrap; }
-  section[id] { scroll-margin-top: 112px; }
+  section[id], .bio-panel[id] { scroll-margin-top: 112px; }
   section.hero { padding: 16px 0 0; }
   .hero-grid { gap: 14px; }
   .hero-main { padding: 28px 18px 24px; border-radius: 18px; }
