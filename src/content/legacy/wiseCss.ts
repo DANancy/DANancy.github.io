@@ -158,6 +158,7 @@ section.hero { padding: var(--sp-xl) 0 var(--sp-md); }
 h1.title { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 500; line-height: 1.08; letter-spacing: -0.01em; margin: 0 0 var(--sp-md); color: #ffffff; text-shadow: 0 2px 10px rgba(4,45,36,0.22); }
 h1.title .accent { color: #ffe09a; display: block; }
 .lede { font-size: 1.25rem; font-weight: 400; line-height: 1.5; color: #f2fffa; opacity: 0.8; max-width: 62ch; margin: 0 0 var(--sp-xl); }
+.public-data-note { max-width: 70ch; margin: 0; padding: var(--sp-md) var(--sp-lg); border: 1px solid rgba(255,255,255,.35); border-radius: var(--r-md); background: rgba(255,255,255,.1); color: #f6fffa; font-size: .8125rem; line-height: 1.5; }
 
 /* stat tiles: theme-aware by default (used standalone in the Dashboard section) */
 .stat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--sp-md); margin-bottom: var(--sp-xl); }
@@ -381,21 +382,21 @@ details.data-table th:first-child, details.data-table td:first-child { text-alig
   border: none; display: flex; align-items: center; justify-content: center;
 }
 
-/* footer : polarity-flipped "hero-band-dark" bookend: ink bg, always dark */
-footer.site-footer { padding: var(--sp-3xl) 0; margin-top: var(--sp-md); background: var(--ink); color: var(--canvas-soft); }
+/* Light footer keeps the close of the project calm and consistent with the page. */
+footer.site-footer { padding: 2.5rem 0 2rem; margin-top: var(--sp-md); border-top: 1px solid #d5dfd7; background: linear-gradient(145deg,#edf4ef 0%,#f8f5e9 100%); color: var(--ink); }
 .stack-strip { display: flex; flex-wrap: wrap; gap: var(--sp-lg); margin-bottom: var(--sp-xl); }
 .stack-item { display: flex; flex-direction: column; align-items: center; gap: var(--sp-xs); width: 84px; }
 .stack-item .ico { width: 38px; height: 38px; border-radius: var(--r-md); display: flex; align-items: center; justify-content: center; }
-.stack-item span { font-size: 0.6875rem; text-align: center; color: var(--canvas-soft); opacity: 0.8; font-weight: 600; }
+.stack-item span { font-size: 0.6875rem; text-align: center; color: var(--body-ink); font-weight: 600; }
 .footer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-xl); margin-bottom: var(--sp-xl); }
 @media (max-width: 800px) { .footer-grid { grid-template-columns: 1fr; } }
-.footer-grid h4 { font-family: var(--font-display); font-size: 0.875rem; font-weight: 600; margin: 0 0 var(--sp-sm); color: var(--canvas-soft); }
-.footer-grid ul { margin: 0; padding: 0; list-style: none; font-size: 0.8125rem; color: var(--canvas-soft); opacity: 0.75; }
+.footer-grid h4 { font-family: var(--font-display); font-size: 0.875rem; font-weight: 600; margin: 0 0 var(--sp-sm); color: var(--ink); }
+.footer-grid ul { margin: 0; padding: 0; list-style: none; font-size: 0.8125rem; color: var(--body-ink); }
 .footer-grid li { margin-bottom: var(--sp-sm); display: flex; gap: var(--sp-xs); }
 .footer-grid ul a { color: var(--primary); opacity: 1; }
 /* footer sits on the fixed-dark ink band; the GitHub icon's fill defaults to the
    theme-toggling --text-secondary (dark gray in light mode), invisible on black */
-.connect-row a[aria-label="GitHub"] svg { fill: var(--canvas-soft); }
+.connect-row a[aria-label="GitHub"] svg { fill: var(--body-ink); }
 .footer-grid .benefit-list li::before { content: ""; width: 14px; height: 14px; margin-top: 2px; flex-shrink: 0; border-radius: 50%;
   background: var(--primary); display: inline-block; }
 .connect-row { display: flex; align-items: center; gap: var(--sp-sm); margin-top: var(--sp-md); }
@@ -406,7 +407,67 @@ footer.site-footer { padding: var(--sp-3xl) 0; margin-top: var(--sp-md); backgro
 .btn-solid:hover { background: var(--primary-active); }
 .footer-bottom {
   display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--sp-xs);
-  font-size: 0.75rem; color: var(--canvas-soft); opacity: 0.65; padding-top: var(--sp-md); border-top: 1px solid rgba(255,255,255,0.12);
+  font-size: 0.75rem; color: var(--body-ink); padding-top: var(--sp-md); border-top: 1px solid #cfdad1;
 }
-`;
+
+/* Mobile project layout */
+@media (max-width: 700px) {
+  html, body { max-width: 100%; overflow-x: hidden; }
+  .wrap { width: 100%; padding-inline: 14px; }
+  .nav-inner { display: block; min-height: 0; padding: 10px 14px 0; }
+  .brand-group { gap: 4px 10px; }
+  .brand { font-size: 0.95rem; }
+  .brand .mark { width: 30px; height: 30px; }
+  .brand-sub { width: 100%; padding-left: 40px; font-size: 0.7rem; }
+  nav.links { width: calc(100% + 28px); margin: 9px -14px 0; padding: 0 14px 10px; gap: 18px; flex-wrap: nowrap; overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: thin; }
+  nav.links a { flex: 0 0 auto; min-height: 36px; display: inline-flex; align-items: center; white-space: nowrap; }
+  section[id] { scroll-margin-top: 112px; }
+  section.hero { padding: 16px 0 0; }
+  .hero-grid { gap: 14px; }
+  .hero-main { padding: 28px 18px 24px; border-radius: 18px; }
+  .hero-scene { height: 92px; }
+  .eyebrow { font-size: 0.65rem; line-height: 1.45; }
+  h1.title { font-size: clamp(1.85rem, 10vw, 2.35rem); overflow-wrap: anywhere; }
+  .lede { margin-bottom: 18px; font-size: 1rem; line-height: 1.55; }
+  .stack-row { gap: 6px; margin-bottom: 16px; }
+  .stack-chip { font-size: 0.72rem; }
+  .stat-row, .dash-recap { gap: 8px; margin-bottom: 16px; }
+  .stat-tile { min-width: 0; padding: 12px; }
+  .stat-tile .label { min-height: 2.5em; font-size: 0.7rem; line-height: 1.25; }
+  .stat-tile .value { font-size: 1.2rem; }
+  .bio-panel { padding: 18px; border-radius: 18px; }
+  section.block { padding: 32px 0; }
+  .block-head { align-items: flex-start; }
+  .block-head h2 { font-size: 1.45rem; overflow-wrap: anywhere; }
+  .block-desc { font-size: 0.94rem; }
+  .btn-link { width: 100%; min-height: 48px; justify-content: center; padding: 10px 14px; text-align: center; font-size: 0.9rem; }
+  .two-col, .context-layout, .req-grid, .pipeline, .ai-layout { gap: 12px; }
+  .card, .chart-card { min-width: 0; padding: 16px; border-radius: 16px; }
+  .pipe-stage { padding: 0; }
+  .pipe-card { min-height: 0; padding: 14px; }
+  .schema-table { display: block; max-width: 100%; overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch; }
+  .uml-wrap { margin-inline: -16px; padding: 0 16px 6px; overscroll-behavior-x: contain; -webkit-overflow-scrolling: touch; }
+  .uml-svg { min-width: 560px; }
+  .chart-wrap { margin-inline: -8px; padding: 0 8px 6px; overflow-x: auto; overscroll-behavior-x: contain; -webkit-overflow-scrolling: touch; }
+  .bar-svg { min-width: 480px; }
+  details.data-table { max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  details.data-table table { min-width: 430px; }
+  .top-list li { display: grid; grid-template-columns: 20px minmax(0,1fr) auto; align-items: start; }
+  .top-list .name { min-width: 0; overflow-wrap: anywhere; }
+  .top-list .amount { padding-left: 4px; white-space: nowrap; }
+  .chat-row { gap: 6px; }
+  .chat-bubble { min-width: 0; padding: 10px; overflow-wrap: anywhere; }
+  .ask-row { flex-direction: column; }
+  .ask-row input { width: 100%; min-width: 0; }
+  .ask-row button { width: 100%; min-height: 44px; }
+  .ai-orb { width: min(220px, 76vw); height: min(220px, 76vw); }
+  .stack-strip { justify-content: center; gap: 14px; }
+  .footer-bottom { align-items: flex-start; flex-direction: column; }
+}
+@media (max-width: 380px) {
+  .stat-row, .dash-recap { grid-template-columns: 1fr; }
+  .stat-tile .label { min-height: 0; }
+  .hero-main { padding-inline: 15px; }
+  .card, .chart-card { padding: 14px; }
+}`;
 

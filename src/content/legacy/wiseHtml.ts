@@ -3,7 +3,7 @@ export const wiseBodyHtml = `
   <div class="nav-inner">
     <div class="brand-group">
       <div class="brand"><span class="mark">YC</span> Yangyang Cai</div>
-      <span class="brand-sub">2026 Winter Data Engineering Bootcamp</span>
+      <span class="brand-sub">Independent Bootcamp Portfolio Demo</span>
     </div>
     <nav class="links">
       <a href="#overview">Overview</a>
@@ -33,7 +33,7 @@ export const wiseBodyHtml = `
           <line x1="700" y1="55" x2="700" y2="30"/>
         </g>
       </svg>
-      <span class="eyebrow">Portfolio Project · 2026 Winter Data Engineering Bootcamp</span>
+      <span class="eyebrow">Public Open Data Portfolio Demo</span>
       <h1 class="title">Green Certificate<span class="accent">Shortfall Analytics</span></h1>
 
       <div class="stack-row">
@@ -52,6 +52,7 @@ export const wiseBodyHtml = `
       </div>
 
       <p class="lede">An end-to-end data platform concept for monitoring Australia's Renewable Energy Certificate (LGC / STC) shortfalls, built on real public register data from the Clean Energy Regulator.</p>
+      <p class="public-data-note"><strong>Public-data demo:</strong> This independent learning project uses publicly available CER data only. It does not use or represent any employer's data, systems, confidential methods, or internal work.</p>
     </div>
 
     <section class="block" id="context">
@@ -464,7 +465,8 @@ export const wiseBodyHtml = `
       <div>
         <h4>About This Project</h4>
         <ul>
-          <li>Portfolio project for the 2026 Winter Data Engineering Bootcamp</li>
+          <li>Independent bootcamp portfolio demo built only from publicly available CER data</li>
+          <li>No employer data, systems, confidential methods, or internal work are represented</li>
           <li>Dashboard figures sourced live from the CER Certificate Shortfall Register</li>
           <li><a href="https://cer.gov.au/markets/reports-and-data/certificate-shortfall-register" target="_blank" rel="noopener">View source data →</a></li>
         </ul>
