@@ -563,3 +563,81 @@
   .fruit-grove{position:absolute;z-index:1;inset:auto 0 0;width:100%;height:clamp(220px,30dvh,300px);margin:0}
   .desktop-footer{position:absolute;z-index:3;left:50%;bottom:clamp(7.5rem,16vh,10rem);width:max-content;margin:0;transform:translateX(-50%)}
 }
+/* Skills and tools stay attached to the work where they were used. */
+.omdena-tags{display:flex;flex-wrap:wrap;gap:.35rem;margin:.85rem 0 1rem}
+.omdena-tags span{padding:.28rem .62rem;border-radius:999px;background:#e1eee6;color:#285f49;font-family:var(--font-mono);font-size:.55rem;font-weight:700;letter-spacing:.02em}
+/* Keep subpages visually separate from the Home orchard scene. */
+@media(min-width:901px){
+  .language-switch{top:8px}
+  .desktop-window:has(.contact-page) .contact-page{padding:1rem 3rem .75rem}
+  .contact-page .contact-heading{margin-bottom:.75rem}
+  .contact-page .contact-heading h2{margin-top:.25rem;font-size:clamp(2.25rem,3.5vw,3rem)}
+  .contact-page .contact-heading>p:last-child{margin-top:.4rem;font-size:.82rem;line-height:1.35}
+  .contact-page .contact-grid article{padding:1rem}
+  .contact-page .contact-grid article>svg{flex-basis:38px;width:38px;height:38px;padding:8px}
+  .contact-page .contact-grid article>h3{margin-top:.6rem;font-size:1.1rem}
+  .contact-page .contact-grid article>p{min-height:2.7em;margin:.3rem 0 .6rem;font-size:.76rem;line-height:1.35}
+  .contact-page .contact-grid article>a{min-height:38px;padding:.55rem}
+}
+/* Balanced Home composition with an unobtrusive social footer. */
+@media(min-width:761px){
+  .overview-window{height:clamp(480px,60dvh,560px)}
+  .overview-content{padding:clamp(3rem,6vh,4rem) 2rem 4rem}
+  .desktop-nav{gap:clamp(1.5rem,3.5vh,2.5rem) clamp(3rem,8vw,7rem);margin-top:clamp(2rem,4vh,3rem)}
+  .desktop-footer{bottom:clamp(4.75rem,10vh,6.5rem);flex-direction:row;gap:.55rem;padding:.4rem .65rem;border-radius:999px;background:rgba(249,252,249,.94)}
+  .footer-socials{gap:.35rem}
+  .footer-socials a{width:30px;height:30px;box-shadow:none}
+  .footer-socials svg{width:15px;height:15px}
+  .desktop-footer>span{font-size:.62rem;white-space:nowrap}
+}
+/* Panoramic orchard remains visible beneath every desktop window. */
+@media(min-width:761px){
+  .desktop-shell{padding-top:clamp(2.25rem,4.5vh,3.5rem)}
+  .overview-window,.section-window{height:min(680px,calc(100dvh - 11.5rem));max-height:min(680px,calc(100dvh - 11.5rem));min-height:440px}
+  .fruit-grove{height:clamp(170px,23dvh,240px)}
+  .backyard-orchard{object-fit:fill;object-position:center;opacity:.9}
+  .desktop-footer{bottom:clamp(3.5rem,7vh,5rem)}
+}
+@media(max-height:680px) and (min-width:761px){
+  .overview-window,.section-window{height:calc(100dvh - 9rem);max-height:calc(100dvh - 9rem);min-height:0}
+  .fruit-grove{height:155px}
+}
+/* Mobile accessibility and resilient responsive sizing. */
+@media(max-width:760px){
+  .language-switch button{min-width:44px;min-height:44px}
+  .desktop-floating-close{width:44px;height:44px;right:8px;top:calc(4rem + 2px)}
+  .subpage-nav button{min-height:56px;font-size:.62rem}
+  .window-status{min-height:44px;height:auto;font-size:.58rem;line-height:1.25}
+  .page-pill,.book-published,.animation-grid small,.learning-card-label,.learning-card>div span,.omdena-date,.omdena-tags span,.friends-shelf-label{font-size:max(.65rem,11px)}
+  .online-rating.compact{font-size:max(.65rem,11px)}
+  .desktop-nav button{min-width:72px;min-height:88px;padding:.25rem}
+  .desktop-nav b{font-size:max(.68rem,11px);overflow-wrap:anywhere}
+  .fruit-grove{height:160px;margin-top:1.25rem}
+  .backyard-orchard{object-fit:contain;object-position:center bottom}
+  .desktop-footer{margin-top:-112px}
+  .book-list:focus-visible,.animation-grid:focus-visible{outline:3px solid #176044;outline-offset:3px}
+}
+@media(max-width:360px){
+  .desktop-nav{gap:1.25rem .6rem}
+  .window-status{gap:.35rem;padding-inline:.55rem}
+  .status-right{font-size:.54rem}
+}
+@media(prefers-reduced-motion:reduce){
+  .subpage-nav,.animation-grid,.book-list{scroll-behavior:auto}
+  .desktop-character{animation:none}
+}
+/* Persistent language control in its own background band. */
+.language-switch{left:50%;right:auto;top:max(8px,env(safe-area-inset-top));transform:translateX(-50%)}
+@media(min-width:761px){
+  .desktop-shell{padding-top:clamp(4.5rem,8vh,5.5rem)}
+  .overview-window,.section-window{height:min(680px,calc(100dvh - 13rem));max-height:min(680px,calc(100dvh - 13rem))}
+}
+@media(max-height:680px) and (min-width:761px){
+  .overview-window,.section-window{height:calc(100dvh - 10rem);max-height:calc(100dvh - 10rem);min-height:0}
+  .fruit-grove{height:140px}
+}
+@media(max-width:760px){
+  .desktop-shell{padding-top:calc(max(4.25rem,env(safe-area-inset-top) + 3.75rem))}
+  .language-switch{left:50%;right:auto;top:max(8px,env(safe-area-inset-top))}
+  .desktop-floating-close{top:calc(max(4.25rem,env(safe-area-inset-top) + 3.75rem) + 2px)}
+}
