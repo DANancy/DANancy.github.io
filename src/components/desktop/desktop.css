@@ -664,7 +664,7 @@
 }
 /* Balance the Overview between its title bar and status bar. */
 @media(min-width:761px){
-  .overview-content{padding:clamp(2rem,3.5vh,2.75rem) 2rem 4.75rem}
-  .desktop-nav{row-gap:clamp(1.15rem,2.25vh,1.65rem);margin-top:clamp(1.5rem,2.5vh,2rem)}
+  .overview-content{padding:clamp(.75rem,1.8vh,1.25rem) 2rem 5rem}
+  .desktop-nav{row-gap:clamp(.85rem,1.6vh,1.2rem);margin-top:clamp(1.1rem,2vh,1.5rem)}
   .desktop-nav button{gap:.55rem}
 }
