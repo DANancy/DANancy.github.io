@@ -777,14 +777,14 @@
 /* Align Work card content and tag starting rows. */
 @media(min-width:761px){
   .work-page .project-grid article{display:flex;align-items:stretch}
-  .work-page .project-grid h3{display:block;min-height:3.15em;margin-top:1.35rem}
+  .work-page .project-grid h3{display:block;min-height:1.5em;margin-top:1.35rem}
   .work-page .project-grid article>p{min-height:12.5em;margin-top:.55rem}
   .work-page .project-grid article:nth-child(-n+2)>p{min-height:14em}
   .work-page .project-visit{align-self:flex-start;min-height:42px;margin:.8rem 0 0}
   .work-page .project-grid article>div:last-child{align-content:flex-start;align-self:stretch;margin-top:.7rem;padding-top:0}
 }
 @media(min-width:761px) and (max-width:1000px){
-  .work-page .project-grid h3{min-height:4.5em}
+  .work-page .project-grid h3{min-height:3em}
   .work-page .project-grid article>p{min-height:17em}
   .work-page .project-grid article:nth-child(-n+2)>p{min-height:20em}
 }
@@ -822,8 +822,9 @@
 .community-values article:nth-child(2)>svg{background:#e8eef5;color:#3f6382}
 .community-values article:nth-child(3)>svg{background:#f2eaf5;color:#755080}
 /* Matched Work-card image previews. */
-.project-preview{width:100%;margin:.8rem 0 0;overflow:hidden;border:1px solid #d7dfd8;border-radius:10px;background:#fff}
-.project-preview img{display:block;width:100%;height:auto;aspect-ratio:2.18/1;object-fit:cover;object-position:center}
+.project-preview{width:100%;aspect-ratio:2.18/1;margin:.8rem 0 0;overflow:hidden;border:1px solid #d7dfd8;border-radius:10px;background:#fff}
+.project-preview img{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
+.project-grid article:nth-child(3) .project-preview img{object-fit:contain}
 @media(min-width:1001px){.work-page .project-grid article:has(.project-preview)>p{min-height:8em}.work-page .project-grid article:has(.project-preview) .project-preview{flex:0 0 auto}}
 @media(min-width:761px) and (max-width:1000px){.work-page .project-grid article:has(.project-preview)>p{min-height:12em}.work-page .project-grid article:has(.project-preview) .project-preview{flex:0 0 auto}}
 @media(max-width:760px){.project-preview{margin-top:.75rem}}
