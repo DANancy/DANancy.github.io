@@ -1813,6 +1813,11 @@
     max-height:none!important;
   }
 
+  .desktop-shell[data-section=overview] .overview-window>.window-status{
+    position:absolute;
+    inset:auto 0 0;
+  }
+
   .desktop-shell .window-stage>.section-window{
     display:flex;
     height:auto!important;
@@ -1868,12 +1873,14 @@
   }
 
   .desktop-shell[data-section=overview] .overview-window>.window-status{
-    position:relative;
-    inset:auto;
+    position:absolute;
+    z-index:4;
+    inset:auto 0 0;
     flex:0 0 auto;
     width:100%;
     min-height:44px;
     margin-top:0;
+    box-shadow:0 -8px 18px rgba(35,53,43,.06);
   }
 
   .desktop-shell[data-section=overview] .overview-window::-webkit-scrollbar{
@@ -2061,7 +2068,107 @@
   .character-about,.character-work,.character-community,.character-fun,.character-links,.character-contact{width:112px;height:112px}
 }
 
+/* Balance Home vertically across iPad portrait and landscape sizes. */
+@media(min-width:761px) and (max-width:1180px){
+  .desktop-shell[data-section=overview] .overview-window>.overview-content{
+    flex:1 1 auto;
+    justify-content:center;
+    min-height:0;
+    padding:clamp(3rem,7dvh,4.75rem) 1.5rem clamp(5rem,9dvh,6.5rem);
+  }
+
+  .desktop-shell[data-section=overview] .desktop-nav{
+    row-gap:clamp(1.75rem,4dvh,3rem);
+    margin-top:clamp(2rem,5dvh,3.5rem);
+  }
+}
+
+/* Keep the Home composition balanced on wide and tall desktop screens. */
+@media(min-width:1181px){
+  .desktop-shell[data-section=overview] .overview-window>.overview-content{
+    flex:1 1 auto;
+    justify-content:center;
+    min-height:0;
+    padding:clamp(4rem,8dvh,6rem) 2rem clamp(5.5rem,10dvh,7rem);
+  }
+
+  .desktop-shell[data-section=overview] .desktop-nav{
+    row-gap:clamp(2rem,4.5dvh,3.5rem);
+    margin-top:clamp(2.5rem,5.5dvh,4rem);
+  }
+}
+
 @media(max-width:760px){
+  .desktop-shell{
+    display:flex;
+    flex-direction:column;
+    padding-bottom:0;
+  }
+
+  .desktop-shell:has(.overview-window),
+  .desktop-shell:not(:has(.overview-window)){
+    padding-bottom:0;
+  }
+
+  .desktop-shell>.window-stage{order:0;flex:none}
+  .desktop-shell>.original-fruit-background{order:1;flex:none}
+  .desktop-shell>.desktop-footer{
+    order:2;
+    flex:none;
+    margin:-5.5rem auto 1rem;
+  }
+
+  .desktop-shell[data-section=overview]>.desktop-footer,
+  .desktop-shell:not([data-section=overview])>.desktop-footer{
+    flex-direction:column;
+    gap:0;
+    margin:-3.8rem auto 0;
+    padding:.15rem .4rem .25rem;
+    border-radius:13px;
+  }
+
+  .desktop-shell>.desktop-footer .footer-socials{
+    gap:.1rem;
+  }
+
+  .desktop-shell>.desktop-footer .footer-socials a{
+    position:relative;
+    flex:0 0 40px;
+    width:40px;
+    height:40px;
+    min-height:40px;
+    background:radial-gradient(circle,#40564b 0 48%,transparent 49%);
+    box-shadow:none;
+  }
+
+  .desktop-shell>.desktop-footer .footer-socials a::before{
+    content:none;
+    position:absolute;
+    inset:5px;
+    border-radius:50%;
+    background:#40564b;
+  }
+
+  .desktop-shell>.desktop-footer .footer-socials a:hover{
+    background:radial-gradient(circle,#176044 0 48%,transparent 49%);
+  }
+
+  .desktop-shell>.desktop-footer .footer-socials a:hover::before{
+    background:#176044;
+  }
+
+  .desktop-shell>.desktop-footer .footer-socials svg{
+    position:relative;
+    z-index:1;
+    width:14px;
+    height:14px;
+  }
+
+  .desktop-shell>.desktop-footer>span{
+    font-size:10px;
+    white-space:nowrap;
+  }
+
   .window-page{padding:4rem var(--space-2) var(--space-4)}
   .desktop-nav b,.subpage-nav button,.language-switch button{font-size:.75rem}
   .scroll-hint{display:none}
@@ -2069,6 +2176,14 @@
 
 @media(prefers-reduced-motion:reduce){
   .subpage-nav{scroll-behavior:auto}
+}
+
+/* Use the same two-line footer composition on every screen size. */
+.desktop-shell>.desktop-footer,
+.desktop-shell[data-section=overview]>.desktop-footer,
+.desktop-shell:not([data-section=overview])>.desktop-footer{
+  flex-direction:column;
+  gap:.25rem;
 }
 
 
