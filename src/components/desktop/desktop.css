@@ -953,6 +953,14 @@
 }
 .desktop-nav button,.subpage-nav button,.language-switch button,
 .desktop-floating-close,.footer-socials a{min-height:var(--control-min)}
+.footer-socials a{
+  flex:0 0 var(--control-min);
+  width:var(--control-min);
+  height:var(--control-min);
+  min-width:var(--control-min);
+  aspect-ratio:1;
+  border-radius:50%;
+}
 .project-grid article,.omdena-projects article,.learning-card,.community-values article,
 .contact-grid article,.link-card,.fun-window-frame{border-radius:var(--card-radius)}
 
@@ -994,6 +1002,10 @@
 
 /* Contact uses the same generous scale as the other portfolio sections. */
 @media(min-width:901px){
+  .overview-window{
+    height:min(680px,calc(100dvh - 6.5rem));
+    max-height:min(680px,calc(100dvh - 6.5rem));
+  }
   .desktop-window.section-window:has(.contact-page){
     height:min(680px,calc(100dvh - 6.5rem));
     max-height:min(680px,calc(100dvh - 6.5rem));
@@ -1065,4 +1077,169 @@
 @media(max-width:420px){
   .desktop-nav{gap:2rem 1.25rem}.window-page{padding-inline:1rem}
   .community-actions{align-items:stretch}.community-actions a{width:100%}
+}
+
+/* Responsive application-window sizing source of truth. */
+.page-intro>p:last-child,.overview-intro,.community-summary{max-width:72ch}
+
+@media(min-width:1025px){
+  .window-stage,.desktop-footer{width:min(1240px,calc(100vw - 4rem))}
+  .window-stage{
+    height:min(760px,72dvh,calc(100dvh - 6.5rem));
+    min-height:min(640px,calc(100dvh - 6.5rem))
+  }
+  .window-stage>.desktop-window,.window-stage>.overview-window,
+  .window-stage>.section-window,.desktop-window.section-window:has(.contact-page){
+    width:100%;height:100%;min-height:0;max-height:100%
+  }
+  .overview-window{display:flex;flex-direction:column;overflow:hidden}
+  .overview-window>.overview-content{
+    flex:1 1 auto;justify-content:center;padding-block:3.5rem 4.75rem
+  }
+  .section-window{
+    overflow-x:hidden;overflow-y:auto;overscroll-behavior-y:contain
+  }
+  .desktop-window:has(.contact-page) .contact-page{
+    min-height:calc(100% - 48px);justify-content:center
+  }
+}
+
+@media(min-width:761px) and (max-width:1099px){
+  .contact-page .contact-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));width:min(720px,100%)
+  }
+  .contact-page .contact-grid article:last-child{
+    grid-column:1 / -1;width:min(350px,100%);justify-self:center
+  }
+}
+@media(min-width:1100px){
+  .contact-page .contact-grid{
+    grid-template-columns:repeat(3,minmax(0,1fr));width:min(920px,100%)
+  }
+  .contact-page .contact-grid article:last-child{grid-column:auto;width:auto}
+}
+
+@media(min-width:761px) and (max-width:1024px){
+  .window-stage{
+    width:calc(100vw - 2rem);height:calc(100dvh - 7rem);min-height:0
+  }
+  .window-stage>.desktop-window,.window-stage>.overview-window,
+  .window-stage>.section-window,.desktop-window.section-window:has(.contact-page){
+    width:100%;height:100%;min-height:0;max-height:100%
+  }
+  .overview-window{display:flex;flex-direction:column;overflow:hidden}
+  .overview-window>.overview-content{
+    flex:1 1 auto;justify-content:center;padding-block:3rem 4.5rem
+  }
+  .section-window{
+    overflow-x:hidden;overflow-y:auto;overscroll-behavior-y:contain
+  }
+}
+
+@media(max-width:760px){
+  .window-stage,.window-stage>.desktop-window,.window-stage>.overview-window,
+  .window-stage>.section-window{height:auto;min-height:0;max-height:none}
+  .window-stage>.desktop-window{overflow:visible}
+}
+
+/* Friends and Yangyang links follow the same responsive card rhythm as Loved. */
+.friends-links-grid{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.85rem;
+  overflow:visible;padding:0
+}
+.friends-links-grid article{
+  display:flex;flex-direction:column;min-width:0;min-height:310px;
+  overflow:hidden
+}
+.friends-links-grid article>img{
+  width:100%;height:150px;min-height:150px;object-fit:cover
+}
+.friends-links-grid article>div{flex:1 1 auto}
+.friends-links-grid article small{margin-bottom:1rem}
+.friends-links-grid article a{min-height:44px;border-top:1px solid #e7e0e9}
+
+.personal-links .links-grid{
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.85rem;
+  overflow:visible;padding:0
+}
+.personal-links .links-grid .link-card{
+  width:auto;min-width:0;min-height:255px
+}
+.personal-links .links-grid .link-description{
+  display:block;min-height:4.5em
+}
+.personal-links .links-grid a{min-height:44px}
+
+@media(min-width:761px) and (max-width:1099px){
+  .friends-links-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .friends-links-grid article:last-child{
+    grid-column:1 / -1;width:min(360px,100%);justify-self:center
+  }
+  .personal-links .links-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
+@media(max-width:760px){
+  .friends-links-grid,.personal-links .links-grid{
+    display:grid;grid-template-columns:1fr;gap:1rem;margin:0;overflow:visible;
+    padding:0
+  }
+  .friends-links-grid article,.personal-links .links-grid .link-card{
+    width:100%;min-height:0
+  }
+  .friends-links-grid article{
+    display:grid;grid-template-columns:104px minmax(0,1fr)
+  }
+  .friends-links-grid article>img{
+    width:104px;height:100%;min-height:210px
+  }
+  .personal-links .links-grid .link-description{min-height:0}
+}
+
+/* Just for Fun follows the Loved section's responsive grid behaviour. */
+.fun-page .animation-grid{
+  display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.85rem;
+  margin:0;padding:0;overflow:visible
+}
+.fun-page .animation-grid article{width:auto;min-width:0}
+
+.fun-books .book-list{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.85rem;
+  margin:0;padding:.25rem 0 0;overflow:visible
+}
+.fun-books .book-entry{
+  width:auto;min-width:0;min-height:100%;scroll-snap-align:none
+}
+
+@media(min-width:761px) and (max-width:1099px){
+  .fun-page .animation-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .fun-books .book-list{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .fun-books .book-entry:last-child:nth-child(odd){
+    grid-column:1 / -1;width:min(360px,100%);justify-self:center
+  }
+}
+
+@media(max-width:760px){
+  .fun-grid{grid-template-columns:1fr;gap:1rem}
+  .fun-grid>*{grid-column:1;width:100%;min-width:0}
+  .fun-page .animation-grid,.fun-books .book-list{
+    display:grid;grid-template-columns:1fr;gap:1rem;margin:0;padding:0;
+    overflow:visible
+  }
+  .fun-page .animation-grid article{
+    display:grid;grid-template-columns:112px minmax(0,1fr);width:100%
+  }
+  .fun-page .animation-grid img{
+    width:112px;height:100%;min-height:150px;aspect-ratio:auto
+  }
+  .fun-page .animation-grid article>div{
+    min-height:0;justify-content:center
+  }
+  .fun-books .book-entry{
+    width:100%;min-height:0
+  }
+  .pottery-images{grid-template-columns:1fr}
+  .pottery-images img,.pottery-images img:last-child{
+    grid-column:1;width:100%;height:auto;max-width:100%
+  }
+  .conference-window,.conference-body{width:100%;min-width:0}
 }
