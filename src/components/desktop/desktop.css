@@ -926,28 +926,75 @@
   .personal-links .links-grid .link-card{flex-basis:min(220px,72vw);min-height:180px}
 }
 
-/* Accessible type, spacing, and viewport behaviour without losing the desktop metaphor. */
+/* Final accessibility and responsive layer: the source of truth for late overrides. */
 .desktop-shell{--space-2:1rem;--card-radius:16px;--control-min:44px}
-.window-bar>b,.overview-kicker,.desktop-nav b,.window-status,.page-pill,
-.window-page>h3,.project-grid article>div:last-child span,.mini-tags span,
-.event-facts small,.subpage-nav button,.language-switch button,.project-visit,
-.online-rating,.community-actions a,.eventbrite-button,.conference-meta span,
-.conference-window .conference-cta span,.omdena-date,.omdena-tags span,
-.learning-card-label,.learning-card>div span,.link-category,.loved-label,
-.loved-links article>p,.friends-shelf-label,.friends-links-grid article p{
+
+/* Subpage routes start with a true page heading while retaining the display style. */
+.page-intro h1{
+  margin:.85rem 0 0!important;color:#36584a;font-family:var(--font-sans);
+  font-size:clamp(2.15rem,3.8vw,3.55rem);font-weight:500;line-height:1.08;
+  letter-spacing:-.035em
+}
+.page-intro h1 em{color:var(--desk-green)}
+.page-intro h1 strong{color:var(--desk-gold)}
+.work-page .page-intro h1{color:var(--desk-green)}
+
+/* Meaningful labels and metadata never fall below 12px. */
+.desktop-shell small,.window-bar>b,.overview-kicker,.desktop-nav b,.window-status,
+.status-right,.page-pill,.window-page>h3,.project-grid article>div:last-child span,
+.mini-tags span,.event-facts small,.subpage-nav button,.language-switch button,
+.project-visit,.online-rating,.community-actions a,.eventbrite-button,
+.conference-meta span,.conference-window .conference-cta span,.omdena-date,
+.omdena-tags span,.learning-card-label,.learning-card>div span,.link-category,
+.loved-label,.loved-links article>p,.friends-shelf-label,.friends-links-grid article p,
+.book-entry blockquote cite,.animation-grid small,.fde-book-cover span,
+.fde-highlights span,.desktop-footer>span{
   font-size:max(.75rem,12px);line-height:1.4
 }
 .desktop-nav button,.subpage-nav button,.language-switch button,
 .desktop-floating-close,.footer-socials a{min-height:var(--control-min)}
-.project-grid article,.omdena-projects article,.learning-card,
-.community-values article,.contact-grid article,.link-card,.fun-window-frame{
-  border-radius:var(--card-radius)
-}
+.project-grid article,.omdena-projects article,.learning-card,.community-values article,
+.contact-grid article,.link-card,.fun-window-frame{border-radius:var(--card-radius)}
+
+/* Work cards use natural content height and one clear destination link. */
 .work-page .project-grid h3,.work-page .project-grid article>p,
 .work-page .project-grid article:nth-child(-n+2)>p,
 .work-page .project-grid article:has(.project-preview)>p{min-height:0}
 .work-page .project-grid article>div:last-child{margin-top:var(--space-2)}
+.card-link{pointer-events:none}
 
+/* Single-line navigation: overflow is communicated with inset edge shadows. */
+.subpage-nav{
+  display:flex;justify-content:flex-start;gap:.35rem;overflow-x:auto;overflow-y:hidden;
+  scroll-snap-type:x proximity;scrollbar-width:thin;
+  box-shadow:0 -8px 24px #2944380d,inset 18px 0 16px -18px #29443866,
+    inset -18px 0 16px -18px #29443866
+}
+.subpage-nav button,.subpage-nav button span{white-space:nowrap}
+.subpage-nav button{
+  flex:0 0 auto;min-width:max-content;flex-direction:row;padding:.65rem .9rem;
+  scroll-snap-align:center
+}
+
+/* The full orchard illustration scales fluidly from tablet landscape upward. */
+@media(min-width:761px){
+  .original-fruit-background{
+    height:clamp(190px,28dvh,400px);
+    -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 24%,#000 100%);
+    mask-image:linear-gradient(to bottom,transparent 0,#000 24%,#000 100%)
+  }
+  .original-fruit-background img{
+    object-fit:contain;object-position:center bottom;opacity:.46
+  }
+}
+@media(min-width:1100px){
+  .subpage-nav{justify-content:center;box-shadow:0 -8px 24px #2944380d}
+}
+@media(min-width:1200px) and (min-height:760px){
+  .original-fruit-background{height:clamp(280px,36dvh,400px)}
+}
+
+/* Tablet retains the window while reducing its surrounding furniture. */
 @media(min-width:761px) and (max-width:1024px){
   .desktop-shell{padding:5.5rem 1rem 3rem}
   .window-stage,.desktop-footer{width:min(100%,calc(100vw - 2rem))}
@@ -966,6 +1013,7 @@
   }
 }
 
+/* On phones, the document owns vertical scrolling; shelves and tabs scroll sideways. */
 @media(max-width:760px){
   .desktop-shell{padding:4.5rem .75rem 2.5rem}
   .window-stage{height:auto;min-height:0}
@@ -977,6 +1025,11 @@
   .section-window>.subpage-nav{
     position:sticky;bottom:0;padding-bottom:max(.55rem,env(safe-area-inset-bottom))
   }
+  .subpage-nav button{
+    min-width:max-content;flex-direction:row;gap:.45rem;padding:.65rem .8rem
+  }
+  .page-intro h1{font-size:clamp(2rem,10vw,2.65rem)}
+  .contact-page>.page-intro h1{margin-top:.35rem!important}
   .window-page{padding:4rem 1.25rem 2rem}
   .overview-content{padding:4.5rem 1rem 3rem}
   .overview-window>.window-status{min-height:48px;padding-block:.55rem}

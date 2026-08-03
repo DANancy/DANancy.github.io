@@ -9,7 +9,7 @@ export const projects: { title:string; description:string; tags:string[]; tagsZh
 
 export const navigation: { id:Exclude<DesktopSection,"overview">; label:string; labelZh:string; tone:string }[] = [
   {id:"about",label:"About",labelZh:"关于我",tone:"mint"},{id:"work",label:"Work",labelZh:"工作",tone:"amber"},{id:"community",label:"Community",labelZh:"社区",tone:"cyan"},
-  {id:"fun",label:"Just for fun",labelZh:"兴趣",tone:"yellow"},{id:"links",label:"Friends & Links",labelZh:"朋友与链接",tone:"purple"},{id:"contact",label:"Contact me",labelZh:"联系我",tone:"pink"},
+  {id:"fun",label:"Just for fun",labelZh:"兴趣",tone:"yellow"},{id:"links",label:"Friends & Links",labelZh:"朋友与链接",tone:"purple"},{id:"contact",label:"Contact",labelZh:"联系我",tone:"pink"},
 ];
 
 
