@@ -28,7 +28,7 @@ export async function generateMetadata({params}:{params:Promise<{section:string}
   return {
     title:page.title,
     description:page.description,
-    alternates:{canonical:`/${section}/`},
+    alternates:{canonical:`/${section}/`,languages:{en:`/${section}/`,"zh-Hans":`/zh-hans/${section}/`}},
     openGraph:{title:`${page.title} | Yangyang Cai`,description:page.description,url:`/${section}/`,type:"website"},
   };
 }

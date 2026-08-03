@@ -2,7 +2,7 @@ import { DesktopPortfolio } from "@/components/desktop/DesktopPortfolio";
 import "@/components/desktop/desktop.css";
 
 export const metadata = {
-  alternates:{canonical:"/"},
+  alternates:{canonical:"/",languages:{en:"/","zh-Hans":"/zh-hans/"}},
   openGraph:{title:"Yangyang Cai | Data, AI and community",url:"/"},
 };
 

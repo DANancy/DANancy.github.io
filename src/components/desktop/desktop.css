@@ -1083,7 +1083,7 @@
 .page-intro>p:last-child,.overview-intro,.community-summary{max-width:72ch}
 
 @media(min-width:1025px){
-  .window-stage,.desktop-footer{width:min(1240px,calc(100vw - 4rem))}
+  .window-stage{width:min(1240px,calc(100vw - 4rem))}
   .window-stage{
     height:min(760px,72dvh,calc(100dvh - 6.5rem));
     min-height:min(640px,calc(100dvh - 6.5rem))
@@ -1242,4 +1242,864 @@
     grid-column:1;width:100%;height:auto;max-width:100%
   }
   .conference-window,.conference-body{width:100%;min-width:0}
+}
+
+/* Keep the overview social footer compact rather than matching window width. */
+.desktop-footer{
+  width:max-content;max-width:calc(100vw - 2rem);gap:.5rem;
+  padding-inline:.75rem
+}
+.footer-socials{gap:.4rem}
+
+/* Contact uses the same single, predictable scroll container as every section. */
+@media(min-width:761px){
+  .desktop-window.section-window:has(.contact-page){
+    display:flex;flex-direction:column;overflow-x:hidden;overflow-y:auto;
+    overscroll-behavior-y:contain;scrollbar-gutter:stable
+  }
+  .desktop-window.section-window:has(.contact-page)>.window-bar{
+    flex:0 0 46px
+  }
+  .desktop-window.section-window:has(.contact-page)>.contact-page{
+    flex:0 0 auto;min-height:0;overflow:visible
+  }
+  .desktop-window.section-window:has(.contact-page)>.subpage-nav{
+    position:sticky;z-index:7;bottom:0;flex:0 0 auto
+  }
+}
+
+/* Reserve a footer lane on every non-mobile viewport. */
+@media(min-width:761px){
+  .desktop-shell{padding-bottom:5.5rem}
+  .window-stage{
+    height:min(760px,72dvh,calc(100dvh - 11.5rem));
+    min-height:0;max-height:calc(100dvh - 11.5rem)
+  }
+  .desktop-footer{bottom:1rem}
+}
+
+/* Contact uses the same page template and introduction rhythm as every section. */
+@media(min-width:901px){
+  .desktop-window:has(.contact-page) .contact-page{
+    justify-content:flex-start;
+    padding:2.5rem clamp(2rem,4vw,3.5rem) 2rem
+  }
+  .contact-page>.page-intro{
+    width:min(820px,100%);margin-bottom:clamp(1.5rem,2.5vw,2rem)
+  }
+  .contact-page>.page-intro h1{
+    margin:.85rem 0 0!important;
+    font-size:clamp(2.15rem,3.8vw,3.55rem)
+  }
+  .contact-page>.page-intro>p:last-child{
+    max-width:72ch;margin:.85rem auto 0;font-size:1rem;line-height:1.6
+  }
+  .contact-page .contact-grid{margin-top:0}
+}
+@media(max-width:760px){
+  .contact-page{padding:4rem 1.25rem 2rem}
+}
+
+/* Compact collections share Learning Next's consistent scrollable shelf. */
+@media(min-width:761px){
+  .fun-page .animation-grid,
+  .fun-books .book-list,
+  .loved-links-grid,
+  .friends-links-grid,
+  .personal-links .links-grid{
+    display:flex;align-items:stretch;gap:.85rem;overflow-x:auto;overflow-y:hidden;
+    padding:.15rem .1rem .8rem;scroll-snap-type:x mandatory;scrollbar-width:thin;
+    scroll-padding-inline:.1rem
+  }
+  .fun-page .animation-grid article{
+    flex:0 0 min(210px,28vw);scroll-snap-align:start
+  }
+  .fun-books .book-entry,
+  .loved-links article,
+  .friends-links-grid article,
+  .personal-links .links-grid .link-card{
+    flex:0 0 min(310px,40vw);scroll-snap-align:start
+  }
+  .fun-books .book-entry{min-height:100%}
+  .loved-links-grid{margin:0}
+  .loved-links article{min-height:245px}
+  .friends-links-grid article{min-height:190px}
+  .personal-links .links-grid .link-card{min-height:210px}
+}
+
+.loved-links-grid:focus-visible,
+.friends-links-grid:focus-visible,
+.personal-links .links-grid:focus-visible{
+  outline:3px solid #176044;outline-offset:3px
+}
+
+/* Final responsive and accessibility baseline: one scroll owner per window. */
+@media(min-width:761px){
+  .section-window{
+    display:flex;flex-direction:column;overflow-x:hidden;overflow-y:auto;
+    overscroll-behavior-y:contain;scrollbar-gutter:stable
+  }
+  .section-window>.window-bar{flex:0 0 46px}
+  .section-window>.window-page{flex:0 0 auto;min-height:0}
+  .section-window>.subpage-nav{position:sticky;z-index:7;bottom:0;flex:0 0 auto}
+}
+@media(max-width:760px){
+  .window-stage{height:calc(100dvh - 5.5rem - env(safe-area-inset-top));min-height:0}
+  .window-stage>.section-window{
+    display:flex;height:100%;min-height:0;max-height:100%;flex-direction:column;
+    overflow-x:hidden;overflow-y:auto;overscroll-behavior-y:contain
+  }
+  .window-stage>.section-window>.window-bar{flex:0 0 44px}
+  .window-stage>.section-window>.window-page{flex:0 0 auto;min-height:0}
+  .window-stage>.section-window>.subpage-nav{position:sticky;z-index:7;bottom:0;flex:0 0 auto}
+}
+
+/* Compact shelves remain discoverable and fully usable by keyboard and touch. */
+.learning-grid:focus-visible,
+.animation-grid:focus-visible,
+.book-list:focus-visible,
+.loved-links-grid:focus-visible,
+.friends-links-grid:focus-visible,
+.personal-links .links-grid:focus-visible{
+  outline:3px solid #176044;outline-offset:3px
+}
+.learning-grid,.animation-grid,.book-list,.loved-links-grid,
+.friends-links-grid,.personal-links .links-grid{
+  scrollbar-color:#718079 #edf1ee;
+  box-shadow:inset -18px 0 16px -18px #29443888
+}
+.learning-card>a,.loved-links article>a,.friends-links-grid article a,
+.personal-links .links-grid a,.contact-grid a{min-height:44px}
+
+/* Keep small desktop-window details readable against their light surfaces. */
+.desktop-footer{color:#647168}
+.window-status{color:#5f6d65}
+.window-bar{color:#5b6961}
+.fun-window-bar{font-size:max(.75rem,12px)!important}
+
+/* On phones, Learning Next follows Animation Watch: every card joins the vertical page flow. */
+@media(max-width:760px){
+  .learning-grid{
+    display:grid;grid-template-columns:1fr;gap:1rem;margin:0;padding:0;
+    overflow:visible;scroll-snap-type:none;box-shadow:none
+  }
+  .learning-card{width:100%;min-height:0;flex:none}
+}
+
+/* Links shares the neutral page canvas; its individual collections keep their playful accents. */
+.links-page{background:transparent}
+
+/* Home controls stay independent of the overview window's content height. */
+@media(min-width:761px){
+  .desktop-shell:has(.overview-window)>.desktop-footer{
+    position:absolute;
+    z-index:4;
+    left:50%;
+    bottom:1rem;
+    width:max-content;
+    margin:0;
+    transform:translateX(-50%);
+  }
+}
+
+@media(max-width:760px){
+  .desktop-shell:has(.overview-window){
+    padding-bottom:5.5rem;
+  }
+
+  .desktop-shell:has(.overview-window)>.desktop-footer{
+    position:relative;
+    z-index:4;
+    width:max-content;
+    margin:1rem auto 0;
+    bottom:auto;
+    left:auto;
+    transform:none;
+  }
+}
+
+/* Phone navigation is a compact dock; wider layouts retain the labelled tabs. */
+@media(max-width:760px){
+  .section-window>.subpage-nav{
+    display:grid;
+    grid-template-columns:repeat(7,minmax(0,1fr));
+    gap:.2rem;
+    width:100%;
+    overflow:visible;
+    padding:.45rem max(.45rem,env(safe-area-inset-right)) max(.45rem,env(safe-area-inset-bottom)) max(.45rem,env(safe-area-inset-left));
+    scroll-snap-type:none;
+    box-shadow:0 -8px 20px #29443812;
+  }
+
+  .section-window>.subpage-nav button{
+    display:grid;
+    place-items:center;
+    min-width:0!important;
+    min-height:44px;
+    padding:.35rem!important;
+    border-radius:12px;
+    scroll-snap-align:none;
+  }
+
+  .section-window>.subpage-nav button svg{
+    width:19px;
+    height:19px;
+  }
+
+  .section-window>.subpage-nav button span{
+    position:absolute;
+    width:1px;
+    height:1px;
+    padding:0;
+    margin:-1px;
+    overflow:hidden;
+    clip:rect(0,0,0,0);
+    white-space:nowrap;
+    border:0;
+  }
+
+  .section-window>.subpage-nav button.active{
+    background:#155b4f;
+    box-shadow:0 4px 10px #17483126;
+  }
+}
+
+/* Overview uses a natural page sequence: panel, footer, then the full backyard. */
+.desktop-shell[data-section="overview"]{
+  overflow-x:clip;
+  overflow-y:visible;
+  padding-bottom:max(1rem,env(safe-area-inset-bottom));
+}
+
+.desktop-shell[data-section="overview"]>.original-fruit-background{
+  position:relative;
+  z-index:1;
+  inset:auto;
+  width:100vw;
+  height:auto;
+  margin:.75rem 0 0 calc(50% - 50vw);
+  overflow:hidden;
+  -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 18%,#000 100%);
+  mask-image:linear-gradient(to bottom,transparent 0,#000 18%,#000 100%);
+}
+
+.desktop-shell[data-section="overview"]>.original-fruit-background img{
+  position:static!important;
+  display:block;
+  width:100%;
+  height:auto!important;
+  max-width:none;
+  object-fit:contain;
+  object-position:center bottom;
+  opacity:.68;
+}
+
+.desktop-shell[data-section="overview"]>.desktop-footer{
+  position:relative;
+  z-index:3;
+  left:auto;
+  bottom:auto;
+  width:max-content;
+  margin:1rem auto 0;
+  transform:none;
+}
+
+@media(max-width:760px){
+  .desktop-shell[data-section="overview"]>.original-fruit-background{
+    height:auto;
+    margin-top:.65rem;
+  }
+
+  .desktop-shell[data-section="overview"]>.original-fruit-background img{
+    opacity:.62;
+    object-position:center bottom;
+  }
+}
+
+/* The phone Home stage grows with all six destinations instead of clipping at one viewport. */
+@media(max-width:760px){
+  .desktop-shell[data-section="overview"] .window-stage{
+    height:auto!important;
+    min-height:0!important;
+    max-height:none!important;
+  }
+
+  .desktop-shell[data-section="overview"] .overview-window{
+    display:flex;
+    height:auto!important;
+    min-height:0!important;
+    max-height:none!important;
+    flex-direction:column;
+    overflow:hidden;
+  }
+
+  .desktop-shell[data-section="overview"] .overview-content{
+    flex:0 0 auto;
+    padding-top:10rem;
+  }
+
+  .desktop-shell[data-section="overview"] .window-status{
+    position:relative;
+    inset:auto;
+    flex:0 0 auto;
+    margin-top:0;
+  }
+
+  .desktop-shell[data-section="overview"] .character-overview{
+    top:72px;
+  }
+
+  .desktop-shell[data-section="overview"]>.desktop-footer{
+    margin-top:1rem;
+  }
+}
+
+/* Phone content windows use the same visible scroll state as desktop. */
+@media(max-width:760px){
+  html:has(.desktop-shell),
+  body:has(.desktop-shell){
+    color-scheme:light;
+  }
+
+  .window-stage>.section-window{
+    scrollbar-width:thin;
+    scrollbar-color:#718079 #edf1ee;
+    scrollbar-gutter:stable;
+  }
+
+  .window-stage>.section-window::-webkit-scrollbar{
+    width:8px;
+  }
+
+  .window-stage>.section-window::-webkit-scrollbar-track{
+    background:#edf1ee;
+  }
+
+  .window-stage>.section-window::-webkit-scrollbar-thumb{
+    min-height:44px;
+    border:2px solid #edf1ee;
+    border-radius:999px;
+    background:#718079;
+  }
+
+  .window-stage>.section-window::-webkit-scrollbar-thumb:hover{
+    background:#52635a;
+  }
+
+  .window-stage>.section-window::-webkit-scrollbar-corner{
+    background:#edf1ee;
+  }
+}
+
+/* The language control belongs to the background and scrolls with every page. */
+.desktop-shell>.language-switch{
+  position:absolute!important;
+  z-index:1000;
+  inset:max(8px,env(safe-area-inset-top)) 0 auto!important;
+  width:max-content!important;
+  margin:0 auto!important;
+  transform:none!important;
+  translate:none!important;
+  will-change:auto;
+}
+
+/* Home scrolls inside the fixed app surface, matching the other phone pages. */
+@media(max-width:760px){
+  html:has(.desktop-shell[data-section="overview"]),
+  body:has(.desktop-shell[data-section="overview"]){
+    width:100%;
+    height:100%;
+    overflow:hidden!important;
+    overscroll-behavior:none;
+  }
+
+  .desktop-shell[data-section="overview"]{
+    position:fixed!important;
+    inset:0!important;
+    width:100%;
+    height:100dvh;
+    min-height:0;
+    overflow-x:hidden;
+    overflow-y:auto;
+    overscroll-behavior-y:contain;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:thin;
+    scrollbar-color:#718079 transparent;
+  }
+
+  .desktop-shell[data-section="overview"]::-webkit-scrollbar{
+    width:6px;
+  }
+
+  .desktop-shell[data-section="overview"]::-webkit-scrollbar-track{
+    background:transparent;
+  }
+
+  .desktop-shell[data-section="overview"]::-webkit-scrollbar-thumb{
+    border-radius:999px;
+    background:#718079;
+  }
+}
+
+/* Subpages share Home's clearer backyard treatment. */
+@media(min-width:761px){
+  .desktop-shell:not([data-section="overview"])>.original-fruit-background{
+    height:clamp(180px,24dvh,270px);
+    -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 18%,#000 100%);
+    mask-image:linear-gradient(to bottom,transparent 0,#000 18%,#000 100%);
+  }
+
+  .desktop-shell:not([data-section="overview"])>.original-fruit-background img{
+    object-position:center 62%;
+    opacity:.66;
+    filter:saturate(.86) brightness(1.04);
+  }
+}
+
+@media(max-width:760px){
+  .desktop-shell:not([data-section="overview"]){
+    overflow-x:clip;
+  }
+
+  .desktop-shell:not([data-section="overview"])>.desktop-footer{
+    position:relative;
+    z-index:3;
+    left:auto;
+    bottom:auto;
+    width:max-content;
+    margin:1rem auto 0;
+    transform:none;
+  }
+
+  .desktop-shell:not([data-section="overview"])>.original-fruit-background{
+    position:relative;
+    z-index:1;
+    inset:auto;
+    width:100vw;
+    height:auto;
+    margin:.65rem 0 0 calc(50% - 50vw);
+    overflow:hidden;
+    -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 18%,#000 100%);
+    mask-image:linear-gradient(to bottom,transparent 0,#000 18%,#000 100%);
+  }
+
+  .desktop-shell:not([data-section="overview"])>.original-fruit-background img{
+    position:static!important;
+    display:block;
+    width:100%;
+    height:auto!important;
+    max-width:none;
+    object-fit:contain;
+    object-position:center bottom;
+    opacity:.62;
+    filter:saturate(.86) brightness(1.04);
+  }
+}
+
+/* Compact the phone Home ending without reducing touch target sizes. */
+@media(max-width:760px){
+  .desktop-shell[data-section="overview"] .window-status{
+    display:flex;
+    height:48px;
+    min-height:48px;
+    gap:1rem;
+    padding:.45rem .75rem;
+    overflow-x:auto;
+    overflow-y:hidden;
+    scroll-snap-type:x proximity;
+    scrollbar-width:none;
+  }
+
+  .desktop-shell[data-section="overview"] .window-status::-webkit-scrollbar{
+    display:none;
+  }
+
+  .desktop-shell[data-section="overview"] .window-status span,
+  .desktop-shell[data-section="overview"] .window-status span:nth-child(2){
+    display:flex;
+    flex:0 0 auto;
+    white-space:nowrap;
+    scroll-snap-align:start;
+  }
+
+  .desktop-shell[data-section="overview"] .window-status .status-right{
+    margin-left:0;
+  }
+
+  .desktop-shell[data-section="overview"]>.desktop-footer{
+    flex-direction:row;
+    gap:.5rem;
+    margin-top:.65rem;
+    padding:.45rem .65rem;
+    border-radius:999px;
+  }
+
+  .desktop-shell[data-section="overview"]>.desktop-footer .footer-socials{
+    gap:.3rem;
+  }
+
+  .desktop-shell[data-section="overview"]>.desktop-footer>span{
+    font-size:max(.68rem,11px);
+    white-space:nowrap;
+  }
+
+  .desktop-shell[data-section="overview"]>.original-fruit-background{
+    height:clamp(160px,46vw,200px);
+    margin-top:0;
+    -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 10%,#000 100%);
+    mask-image:linear-gradient(to bottom,transparent 0,#000 10%,#000 100%);
+  }
+
+  .desktop-shell[data-section="overview"]>.original-fruit-background img{
+    position:absolute!important;
+    inset:0!important;
+    width:100%;
+    height:100%!important;
+    object-fit:cover;
+    object-position:center bottom;
+  }
+}
+
+/* Home footer matches the two-line footer used by the other phone pages. */
+@media(max-width:760px){
+  .desktop-shell[data-section="overview"]>.desktop-footer{
+    flex-direction:column;
+    gap:.4rem;
+    padding:.55rem .8rem;
+    border-radius:18px;
+  }
+}
+
+/* Every phone page uses Home's single background scroll surface. */
+@media(max-width:760px){
+  html:has(.desktop-shell),
+  body:has(.desktop-shell){
+    width:100%;
+    height:100%;
+    overflow:hidden!important;
+    overscroll-behavior:none;
+  }
+
+  .desktop-shell{
+    position:fixed!important;
+    inset:0!important;
+    width:100%;
+    height:100dvh;
+    min-height:0;
+    overflow-x:hidden;
+    overflow-y:auto;
+    overscroll-behavior-y:contain;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:thin;
+    scrollbar-color:#718079 transparent;
+  }
+
+  .desktop-shell::-webkit-scrollbar{
+    width:6px;
+  }
+
+  .desktop-shell::-webkit-scrollbar-track{
+    background:transparent;
+  }
+
+  .desktop-shell::-webkit-scrollbar-thumb{
+    border-radius:999px;
+    background:#718079;
+  }
+
+  .desktop-shell .window-stage{
+    height:auto!important;
+    min-height:0!important;
+    max-height:none!important;
+  }
+
+  .desktop-shell .window-stage>.section-window{
+    display:flex;
+    height:auto!important;
+    min-height:0!important;
+    max-height:none!important;
+    flex-direction:column;
+    overflow:visible;
+    overscroll-behavior-y:auto;
+    scrollbar-gutter:auto;
+  }
+
+  .desktop-shell .section-window>.window-bar{
+    position:relative;
+    top:auto;
+  }
+
+  .desktop-shell .section-window>.subpage-nav{
+    position:relative;
+    z-index:7;
+    bottom:auto;
+    flex:0 0 auto;
+  }
+}
+
+/* Final shared page ending: one footer-and-orchard design across every route. */
+@media(min-width:761px){
+  .desktop-shell[data-section="overview"]{
+    height:100dvh;
+    min-height:100dvh;
+    overflow:hidden;
+    padding-bottom:5.5rem;
+  }
+
+  .desktop-shell[data-section=overview] .overview-window{
+    display:flex;
+    flex-direction:column;
+    overflow-x:hidden;
+    overflow-y:auto;
+    overscroll-behavior-y:contain;
+    scrollbar-gutter:stable;
+    scrollbar-width:thin;
+    scrollbar-color:#718079 #edf1ee;
+  }
+
+  .desktop-shell[data-section=overview] .overview-window>.window-bar{
+    position:sticky;
+    top:0;
+    flex:0 0 auto;
+  }
+
+  .desktop-shell[data-section=overview] .overview-window>.overview-content{
+    flex:0 0 auto;
+  }
+
+  .desktop-shell[data-section=overview] .overview-window>.window-status{
+    position:relative;
+    inset:auto;
+    flex:0 0 auto;
+    width:100%;
+    min-height:44px;
+    margin-top:0;
+  }
+
+  .desktop-shell[data-section=overview] .overview-window::-webkit-scrollbar{
+    width:8px;
+  }
+
+  .desktop-shell[data-section=overview] .overview-window::-webkit-scrollbar-track{
+    background:#edf1ee;
+  }
+
+  .desktop-shell[data-section=overview] .overview-window::-webkit-scrollbar-thumb{
+    border:2px solid #edf1ee;
+    border-radius:999px;
+    background:#718079;
+  }
+
+  .desktop-shell>.original-fruit-background,
+  .desktop-shell[data-section=overview]>.original-fruit-background{
+    position:absolute;
+    z-index:1;
+    inset:auto 0 0;
+    width:100%;
+    height:clamp(180px,24dvh,270px);
+    margin:0;
+    overflow:hidden;
+    -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 18%,#000 100%);
+    mask-image:linear-gradient(to bottom,transparent 0,#000 18%,#000 100%);
+  }
+
+  .desktop-shell>.original-fruit-background img,
+  .desktop-shell[data-section=overview]>.original-fruit-background img{
+    position:absolute!important;
+    inset:0!important;
+    display:block;
+    width:100%;
+    height:100%!important;
+    max-width:none;
+    object-fit:cover;
+    object-position:center 62%;
+    opacity:.66;
+    filter:saturate(.86) brightness(1.04);
+  }
+
+  .desktop-shell>.desktop-footer,
+  .desktop-shell[data-section=overview]>.desktop-footer{
+    position:absolute;
+    z-index:3;
+    left:50%;
+    bottom:1rem;
+    flex-direction:row;
+    gap:.5rem;
+    width:max-content;
+    margin:0;
+    padding:.4rem .65rem;
+    border-radius:999px;
+    transform:translateX(-50%);
+  }
+}
+
+@media(max-width:760px){
+  .desktop-shell>.desktop-footer,
+  .desktop-shell[data-section=overview]>.desktop-footer,
+  .desktop-shell:not([data-section=overview])>.desktop-footer{
+    position:relative;
+    z-index:3;
+    left:auto;
+    bottom:auto;
+    flex-direction:column;
+    gap:.4rem;
+    width:max-content;
+    margin:.45rem auto 0;
+    padding:.55rem .8rem;
+    border-radius:18px;
+    transform:none;
+  }
+
+  .desktop-shell>.original-fruit-background,
+  .desktop-shell[data-section=overview]>.original-fruit-background,
+  .desktop-shell:not([data-section=overview])>.original-fruit-background{
+    position:relative;
+    z-index:1;
+    inset:auto;
+    width:100vw;
+    height:clamp(155px,44vw,190px);
+    margin:-2rem 0 0 calc(50% - 50vw);
+    overflow:hidden;
+    -webkit-mask-image:linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(0,0,0,.18) 6%,
+      rgba(0,0,0,.55) 14%,
+      rgba(0,0,0,.85) 24%,
+      #000 34%,
+      #000 100%
+    );
+    mask-image:linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(0,0,0,.18) 6%,
+      rgba(0,0,0,.55) 14%,
+      rgba(0,0,0,.85) 24%,
+      #000 34%,
+      #000 100%
+    );
+  }
+
+  .desktop-shell>.original-fruit-background img,
+  .desktop-shell[data-section=overview]>.original-fruit-background img,
+  .desktop-shell:not([data-section=overview])>.original-fruit-background img{
+    position:absolute!important;
+    inset:0!important;
+    display:block;
+    width:100%;
+    height:100%!important;
+    max-width:none;
+    object-fit:cover;
+    object-position:center bottom;
+    opacity:.64;
+    filter:saturate(.86) brightness(1.04);
+    transform:none;
+    transform-origin:center bottom;
+  }
+}
+
+
+/* UX audit refinement layer
+   A single authoritative layer for spacing, legibility, and compact layouts. */
+.desktop-shell{
+  --space-1:.5rem;
+  --space-2:1rem;
+  --space-3:1.5rem;
+  --space-4:2rem;
+  --space-6:3rem;
+  --radius-control:9px;
+  --radius-card:16px;
+}
+
+.window-page{padding:clamp(var(--space-4),5vw,var(--space-6))}
+.page-intro{margin-bottom:var(--space-4)}
+.project-grid,.contact-grid,.fun-grid,.principles-grid{gap:var(--space-2)}
+.project-grid article,.contact-grid article,.link-card,.learning-card{border-radius:var(--radius-card)}
+
+/* System labels stay playful and compact without dropping below readable sizes. */
+.desktop-nav b,
+.subpage-nav button,
+.language-switch button,
+.window-bar>b,
+.window-status,
+.desktop-footer,
+.page-pill,
+.project-grid article>div:last-child span,
+.mini-tags span,
+.omdena-tags span,
+.learning-card>div span{
+  font-size:max(.75rem,12px);
+}
+
+.window-bar>b{letter-spacing:.18em}
+.desktop-shell[data-language="zh"] .window-bar>b,
+.desktop-shell[data-language="zh"] .subpage-nav button{
+  letter-spacing:.04em;
+}
+
+.scroll-hint{
+  display:flex;
+  justify-content:flex-end;
+  margin:.5rem 0 .75rem;
+  color:#66736c;
+  font-family:var(--font-mono);
+  font-size:.75rem;
+  font-weight:600;
+}
+
+/* Compact-window mode keeps the desktop chrome while reducing tablet crowding. */
+@media(min-width:761px) and (max-width:900px){
+  .desktop-shell{padding:4.75rem 1rem 3rem}
+  .window-stage{width:calc(100vw - 2rem)}
+  .window-page{padding:2rem 1.5rem}
+  .page-intro h1{font-size:clamp(2.25rem,6vw,3.25rem)}
+  .section-window{height:calc(100dvh - 6.5rem);max-height:calc(100dvh - 6.5rem)}
+  .subpage-nav{display:flex;justify-content:flex-start;overflow-x:auto;scrollbar-width:thin}
+  .subpage-nav button{flex:0 0 auto;min-width:104px;padding:.65rem .75rem}
+  .work-page .project-grid,.community-layout,.contact-page .contact-grid{grid-template-columns:1fr}
+  .contact-page .contact-grid{width:min(520px,100%)}
+  .character-about,.character-work,.character-community,.character-fun,.character-links,.character-contact{width:112px;height:112px}
+}
+
+@media(max-width:760px){
+  .window-page{padding:4rem var(--space-2) var(--space-4)}
+  .desktop-nav b,.subpage-nav button,.language-switch button{font-size:.75rem}
+  .scroll-hint{display:none}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .subpage-nav{scroll-behavior:auto}
+}
+
+
+/* Match the Home portrait's perceived mobile size to the other floating characters. */
+@media(max-width:760px){
+  .window-stage .character-overview img{
+    transform:scale(1.08);
+    transform-origin:center;
+  }
+}
+
+
+/* Preserve the Home character's larger desktop proportion on phones. */
+@media(max-width:760px){
+  .window-stage .character-overview{
+    width:108px;
+    height:108px;
+  }
+
+  .overview-content{
+    padding-top:8.75rem;
+  }
+}
+
+@media(max-width:380px){
+  .window-stage .character-overview{
+    width:104px;
+    height:104px;
+  }
+
+  .overview-content{
+    padding-top:8.4rem;
+  }
 }
