@@ -979,21 +979,42 @@
 /* The full orchard illustration scales fluidly from tablet landscape upward. */
 @media(min-width:761px){
   .original-fruit-background{
-    height:clamp(190px,28dvh,400px);
+    width:100%;height:auto;max-height:none;overflow:visible;
     -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 24%,#000 100%);
     mask-image:linear-gradient(to bottom,transparent 0,#000 24%,#000 100%)
   }
   .original-fruit-background img{
+    position:static!important;display:block;width:100%;height:auto;max-width:none;
     object-fit:contain;object-position:center bottom;opacity:.46
   }
 }
 @media(min-width:1100px){
   .subpage-nav{justify-content:center;box-shadow:0 -8px 24px #2944380d}
 }
-@media(min-width:1200px) and (min-height:760px){
-  .original-fruit-background{height:clamp(280px,36dvh,400px)}
-}
 
+/* Contact uses the same generous scale as the other portfolio sections. */
+@media(min-width:901px){
+  .desktop-window.section-window:has(.contact-page){
+    height:min(680px,calc(100dvh - 6.5rem));
+    max-height:min(680px,calc(100dvh - 6.5rem));
+  }
+  .desktop-window:has(.contact-page) .contact-page{padding:2rem 2.5rem 2.25rem}
+  .contact-page>.page-intro{min-height:0;margin-bottom:2rem}
+  .contact-page>.page-intro h1{
+    margin-top:.75rem!important;
+    font-size:clamp(2.75rem,4vw,3.5rem)
+  }
+  .contact-page>.page-intro>p:last-child{
+    margin-top:.75rem;font-size:1rem;line-height:1.55
+  }
+  .contact-page .contact-grid{gap:1.25rem}
+  .contact-page .contact-grid article{min-height:255px;padding:1.5rem}
+  .contact-page .contact-grid article>h3{margin-top:1rem;font-size:1.3rem}
+  .contact-page .contact-grid article>p{
+    min-height:0;margin:.55rem 0 1.1rem;font-size:.9rem;line-height:1.55
+  }
+  .contact-page .contact-grid article>a{min-height:48px;padding:.8rem 1rem}
+}
 /* Tablet retains the window while reducing its surrounding furniture. */
 @media(min-width:761px) and (max-width:1024px){
   .desktop-shell{padding:5.5rem 1rem 3rem}
@@ -1033,6 +1054,10 @@
   .window-page{padding:4rem 1.25rem 2rem}
   .overview-content{padding:4.5rem 1rem 3rem}
   .overview-window>.window-status{min-height:48px;padding-block:.55rem}
+  .original-fruit-background{height:135px;overflow:hidden}
+  .original-fruit-background img{
+    width:100%;height:100%;object-fit:cover;object-position:center bottom
+  }
   .work-page .project-grid{grid-template-columns:1fr}
   .project-grid article,.omdena-projects article,.learning-card,
   .contact-grid article{padding:1.25rem}
