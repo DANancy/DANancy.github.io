@@ -852,3 +852,139 @@
   .window-stage .desktop-window{overscroll-behavior-y:auto}
   .language-switch{position:absolute!important;inset:calc(env(safe-area-inset-top) + 8px) 0 auto!important;width:max-content;margin-inline:auto;transform:none!important;will-change:auto}
 }
+/* Short pages should hug their content on wide screens instead of inheriting
+   the tall reading window used by content-heavy sections. */
+@media(min-width:901px){
+  .overview-window{height:min(540px,calc(100dvh - 9.5rem));max-height:min(540px,calc(100dvh - 9.5rem))}
+  .desktop-window.section-window:has(.contact-page){height:min(610px,calc(100dvh - 6.5rem));max-height:min(610px,calc(100dvh - 6.5rem))}
+}
+
+/* Final shared spacing rhythm across every portfolio page. */
+.page-intro,.contact-page>.page-intro{margin-bottom:clamp(1.5rem,2.5vw,2rem)}
+.page-intro + :is(.project-grid,.community-layout,.fun-grid,.loved-links,.contact-grid){margin-top:0}
+.style-chips,.principles-grid{margin-top:1rem}
+.personal-principles{margin-top:2rem}
+.beyond-work,.omdena-experience,.learning-roadmap,.loved-links{margin-top:2.5rem}
+.fun-grid{gap:1.5rem}
+.links-grid{gap:1.25rem}
+.loved-links+.links-grid{margin-top:2rem}
+.community-layout{gap:1.5rem}
+.community-actions{margin-top:1.25rem}
+.contact-page .contact-grid{gap:1rem}
+
+/* Give Work cards a clear description/image -> link -> tags cadence. */
+.work-page .project-grid article>p{margin-top:.6rem}
+.work-page .project-preview{margin-top:1rem}
+.work-page .project-visit{margin-top:1rem}
+.work-page .project-grid article>div:last-child{margin-top:1.1rem}
+
+@media(max-width:760px){
+  .page-intro,.contact-page>.page-intro{margin-bottom:1.5rem}
+  .personal-principles{margin-top:1.75rem}
+  .beyond-work,.omdena-experience,.learning-roadmap,.loved-links{margin-top:2rem}
+  .fun-grid,.links-grid{gap:1rem}
+  .community-layout{gap:1.25rem}
+  .work-page .project-grid article>div:last-child{margin-top:1rem}
+}
+
+/* Friends & Links: shared creations first, then a compact personal shelf. */
+.friends-links,.personal-links{width:min(960px,100%);margin-top:2rem}
+.friends-links>.fun-window-bar{background:#e9e3ee!important;color:#5d4465!important;border-bottom-color:#d8cedf!important}
+.friends-links-body{padding:1.35rem}
+.friends-links-body>header{display:flex;align-items:end;justify-content:space-between;gap:1rem;margin-bottom:1rem}
+.friends-links-body>header h3{margin-top:.4rem;color:#493d50;font-size:1.55rem}
+.friends-links-body>header>p:last-child{max-width:440px;color:#68716c;font-size:.86rem;line-height:1.5;text-align:right}
+.friends-links-grid{display:flex;gap:1rem;overflow-x:auto;padding:.1rem .05rem .75rem;scroll-snap-type:x mandatory;scrollbar-width:thin}
+.friends-links-grid article{display:grid;grid-template-columns:108px minmax(0,1fr);flex:1 0 285px;min-height:170px;overflow:hidden;border:1px solid #ddd8e1;border-radius:14px;background:#fff;scroll-snap-align:start}
+.friends-links-grid article>img{width:108px;height:100%;min-height:170px;object-fit:cover}
+.friends-links-grid article>div{display:flex;flex-direction:column;min-width:0;padding:1rem}
+.friends-links-grid article p{color:#825b88;text-transform:uppercase;letter-spacing:.1em;font-family:var(--font-mono);font-size:.58rem;font-weight:700}
+.friends-links-grid article h4{margin:.35rem 0;color:#342f36;font-size:1.05rem;line-height:1.25}
+.friends-links-grid article small{color:#69716d;font-size:.75rem;line-height:1.45}
+.friends-links-grid article a{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:.65rem;color:#6e4976;font-size:.76rem;font-weight:700}
+.personal-links>.fun-window-bar{background:#dfeae3!important;color:#285a45!important;border-bottom-color:#cbdacf!important}
+.personal-links-body{padding:1.35rem}
+.my-links-heading{display:flex;align-items:end;justify-content:space-between;gap:1rem;margin-bottom:1rem}
+.my-links-heading h3{margin:.4rem 0 0;color:#36584a;font-size:1.55rem}
+.my-links-heading>p:last-child{max-width:440px;color:#68716c;font-size:.86rem;line-height:1.5;text-align:right}
+.personal-links .links-grid{display:flex;width:100%;gap:.85rem;margin-top:0;overflow-x:auto;padding:.1rem .05rem .75rem;scroll-snap-type:x mandatory;scrollbar-width:thin}
+.personal-links .links-grid .link-card{flex:1 0 220px;min-height:190px;padding:1rem;border-radius:14px;box-shadow:none;scroll-snap-align:start}
+.personal-links .links-grid .link-card:last-child:nth-child(odd){grid-column:auto;min-height:190px}
+.personal-links .links-grid .link-card-icon{width:40px;height:40px;border-radius:12px}
+.personal-links .links-grid .link-card-icon svg{width:20px;height:20px}
+.personal-links .links-grid h3{min-height:0;margin-top:.35rem;font-size:1.05rem}
+.personal-links .links-grid .link-description{display:none}
+.personal-links .links-grid a{min-height:38px;padding-top:.65rem;font-size:.78rem}
+@media(max-width:760px){
+  .friends-links,.personal-links{margin-top:1.5rem}
+  .friends-links-body,.personal-links-body{padding:1rem}
+  .friends-links-body>header,.my-links-heading{align-items:flex-start;flex-direction:column;gap:.45rem}
+  .friends-links-body>header>p:last-child,.my-links-heading>p:last-child{text-align:left}
+  .friends-links-grid article{flex-basis:min(300px,84vw);grid-template-columns:96px minmax(0,1fr)}
+  .friends-links-grid article>img{width:96px}
+  .personal-links .links-grid{grid-template-columns:none;margin-top:0}
+  .personal-links .links-grid .link-card{flex-basis:min(220px,72vw);min-height:180px}
+}
+
+/* Accessible type, spacing, and viewport behaviour without losing the desktop metaphor. */
+.desktop-shell{--space-2:1rem;--card-radius:16px;--control-min:44px}
+.window-bar>b,.overview-kicker,.desktop-nav b,.window-status,.page-pill,
+.window-page>h3,.project-grid article>div:last-child span,.mini-tags span,
+.event-facts small,.subpage-nav button,.language-switch button,.project-visit,
+.online-rating,.community-actions a,.eventbrite-button,.conference-meta span,
+.conference-window .conference-cta span,.omdena-date,.omdena-tags span,
+.learning-card-label,.learning-card>div span,.link-category,.loved-label,
+.loved-links article>p,.friends-shelf-label,.friends-links-grid article p{
+  font-size:max(.75rem,12px);line-height:1.4
+}
+.desktop-nav button,.subpage-nav button,.language-switch button,
+.desktop-floating-close,.footer-socials a{min-height:var(--control-min)}
+.project-grid article,.omdena-projects article,.learning-card,
+.community-values article,.contact-grid article,.link-card,.fun-window-frame{
+  border-radius:var(--card-radius)
+}
+.work-page .project-grid h3,.work-page .project-grid article>p,
+.work-page .project-grid article:nth-child(-n+2)>p,
+.work-page .project-grid article:has(.project-preview)>p{min-height:0}
+.work-page .project-grid article>div:last-child{margin-top:var(--space-2)}
+
+@media(min-width:761px) and (max-width:1024px){
+  .desktop-shell{padding:5.5rem 1rem 3rem}
+  .window-stage,.desktop-footer{width:min(100%,calc(100vw - 2rem))}
+  .window-page{padding:clamp(2rem,4.5vw,3rem)}
+  .section-window{height:calc(100dvh - 7rem);max-height:calc(100dvh - 7rem)}
+  .window-stage .character-overview{left:30px;width:132px;height:132px}
+  .window-stage .character-about,.window-stage .character-work,
+  .window-stage .character-community,.window-stage .character-books,
+  .window-stage .character-fun,.window-stage .character-links,
+  .window-stage .character-contact{right:22px;width:104px;height:104px}
+  .desktop-nav{gap:2.5rem clamp(2.5rem,7vw,5rem)}
+  .work-page .project-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .community-layout{grid-template-columns:1fr}
+  .community-layout>.community-copy,.community-layout>.curriculum-card{
+    width:min(680px,100%);margin-inline:auto
+  }
+}
+
+@media(max-width:760px){
+  .desktop-shell{padding:4.5rem .75rem 2.5rem}
+  .window-stage{height:auto;min-height:0}
+  .window-stage .desktop-window,.window-stage .overview-window,
+  .window-stage .section-window{
+    height:auto;min-height:0!important;max-height:none!important;overflow:visible
+  }
+  .window-stage .window-bar{position:relative;top:auto}
+  .section-window>.subpage-nav{
+    position:sticky;bottom:0;padding-bottom:max(.55rem,env(safe-area-inset-bottom))
+  }
+  .window-page{padding:4rem 1.25rem 2rem}
+  .overview-content{padding:4.5rem 1rem 3rem}
+  .overview-window>.window-status{min-height:48px;padding-block:.55rem}
+  .work-page .project-grid{grid-template-columns:1fr}
+  .project-grid article,.omdena-projects article,.learning-card,
+  .contact-grid article{padding:1.25rem}
+}
+@media(max-width:420px){
+  .desktop-nav{gap:2rem 1.25rem}.window-page{padding-inline:1rem}
+  .community-actions{align-items:stretch}.community-actions a{width:100%}
+}
