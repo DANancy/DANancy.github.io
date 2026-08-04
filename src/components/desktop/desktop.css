@@ -418,7 +418,7 @@
 .conference-window::before{display:none!important}
 .conference-body{position:relative;z-index:1;display:grid;grid-template-columns:78px minmax(0,1fr) auto;gap:1.5rem;align-items:center;padding:1.65rem 1.8rem}
 .conference-copy{min-width:0}
-.conference-window .conference-cta{display:block;min-width:190px;padding:1rem 1.1rem;border:1px solid #c9d8cd;border-radius:14px;background:#f4f8f4;color:#185f45;box-shadow:none;text-align:left;transition:border-color .2s ease,background .2s ease,transform .2s ease}
+.conference-window .conference-cta{display:block;width:236px;min-width:236px;box-sizing:border-box;padding:1rem 1.1rem;border:1px solid #c9d8cd;border-radius:14px;background:#f4f8f4;color:#185f45;box-shadow:none;text-align:left;transition:border-color .2s ease,background .2s ease,transform .2s ease}
 .conference-window .conference-cta span{display:block;color:#728079;font-family:var(--font-mono);font-size:.55rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
 .conference-window .conference-cta strong{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-top:.45rem;font-family:var(--font-sans);font-size:.9rem;font-weight:600}
 .conference-window .conference-cta:hover{border-color:#74a38b;background:#eaf3ed;color:#0d573d;transform:translateY(-2px)}
