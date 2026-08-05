@@ -1176,7 +1176,7 @@
 }
 
 @media(max-width:760px){
-  .friends-links-grid,.personal-links .links-grid{
+  .loved-links-grid,.friends-links-grid,.personal-links .links-grid{
     display:grid;grid-template-columns:1fr;gap:1rem;margin:0;overflow:visible;
     padding:0
   }
@@ -1361,7 +1361,7 @@
   outline:3px solid #176044;outline-offset:3px
 }
 .learning-grid,.animation-grid,.book-list,.loved-links-grid,
-.friends-links-grid,.personal-links .links-grid{
+.loved-links-grid,.friends-links-grid,.personal-links .links-grid{
   scrollbar-color:#718079 #edf1ee;
   box-shadow:inset -18px 0 16px -18px #29443888
 }
@@ -2230,7 +2230,7 @@
   .scroll-hint::before{font-size:.75rem}
   .desktop-shell>.desktop-footer>span{font-size:.75rem}
   .fun-page .animation-grid,.fun-books .book-list,.loved-links-grid,
-  .friends-links-grid,.personal-links .links-grid{padding-right:clamp(2.5rem,14vw,4.5rem);scroll-padding-inline:1rem}
+  .loved-links-grid,.friends-links-grid,.personal-links .links-grid{padding-right:clamp(2.5rem,14vw,4.5rem);scroll-padding-inline:1rem}
   .window-stage>.section-window>.window-page{padding-bottom:5.5rem}
 }
 @media(min-width:761px) and (max-width:900px){
@@ -2256,6 +2256,9 @@
 .friends-links-grid article:first-child>.friend-cover-expand>img{
   padding:.35rem;object-fit:contain
 }
+.friends-links-grid article:last-child>.friend-cover-expand>img{
+  inset:.45rem;width:calc(100% - .9rem);height:calc(100% - .9rem);border-radius:8px
+}
 @media(min-width:761px){
   .friends-links-grid article{
     display:grid;grid-template-columns:clamp(145px,38%,180px) minmax(0,1fr);
@@ -2264,10 +2267,13 @@
 }
 @media(max-width:760px){
   .friends-links-grid article{
-    display:grid;grid-template-columns:clamp(125px,38vw,165px) minmax(0,1fr);
+    display:grid;grid-template-columns:minmax(110px,42%) minmax(0,1fr);
     min-height:260px
   }
   .friends-links-grid article>.friend-cover-expand{width:100%;height:100%;min-height:0}
+  .loved-links-grid,.friends-links-grid,.personal-links .links-grid{
+    width:100%;padding-right:0;scroll-padding-inline:0
+  }
 }
 /* Click-to-enlarge image lightbox */
 .expandable-image{position:relative;display:block;width:100%;padding:0;border:0;border-radius:14px;background:transparent;cursor:zoom-in}
