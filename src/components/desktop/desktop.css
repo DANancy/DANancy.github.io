@@ -2274,6 +2274,10 @@
   .loved-links-grid,.friends-links-grid,.personal-links .links-grid{
     width:100%;padding-right:0;scroll-padding-inline:0
   }
+  .fun-page .animation-grid,.fun-books .book-list{
+    width:100%;padding-right:0;scroll-padding-inline:0;box-shadow:none
+  }
+  .fun-page .scroll-hint{display:none}
 }
 /* Click-to-enlarge image lightbox */
 .expandable-image{position:relative;display:block;width:100%;padding:0;border:0;border-radius:14px;background:transparent;cursor:zoom-in}
