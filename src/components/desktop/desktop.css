@@ -1144,7 +1144,7 @@
 
 /* Friends and Yangyang links follow the same responsive card rhythm as Loved. */
 .friends-links-grid{
-  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.85rem;
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.85rem;
   overflow:visible;padding:0
 }
 .friends-links-grid article{
@@ -1172,9 +1172,6 @@
 
 @media(min-width:761px) and (max-width:1099px){
   .friends-links-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .friends-links-grid article:last-child{
-    grid-column:1 / -1;width:min(360px,100%);justify-self:center
-  }
   .personal-links .links-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 
@@ -2205,6 +2202,7 @@
 
   .overview-content{
     padding-top:8.75rem;
+    padding-bottom:clamp(5rem,12dvh,6.5rem);
   }
 }
 
@@ -2216,6 +2214,7 @@
 
   .overview-content{
     padding-top:8.4rem;
+    padding-bottom:5rem;
   }
 }
 
@@ -2242,18 +2241,37 @@
 
 /* Expandable image layout adapters */
 .project-preview-expand{height:100%;border-radius:0}
-.project-preview-expand>span{right:.45rem;bottom:.45rem}
 .omdena-projects article>.need-energy-expand{margin:1rem 0}
 .need-energy-expand>img{border:1px solid #dce4dd;border-radius:9px}
-.friends-links-grid article>.friend-cover-expand{flex:0 0 150px;width:100%;height:150px;min-height:150px;border-radius:0}
-.friends-links-grid article>.friend-cover-expand>img{width:100%;height:100%;object-fit:cover}
-@media(max-width:760px){.friends-links-grid article>.friend-cover-expand{flex-basis:auto;width:104px;height:100%;min-height:210px}}
+.friends-links-grid article>.friend-cover-expand{
+  align-self:stretch;width:100%;height:100%;min-height:0;overflow:hidden;
+  border-radius:0;background:#f7f3f8
+}
+.friends-links-grid article>.friend-cover-expand>img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center
+}
+.friends-links-grid article:first-child>.friend-cover-expand{
+  background:#f4b6da
+}
+.friends-links-grid article:first-child>.friend-cover-expand>img{
+  padding:.35rem;object-fit:contain
+}
+@media(min-width:761px){
+  .friends-links-grid article{
+    display:grid;grid-template-columns:clamp(145px,38%,180px) minmax(0,1fr);
+    flex-basis:clamp(390px,48vw,470px);min-height:280px
+  }
+}
+@media(max-width:760px){
+  .friends-links-grid article{
+    display:grid;grid-template-columns:clamp(125px,38vw,165px) minmax(0,1fr);
+    min-height:260px
+  }
+  .friends-links-grid article>.friend-cover-expand{width:100%;height:100%;min-height:0}
+}
 /* Click-to-enlarge image lightbox */
 .expandable-image{position:relative;display:block;width:100%;padding:0;border:0;border-radius:14px;background:transparent;cursor:zoom-in}
 .expandable-image>img{display:block;width:100%;height:auto}
-.expandable-image>span{position:absolute;right:.7rem;bottom:.7rem;display:flex;align-items:center;gap:.35rem;padding:.45rem .65rem;border:1px solid #ffffff80;border-radius:999px;background:#173d33d9;color:#fff;box-shadow:0 5px 16px #102d2433;font-family:var(--font-mono);font-size:.65rem;font-weight:700;transition:background-color .2s ease}
-.expandable-image>span svg{width:14px;height:14px}
-.expandable-image:hover>span,.expandable-image:focus-visible>span{background:#245f4f}
 .expandable-image:focus-visible{outline:3px solid #79b89d;outline-offset:4px}
 .image-lightbox{width:min(94vw,900px);max-width:none;height:min(94dvh,1100px);max-height:none;padding:3rem 1rem 1rem;border:0;border-radius:18px;background:#f8faf8;box-shadow:0 24px 80px #07150f80;overflow:auto}
 .image-lightbox::backdrop{background:#07150fd9;backdrop-filter:blur(6px)}
@@ -2262,8 +2280,11 @@
 .image-lightbox-close{position:absolute;z-index:1;top:.65rem;right:.65rem;display:grid;place-items:center;width:38px;height:38px;border:1px solid #ccd7d0;border-radius:50%;background:#fff;color:#244b3d;box-shadow:0 4px 12px #102d2426;cursor:pointer}
 .image-lightbox-close:hover{background:#edf4ef}
 .image-lightbox-close:focus-visible{outline:3px solid #79b89d;outline-offset:2px}
-@media(max-width:760px){.expandable-image>span{font-size:.62rem}.image-lightbox{width:96vw;height:94dvh;padding:3rem .5rem .5rem;border-radius:14px}}
-@media(prefers-reduced-motion:reduce){.expandable-image>span{transition:none}}
 
 .reading-next-grid{margin-top:.25rem}
 .reading-next-grid>.learning-card{flex-basis:min(360px,82vw)}
+
+.friend-card-actions{display:grid;gap:.35rem;margin-top:auto}
+.friends-links-grid article .friend-card-actions a{min-height:36px;margin-top:0;padding-top:.45rem}
+
+@media(max-width:760px){.image-lightbox{width:96vw;height:94dvh;padding:3rem .5rem .5rem;border-radius:14px}}
