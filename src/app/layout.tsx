@@ -50,6 +50,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${fraunces.variable} ${fredoka.variable} ${inter.variable} ${jbMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-void text-text-primary">{children}<GoogleAnalytics/></body>
