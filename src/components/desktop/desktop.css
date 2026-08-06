@@ -510,6 +510,7 @@
 .learning-card>div{display:flex;grid-column:1/-1;flex-wrap:wrap;align-content:start;gap:.35rem;margin:.7rem 0}
 .learning-card>div span{padding:.25rem .48rem;border-radius:999px;background:color-mix(in srgb,var(--learning-accent) 11%,white);color:var(--learning-accent);font-family:var(--font-mono);font-size:.5rem;font-weight:750}
 .learning-card>a{display:flex;grid-column:1/-1;align-items:center;justify-content:space-between;width:100%;min-height:36px;margin-top:auto;padding-top:.6rem;border-top:1px solid #e2dfe7;color:var(--learning-accent);font-size:.78rem;font-weight:750}
+.learning-card>a+a{margin-top:0}
 @media(max-width:760px){.learning-roadmap{padding:1rem}.learning-roadmap>header{display:block}.learning-roadmap>header>p:last-child{margin-top:.45rem}.learning-grid{margin-inline:-.85rem;padding-inline:.85rem;scroll-padding-inline:.85rem}.learning-card{flex-basis:min(290px,84vw)}}
 /* Personal working principles */
 .personal-principles{margin-top:2.2rem}
@@ -814,6 +815,10 @@
 .community-copy .event-facts{margin:1rem 0}
 @media(max-width:760px){.community-values article{grid-template-columns:34px minmax(0,1fr);padding:.75rem}.community-values article>svg{width:34px;height:34px;padding:8px}}
 /* Replace the mission callout with plain, sourced community information. */
+.community-organisation-heading{margin:0 0 1rem}
+.community-organisation-heading p{margin:0;color:#287156;text-transform:uppercase;letter-spacing:.1em;font-family:var(--font-mono);font-size:.62rem;font-weight:700}
+.community-organisation-heading h2{margin:.3rem 0 .15rem;color:#29463a;font-size:clamp(1.55rem,2.7vw,2.15rem);line-height:1.15}
+.community-organisation-heading small{color:#6b756f;font-size:.75rem}
 .community-summary{margin:0;padding:0 0 1rem;border-bottom:1px solid #dce4de;color:#59665f;font-size:.9rem;line-height:1.62}
 .community-workshop-note{margin:1rem 0 0;color:#59665f;font-size:.86rem;line-height:1.6}
 .community-layout>.community-invite{grid-column:1/-1;margin-top:0;padding:1rem;border:1px solid #d8cce8;border-radius:15px;background:linear-gradient(135deg,#faf7ff,#f7fbf8)}
@@ -821,7 +826,7 @@
 .community-invite>header>span{display:grid;flex:0 0 38px;place-items:center;width:38px;height:38px;border-radius:11px;background:#eee5f8;color:#6c498b}
 .community-invite>header>span svg{width:19px;height:19px}
 .community-invite>header p{margin:0;color:#6c498b;text-transform:uppercase;letter-spacing:.09em;font-family:var(--font-mono);font-size:.57rem;font-weight:700}
-.community-invite h3{margin:.2rem 0 0;color:#342d3b;font-size:1.2rem}
+.community-invite h3{margin:.2rem 0 0;color:#342d3b;font-size:clamp(1.55rem,2.7vw,2.15rem);font-weight:600;line-height:1.15}
 .community-invite header small{display:block;margin-top:.2rem;color:#625c68;font-size:.73rem;line-height:1.4}
 .community-invite-description{margin:.8rem 0 0;color:#5d6460;font-size:.76rem;line-height:1.55}
 .community-invite-details{display:grid;grid-template-columns:1fr 1fr;gap:.55rem;margin-top:.85rem}
@@ -1867,6 +1872,7 @@
     overflow-x:hidden;
     overflow-y:auto;
     overscroll-behavior-y:contain;
+    overflow-anchor:none;
     scrollbar-gutter:stable;
     scrollbar-width:thin;
     scrollbar-color:#718079 #edf1ee;
@@ -2311,3 +2317,31 @@
 .friends-links-grid article .friend-card-actions a{min-height:36px;margin-top:0;padding-top:.45rem}
 
 @media(max-width:760px){.image-lightbox{width:96vw;height:94dvh;padding:3rem .5rem .5rem;border-radius:14px}}
+/* Work tools and skills use the learning-card visual language without horizontal scrolling. */
+.tools-skills-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));overflow:visible}
+.tools-skills-grid .learning-card{width:auto;min-height:260px}
+@media(max-width:1000px) and (min-width:761px){.tools-skills-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.tools-skills-grid .learning-card:last-child:nth-child(odd){grid-column:1/-1}}
+@media(max-width:760px){.tools-skills-grid{grid-template-columns:1fr;margin-inline:0;padding-inline:0}.tools-skills-grid .learning-card{width:100%}}
+
+/* Keep every Overview destination reachable on shorter desktop screens. */
+@media(min-width:761px){
+  .desktop-shell[data-section="overview"] .overview-window{
+    overflow:hidden;
+  }
+  .desktop-shell[data-section="overview"] .overview-content{
+    flex:1 1 auto;
+    min-height:0;
+    padding-top:clamp(4.25rem,8vh,5.5rem);
+    padding-bottom:5.5rem;
+    overflow-x:hidden;
+    overflow-y:auto;
+    overscroll-behavior-y:contain;
+    overflow-anchor:none;
+    scrollbar-gutter:stable;
+    scrollbar-width:thin;
+    scrollbar-color:#718079 #edf1ee;
+  }
+  .desktop-shell[data-section="overview"] .overview-content::-webkit-scrollbar{width:8px}
+  .desktop-shell[data-section="overview"] .overview-content::-webkit-scrollbar-track{background:#edf1ee}
+  .desktop-shell[data-section="overview"] .overview-content::-webkit-scrollbar-thumb{border:2px solid #edf1ee;border-radius:999px;background:#718079}
+}
