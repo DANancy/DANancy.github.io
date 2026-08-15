@@ -437,11 +437,12 @@ function InterestPanel({ language }: { language: Language }) {
         ref={triggerRef}
         className="interest-trigger"
         type="button"
+        aria-label={tr(language, "Register your interest", "登记意向")}
         aria-expanded={isOpen}
         aria-controls="interest-panel"
         onClick={() => setIsOpen((value) => !value)}
       >
-        {tr(language, "Register your interest", "登记意向")}
+        {tr(language, "Register interest", "登记意向")}
       </button>
       <div
         ref={panelRef}
