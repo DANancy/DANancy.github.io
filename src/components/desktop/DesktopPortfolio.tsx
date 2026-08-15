@@ -1804,7 +1804,7 @@ function Community({ language }: { language: Language }) {
                 <button type="submit" disabled={workshopSubmitState === "submitting"}><Mail aria-hidden="true" />{workshopSubmitState === "submitting" ? tr(language, "Submitting…", "正在提交……") : tr(language, "I'm Interested", "我感兴趣")}</button>
               </div>
               {workshopSubmitState === "error" && <p className="workshop-interest-error" role="alert">{tr(language, "Something went wrong. Please try again.", "提交失败，请重试。")}</p>}
-              <small>{tr(language, "Your interest will be sent directly to Yangyang Cai without leaving this page.", "您的参与意向会直接发送给蔡阳阳，无需离开此页面。")}</small>
+              <small>{tr(language, "Your interest will be sent directly to MAP without leaving this page.", "您的参与意向会直接发送给 MAP，无需离开此页面。")}</small>
             </>}
           </form>
         </section>
