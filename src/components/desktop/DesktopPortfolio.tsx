@@ -1582,6 +1582,29 @@ function OmdenaExperience({ language }: { language: Language }) {
   );
 }
 function Community({ language }: { language: Language }) {
+  const [workshopSubmitState, setWorkshopSubmitState] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const submitWorkshopInterest = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setWorkshopSubmitState("submitting");
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/yangyangcai.au@gmail.com", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          _subject: "Build Your Knowledge Agent — New Workshop Interest",
+          email: formData.get("email"),
+          workshop: "Build Your Knowledge Agent — Next Session",
+        }),
+      });
+      if (!response.ok) throw new Error("Submission failed");
+      setWorkshopSubmitState("success");
+      form.reset();
+    } catch {
+      setWorkshopSubmitState("error");
+    }
+  };
   return (
     <div className="window-page community-page">
       <PageIntro
@@ -1761,21 +1784,28 @@ function Community({ language }: { language: Language }) {
               <span><Network aria-hidden="true" />{tr(language, "Small community setting", "小型社区交流")}</span>
             </div>
           </div>
-          <form className="workshop-interest-form" action="https://formsubmit.co/yangyangcai.au@gmail.com" method="POST">
-            <input type="hidden" name="_subject" value="Build Your Knowledge Agent — new workshop interest" />
-            <input type="hidden" name="_template" value="table" />
-            <input type="hidden" name="Workshop" value="Build Your Knowledge Agent — next session" />
-            <div>
-              <p>{tr(language, "Next session", "下一期活动")}</p>
-              <h4>{tr(language, "Register your interest", "登记参与意向")}</h4>
-              <span>{tr(language, "Leave your email and we will know you would like to hear about the next workshop.", "留下你的邮箱，让我们知道你希望收到下一期工作坊的消息。")}</span>
-            </div>
-            <label htmlFor="workshop-interest-email">{tr(language, "Email address", "邮箱地址")}</label>
-            <div className="workshop-interest-controls">
-              <input id="workshop-interest-email" name="email" type="email" placeholder="you@example.com" autoComplete="email" required />
-              <button type="submit"><Mail aria-hidden="true" />{tr(language, "I'm interested", "我感兴趣")}</button>
-            </div>
-            <small>{tr(language, "Your interest will be sent directly to MAP. A confirmation page will appear after submission.", "提交后，你的参与意向会直接发送给 MAP，并显示确认页面。")}</small>
+          <form className="workshop-interest-form" onSubmit={submitWorkshopInterest}>
+            {workshopSubmitState === "success" ? (
+              <div className="workshop-interest-success" role="status">
+                <span><Mail aria-hidden="true" /></span>
+                <h4>{tr(language, "Successfully Submitted", "提交成功")}</h4>
+                <p>{tr(language, "Thank you. Your interest has been sent to MAP, and we’ll contact you about the next workshop.", "谢谢！您的参与意向已发送给 MAP，我们会就下一期工作坊与您联系。")}</p>
+                <button type="button" onClick={() => setWorkshopSubmitState("idle")}>{tr(language, "Submit Another Email", "提交另一个邮箱")}</button>
+              </div>
+            ) : <>
+              <div>
+                <p>{tr(language, "Next Session", "下一期活动")}</p>
+                <h4>{tr(language, "Register Your Interest", "登记参与意向")}</h4>
+                <span>{tr(language, "Leave your email to hear about the next workshop.", "留下您的邮箱，以便接收下一期工作坊的消息。")}</span>
+              </div>
+              <label htmlFor="workshop-interest-email">{tr(language, "Email Address", "邮箱地址")}</label>
+              <div className="workshop-interest-controls">
+                <input id="workshop-interest-email" name="email" type="email" placeholder="you@example.com" autoComplete="email" required />
+                <button type="submit" disabled={workshopSubmitState === "submitting"}><Mail aria-hidden="true" />{workshopSubmitState === "submitting" ? tr(language, "Submitting…", "正在提交……") : tr(language, "I'm Interested", "我感兴趣")}</button>
+              </div>
+              {workshopSubmitState === "error" && <p className="workshop-interest-error" role="alert">{tr(language, "Something went wrong. Please try again.", "提交失败，请重试。")}</p>}
+              <small>{tr(language, "Your interest will be sent directly to Yangyang Cai without leaving this page.", "您的参与意向会直接发送给蔡阳阳，无需离开此页面。")}</small>
+            </>}
           </form>
         </section>
         <section className="book-club-session">
