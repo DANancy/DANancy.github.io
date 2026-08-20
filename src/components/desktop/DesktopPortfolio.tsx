@@ -378,7 +378,7 @@ function InterestPanel({ language }: { language: Language }) {
   const triggerRef = useRef<HTMLButtonElement>(null);
   const interests = [
     ["AI Workshop", "AI 工作坊"],
-    ["Book Club", "读书会"],
+    ["Yangyang Book Club", "阳阳书友会"],
     ["1:1 Mentoring Session", "一对一指导"],
     ["Data Engineering Bootcamp", "数据工程训练营"],
     ["Learning Together Newsletter", "一起学习电子通讯"],
@@ -570,6 +570,7 @@ function SubpageNavigation({
             key={item.id}
             className={isActive ? "active" : ""}
             onClick={() => onNavigate(item.id)}
+            data-tooltip={label}
             aria-current={isActive ? "page" : undefined}
             aria-label={
               isActive
@@ -1814,8 +1815,8 @@ function Community({ language }: { language: Language }) {
               src={bookClubSessionOneImage}
               alt={tr(
                 language,
-                "Book Club Session 1 table with seven shared book recommendations",
-                "读书会第一期现场与七本分享书目",
+                "Yangyang Book Club Session 1 table with seven shared book recommendations",
+                "阳阳书友会第一期现场与七本分享书目",
               )}
               width={1440}
               height={1080}
@@ -1827,8 +1828,8 @@ function Community({ language }: { language: Language }) {
             <p>
               {tr(
                 language,
-                "Community Book Club · 28 February 2026",
-                "社区读书会 · 2026 年 2 月 28 日",
+                "Yangyang Book Club · 28 February 2026",
+                "阳阳书友会 · 2026 年 2 月 28 日",
               )}
             </p>
             <h3>
@@ -2971,12 +2972,12 @@ function Contact({ language }: { language: Language }) {
 
 function windowTitle(section: DesktopSection) {
   return {
-    overview: "sunshine.exe",
-    about: "about_me.md",
-    work: "data_lover.zip",
-    community: "community.makeaipractical.com",
-    fun: "just_for_fun.app",
+    overview: "home.exe",
+    about: "about.md",
+    work: "data.lover",
+    community: "community.ai",
+    fun: "fun.app",
     links: "links.url",
-    contact: "connect.exe",
+    contact: "contact.exe",
   }[section];
 }
