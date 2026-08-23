@@ -71,6 +71,7 @@ import mapConnectImage from "../../../assets/map_connect_1.png";
 import mapXiaohongshuImage from "../../../assets/Make AI Practical Xiaohongshu.png";
 import learnAiSeriesImage from "../../../assets/Use AI to Learn AI 100 Series.png";
 import bookClubSessionOneImage from "../../../assets/book_club_1.jpg";
+import bookClubSessionTwoImage from "../../../assets/book_club_2_23082026.jpg";
 import potteryOneImage from "@/assets/web/pottery_1.webp";
 import potteryTwoImage from "@/assets/web/pottery_2.webp";
 import potteryThreeImage from "@/assets/web/pottery_3.webp";
@@ -381,7 +382,7 @@ function InterestPanel({ language }: { language: Language }) {
     ["Yangyang Book Club", "阳阳书友会"],
     ["1:1 Mentoring Session", "一对一指导"],
     ["Data Engineering Bootcamp", "数据工程训练营"],
-    ["Learning Together Newsletter", "一起学习电子通讯"],
+    ["Learning Together Newsletter", "一起学习简报"],
   ];
 
   const submitInterest = async (event: FormEvent<HTMLFormElement>) => {
@@ -1809,6 +1810,10 @@ function Community({ language }: { language: Language }) {
             </>}
           </form>
         </section>
+        <div
+          className="book-club-sessions"
+          aria-label={tr(language, "Yangyang Book Club sessions", "阳阳书友会活动")}
+        >
         <section className="book-club-session">
           <div className="book-club-photo">
             <ExpandableImage
@@ -1846,6 +1851,13 @@ function Community({ language }: { language: Language }) {
                 "七本书，汇聚成一场温暖的交流。",
               )}
             </small>
+            <blockquote className="book-club-reflection">
+              {tr(
+                language,
+                "If you love yourself enough, love will overflow from you.",
+                "如果你足够爱自己，那么爱就会溢出来。",
+              )}
+            </blockquote>
             <ol>
               {[
                 tr(
@@ -1876,6 +1888,82 @@ function Community({ language }: { language: Language }) {
             </ol>
           </div>
         </section>
+        <section className="book-club-session">
+          <div className="book-club-photo">
+            <ExpandableImage
+              src={bookClubSessionTwoImage}
+              alt={tr(
+                language,
+                "Yangyang Book Club Session 2 book recommendations beside the session notes and flowers",
+                "阳阳书友会第二期分享书单、活动笔记与鲜花",
+              )}
+              width={1824}
+              height={1368}
+              sizes="(max-width: 760px) 100vw, 48vw"
+              language={language}
+            />
+          </div>
+          <div className="book-club-copy">
+            <p>
+              {tr(
+                language,
+                "Yangyang Book Club · 23 August 2026",
+                "阳阳书友会 · 2026 年 8 月 23 日",
+              )}
+            </p>
+            <h3>
+              {tr(
+                language,
+                "Session 2: Books worth sharing",
+                "第二期：值得分享的书",
+              )}
+            </h3>
+            <small>
+              {tr(
+                language,
+                "Eight recommendations, shared in English and Chinese.",
+                "八本好书，中英文书名共同呈现。",
+              )}
+            </small>
+            <blockquote className="book-club-reflection">
+              {tr(
+                language,
+                "Exercise can relieve fatigue and help slow cognitive decline.",
+                "运动可以缓解疲劳，并有助于减缓认知下降。",
+              )}
+            </blockquote>
+            <ol>
+              {[
+                tr(language, "Never Let Me Go", "《莫失莫忘》"),
+                tr(language, "Liao-Fan's Four Lessons", "《了凡四训》"),
+                tr(language, "Treat Time as a Friend", "《把时间当作朋友》"),
+                tr(language, "The Road to Financial Freedom", "《财富自由之路》"),
+                tr(
+                  language,
+                  "The Science of Recharging After Work",
+                  "《下班后疲惫的神经科学》",
+                ),
+                tr(
+                  language,
+                  "Four Thousand Weeks: Time Management for Mortals",
+                  "《人生只有四千个礼拜》",
+                ),
+                tr(
+                  language,
+                  "Finding My Bella Vita: A Story of Family, Food, Fame and Working Out Who You Are",
+                  "《寻找我的美好人生：关于家庭、美食、名望与寻找自我的故事》",
+                ),
+                tr(language, "The Five Love Languages", "《爱的五种语言》"),
+              ].map((book, index) => (
+                <li key={book}>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <b>{book}</b>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+        </div>
         <section className="community-invite">
           <header>
             <span>
