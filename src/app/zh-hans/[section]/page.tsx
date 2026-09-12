@@ -30,9 +30,9 @@ export async function generateMetadata({params}:{params:Promise<{section:string}
     description:page.description,
     alternates:{
       canonical:'/zh-hans/'+section+'/',
-      languages:{en:'/'+section+'/', 'zh-Hans':'/zh-hans/'+section+'/'},
+      languages:{en:'/'+section+'/', 'zh-Hans':'/zh-hans/'+section+'/', 'x-default':'/'+section+'/'},
     },
-    openGraph:{title:page.title+' | 蔡阳阳',description:page.description,url:'/zh-hans/'+section+'/',type:'website'},
+    openGraph:{title:page.title+' | 蔡阳阳',description:page.description,url:'/zh-hans/'+section+'/',type:'website',images:[{url:'/assets/community-event.webp',width:1200,height:630,alt:'蔡阳阳：数据、AI 与社区'}]},
   }
 }
 

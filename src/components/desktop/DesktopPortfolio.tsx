@@ -25,6 +25,7 @@ import {
   Gamepad2,
   Globe2,
   GraduationCap,
+  Headphones,
   Heart,
   House,
   Lightbulb,
@@ -67,9 +68,9 @@ import chatAndChillImage from "../../../assets/chat_chil.png";
 import growWithRuiImage from "../../../assets/grow-with-rui-card.png";
 import lunaWenBlogImage from "../../../assets/friends_or.jpg";
 import arinaDevImage from "../../../assets/friend_web.jpg";
-import mapConnectImage from "../../../assets/map_connect_1.png";
 import mapXiaohongshuImage from "../../../assets/Make AI Practical Xiaohongshu.png";
 import learnAiSeriesImage from "../../../assets/Use AI to Learn AI 100 Series.png";
+import knowledgeAgentWorkshopImage from "../../../assets/workshop_3_20260913.png";
 import bookClubSessionOneImage from "../../../assets/book_club_1.jpg";
 import bookClubSessionTwoImage from "../../../assets/book_club_2_23082026.jpg";
 import potteryOneImage from "@/assets/web/pottery_1.webp";
@@ -792,6 +793,13 @@ function Overview({
         <span>{tr(language, "hi!", "你好！")}</span>{" "}
         <strong>{tr(language, "i’m Yangyang", "我是阳阳")}</strong>
       </h1>
+      <p className="overview-intro">
+        {tr(
+          language,
+          "Senior Data Engineer in Melbourne, building dependable data platforms for renewable energy and making AI practical through projects, workshops, and community.",
+          "墨尔本高级数据工程师，为可再生能源构建可靠的数据平台，并通过项目、工作坊与社区让 AI 真正落地。",
+        )}
+      </p>
       <nav
         className="desktop-nav"
         aria-label={tr(language, "Portfolio sections", "作品集栏目")}
@@ -1730,40 +1738,76 @@ function Community({ language }: { language: Language }) {
             </figure>
           </div>
         </div>
-        <aside className="curriculum-card">
+        <section className="community-invite community-upcoming">
+          <div className="upcoming-event-badge"><CalendarDays aria-hidden="true" />{tr(language, "Next MAP event", "MAP 下一场活动")}</div>
           <ExpandableImage
-            src={mapConnectImage}
+            src={knowledgeAgentWorkshopImage}
             alt={tr(
               language,
-              "MAP Connect 1 online event poster",
-              "MAP Connect 首场线上活动海报",
+              "Make AI Practical personal knowledge agent workshop poster",
+              "Make AI Practical 个人知识智能体工作坊海报",
             )}
-            width={mapConnectImage.width}
-            height={mapConnectImage.height}
-            sizes="(max-width: 760px) 100vw, 36vw"
+            width={knowledgeAgentWorkshopImage.width}
+            height={knowledgeAgentWorkshopImage.height}
+            sizes="(max-width: 900px) 100vw, 40vw"
             language={language}
+            className="community-event-poster"
           />
-        </aside>
-        <section className="community-invite community-upcoming">
-          <div className="upcoming-event-badge"><CalendarDays aria-hidden="true" />{tr(language, "Upcoming event", "即将开始")}</div>
           <header>
-            <span><Network aria-hidden="true" /></span>
+            <span><Wrench aria-hidden="true" /></span>
             <div>
-              <p>MAP Connect 1</p>
-              <h3>{tr(language, "AI Won't Take Your Job. It Will Reprice You.", "在 AI 公司工作一年：我看清的职场生存真相")}</h3>
-              <small>{tr(language, "An honest conversation about work, AI, and personal growth", "一场关于职场、AI 与个人成长的真实对话")}</small>
+              <p>{tr(language, "Hands-on workshop · Session 1", "动手工作坊 · 第一场")}</p>
+              <h3>{tr(language, "Build a Personal Knowledge Agent in 3 Hours", "三小时构建个人知识智能体")}</h3>
+              <small>{tr(language, "Bring your laptop and leave with a working AI knowledge agent", "带上电脑，完成一个可运行的 AI 知识智能体")}</small>
             </div>
           </header>
           <p className="community-invite-description">
-            {tr(language, "Not in Melbourne or short on time? Join this free, low-pressure 60-minute online conversation. Michelle shares what a year inside an AI company taught her about changing roles, scarce skills, and staying valuable in the age of AI.", "不在墨尔本或没时间参加线下？来参加这场免费、低社交压力的 60 分钟线上分享。Michelle 将结合一年的 AI 公司经历，聊聊职位转变、正在变稀缺的能力，以及如何在 AI 时代保持竞争力。")}
+            {tr(language, "Turn the notes, documents, and ideas you already collect into a connected knowledge system. In this practical MAP workshop, you will build an agent that can search your knowledge, find connections, and answer questions from your own material.", "把你已经收集的笔记、文档和想法变成互联的知识系统。在这场 MAP 实践工作坊中，你将构建一个能够搜索个人知识、发现关联并根据自己的资料回答问题的智能体。")}
           </p>
           <div className="community-invite-details">
-            <span><CalendarDays aria-hidden="true" /><small>{tr(language, "Date", "日期")}</small>{tr(language, "Wednesday, 26 August 2026", "2026 年 8 月 26 日，星期三")}</span>
-            <span><Clock3 aria-hidden="true" /><small>{tr(language, "Time", "时间")}</small>19:30–20:30 AEST</span>
-            <span><Globe2 aria-hidden="true" /><small>{tr(language, "Format", "形式")}</small>{tr(language, "Online · Free", "线上 · 免费")}</span>
-            <span><Presentation aria-hidden="true" /><small>{tr(language, "Guest", "嘉宾")}</small>{tr(language, "Michelle Yang · MAP founder · Canva TPM · ICF-certified coach · 15 years in tech", "Michelle Yang · MAP 创始人 · Canva 技术项目经理 · ICF 认证教练 · 15 年科技行业经验")}</span>
+            <span><CalendarDays aria-hidden="true" /><small>{tr(language, "Date", "日期")}</small>{tr(language, "Sunday, 13 September 2026", "2026 年 9 月 13 日，星期日")}</span>
+            <span><Clock3 aria-hidden="true" /><small>{tr(language, "Time", "时间")}</small>2:00–5:00 pm AEST</span>
+            <span><MapPin aria-hidden="true" /><small>{tr(language, "Venue", "地点")}</small>167 Coleman Parade, Glen Waverley</span>
+            <span><Presentation aria-hidden="true" /><small>{tr(language, "Format", "形式")}</small>{tr(language, "In person · Three-hour workshop", "线下 · 三小时工作坊")}</span>
           </div>
-          <a className="eventbrite-button community-upcoming-cta" href="https://www.eventbrite.com.au/e/map-connect-1-ai-wont-take-your-job-it-will-reprice-you-tickets-1996767815287?aff=oddtdtcreator" target="_blank" rel="noreferrer"><CalendarDays size={17} />{tr(language, "Register free on Eventbrite", "前往 Eventbrite 免费报名")}</a>
+          <a className="eventbrite-button community-upcoming-cta" href="https://www.eventbrite.com.au/e/customised-workshop-1st-build-a-personal-knowledge-agent-in-3-hours-tickets-1998456659666" target="_blank" rel="noreferrer"><CalendarDays size={17} />{tr(language, "Register on Eventbrite", "前往 Eventbrite 报名")}</a>
+        </section>
+        <section className="map-podcast-session" aria-labelledby="map-podcast-title">
+          <div className="map-podcast-icon">
+            <Headphones aria-hidden="true" />
+          </div>
+          <div className="map-podcast-copy">
+            <p>{tr(language, "MAP Connect Podcast · Episode 01", "MAP Connect 播客 · 第 01 期")}</p>
+            <h3 id="map-podcast-title">
+              {tr(
+                language,
+                "AI Won’t Replace You. It Will Reprice You.",
+                "AI 不会取代你，它会给你重新定价",
+              )}
+            </h3>
+            <p className="map-podcast-description">
+              {tr(
+                language,
+                "MAP founder Michelle reflects on moving from management back to an individual-contributor role, the four kinds of workers losing leverage, and five capabilities becoming more valuable in the AI era.",
+                "MAP 创始人 Michelle 分享了从管理岗位回到一线个人贡献者的经历，并讨论在 AI 时代竞争力正在下降的四类人，以及越来越有价值的五种能力。",
+              )}
+            </p>
+            <div className="map-podcast-meta">
+              <span><Clock3 aria-hidden="true" />{tr(language, "41 minutes", "41 分钟")}</span>
+              <span><CalendarDays aria-hidden="true" />{tr(language, "Published 11 September 2026", "发布于 2026 年 9 月 11 日")}</span>
+              <span><Presentation aria-hidden="true" />{tr(language, "Host Maggie · Guest Michelle", "主持 Maggie · 嘉宾 Michelle")}</span>
+            </div>
+          </div>
+          <a
+            className="map-podcast-cta"
+            href="https://www.xiaoyuzhoufm.com/episode/6aa35612492687f6aad81e19?s=eyJ1IjogIjYyOGEyMTBhZWRjZTY3MTA0YWNkOGY3MCJ9"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <Headphones size={17} aria-hidden="true" />
+            {tr(language, "Listen on Xiaoyuzhou", "在小宇宙收听")}
+            <ExternalLink size={15} aria-hidden="true" />
+          </a>
         </section>
         <section className="knowledge-agent-session" aria-labelledby="knowledge-agent-title">
           <div className="knowledge-agent-overview">
@@ -2436,6 +2480,57 @@ function Fun({ language }: { language: Language }) {
               </span>
               <strong>
                 {tr(language, "Explore All-Energy", "了解 All-Energy")}
+                <ExternalLink size={15} />
+              </strong>
+            </a>
+          </div>
+        </section>
+        <section className="conference-window api-conference fun-window-frame">
+          <h3 className="fun-window-bar">
+            {tr(language, "technology.calendar", "科技.日历")}
+          </h3>
+          <div className="conference-body">
+            <div className="conference-mark">
+              <Network />
+            </div>
+            <div className="conference-copy">
+              <p className="page-pill">
+                {tr(language, "Technology conference", "科技会议")}
+              </p>
+              <h3>APIdays Australia 2026</h3>
+              <p>
+                {tr(
+                  language,
+                  "A conference I’m planning to attend this year, exploring API design, security, AI-driven automation, governance, and the technology shaping human-centric public and private services.",
+                  "我计划今年参加这场会议，了解 API 设计、安全、AI 驱动的自动化与治理，以及塑造以人为本的公共和私营服务的技术。",
+                )}
+              </p>
+              <div className="conference-meta">
+                <span>
+                  <CalendarDays />
+                  {tr(
+                    language,
+                    "28 to 29 October 2026",
+                    "2026 年 10 月 28 日至 29 日",
+                  )}
+                </span>
+                <span>
+                  <MapPin />
+                  {tr(language, "MCEC, Melbourne", "墨尔本 MCEC")}
+                </span>
+              </div>
+            </div>
+            <a
+              className="conference-cta"
+              href="https://www.apidays.global/events/australia"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span>
+                {tr(language, "Official conference website", "会议官方网站")}
+              </span>
+              <strong>
+                {tr(language, "Explore APIdays", "了解 APIdays")}
                 <ExternalLink size={15} />
               </strong>
             </a>

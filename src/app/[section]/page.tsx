@@ -28,8 +28,8 @@ export async function generateMetadata({params}:{params:Promise<{section:string}
   return {
     title:page.title,
     description:page.description,
-    alternates:{canonical:`/${section}/`,languages:{en:`/${section}/`,"zh-Hans":`/zh-hans/${section}/`}},
-    openGraph:{title:`${page.title} | Yangyang Cai`,description:page.description,url:`/${section}/`,type:"website"},
+    alternates:{canonical:`/${section}/`,languages:{en:`/${section}/`,"zh-Hans":`/zh-hans/${section}/`,"x-default":`/${section}/`}},
+    openGraph:{title:`${page.title} | Yangyang Cai`,description:page.description,url:`/${section}/`,type:"website",images:[{url:"/assets/community-event.webp",width:1200,height:630,alt:"Yangyang Cai — data, AI and community"}]},
   };
 }
 
