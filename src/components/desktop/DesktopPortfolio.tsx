@@ -63,14 +63,19 @@ import phoenixProjectBookImage from "@/assets/the-phoenix-project.jpg";
 import educatedBookImage from "@/assets/educated.jpg";
 import hammerPhilosophyImage from "@/assets/books/friend-hammer-philosophy.jpg";
 import soWhatPodcastImage from "../../../assets/so_what.jpg";
-import jokeShopImage from "../../../assets/joke_shop.png";
+import jokeShopImage from "@/assets/friends/joke-shop-card-v2.jpg";
 import chatAndChillImage from "../../../assets/chat_chil.png";
 import growWithRuiImage from "../../../assets/grow-with-rui-card.png";
 import lunaWenBlogImage from "../../../assets/friends_or.jpg";
-import arinaDevImage from "../../../assets/friend_web.jpg";
+import arinaDevImage from "@/assets/friends/arina-card-v2.jpg";
+import camMicTestImage from "@/assets/friends/cammictest.jpg";
+import huTouchUIImage from "@/assets/friends/hutouchui.jpg";
+import kenChenImage from "@/assets/friends/ken-chen.jpg";
+import xiangyuzhouImage from "@/assets/friends/xiangyuzhou.jpg";
+import pingchengTechImage from "@/assets/friends/pingcheng-tech.jpg";
 import mapXiaohongshuImage from "../../../assets/Make AI Practical Xiaohongshu.png";
 import learnAiSeriesImage from "../../../assets/Use AI to Learn AI 100 Series.png";
-import knowledgeAgentWorkshopImage from "../../../assets/workshop_3_20260913.png";
+import mapYangyangEventImage from "@/assets/map-yangyangcai.jpg";
 import bookClubSessionOneImage from "../../../assets/book_club_1.jpg";
 import bookClubSessionTwoImage from "../../../assets/book_club_2_23082026.jpg";
 import potteryOneImage from "@/assets/web/pottery_1.webp";
@@ -1044,6 +1049,14 @@ function Work({ language }: { language: Language }) {
                   <ExternalLink aria-hidden="true" size={14} />
                 </ProjectVisitLink>
               )}
+              {project.secondaryHref && (
+                <ProjectVisitLink href={project.secondaryHref}>
+                  {language === "zh"
+                    ? (project.secondaryLinkLabelZh ?? title)
+                    : (project.secondaryLinkLabel ?? `Visit ${project.title}`)}{" "}
+                  <ExternalLink aria-hidden="true" size={14} />
+                </ProjectVisitLink>
+              )}
               <div>
                 {tags.map((tag) => (
                   <span key={tag}>{tag}</span>
@@ -1741,36 +1754,18 @@ function Community({ language }: { language: Language }) {
         <section className="community-invite community-upcoming">
           <div className="upcoming-event-badge"><CalendarDays aria-hidden="true" />{tr(language, "Next MAP event", "MAP 下一场活动")}</div>
           <ExpandableImage
-            src={knowledgeAgentWorkshopImage}
+            src={mapYangyangEventImage}
             alt={tr(
               language,
-              "Make AI Practical personal knowledge agent workshop poster",
-              "Make AI Practical 个人知识智能体工作坊海报",
+              "MAP Connect Episode 3 event poster featuring Yangyang Cai",
+              "MAP Connect 第三期阳阳蔡分享活动海报",
             )}
-            width={knowledgeAgentWorkshopImage.width}
-            height={knowledgeAgentWorkshopImage.height}
+            width={mapYangyangEventImage.width}
+            height={mapYangyangEventImage.height}
             sizes="(max-width: 900px) 100vw, 40vw"
             language={language}
             className="community-event-poster"
           />
-          <header>
-            <span><Wrench aria-hidden="true" /></span>
-            <div>
-              <p>{tr(language, "Hands-on workshop · Session 1", "动手工作坊 · 第一场")}</p>
-              <h3>{tr(language, "Build a Personal Knowledge Agent in 3 Hours", "三小时构建个人知识智能体")}</h3>
-              <small>{tr(language, "Bring your laptop and leave with a working AI knowledge agent", "带上电脑，完成一个可运行的 AI 知识智能体")}</small>
-            </div>
-          </header>
-          <p className="community-invite-description">
-            {tr(language, "Turn the notes, documents, and ideas you already collect into a connected knowledge system. In this practical MAP workshop, you will build an agent that can search your knowledge, find connections, and answer questions from your own material.", "把你已经收集的笔记、文档和想法变成互联的知识系统。在这场 MAP 实践工作坊中，你将构建一个能够搜索个人知识、发现关联并根据自己的资料回答问题的智能体。")}
-          </p>
-          <div className="community-invite-details">
-            <span><CalendarDays aria-hidden="true" /><small>{tr(language, "Date", "日期")}</small>{tr(language, "Sunday, 13 September 2026", "2026 年 9 月 13 日，星期日")}</span>
-            <span><Clock3 aria-hidden="true" /><small>{tr(language, "Time", "时间")}</small>2:00–5:00 pm AEST</span>
-            <span><MapPin aria-hidden="true" /><small>{tr(language, "Venue", "地点")}</small>167 Coleman Parade, Glen Waverley</span>
-            <span><Presentation aria-hidden="true" /><small>{tr(language, "Format", "形式")}</small>{tr(language, "In person · Three-hour workshop", "线下 · 三小时工作坊")}</span>
-          </div>
-          <a className="eventbrite-button community-upcoming-cta" href="https://www.eventbrite.com.au/e/customised-workshop-1st-build-a-personal-knowledge-agent-in-3-hours-tickets-1998456659666" target="_blank" rel="noreferrer"><CalendarDays size={17} />{tr(language, "Register on Eventbrite", "前往 Eventbrite 报名")}</a>
         </section>
         <section className="map-podcast-session" aria-labelledby="map-podcast-title">
           <div className="map-podcast-icon">
@@ -1809,6 +1804,43 @@ function Community({ language }: { language: Language }) {
             <ExternalLink size={15} aria-hidden="true" />
           </a>
         </section>
+        <section className="map-podcast-session" aria-labelledby="map-podcast-title-02">
+          <div className="map-podcast-icon">
+            <Headphones aria-hidden="true" />
+          </div>
+          <div className="map-podcast-copy">
+            <p>{tr(language, "MAP Connect Podcast · Episode 02", "MAP Connect 播客 · 第 02 期")}</p>
+            <h3 id="map-podcast-title-02">
+              {tr(
+                language,
+                "Build Your Own AI System — You Can Do It Too",
+                "打造专属自己的 AI 系统，你也可以",
+              )}
+            </h3>
+            <p className="map-podcast-description">
+              {tr(
+                language,
+                "Full-stack engineer Sarah Wang shares three AI tools born from everyday problems, how to decide whether a personal tool can help others, and practical advice for people starting without a technical background.",
+                "全栈工程师 Sarah Wang 分享三个源于日常痛点的 AI 工具，如何判断个人工具能否帮助更多人，以及给非技术背景初学者的实用建议。",
+              )}
+            </p>
+            <div className="map-podcast-meta">
+              <span><Clock3 aria-hidden="true" />{tr(language, "28 minutes", "28 分钟")}</span>
+              <span><CalendarDays aria-hidden="true" />{tr(language, "Published 4 October 2026", "发布于 2026 年 10 月 4 日")}</span>
+              <span><Presentation aria-hidden="true" />{tr(language, "Host Maggie · Guest Sarah Wang", "主持 Maggie · 嘉宾 Sarah Wang")}</span>
+            </div>
+          </div>
+          <a
+            className="map-podcast-cta"
+            href="https://www.xiaoyuzhoufm.com/episode/6ac19d5d195d838e2aed0d2f?s=eyJ1IjogIjY4NTEyNjZkZDFkMzUwNzI2OWJjNzYzYyJ9"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <Headphones size={17} aria-hidden="true" />
+            {tr(language, "Listen on Xiaoyuzhou", "在小宇宙收听")}
+            <ExternalLink size={15} aria-hidden="true" />
+          </a>
+        </section>
         <section className="knowledge-agent-session" aria-labelledby="knowledge-agent-title">
           <div className="knowledge-agent-overview">
             <p>{tr(language, "AI Workshop", "AI 工作坊")}</p>
@@ -1818,11 +1850,13 @@ function Community({ language }: { language: Language }) {
               {tr(language, "Turn the information you already collect into a useful AI knowledge agent. Work through the process step by step, build a working example, and leave with an approach you can continue improving after the workshop.", "把你平时收集的信息转化为真正有用的 AI 知识智能体。跟随工作坊一步步完成构建，带走一个可运行的示例，以及课后可以继续完善的方法。")}
             </p>
             <p className="community-workshop-note">
-              {tr(language, "Past sessions co-hosted by Yangyang and Eric", "往期活动由阳阳与 Eric 共同主持")}
+              {tr(language, "Four successful sessions co-hosted by Yangyang and Eric", "阳阳与 Eric 已成功共同主持四场活动")}
             </p>
             <div className="event-facts knowledge-agent-runs">
-              <span><CalendarDays /><small>{tr(language, "First run", "首场活动")}</small>{tr(language, "14 June 2026 · Melbourne", "2026 年 6 月 14 日 · 墨尔本")}</span>
-              <span><MapPin /><small>{tr(language, "Second run", "第二场")}</small>{tr(language, "9 August 2026 · Melbourne", "2026 年 8 月 9 日 · 墨尔本")}</span>
+              <span><CalendarDays /><small>{tr(language, "First run", "首场活动")}</small>{tr(language, "14 June 2026", "2026 年 6 月 14 日")}</span>
+              <span><CalendarDays /><small>{tr(language, "Second run", "第二场")}</small>{tr(language, "9 August 2026", "2026 年 8 月 9 日")}</span>
+              <span><CalendarDays /><small>{tr(language, "Third run", "第三场")}</small>{tr(language, "13 September 2026", "2026 年 9 月 13 日")}</span>
+              <span><CalendarDays /><small>{tr(language, "Fourth run", "第四场")}</small>{tr(language, "27 September 2026", "2026 年 9 月 27 日")}</span>
             </div>
             <div className="knowledge-agent-highlights" aria-label={tr(language, "Workshop highlights", "工作坊亮点")}>
               <span><Wrench aria-hidden="true" />{tr(language, "Build as you learn", "边学边做")}</span>
@@ -2008,65 +2042,6 @@ function Community({ language }: { language: Language }) {
           </div>
         </section>
         </div>
-        <section className="community-invite">
-          <header>
-            <span>
-              <Network aria-hidden="true" />
-            </span>
-            <div>
-              <p>{tr(language, "Industry Event Invitation", "行业活动邀请")}</p>
-              <h3>Interconnected</h3>
-              <small>
-                {tr(
-                  language,
-                  "Monash Alumni Networking Lounge · Postgraduate Students",
-                  "莫纳什校友交流空间 · 研究生专场",
-                )}
-              </small>
-            </div>
-          </header>
-          <p className="community-invite-description">
-            {tr(
-              language,
-              "A career-development and networking evening designed to connect postgraduate students with alumni and industry professionals through practical conversations, career insights, and new professional connections.",
-              "一场面向研究生的职业发展与交流活动，通过务实对话、职业洞察和新的专业联系，与校友及行业人士建立连接。",
-            )}
-          </p>
-          <div className="community-invite-details">
-            <span>
-              <CalendarDays aria-hidden="true" />
-              <small>{tr(language, "Date", "日期")}</small>
-              {tr(
-                language,
-                "Thursday, 3 September 2026",
-                "2026 年 9 月 3 日，星期四",
-              )}
-            </span>
-            <span>
-              <Clock3 aria-hidden="true" />
-              <small>{tr(language, "Arrival", "签到")}</small>
-              {tr(
-                language,
-                "4:00–4:30 pm · refreshments provided",
-                "下午 4:00–4:30 · 提供茶点",
-              )}
-            </span>
-            <span>
-              <Clock3 aria-hidden="true" />
-              <small>{tr(language, "Event", "活动时间")}</small>
-              {tr(language, "5:00–8:00 pm", "下午 5:00–8:00")}
-            </span>
-            <span>
-              <MapPin aria-hidden="true" />
-              <small>{tr(language, "Location", "地点")}</small>
-              {tr(
-                language,
-                "Monash College, 750 Collins Street, Docklands VIC",
-                "莫纳什学院，750 Collins Street, Docklands VIC",
-              )}
-            </span>
-          </div>
-        </section>
       </div>
     </div>
   );
@@ -2690,6 +2665,7 @@ function OnlineRating({
 function friendLinks(language: Language) {
   return [
     {
+      group: "stories" as const,
       title: tr(language, "The Joke Shop", "The Joke Shop 喜剧现场"),
       kind: tr(language, "Live comedy", "现场喜剧"),
       description: tr(
@@ -2704,6 +2680,7 @@ function friendLinks(language: Language) {
       image: jokeShopImage,
     },
     {
+      group: "stories" as const,
       title: tr(language, "Hammer Philosophy", "锤子哲学"),
       kind: tr(language, "Friend's book", "朋友的书"),
       description: tr(
@@ -2716,6 +2693,7 @@ function friendLinks(language: Language) {
       image: hammerPhilosophyImage,
     },
     {
+      group: "stories" as const,
       title: tr(language, "So What", "又怎样 SO WHAT"),
       kind: tr(language, "Podcast", "播客"),
       description: tr(
@@ -2728,6 +2706,7 @@ function friendLinks(language: Language) {
       image: soWhatPodcastImage,
     },
     {
+      group: "stories" as const,
       title: tr(language, "Chat & Chill", "人间随便聊，Chat & Chill"),
       kind: tr(language, "Podcast", "播客"),
       description: tr(
@@ -2741,6 +2720,7 @@ function friendLinks(language: Language) {
       image: chatAndChillImage,
     },
     {
+      group: "people" as const,
       title: tr(language, "Grow with Rui", "曲大方妈妈 · ICF教练"),
       kind: tr(language, "ICF coach", "ICF 教练"),
       description: tr(
@@ -2753,6 +2733,7 @@ function friendLinks(language: Language) {
       image: growWithRuiImage,
     },
     {
+      group: "tools" as const,
       title: "CamMicTest",
       kind: tr(language, "Browser tool", "浏览器工具"),
       description: tr(
@@ -2762,9 +2743,67 @@ function friendLinks(language: Language) {
       ),
       href: "https://cammictest.com/",
       actionLabel: tr(language, "Test your setup", "测试设备"),
+      image: camMicTestImage,
       icon: Camera,
     },
     {
+      group: "tools" as const,
+      title: "HuTouchUI",
+      kind: tr(language, "UI toolkit", "UI 工具集"),
+      description: tr(
+        language,
+        "A practical collection of UI resources and tools for creating polished digital experiences.",
+        "一个实用的 UI 资源与工具集合，帮助创作者打造精致的数字体验。",
+      ),
+      href: "https://www.hutouchui.com/zh",
+      actionLabel: tr(language, "Visit website", "访问网站"),
+      image: huTouchUIImage,
+      icon: Wrench,
+    },
+    {
+      group: "people" as const,
+      title: "Ken Chen",
+      kind: tr(language, "Personal website", "个人网站"),
+      description: tr(
+        language,
+        "Ken Chen's personal corner of the web, featuring his work, ideas, and interests.",
+        "Ken Chen 的个人网站，分享他的作品、想法与兴趣。",
+      ),
+      href: "https://kenchen.info",
+      actionLabel: tr(language, "Visit website", "访问网站"),
+      image: kenChenImage,
+      icon: Globe2,
+    },
+    {
+      group: "people" as const,
+      title: "Xiangyuzhou",
+      kind: tr(language, "Personal website", "个人网站"),
+      description: tr(
+        language,
+        "Xiangyuzhou's personal corner of the web, sharing projects, ideas, and interests.",
+        "Xiangyuzhou 的个人网站，分享项目、想法与兴趣。",
+      ),
+      href: "https://xiangyuzhou.xyz/",
+      actionLabel: tr(language, "Visit website", "访问网站"),
+      image: xiangyuzhouImage,
+      icon: Globe2,
+    },
+    {
+      group: "tools" as const,
+      title: "Pingcheng Tech",
+      kind: tr(language, "Technology", "科技"),
+      description: tr(
+        language,
+        "Visit Pingcheng Tech's official website to explore its work and latest updates.",
+        "访问 Pingcheng Tech 官方网站，了解其项目与最新动态。",
+      ),
+      href: "https://www.pingchengtech.com",
+      actionLabel: tr(language, "Visit website", "访问网站"),
+      image: pingchengTechImage,
+      icon: Globe2,
+    },
+    {
+      group: "people" as const,
       title: tr(
         language,
         "A Woman with Love and Courage",
@@ -2781,6 +2820,7 @@ function friendLinks(language: Language) {
       image: lunaWenBlogImage,
     },
     {
+      group: "people" as const,
       title: "Arina",
       kind: tr(
         language,
@@ -2885,6 +2925,14 @@ function Links({ language }: { language: Language }) {
       tone: "gold",
     },
   ];
+  const [activeFriendGroup, setActiveFriendGroup] = useState<"stories" | "people" | "tools">("stories");
+  const friends = friendLinks(language);
+  const friendGroups = [
+    { id: "stories" as const, label: tr(language, "Stories & Media", "故事与媒体") },
+    { id: "people" as const, label: tr(language, "People & Services", "人物与服务") },
+    { id: "tools" as const, label: tr(language, "Tools & Technology", "工具与科技") },
+  ];
+  const visibleFriends = friends.filter((item) => item.group === activeFriendGroup);
   return (
     <div className="window-page links-page">
       <PageIntro
@@ -2958,17 +3006,33 @@ function Links({ language }: { language: Language }) {
               )}
             </p>
           </header>
+          <div className="friends-filter" aria-label={tr(language, "Filter friends by type", "按类型筛选朋友链接")}>
+            {friendGroups.map((group) => {
+              const count = friends.filter((item) => item.group === group.id).length;
+              return (
+                <button
+                  type="button"
+                  key={group.id}
+                  aria-pressed={activeFriendGroup === group.id}
+                  onClick={() => setActiveFriendGroup(group.id)}
+                >
+                  <span>{group.label}</span>
+                  <small>{count}</small>
+                </button>
+              );
+            })}
+          </div>
           <div
             className="friends-links-grid"
             role="region"
             tabIndex={0}
             aria-label={tr(
               language,
-              "Scrollable friends links",
-              "可横向滚动的朋友链接",
+              `${friendGroups.find((group) => group.id === activeFriendGroup)?.label} friend links`,
+              `${friendGroups.find((group) => group.id === activeFriendGroup)?.label}朋友链接`,
             )}
           >
-            {friendLinks(language).map((item) => (
+            {visibleFriends.map((item) => (
               <article key={item.href}>
                 {"image" in item && item.image ? (
                   <ExpandableImage
@@ -2981,8 +3045,8 @@ function Links({ language }: { language: Language }) {
                   />
                 ) : (
                   <div className="friend-tool-cover" aria-hidden="true">
-                    <item.icon />
-                    <span>CAM + MIC</span>
+                    <Globe2 />
+                    <span>{item.title}</span>
                   </div>
                 )}
                 <div>

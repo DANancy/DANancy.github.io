@@ -2386,16 +2386,6 @@
 }
 .friends-links-grid article>.friend-tool-cover svg{width:42px;height:42px;stroke-width:1.5}
 .friends-links-grid article>.friend-tool-cover span{font-family:var(--font-mono);font-size:.66rem;font-weight:700;letter-spacing:.12em}
-.friends-links-grid article:first-child>.friend-cover-expand{
-  background:#f4b6da
-}
-.friends-links-grid article:first-child>.friend-cover-expand>img{
-  padding:.35rem;object-fit:contain
-}
-.friends-links-grid article:last-child>.friend-cover-expand>img{
-  inset:.45rem;width:calc(100% - .9rem);height:calc(100% - .9rem);border-radius:8px;
-  object-fit:contain;object-position:center;background:#fff
-}
 @media(min-width:761px){
   .friends-links-grid article{
     display:grid;grid-template-columns:clamp(145px,38%,180px) minmax(0,1fr);
@@ -2457,6 +2447,61 @@
 .interest-email>span{display:block;margin-bottom:.55rem;color:#35463d;font-size:.8rem;font-weight:800}
 .interest-email input{width:100%;min-height:46px;padding:.7rem .8rem;border:1px solid #cbd7cf;border-radius:9px;background:#fff;color:#25352d;font:inherit}
 .interest-email input:focus-visible{outline:3px solid #9acbb5;outline-offset:2px}
+
+/* Friends directory: compact preview with a clear path to the full collection. */
+.friends-links-grid{
+  grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem
+}
+.friends-links-grid article{
+  display:flex;min-height:0;border-color:#ddd8e1;transition:border-color .2s ease,box-shadow .2s ease
+}
+.friends-links-grid article:hover{border-color:#bcaac2;box-shadow:0 10px 24px #3d284414}
+.friends-links-grid article>.friend-cover-expand,
+.friends-links-grid article>.friend-tool-cover{
+  width:100%;height:130px;min-height:130px;flex:0 0 130px
+}
+.friends-links-grid article>.friend-tool-cover{
+  position:relative;isolation:isolate;overflow:hidden;background:linear-gradient(145deg,#22342c,#516b5f)
+}
+.friends-links-grid article>.friend-tool-cover::before{
+  content:"";position:absolute;z-index:-1;right:-28px;bottom:-40px;width:120px;height:120px;
+  border:22px solid #ffffff14;border-radius:50%
+}
+.friends-links-grid article>.friend-tool-cover svg{width:34px;height:34px}
+.friends-links-grid article>.friend-tool-cover span{
+  max-width:90%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#fff;text-align:center
+}
+.friends-links-grid article>div:last-child{padding:1rem}
+.friends-links-grid article small{display:-webkit-box;overflow:hidden;-webkit-box-orient:vertical;-webkit-line-clamp:3}
+.friends-filter{display:flex;flex-wrap:wrap;gap:.55rem;margin:0 0 1rem}
+.friends-filter button{
+  display:flex;align-items:center;gap:.55rem;min-height:42px;padding:.55rem .7rem .55rem .9rem;
+  border:1px solid #d3c7d7;border-radius:999px;background:#fff;color:#674f6d;cursor:pointer;
+  font-family:var(--font-mono);font-size:.69rem;font-weight:750;transition:background-color .2s ease,border-color .2s ease,color .2s ease
+}
+.friends-filter button:hover{border-color:#96789e;background:#f7f2f8}
+.friends-filter button[aria-pressed="true"]{border-color:#694b70;background:#694b70;color:#fff}
+.friends-filter button:focus-visible{outline:3px solid #bba0c2;outline-offset:3px}
+.friends-filter small{
+  display:grid;place-items:center;min-width:23px;height:23px;padding:0 .35rem;border-radius:999px;
+  background:#eee6f0;color:inherit;font-size:.64rem
+}
+.friends-filter button[aria-pressed="true"] small{background:#ffffff2b}
+
+@media(min-width:761px) and (max-width:1099px){
+  .friends-links-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:760px){
+  .friends-filter{display:grid;grid-template-columns:1fr;margin-bottom:1rem}
+  .friends-filter button{justify-content:space-between;width:100%;border-radius:10px}
+  .friends-links-grid{grid-template-columns:1fr}
+  .friends-links-grid article{display:grid;grid-template-columns:112px minmax(0,1fr)}
+  .friends-links-grid article>.friend-cover-expand,
+  .friends-links-grid article>.friend-tool-cover{width:112px;height:100%;min-height:205px}
+}
+@media(prefers-reduced-motion:reduce){
+  .friends-links-grid article,.friends-filter button{transition:none}
+}
 
 /* Interest form: guided session selection */
 .interest-session-fieldset legend,.interest-email>span{display:flex;align-items:center;gap:.55rem;margin-bottom:.75rem;color:#263c31;font-size:.82rem;font-weight:800}
