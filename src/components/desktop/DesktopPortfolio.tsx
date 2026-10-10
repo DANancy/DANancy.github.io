@@ -1179,17 +1179,8 @@ function WorkshopBusinessDetails({ language }: { language: Language }) {
           <h3 id="business-workshop-title">{tr(language, "Build Your Knowledge Agent", "构建你的知识智能体")}</h3>
           <span>{tr(language, "A practical, hands-on session delivered with Make AI Practical", "与 Make AI Practical 共同开展的实用型动手工作坊")}</span>
           <p className="knowledge-agent-description">
-            {tr(language, "Turn the information you already collect into a useful AI knowledge agent. Work through the process step by step, build a working example, and leave with an approach you can continue improving after the workshop.", "把你平时收集的信息转化为真正有用的 AI 知识智能体。跟随工作坊一步步完成构建，带走一个可运行的示例，以及课后可以继续完善的方法。")}
+            {tr(language, "Build a working AI knowledge agent from information you already collect—and leave with a practical approach you can keep improving.", "把日常收集的信息转化为可运行的 AI 知识智能体，并带走一套能够继续完善的实用方法。")}
           </p>
-          <p className="community-workshop-note">
-            {tr(language, "Four successful sessions co-hosted by Yangyang and Eric", "阳阳与 Eric 已成功共同主持四场活动")}
-          </p>
-          <div className="event-facts knowledge-agent-runs">
-            <span><CalendarDays /><small>{tr(language, "First run", "首场活动")}</small>{tr(language, "14 June 2026", "2026 年 6 月 14 日")}</span>
-            <span><CalendarDays /><small>{tr(language, "Second run", "第二场")}</small>{tr(language, "9 August 2026", "2026 年 8 月 9 日")}</span>
-            <span><CalendarDays /><small>{tr(language, "Third run", "第三场")}</small>{tr(language, "13 September 2026", "2026 年 9 月 13 日")}</span>
-            <span><CalendarDays /><small>{tr(language, "Fourth run", "第四场")}</small>{tr(language, "27 September 2026", "2026 年 9 月 27 日")}</span>
-          </div>
           <div className="knowledge-agent-highlights" aria-label={tr(language, "Workshop highlights", "工作坊亮点")}>
             <span><Wrench aria-hidden="true" />{tr(language, "Build as you learn", "边学边做")}</span>
             <span><Clock3 aria-hidden="true" />{tr(language, "Three-hour workshop", "三小时工作坊")}</span>
@@ -1208,7 +1199,7 @@ function WorkshopBusinessDetails({ language }: { language: Language }) {
           alt={tr(language, "Participant feedback from the AI Workshop Series", "AI 工作坊系列参与者反馈")}
           width={1254}
           height={1254}
-          sizes="(max-width: 760px) 92vw, 1050px"
+          sizes="(max-width: 760px) 88vw, 720px"
           language={language}
         />
       </section>

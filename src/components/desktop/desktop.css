@@ -2828,6 +2828,8 @@
 }
 .workshop-business-details .knowledge-agent-overview{max-width:1050px}
 .workshop-feedback{
+  width:min(760px,100%);
+  margin-inline:auto;
   overflow:hidden;
   border:1px solid #d7e1da;
   border-radius:18px;
