@@ -56,9 +56,9 @@ export const ventures = [
     role: "Venture Partner · Coming Soon",
     roleZh: "创业合作伙伴 · 即将推出",
     description:
-      "An early-stage venture building AI-powered business management solutions for jewellery retail stores. As a venture partner, I lead the data function and guide delivery across data strategy, security and governance, architecture and pipelines, data quality, and ongoing operations. I also explore how AI can support brainstorming, research, and rapid prototyping of management reports. Building the company with the team gives me first-hand experience of the journey from zero to one and, over time, toward scale—an engaging entrepreneurial experience and a constant source of learning.",
+      "An early-stage venture building AI-powered business management solutions for jewellery retail stores. As a venture partner, I lead data planning and delivery, guiding work across security and governance, pipelines, quality, and operations while using AI for brainstorming, research, and management-report prototypes. The experience lets me take part first-hand in building a company from zero to one and gradually toward scale.",
     descriptionZh:
-      "一个面向珠宝零售门店、提供 AI 驱动经营管理方案的早期创业项目。我作为创业合作伙伴参与团队共建，负责数据方向的规划与交付，并带领相关成员推进数据战略、安全与治理、架构与管道建设、数据质量及日常运维。我也探索利用 AI 辅助头脑风暴、开展调研，以及快速制作经营报表原型。在这个过程中，我亲身体验公司从 0 到 1、再逐步走向规模化的建设过程。这是一段很有趣、也让我持续学习的创业经历。",
+      "一个面向珠宝零售门店、提供 AI 驱动经营管理方案的早期创业项目。我作为创业合作伙伴负责数据方向的规划与交付，带领成员推进数据安全与治理、数据管道建设、质量管理和日常运维，并利用 AI 辅助头脑风暴、业务调研与经营报表原型设计。这段经历让我亲身参与公司从 0 到 1、再逐步走向规模化的建设过程。",
     tags: ["Jewellery Retail", "AI Solutions", "Data Strategy", "Data Governance", "Data Pipelines", "Data Operations", "Team Leadership", "Venture Building"],
     tagsZh: ["珠宝零售", "AI 解决方案", "数据战略", "数据治理", "数据管道", "数据运维", "团队带领", "创业共建"],
   },

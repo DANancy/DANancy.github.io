@@ -3265,8 +3265,10 @@
 }
 .collaborative-section .venture-grid>article{display:flex;height:100%;flex-direction:column}
 .collaborative-section .venture-copy{display:flex;flex:1;flex-direction:column}
+.collaborative-section .venture-copy>p:not(.venture-role){min-height:8em}
 .collaborative-section .venture-tags{margin-top:1rem;padding-top:0}
 .collaborative-section .venture-tags span{border:0;background:#c9eee2;color:#28655a}
+@media(max-width:760px){.collaborative-section .venture-copy>p:not(.venture-role){min-height:0}}
 .ventures-page .practice-grid>article.mentoring-service-card{
   display:grid;
   grid-template-columns:72px minmax(0,1fr);
