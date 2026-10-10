@@ -7,9 +7,10 @@ import "@/components/desktop/desktop.css";
 const sections = {
   about:{title:"About",description:"Meet Yangyang Cai, a Melbourne Senior Data Engineer and Data Magician working across renewable energy, practical AI, and useful digital products."},
   work:{title:"Work",description:"Explore Yangyang Cai's data engineering, AI, mentoring, ecommerce, and collaborative technology projects."},
+  ventures:{title:"Business & Ventures",description:"Explore Yangyang Cai's ABN-based mentoring and AI data engineering training, alongside collaborative ecommerce and AI retail ventures."},
   community:{title:"Community",description:"Discover Yangyang Cai's Make AI Practical community work, hands-on AI workshops, mentoring, and knowledge sharing."},
   fun:{title:"Just for Fun",description:"Books, animation, pottery, games, and events that keep Yangyang Cai curious beyond data and AI."},
-  links:{title:"Friends & Links",description:"Creative work by friends and a compact collection of communities, projects, and useful links connected to Yangyang Cai."},
+  links:{title:"Contact, Friends & Links",description:"Contact Yangyang Cai and explore creative work by friends, communities, projects, and useful related links."},
   contact:{title:"Contact",description:"Connect with Yangyang Cai on LinkedIn, GitHub, or by email for thoughtful conversations and collaboration."},
 } as const;
 

@@ -45,7 +45,7 @@ import {
   X,
   Zap,
 } from "lucide-react";
-import { navigation, projects, type DesktopSection } from "@/data/desktop";
+import { independentPractice, navigation, projects, ventures, type DesktopSection } from "@/data/desktop";
 import characterImage from "@/assets/web/yangyang-character.webp";
 import aboutCharacter from "@/assets/web/character-about.png";
 import workCharacter from "@/assets/web/character-work.png";
@@ -56,11 +56,14 @@ import contactCharacter from "@/assets/web/character-contact.png";
 import backyardOrchard from "@/assets/web/yangyang-backyard-orchard.webp";
 import bootcampLifecycleImage from "@/assets/web/data-engineering-bootcamp.png";
 import homeEssentialsImage from "@/assets/web/home-essentials.jpg";
+import renJunLogo from "../../../assets/logo.jpg";
 import mercyBookImage from "@/assets/仁慈的关系.jpg";
 import nexusBookImage from "@/assets/智人之上.jpg";
 import alchemistBookImage from "@/assets/牧羊少年奇幻之旅.jpg";
 import phoenixProjectBookImage from "@/assets/the-phoenix-project.jpg";
 import educatedBookImage from "@/assets/educated.jpg";
+import cloudShopBookImage from "@/assets/books/cloud-shop.jpg";
+import navalAlmanackBookImage from "@/assets/books/naval-almanack.jpg";
 import hammerPhilosophyImage from "@/assets/books/friend-hammer-philosophy.jpg";
 import soWhatPodcastImage from "../../../assets/so_what.jpg";
 import jokeShopImage from "@/assets/friends/joke-shop-card-v2.jpg";
@@ -76,6 +79,7 @@ import pingchengTechImage from "@/assets/friends/pingcheng-tech.jpg";
 import mapXiaohongshuImage from "../../../assets/Make AI Practical Xiaohongshu.png";
 import learnAiSeriesImage from "../../../assets/Use AI to Learn AI 100 Series.png";
 import mapYangyangEventImage from "@/assets/map-yangyangcai.jpg";
+import aiWorkshopPoster from "../../../assets/workshop_3_20260913.png";
 import bookClubSessionOneImage from "../../../assets/book_club_1.jpg";
 import bookClubSessionTwoImage from "../../../assets/book_club_2_23082026.jpg";
 import potteryOneImage from "@/assets/web/pottery_1.webp";
@@ -100,6 +104,7 @@ const navIcons = {
   overview: House,
   about: Compass,
   work: Archive,
+  ventures: Store,
   community: Network,
   fun: PartyPopper,
   links: Globe2,
@@ -114,6 +119,7 @@ const characterPoses: Record<DesktopSection, StaticImageData> = {
   overview: characterImage,
   about: aboutCharacter,
   work: workCharacter,
+  ventures: workCharacter,
   community: funCharacter,
   fun: communityCharacter,
   links: linksCharacter,
@@ -290,6 +296,7 @@ export function DesktopPortfolio({
           )}{" "}
           {active === "about" && <About language={language} />}{" "}
           {active === "work" && <Work language={language} />}{" "}
+          {active === "ventures" && <Ventures language={language} />}{" "}
           {active === "community" && <Community language={language} />}{" "}
           {active === "fun" && <Fun language={language} />}{" "}
           {active === "links" && <Links language={language} />}{" "}
@@ -971,26 +978,21 @@ function About({ language }: { language: Language }) {
 }
 
 function Work({ language }: { language: Language }) {
-  const ProjectIcons = [BriefcaseBusiness, Presentation, GraduationCap, Store];
-  const ProjectPreviews = [
-    null,
-    null,
-    bootcampLifecycleImage,
-    homeEssentialsImage,
-  ];
+  const ProjectIcons = [BriefcaseBusiness];
+  const ProjectPreviews: (StaticImageData | null)[] = [null];
   return (
     <div className="window-page work-page">
       <PageIntro
-        eyebrow={tr(language, "Built with Passion", "以热爱构建")}
+        eyebrow={tr(language, "Professional Work", "职业工作")}
         title={tr(
           language,
-          "Data Lover. Practical Builder.",
-          "热爱数据，也热衷把想法变成现实。",
+          "Engineering work. Practical impact.",
+          "以工程能力，创造实际价值。",
         )}
         description={tr(
           language,
-          "From reliable data platforms to shared learning and hands-on ideas, this is where curiosity turns into something useful.",
-          "从可靠的数据平台，到知识分享与亲手实践，这里记录着好奇心如何变成真正有用的成果。",
+          "My professional journey across data engineering, renewable energy, collaborative delivery, and real-world technology products.",
+          "记录我在数据工程、可再生能源、跨团队交付与实际技术产品中的职业经历。",
         )}
       />
       <div className="project-grid">
@@ -1066,10 +1068,96 @@ function Work({ language }: { language: Language }) {
           );
         })}
       </div>
+      <section className="work-knowledge-sharing" aria-labelledby="lunch-learn-title">
+        <span className="work-sharing-icon"><Presentation aria-hidden="true" /></span>
+        <div>
+          <p className="page-pill">{tr(language, "Knowledge sharing at work", "公司内部知识分享")}</p>
+          <h3 id="lunch-learn-title">Lunch &amp; Learn</h3>
+          <p>{tr(language, "I host and contribute to internal Lunch & Learn sessions, sharing practical knowledge and helping useful ideas travel across teams.", "我在公司内部主持并参与 Lunch & Learn 分享，通过交流实践经验，促进知识和有价值的想法在不同团队之间流动。")}</p>
+          <div className="venture-tags">
+            <span>{tr(language, "Lunch & Learn Host", "Lunch & Learn 主持人")}</span>
+            <span>{tr(language, "Internal Knowledge Sharing", "内部知识分享")}</span>
+            <span>{tr(language, "Cross-team Collaboration", "跨团队协作")}</span>
+          </div>
+        </div>
+      </section>
       <OmdenaExperience language={language} />
       <ReadingNext language={language} />
       <ToolsAndSkills language={language} />
       <LearningNext language={language} />
+    </div>
+  );
+}
+
+function Ventures({ language }: { language: Language }) {
+  return (
+    <div className="window-page ventures-page">
+      <PageIntro
+        eyebrow={tr(language, "Business & Ventures", "独立业务与合作创业")}
+        title={tr(language, "Independent work. Shared ventures.", "独立经营，也与伙伴共同建设。")}
+        description={tr(language, "My ABN-based professional services alongside businesses I help build and operate with friends and partners.", "这里展示我通过 ABN 开展的专业服务，以及与朋友和伙伴共同建设、参与经营的商业项目。")}
+      />
+      <section className="practice-section" aria-labelledby="practice-title">
+        <header className="ventures-heading">
+          <span>{tr(language, "Independent Practice", "ABN 独立业务")}</span>
+          <h3 id="practice-title">{tr(language, "Mentoring · Teaching · Practical AI", "辅导 · 教学 · 实用 AI")}</h3>
+        </header>
+        <div className="venture-grid practice-grid">
+          {independentPractice.map((practice, index) => {
+            const title = language === "zh" ? practice.titleZh : practice.title;
+            const tags = language === "zh" ? practice.tagsZh : practice.tags;
+            return (
+              <article key={practice.title} className={index === 0 ? "practice-no-image" : ""}>
+                {index > 0 && (
+                  <div className={`venture-preview practice-preview ${index === 1 ? "bootcamp-preview" : "workshop-preview"}`}>
+                    <Image
+                      src={index === 1 ? bootcampLifecycleImage : aiWorkshopPoster}
+                      alt={index === 1 ? tr(language, "AI Data Engineering Bootcamp lifecycle", "AI 数据工程训练营生命周期") : tr(language, "Practical AI workshop poster", "实用 AI 工作坊海报")}
+                      sizes="(max-width: 760px) 90vw, 420px"
+                    />
+                  </div>
+                )}
+                <div className="venture-copy">
+                  {index === 0 && <span className="practice-service-icon"><GraduationCap aria-hidden="true" /></span>}
+                  <p className="venture-role">{language === "zh" ? practice.roleZh : practice.role}</p>
+                  <h4>{title}</h4>
+                  <p>{language === "zh" ? practice.descriptionZh : practice.description}</p>
+                  <ProjectVisitLink href={practice.href}>{language === "zh" ? practice.linkLabelZh : practice.linkLabel} <ExternalLink aria-hidden="true" size={14} /></ProjectVisitLink>
+                  <div className="venture-tags">{tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+      </section>
+      <section className="collaborative-section" aria-labelledby="collaborative-title">
+        <header className="ventures-heading">
+          <span>{tr(language, "Collaborative Ventures", "合作创业项目")}</span>
+          <h3 id="collaborative-title">{tr(language, "Ventures built together.", "与伙伴一起建设的项目。")}</h3>
+        </header>
+      <div className="venture-grid">
+        {ventures.map((venture, index) => {
+          const title = language === "zh" ? venture.titleZh : venture.title;
+          const tags = language === "zh" ? venture.tagsZh : venture.tags;
+          const preview = index === 0 ? homeEssentialsImage : renJunLogo;
+          return (
+            <article key={venture.title}>
+              <div className={`venture-preview ${index === 1 ? "venture-logo" : ""}`}>
+                <Image src={preview} alt={index === 0 ? tr(language, "Home Essentials online store", "Home Essentials 在线商店") : tr(language, "Ren Jun Jewellery logo", "仁君珠宝标志")} sizes="(max-width: 760px) 90vw, 480px" />
+              </div>
+              <div className="venture-copy">
+                <p className="venture-role">{language === "zh" ? venture.roleZh : venture.role}</p>
+                <h4>{title}</h4>
+                <p>{language === "zh" ? venture.descriptionZh : venture.description}</p>
+                {venture.href && <ProjectVisitLink href={venture.href}>{language === "zh" ? venture.linkLabelZh : venture.linkLabel} <ExternalLink aria-hidden="true" size={14} /></ProjectVisitLink>}
+                {venture.secondaryHref && <ProjectVisitLink href={venture.secondaryHref}>{language === "zh" ? venture.secondaryLinkLabelZh : venture.secondaryLinkLabel} <ExternalLink aria-hidden="true" size={14} /></ProjectVisitLink>}
+                <div className="venture-tags">{tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+      </section>
     </div>
   );
 }
@@ -2069,6 +2157,26 @@ function Books({ language }: { language: Language }) {
         aria-label={tr(language, "Scrollable book shelf", "可横向滚动的书架")}
       >
         <article className="book-entry">
+          <Image src={cloudShopBookImage} alt={tr(language, "Moments We Shared book cover", "《云边有个小卖部》封面")} width={640} height={860} />
+          <div className="book-entry-copy">
+            <p className="page-pill">{tr(language, "Reading list", "书单")}</p>
+            <h3>{tr(language, "Moments We Shared", "云边有个小卖部")}</h3>
+            <p className="book-author">{tr(language, "Zhang Jiajia", "张嘉佳")}</p>
+            <p className="book-published"><CalendarDays />{tr(language, "Published in July 2018", "出版于 2018 年 7 月")}</p>
+            <p className="book-summary">{tr(language, "A tender story of Liu Shisan, family, homecoming, love, and growing up in the mountain town of Yunbian.", "一个关于刘十三、亲情、归乡、爱与成长的温柔故事，发生在山间的云边镇。")}</p>
+          </div>
+        </article>
+        <article className="book-entry">
+          <Image src={navalAlmanackBookImage} alt={tr(language, "The Almanack of Naval Ravikant book cover", "《纳瓦尔宝典》封面")} width={640} height={860} />
+          <div className="book-entry-copy">
+            <p className="page-pill">{tr(language, "Reading list", "书单")}</p>
+            <h3>{tr(language, "The Almanack of Naval Ravikant", "纳瓦尔宝典")}</h3>
+            <p className="book-author">Eric Jorgenson</p>
+            <p className="book-published"><CalendarDays />{tr(language, "Published in August 2020", "出版于 2020 年 8 月")}</p>
+            <p className="book-summary">{tr(language, "A curated collection of Naval Ravikant’s ideas on building wealth, exercising judgment, and finding lasting happiness.", "一本整理纳瓦尔·拉维坎特关于创造财富、提升判断力与寻找长期幸福观点的作品。")}</p>
+          </div>
+        </article>
+        <article className="book-entry">
           <Image
             src={mercyBookImage}
             alt={tr(
@@ -2937,13 +3045,40 @@ function Links({ language }: { language: Language }) {
     <div className="window-page links-page">
       <PageIntro
         eyebrow={tr(language, "People and places I value", "我珍视的人与空间")}
-        title={tr(language, "Friends & Links", "朋友与链接")}
+        title={tr(language, "Contact, Friends & Links", "联系、朋友与链接")}
         description={tr(
           language,
-          "Creative work from people I care about, followed by a compact shelf of places connected to my own work.",
-          "先分享我珍视的人们带来的创作，再用一个紧凑的链接架呈现与我相关的项目和社区。",
+          "Ways to contact me, creative work from people I care about, and places connected to my own work.",
+          "这里汇集联系我的方式、我珍视的人们带来的创作，以及与我相关的项目和社区。",
         )}
       />
+      <section className="links-contact-section" aria-labelledby="links-contact-title">
+        <header>
+          <p className="page-pill">{tr(language, "Contact", "联系我")}</p>
+          <h3 id="links-contact-title">{tr(language, "Let’s stay connected.", "和我保持联系。")}</h3>
+          <p>{tr(language, "Find me where I share professional updates, community work, and things I am building.", "你可以在这里看到我的职业动态、社区活动和正在构建的项目。")}</p>
+        </header>
+        <div className="contact-grid">
+          <article>
+            <LinkedInMark />
+            <h3>LinkedIn</h3>
+            <p>{tr(language, "Professional journey, community work, and engineering updates.", "职业经历、社区工作和工程动态。")}</p>
+            <a href="https://www.linkedin.com/in/yangyangcai" target="_blank" rel="noreferrer">{tr(language, "Visit profile", "访问主页")} <ExternalLink size={15} /></a>
+          </article>
+          <article>
+            <GitHubMark />
+            <h3>GitHub</h3>
+            <p>{tr(language, "Projects, experiments, and code from my data and AI journey.", "记录我的数据与 AI 项目、实验和代码。")}</p>
+            <a href="https://github.com/DANancy" target="_blank" rel="noreferrer">{tr(language, "View GitHub", "查看 GitHub")} <ExternalLink size={15} /></a>
+          </article>
+          <article>
+            <Mail aria-hidden="true" />
+            <h3>{tr(language, "Email", "电子邮箱")}</h3>
+            <p>{tr(language, "For thoughtful conversations, collaborations, and opportunities.", "欢迎通过邮件交流想法、合作与机会。")}</p>
+            <a href="mailto:yangyangcai.au@gmail.com">{tr(language, "Send an email", "发送邮件")} <ExternalLink size={15} /></a>
+          </article>
+        </div>
+      </section>
       <section className="loved-links">
         <header>
           <div>
@@ -3151,70 +3286,7 @@ function GitHubMark() {
   );
 }
 function Contact({ language }: { language: Language }) {
-  return (
-    <div className="window-page contact-page">
-      <PageIntro
-        eyebrow={tr(language, "Stay connected", "保持联系")}
-        title={tr(language, "Connect with me.", "和我保持联系。")}
-        description={tr(
-          language,
-          "Find me where I share professional updates, community work, and things I am building.",
-          "你可以在这里看到我的职业动态、社区活动和正在构建的项目。",
-        )}
-      />
-      <div className="contact-grid">
-        <article>
-          <LinkedInMark />
-          <h3>LinkedIn</h3>
-          <p>
-            {tr(
-              language,
-              "Professional journey, community work, and engineering updates.",
-              "职业经历、社区工作和工程动态。",
-            )}
-          </p>
-          <a
-            href="https://www.linkedin.com/in/yangyangcai"
-            target="_blank"
-            rel="noreferrer"
-          >
-            {tr(language, "Visit profile", "访问主页")}{" "}
-            <ExternalLink size={15} />
-          </a>
-        </article>
-        <article>
-          <GitHubMark />
-          <h3>GitHub</h3>
-          <p>
-            {tr(
-              language,
-              "Projects, experiments, and code from my data and AI journey.",
-              "记录我的数据与 AI 项目、实验和代码。",
-            )}
-          </p>
-          <a href="https://github.com/DANancy" target="_blank" rel="noreferrer">
-            {tr(language, "View GitHub", "查看 GitHub")}{" "}
-            <ExternalLink size={15} />
-          </a>
-        </article>
-        <article>
-          <Mail />
-          <h3>{tr(language, "Email", "电子邮箱")}</h3>
-          <p>
-            {tr(
-              language,
-              "For thoughtful conversations, collaborations, and opportunities.",
-              "欢迎通过邮件交流想法、合作与机会。",
-            )}
-          </p>
-          <a href="mailto:yangyangcai.au@gmail.com">
-            {tr(language, "Send an email", "发送邮件")}{" "}
-            <ExternalLink size={15} />
-          </a>
-        </article>
-      </div>
-    </div>
-  );
+  return <Links language={language} />;
 }
 
 function windowTitle(section: DesktopSection) {
@@ -3222,6 +3294,7 @@ function windowTitle(section: DesktopSection) {
     overview: "home.exe",
     about: "about.md",
     work: "data.lover",
+    ventures: "ventures.build",
     community: "community.ai",
     fun: "fun.app",
     links: "links.url",

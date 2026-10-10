@@ -1,15 +1,72 @@
-export type DesktopSection = "overview" | "about" | "work" | "community" | "fun" | "links" | "contact";
+export type DesktopSection = "overview" | "about" | "work" | "ventures" | "community" | "fun" | "links" | "contact";
 
 export const projects: { title:string; description:string; tags:string[]; tagsZh?:string[]; tone:string; href?:string; linkLabel?:string; linkLabelZh?:string; secondaryHref?:string; secondaryLinkLabel?:string; secondaryLinkLabelZh?:string; titleZh:string; descriptionZh:string }[] = [
-  { title:"Senior Data Engineer · Data Magician", titleZh:"高级数据工程师 · 数据魔法师", description:"I genuinely love what I do. I grew from a Data Analyst into a Senior Data Engineer, carrying my curiosity across the automotive and energy industries through Auto-IT, AGL, Shell Energy, and now SmartestEnergy Australia in renewable energy. Being recognised with Best of 2024 at Shell Energy reinforced the care and energy I bring to my work.\nToday, I turn technology into useful products and work end to end across Retail Operations, IT, Risk, Trading, and Finance to understand the bigger picture and create lasting value.", descriptionZh:"我真心热爱自己的工作。从数据分析师到高级数据工程师，我带着对数据的好奇心跨越汽车与能源行业，先后在 Auto-IT、AGL、Shell Energy 工作，如今在 SmartestEnergy Australia 深耕可再生能源领域。在 Shell Energy 获得 Best of 2024 的认可，也印证了我投入工作中的热情与用心。\n如今，我享受把技术转化为实用产品，并与零售运营、IT、风险、交易和财务等团队开展端到端协作，理解业务全貌并创造长期价值。", tags:["PySpark","SQL","Salesforce","Azure Data Factory","Azure Synapse","AWS","Medallion Architecture","Power BI","Data Pipelines","DevOps","End-to-End Product Delivery","Stakeholder Collaboration"], tagsZh:["PySpark","SQL","Salesforce","Azure Data Factory","Azure Synapse","AWS","奖章式架构","Power BI","数据管道","DevOps","端到端产品交付","利益相关者协作"], tone:"mint", href:"https://www.linkedin.com/in/yangyangcai", linkLabel:"View LinkedIn Profile", linkLabelZh:"查看 LinkedIn 主页" },
-  { title:"Mentoring & Growing Together", titleZh:"导师陪伴，共同成长", description:"Through mentoring, lecturing, and 1:1 interview guidance, I share practical experience, explore ideas with others, and create a welcoming space for questions. I enjoy helping people connect technical knowledge to real situations, build confidence, and identify practical next steps. Supporting others also gives me fresh perspectives and helps me become a more thoughtful engineer and communicator.\nI also host and take part in Lunch & Learn sessions at work because sharing what I learn helps knowledge travel further and pushes me to keep learning alongside others.", descriptionZh:"通过导师指导、授课和一对一面试辅导，我分享实践经验，与大家一起探索想法，并营造一个可以安心提问的空间。我喜欢帮助他人把技术知识与真实场景连接起来，建立信心并找到切实可行的下一步。支持他人成长也为我带来新的视角，让我成为更有思考力的工程师和沟通者。\n我也在工作中主持并参与 Lunch & Learn 分享会，因为分享所学不仅能让知识传递得更远，也推动我与大家一起持续学习和成长。", tags:["Mentoring","Lecturer","1:1 Interview Guidance","Lunch & Learn Host"], tagsZh:["导师指导","讲师","一对一面试指导","Lunch & Learn 主持人"], tone:"amber", href:"https://www.linkedin.com/company/u-plus-career/about/", linkLabel:"Visit U Plus Career", linkLabelZh:"访问 U Plus Career" },
-  { title:"AI-Data Engineering Bootcamp", titleZh:"AI 数据工程训练营", description:"A self-designed, 12-session (18-hour) bootcamp using a public dataset to explore the complete data engineering lifecycle. It connects the undercurrents of dependable delivery with AI support through Databricks AI, Power BI MCP, AI skills, and Codex.", descriptionZh:"这是一个由我自主设计、共 12 节（18 小时）的训练营，通过公开数据集探索完整的数据工程生命周期，并将可靠交付的底层能力与 Databricks AI、Power BI MCP、AI Skills 和 Codex 等 AI 支持结合起来。", tags:["PySpark","SQL","Azure Data Factory","Databricks","Databricks AI","Metadata-Driven Framework","Power BI","Power BI MCP","AI Skills","Codex","MCP","CI/CD","GitHub Pages","Terraform","Medallion Architecture","DataOps & AIOps"], tagsZh:["PySpark","SQL","Azure Data Factory","Databricks","Databricks AI","元数据驱动框架","Power BI","Power BI MCP","AI Skills","Codex","MCP","CI/CD","GitHub Pages","Terraform","奖章式架构","DataOps & AIOps"], tone:"green", href:"https://yangyangcai.me/projects/green-certificate-shortfall-analytics", linkLabel:"View Portfolio Demo", linkLabelZh:"查看作品集演示" },
-  { title:"Home Essentials, Business Project", titleZh:"Home Essentials, 商业项目", description:"A business project building an Australian ecommerce destination for thoughtful gifts, home decor, craft supplies, and everyday essentials. It brings together product curation, Shopify store operations, customer experience, and practical business workflows to create a welcoming online shopping experience.", descriptionZh:"一个面向澳大利亚消费者的电商商业项目，提供礼品、家居装饰、手工用品和日常好物。项目结合商品策划、Shopify 商店运营、客户体验与实际业务流程，打造友好而实用的线上购物体验。", tags:["Shopify","Ecommerce","Customer Experience","Business Operations"], tagsZh:["Shopify","电子商务","客户体验","业务运营"], tone:"cyan", href:"https://home-essentials.com.au/", linkLabel:"Visit Home Essentials", linkLabelZh:"访问 Home Essentials", secondaryHref:"https://studio.home-essentials.com.au/night-light", secondaryLinkLabel:"Order Your Custom Night Light", secondaryLinkLabelZh:"订购你的定制小夜灯" },
+  { title:"Senior Data Engineer · Data Magician", titleZh:"高级数据工程师 · 数据魔法师", description:"I genuinely love what I do. I grew from a Data Analyst into a Senior Data Engineer, carrying my curiosity across the automotive and energy industries through Auto-IT, AGL, Shell Energy, and now SmartestEnergy Australia in renewable energy. Being recognised with Best of 2024 at Shell Energy reinforced the care and energy I bring to my work.\nToday, I turn technology into useful products and work end to end across Retail Operations, IT, Risk, Trading, and Finance to understand the bigger picture and create lasting value. I also host and contribute to internal Lunch & Learn sessions, sharing practical knowledge and helping useful ideas travel across teams.", descriptionZh:"我真心热爱自己的工作。从数据分析师到高级数据工程师，我带着对数据的好奇心跨越汽车与能源行业，先后在 Auto-IT、AGL、Shell Energy 工作，如今在 SmartestEnergy Australia 深耕可再生能源领域。在 Shell Energy 获得 Best of 2024 的认可，也印证了我投入工作中的热情与用心。\n如今，我享受把技术转化为实用产品，并与零售运营、IT、风险、交易和财务等团队开展端到端协作，理解业务全貌并创造长期价值。我也在公司内部主持并参与 Lunch & Learn 分享，通过交流实践经验，促进知识在不同团队之间流动。", tags:["PySpark","SQL","Salesforce","Azure Data Factory","Azure Synapse","AWS","Medallion Architecture","Power BI","Data Pipelines","DevOps","End-to-End Product Delivery","Stakeholder Collaboration","Lunch & Learn Host","Internal Knowledge Sharing"], tagsZh:["PySpark","SQL","Salesforce","Azure Data Factory","Azure Synapse","AWS","奖章式架构","Power BI","数据管道","DevOps","端到端产品交付","利益相关者协作","Lunch & Learn 主持人","内部知识分享"], tone:"mint", href:"https://www.linkedin.com/in/yangyangcai", linkLabel:"View LinkedIn Profile", linkLabelZh:"查看 LinkedIn 主页" },
+];
+
+export const independentPractice = [
+  {
+    title:"Mentoring & Interview Guidance", titleZh:"导师辅导与面试指导",
+    role:"Independent Practitioner · ABN Business", roleZh:"独立业务 · ABN 经营",
+    description:"Practical mentoring, lecturing, and one-to-one interview guidance that helps people connect technical knowledge with real situations, build confidence, and identify useful next steps.",
+    descriptionZh:"通过导师辅导、授课和一对一面试指导，帮助学习者把技术知识与真实场景连接起来，建立信心并找到切实可行的下一步。",
+    tags:["Mentoring","Lecturer","1:1 Interview Guidance"], tagsZh:["导师辅导","讲师","一对一面试指导"],
+    href:"https://www.linkedin.com/company/u-plus-career/about/", linkLabel:"Visit U Plus Career", linkLabelZh:"访问 U Plus Career",
+  },
+  {
+    title:"AI-Data Engineering Bootcamp", titleZh:"AI 数据工程训练营",
+    role:"Founder & Instructor · ABN Business", roleZh:"创办人与讲师 · ABN 经营",
+    description:"A self-designed, 12-session (18-hour) bootcamp using a public dataset to explore the complete data engineering lifecycle, dependable delivery, and practical AI support.",
+    descriptionZh:"由我自主设计并授课、共 12 节（18 小时）的训练营，通过公开数据集探索完整的数据工程生命周期、可靠交付与实用 AI 支持。",
+    tags:["Data Engineering","Databricks AI","Power BI MCP","Codex"], tagsZh:["数据工程","Databricks AI","Power BI MCP","Codex"],
+    href:"https://yangyangcai.me/projects/green-certificate-shortfall-analytics", linkLabel:"View Portfolio Demo", linkLabelZh:"查看作品集演示",
+  },
+  {
+    title:"Practical AI Workshops", titleZh:"实用 AI 工作坊",
+    role:"Workshop Instructor · ABN Professional Service", roleZh:"工作坊讲师 · ABN 专业服务",
+    description:"Paid, hands-on AI workshops designed to help people turn ideas and everyday information into useful, working AI solutions they can continue improving after the session.",
+    descriptionZh:"通过付费的实用 AI 工作坊，帮助参与者把想法和已有信息转化为可运行、并能在课后继续完善的 AI 解决方案。",
+    tags:["AI Workshops","Facilitation","Practical AI","Knowledge Agents"], tagsZh:["AI 工作坊","引导式教学","实用 AI","知识智能体"],
+    href:"https://www.makeaipractical.com.au/", linkLabel:"Explore Make AI Practical", linkLabelZh:"了解 Make AI Practical",
+  },
+];
+
+export const ventures = [
+  {
+    title: "Home Essentials",
+    titleZh: "Home Essentials",
+    role: "Business Partner · Ecommerce Venture",
+    roleZh: "商业合作伙伴 · 电商项目",
+    description:
+      "A collaborative ecommerce venture built with friends, focused on thoughtful gifts, home decor, craft supplies, and everyday essentials. I contribute across the online store, customer experience, and digital operations.",
+    descriptionZh:
+      "与朋友共同经营的电商合作项目，专注于礼品、家居装饰、手工材料和日常好物。我主要参与线上商店、客户体验和数字化运营。",
+    tags: ["Shopify", "Ecommerce", "Customer Experience", "Digital Operations"],
+    tagsZh: ["Shopify", "电子商务", "客户体验", "数字化运营"],
+    href: "https://home-essentials.com.au/",
+    linkLabel: "Visit Home Essentials",
+    linkLabelZh: "访问 Home Essentials",
+    secondaryHref: "https://studio.home-essentials.com.au/night-light",
+    secondaryLinkLabel: "Create a Custom Night Light",
+    secondaryLinkLabelZh: "定制专属小夜灯",
+  },
+  {
+    title: "Ren Jun Jewellery",
+    titleZh: "仁君珠宝",
+    role: "Venture Partner · Coming Soon",
+    roleZh: "创业合作伙伴 · 即将推出",
+    description:
+      "An early-stage venture developing AI-powered business management solutions for jewellery retail stores. I am building it with the team as a venture partner. More details are coming soon.",
+    descriptionZh:
+      "一个面向珠宝零售门店、提供 AI 驱动经营管理方案的早期创业项目。我作为创业合作伙伴参与团队共同建设。更多内容即将发布。",
+    tags: ["Jewellery Retail", "AI Solutions", "Business Management"],
+    tagsZh: ["珠宝零售", "AI 解决方案", "经营管理"],
+  },
 ];
 
 export const navigation: { id:Exclude<DesktopSection,"overview">; label:string; labelZh:string; tone:string }[] = [
-  {id:"about",label:"About",labelZh:"关于我",tone:"mint"},{id:"work",label:"Work",labelZh:"工作",tone:"amber"},{id:"community",label:"Community",labelZh:"社区",tone:"cyan"},
-  {id:"fun",label:"Just for fun",labelZh:"兴趣",tone:"yellow"},{id:"links",label:"Friends & Links",labelZh:"朋友与链接",tone:"purple"},{id:"contact",label:"Contact",labelZh:"联系我",tone:"pink"},
+  {id:"about",label:"About",labelZh:"关于我",tone:"mint"},{id:"work",label:"Work",labelZh:"工作",tone:"amber"},{id:"ventures",label:"Business",labelZh:"业务与创业",tone:"pink"},{id:"community",label:"Community",labelZh:"社区",tone:"cyan"},
+  {id:"fun",label:"Just for fun",labelZh:"兴趣",tone:"yellow"},{id:"links",label:"Connect",labelZh:"联系与链接",tone:"purple"},
 ];
 
 
