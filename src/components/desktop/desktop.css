@@ -1046,11 +1046,11 @@
 .venture-copy{padding:1.6rem}
 .venture-copy h4{margin-top:.6rem;font-size:1.45rem}
 .venture-copy>p:not(.venture-role){margin-top:.7rem;color:#5d6762;line-height:1.6}
-.venture-testimonial{position:relative;isolation:isolate;margin:1rem 0 .1rem;padding:1rem 1rem .9rem 3.15rem;overflow:hidden;border:2px solid #82b69a;border-radius:16px 16px 16px 6px;background:linear-gradient(135deg,#eaf6ef 0%,#fbfcf8 72%);color:#285a43;box-shadow:4px 4px 0 #4f8c6d26}
-.venture-testimonial::before{content:"“";position:absolute;left:.75rem;top:.2rem;color:#3f8562;font-family:Georgia,serif;font-size:3.5rem;font-weight:900;line-height:1}
-.venture-testimonial::after{content:"";position:absolute;z-index:-1;right:-20px;top:-24px;width:76px;height:76px;border:14px solid #a9d1bc55;border-radius:50%}
-.venture-testimonial span{display:inline-flex;padding:.25rem .5rem;border:1px solid #78aa8e;border-radius:999px;background:#fff;color:#286047;font-family:var(--font-mono);font-size:.62rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;box-shadow:2px 2px 0 #4f8c6d24}
-.venture-testimonial p{margin:.5rem 0 0;font-size:1rem;font-weight:800;line-height:1.45}
+.venture-testimonial{position:relative;margin:1.15rem .15rem .35rem;padding:.85rem 1rem .82rem 3.45rem;border:1.5px solid #a9c7b6;border-radius:18px 18px 18px 6px;background:radial-gradient(circle at 94% 18%,#cfe5d9 0 3px,transparent 4px),radial-gradient(circle at 97% 30%,#e0ece5 0 2px,transparent 3px),#fff;color:#34483e;box-shadow:3px 4px 0 #6e9d8220}
+.venture-testimonial::before{content:"“";position:absolute;left:.72rem;top:-.62rem;display:grid;place-items:center;width:38px;height:38px;border:2px solid #fff;border-radius:50%;background:#dceee4;color:#3e7758;font-family:Georgia,serif;font-size:2.35rem;font-weight:900;line-height:1;box-shadow:0 0 0 1px #a9c7b6,2px 3px 0 #6e9d8224;rotate:-7deg}
+.venture-testimonial::after{content:"";position:absolute;left:1.25rem;bottom:-8px;width:15px;height:15px;border-right:1.5px solid #a9c7b6;border-bottom:1.5px solid #a9c7b6;background:#fff;transform:rotate(45deg)}
+.venture-testimonial span{display:inline-block;padding:.18rem .42rem;border:1px solid #c4d8cc;border-radius:999px;background:#f2f7f4;color:#587064;font-family:var(--font-mono);font-size:.56rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;box-shadow:1px 2px 0 #7d9d8b1c;rotate:-1deg}
+.venture-testimonial p{margin:.32rem 0 0;color:#30483b;font-size:.9rem;font-weight:750;line-height:1.45}
 .venture-copy .project-visit{margin-top:1rem}
 .venture-tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:1.2rem}
 .venture-tags span{padding:.25rem .65rem;border-radius:999px;background:#bdeade;color:#28655a;font-family:var(--font-mono);font-size:max(.6rem,10px);text-transform:uppercase}
@@ -2896,11 +2896,17 @@
 .work-achievement>span{background:#ffd76f;color:#825600}
 .rating-achievement{border-color:#d8a9c4;background:#fff0f7;color:#7b365d}
 .rating-achievement>span{background:#f3c6df;color:#87365f}
-.practice-impact-badges{display:flex;flex-wrap:wrap;gap:.45rem;margin:.8rem 0 .15rem}
-.practice-impact-badges>span{display:inline-flex;align-items:center;gap:.3rem;min-height:30px;padding:.3rem .6rem;border:1px solid #b9d9c8;border-radius:999px;background:#edf8f2;color:#37644f;font-family:var(--font-mono);font-size:.64rem;font-weight:700;line-height:1}
-.practice-impact-badges>span.rating{border-color:#e2bad0;background:#fff0f7;color:#7b365d}
-.practice-impact-badges svg{width:14px;height:14px;stroke-width:2.2}
-.practice-impact-badges b{font-family:var(--font-sans);font-size:.82rem}
+.practice-impact-badges{display:flex;flex-wrap:wrap;gap:.65rem;margin:.9rem 0 .15rem}
+.practice-impact-badges>span{display:inline-flex;align-items:center;gap:.38rem;flex:0 0 180px;width:180px;height:64px;margin:0;padding:.55rem .7rem;border:2px solid #8bcbb0;border-radius:16px 16px 16px 7px;background:#eaf8f0;color:#236448;font-family:var(--font-mono);font-size:.61rem;font-weight:750;line-height:1.15;box-shadow:4px 4px 0 #35483f18}
+.practice-impact-badges>span:nth-child(2){border-color:#e7b8a2;background:#fff0e8;color:#8a4a2b}
+.practice-impact-badges>span:nth-child(3),.practice-impact-badges>span.rating{margin:0;border-color:#e9bd55;background:#fff4ca;color:#7b5307}
+.practice-impact-badges>span:only-child{border-color:#e9bd55;background:#fff4ca;color:#7b5307}
+.practice-impact-badges svg{box-sizing:border-box;width:32px;height:32px;padding:7px;border-radius:50%;background:#bde6ce;color:#205e43;stroke-width:2.2}
+.practice-impact-badges>span:nth-child(2) svg{background:#f4c8b4;color:#874329}
+.practice-impact-badges>span:nth-child(3) svg,.practice-impact-badges>span.rating svg,.practice-impact-badges>span:only-child svg{background:#ffd76f;color:#825600}
+.practice-impact-badges b{margin-left:.12rem;color:inherit;font-family:var(--font-sans);font-size:.88rem;line-height:1}
+@media(max-width:620px){.practice-impact-badges>span{flex:1 1 100%;width:100%}}
+.ventures-page .venture-tags span{border:0;background:#c9eee2;color:#28655a}
 @media(max-width:520px){.cute-achievement{grid-template-columns:34px auto 16px;padding:.6rem .7rem}.cute-achievement>span{width:34px;height:34px}}
 
 .business-interest-section{
@@ -3257,6 +3263,10 @@
   background:#f8faf8;
   color:var(--desk-green);
 }
+.collaborative-section .venture-grid>article{display:flex;height:100%;flex-direction:column}
+.collaborative-section .venture-copy{display:flex;flex:1;flex-direction:column}
+.collaborative-section .venture-tags{margin-top:1rem;padding-top:0}
+.collaborative-section .venture-tags span{border:0;background:#c9eee2;color:#28655a}
 .ventures-page .practice-grid>article.mentoring-service-card{
   display:grid;
   grid-template-columns:72px minmax(0,1fr);

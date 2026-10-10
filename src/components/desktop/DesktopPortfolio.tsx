@@ -818,8 +818,8 @@ function Overview({
       <p className="overview-intro">
         {tr(
           language,
-          "Senior Data Engineer in Melbourne, building dependable data platforms for renewable energy and making AI practical through projects, workshops, and community.",
-          "墨尔本高级数据工程师，为可再生能源构建可靠的数据平台，并通过项目、工作坊与社区让 AI 真正落地。",
+          "Senior Data Engineer and practical AI builder in Melbourne, supporting end-to-end data pipelines and products in renewable energy. Beyond work, I teach, facilitate workshops, run community initiatives, and explore ventures that put data and AI into practice.",
+          "墨尔本高级数据工程师与 AI 实践者，负责可再生能源领域的端到端数据管道与产品支持。工作之外，我通过授课、工作坊、社区运营和商业探索，推动数据与 AI 落地。",
         )}
       </p>
       <nav
@@ -943,8 +943,10 @@ function About({ language }: { language: Language }) {
             <ExternalLink aria-hidden="true" />
           </Link>
         </div>
-      </section>
-      <hr />
+       </section>
+       <ReadingNext language={language} />
+       <LearningNext language={language} />
+       <hr />
       <section className="beyond-work">
         <p className="page-pill">
           {tr(language, "Life beyond work", "工作之外的生活")}
@@ -1150,11 +1152,8 @@ function Work({ language }: { language: Language }) {
           </div>
         </div>
       </section>
-      <OmdenaExperience language={language} />
-      <ReadingNext language={language} />
-      <ToolsAndSkills language={language} />
-      <LearningNext language={language} />
-    </div>
+       <OmdenaExperience language={language} />
+     </div>
   );
 }
 
@@ -1254,12 +1253,14 @@ function Ventures({ language }: { language: Language }) {
                  <p className="venture-role">{language === "zh" ? venture.roleZh : venture.role}</p>
                  <h4>{title}</h4>
                  <p>{language === "zh" ? venture.descriptionZh : venture.description}</p>
-                 {index === 0 && (
-                   <blockquote className="venture-testimonial">
-                     <span>{tr(language, "Partner feedback", "合作方评价")}</span>
-                     <p>“{tr(language, "Professional and highly efficient.", "专业且高效。") }”</p>
-                   </blockquote>
-                 )}
+                 <blockquote className="venture-testimonial">
+                   <span>{tr(language, "Business partner feedback", "商业合作伙伴评价")}</span>
+                   <p>
+                     “{index === 0
+                       ? tr(language, "Professional and highly efficient.", "专业且高效。")
+                       : tr(language, "An incredibly proactive, self-driven, and dependable partner.", "超级积极，自驱力无敌，超级靠谱的好伙伴。") }”
+                   </p>
+                 </blockquote>
                  {venture.href && <ProjectVisitLink href={venture.href}>{language === "zh" ? venture.linkLabelZh : venture.linkLabel} <ExternalLink aria-hidden="true" size={14} /></ProjectVisitLink>}
                 {venture.secondaryHref && <ProjectVisitLink href={venture.secondaryHref}>{language === "zh" ? venture.secondaryLinkLabelZh : venture.secondaryLinkLabel} <ExternalLink aria-hidden="true" size={14} /></ProjectVisitLink>}
                 <div className="venture-tags">{tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
@@ -1450,21 +1451,21 @@ function ToolsAndSkills({ language }: { language: Language }) {
   return (
     <section className="learning-roadmap tools-skills-section">
       <header>
-        <p className="page-pill">
-          {tr(language, "Tools & skills", "工具与技能")}
-        </p>
+         <p className="page-pill">
+           {tr(language, "Creative experiments", "创意实验")}
+         </p>
         <h3>
           {tr(
             language,
-            "Creative Systems That Expand How I Build",
-            "拓展创造方式的实用系统",
+             "Creative Systems I’m Exploring",
+             "正在探索的创意系统",
           )}
         </h3>
         <p>
           {tr(
             language,
-            "Design intelligence, open-source production tools, and real AI filmmaking case studies that support more thoughtful, polished, and expressive work.",
-            "通过设计智能、开源制作工具与真实的 AI 电影案例，让作品更有思考、更精致，也更具表现力。",
+             "Design intelligence, open-source production tools, and AI filmmaking case studies I explore for more thoughtful and expressive creative work.",
+             "探索设计智能、开源制作工具与 AI 电影案例，让创作更有思考，也更具表现力。",
           )}
         </p>
       </header>
@@ -2481,8 +2482,9 @@ function Fun({ language }: { language: Language }) {
           "When I’m not architecting data pipelines, I’m usually at the potter’s wheel or exploring digital realms.",
           "不设计数据管道的时候，我通常在陶艺转盘前，或探索数字世界。",
         )}
-      />
-      <div className="fun-grid">
+       />
+       <ToolsAndSkills language={language} />
+       <div className="fun-grid">
         <AnimationShelf language={language} />
         <section className="fun-books fun-window-frame">
           <h3 className="fun-window-bar">

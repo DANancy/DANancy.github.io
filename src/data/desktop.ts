@@ -1,7 +1,7 @@
 export type DesktopSection = "overview" | "about" | "work" | "ventures" | "community" | "fun" | "links" | "contact";
 
 export const projects: { title:string; description:string; tags:string[]; tagsZh?:string[]; tone:string; href?:string; linkLabel?:string; linkLabelZh?:string; secondaryHref?:string; secondaryLinkLabel?:string; secondaryLinkLabelZh?:string; titleZh:string; descriptionZh:string }[] = [
-  { title:"Senior Data Engineer · Data Magician", titleZh:"高级数据工程师 · 数据魔法师", description:"I genuinely love what I do. I grew from a Data Analyst into a Senior Data Engineer, carrying my curiosity across the automotive and energy industries through Auto-IT, AGL, Shell Energy, and now SmartestEnergy Australia in renewable energy. Being recognised with Best of 2024 at Shell Energy reinforced the care and energy I bring to my work.\nToday, I turn technology into useful products and work end to end across Retail Operations, IT, Risk, Trading, and Finance to understand the bigger picture and create lasting value. I also host and contribute to internal Lunch & Learn sessions, sharing practical knowledge and helping useful ideas travel across teams.", descriptionZh:"我真心热爱自己的工作。从数据分析师到高级数据工程师，我带着对数据的好奇心跨越汽车与能源行业，先后在 Auto-IT、AGL、Shell Energy 工作，如今在 SmartestEnergy Australia 深耕可再生能源领域。在 Shell Energy 获得 Best of 2024 的认可，也印证了我投入工作中的热情与用心。\n如今，我享受把技术转化为实用产品，并与零售运营、IT、风险、交易和财务等团队开展端到端协作，理解业务全貌并创造长期价值。我也在公司内部主持并参与 Lunch & Learn 分享，通过交流实践经验，促进知识在不同团队之间流动。", tags:["PySpark","SQL","Salesforce","Azure Data Factory","Azure Synapse","AWS","Medallion Architecture","Power BI","Data Pipelines","DevOps","End-to-End Product Delivery","Stakeholder Collaboration","Lunch & Learn Host","Internal Knowledge Sharing"], tagsZh:["PySpark","SQL","Salesforce","Azure Data Factory","Azure Synapse","AWS","奖章式架构","Power BI","数据管道","DevOps","端到端产品交付","利益相关者协作","Lunch & Learn 主持人","内部知识分享"], tone:"mint", href:"https://www.linkedin.com/in/yangyangcai", linkLabel:"View LinkedIn Profile", linkLabelZh:"查看 LinkedIn 主页" },
+  { title:"Senior Data Engineer · Data Magician", titleZh:"高级数据工程师 · 数据魔法师", description:"I genuinely love what I do. I grew from a Data Analyst into a Senior Data Engineer, carrying my curiosity across the automotive and energy industries through Auto-IT, AGL, Shell Energy, and now SmartestEnergy Australia in renewable energy. Being recognised with Best of 2024 at Shell Energy reinforced the care and energy I bring to my work.\nToday, I turn technology into useful products and work end to end across Retail Operations, IT, Risk, Trading, and Finance to understand the bigger picture and create lasting value.", descriptionZh:"我真心热爱自己的工作。从数据分析师到高级数据工程师，我带着对数据的好奇心跨越汽车与能源行业，先后在 Auto-IT、AGL、Shell Energy 工作，如今在 SmartestEnergy Australia 深耕可再生能源领域。在 Shell Energy 获得 Best of 2024 的认可，也印证了我投入工作中的热情与用心。\n如今，我享受把技术转化为实用产品，并与零售运营、IT、风险、交易和财务等团队开展端到端协作，理解业务全貌并创造长期价值。", tags:["PySpark","SQL","Salesforce","Azure Data Factory","Azure Synapse","AWS","Medallion Architecture","Power BI","Data Pipelines","DevOps","End-to-End Product Delivery","Stakeholder Collaboration"], tagsZh:["PySpark","SQL","Salesforce","Azure Data Factory","Azure Synapse","AWS","奖章式架构","Power BI","数据管道","DevOps","端到端产品交付","利益相关者协作"], tone:"mint", href:"https://www.linkedin.com/in/yangyangcai", linkLabel:"View LinkedIn Profile", linkLabelZh:"查看 LinkedIn 主页" },
 ];
 
 export const independentPractice = [
@@ -38,11 +38,11 @@ export const ventures = [
     role: "Business Partner · Ecommerce Venture",
     roleZh: "商业合作伙伴 · 电商项目",
     description:
-      "A collaborative ecommerce venture built with friends, focused on thoughtful gifts, home decor, craft supplies, and everyday essentials. I contribute across the online store, customer experience, and digital operations.",
+      "A collaborative ecommerce venture with friends, offering thoughtful gifts, home decor, craft supplies, and practical everyday finds. I initiated the partnership, support project coordination, and explore how AI and automation can improve everyday operations—from bulk product listing, operational reporting, customer email support, and shipping order entry to marketing, customer acquisition, and new business opportunities.",
     descriptionZh:
-      "与朋友共同经营的电商合作项目，专注于礼品、家居装饰、手工材料和日常好物。我主要参与线上商店、客户体验和数字化运营。",
-    tags: ["Shopify", "Ecommerce", "Customer Experience", "Digital Operations"],
-    tagsZh: ["Shopify", "电子商务", "客户体验", "数字化运营"],
+      "这是一个与朋友共同开展的电商合作项目，专注于精选礼品、家居装饰、手工材料和实用日常好物。我负责促成合作与项目协调，并探索将 AI 与自动化应用于日常运营，包括批量上架新品、整理运营报告、辅助回复客户邮件和填写发货订单，也持续尝试用 AI 支持市场营销、引流与新业务机会探索。",
+    tags: ["Shopify", "Ecommerce", "Project Coordination", "Business Growth", "Workflow Automation"],
+    tagsZh: ["Shopify", "电子商务", "项目协调", "商业推广", "流程自动化"],
     href: "https://home-essentials.com.au/",
     linkLabel: "Visit Home Essentials",
     linkLabelZh: "访问 Home Essentials",
@@ -56,11 +56,11 @@ export const ventures = [
     role: "Venture Partner · Coming Soon",
     roleZh: "创业合作伙伴 · 即将推出",
     description:
-      "An early-stage venture developing AI-powered business management solutions for jewellery retail stores. I am building it with the team as a venture partner. More details are coming soon.",
+      "An early-stage venture building AI-powered business management solutions for jewellery retail stores. As a venture partner, I lead the data function and guide delivery across data strategy, security and governance, architecture and pipelines, data quality, and ongoing operations. I also explore how AI can support brainstorming, research, and rapid prototyping of management reports. Building the company with the team gives me first-hand experience of the journey from zero to one and, over time, toward scale—an engaging entrepreneurial experience and a constant source of learning.",
     descriptionZh:
-      "一个面向珠宝零售门店、提供 AI 驱动经营管理方案的早期创业项目。我作为创业合作伙伴参与团队共同建设。更多内容即将发布。",
-    tags: ["Jewellery Retail", "AI Solutions", "Business Management"],
-    tagsZh: ["珠宝零售", "AI 解决方案", "经营管理"],
+      "一个面向珠宝零售门店、提供 AI 驱动经营管理方案的早期创业项目。我作为创业合作伙伴参与团队共建，负责数据方向的规划与交付，并带领相关成员推进数据战略、安全与治理、架构与管道建设、数据质量及日常运维。我也探索利用 AI 辅助头脑风暴、开展调研，以及快速制作经营报表原型。在这个过程中，我亲身体验公司从 0 到 1、再逐步走向规模化的建设过程。这是一段很有趣、也让我持续学习的创业经历。",
+    tags: ["Jewellery Retail", "AI Solutions", "Data Strategy", "Data Governance", "Data Pipelines", "Data Operations", "Team Leadership", "Venture Building"],
+    tagsZh: ["珠宝零售", "AI 解决方案", "数据战略", "数据治理", "数据管道", "数据运维", "团队带领", "创业共建"],
   },
 ];
 
