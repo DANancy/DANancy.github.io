@@ -2813,6 +2813,38 @@
   .ventures-page .practice-grid .venture-preview{aspect-ratio:2.18/1}
 }
 
+.workshop-business-details{
+  grid-column:1/-1;
+  display:grid;
+  gap:1.25rem;
+  padding:1.5rem;
+  border-top:1px solid #d6dfd8;
+  background:#f7faf8;
+}
+.workshop-business-details .knowledge-agent-session{
+  grid-template-columns:1fr;
+  margin:0;
+  box-shadow:none;
+}
+.workshop-business-details .knowledge-agent-overview{max-width:1050px}
+.workshop-feedback{
+  overflow:hidden;
+  border:1px solid #d7e1da;
+  border-radius:18px;
+  background:#fff;
+  box-shadow:0 14px 32px #2d493810;
+}
+.workshop-feedback>header{padding:1.35rem 1.5rem 1.15rem;border-bottom:1px solid #e0e7e2}
+.workshop-feedback>header p{margin:0;color:#287156;text-transform:uppercase;letter-spacing:.09em;font-family:var(--font-mono);font-size:.62rem;font-weight:700}
+.workshop-feedback>header h3{margin:.35rem 0 .2rem;color:#29463a;font-size:clamp(1.45rem,2.5vw,2rem);line-height:1.15}
+.workshop-feedback>header span{color:#65716a;font-size:.82rem}
+.workshop-feedback>.expandable-image{display:block;width:100%;border:0;border-radius:0;background:#f4f7f5}
+.workshop-feedback>.expandable-image img{display:block;width:100%;height:auto}
+@media(max-width:760px){
+  .workshop-business-details{padding:1rem;gap:1rem}
+  .workshop-feedback>header{padding:1.1rem}
+}
+
 /* Final footer layout: a slim in-flow row that never covers the app window. */
 .desktop-shell>.desktop-footer,
 .desktop-shell[data-section="overview"]>.desktop-footer,

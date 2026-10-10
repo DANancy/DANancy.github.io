@@ -80,6 +80,7 @@ import mapXiaohongshuImage from "../../../assets/Make AI Practical Xiaohongshu.p
 import learnAiSeriesImage from "../../../assets/Use AI to Learn AI 100 Series.png";
 import mapYangyangEventImage from "@/assets/map-yangyangcai.jpg";
 import aiWorkshopPoster from "../../../assets/workshop_3_20260913.png";
+import workshopFeedbackImage from "../../../assets/workshop_feedback.png";
 import bookClubSessionOneImage from "../../../assets/book_club_1.jpg";
 import bookClubSessionTwoImage from "../../../assets/book_club_2_23082026.jpg";
 import potteryOneImage from "@/assets/web/pottery_1.webp";
@@ -1125,6 +1126,7 @@ function Ventures({ language }: { language: Language }) {
                   <ProjectVisitLink href={practice.href}>{language === "zh" ? practice.linkLabelZh : practice.linkLabel} <ExternalLink aria-hidden="true" size={14} /></ProjectVisitLink>
                   <div className="venture-tags">{tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
                 </div>
+                {index === 2 && <WorkshopBusinessDetails language={language} />}
               </article>
             );
           })}
@@ -1157,6 +1159,52 @@ function Ventures({ language }: { language: Language }) {
           );
         })}
       </div>
+      </section>
+    </div>
+  );
+}
+
+function WorkshopBusinessDetails({ language }: { language: Language }) {
+  return (
+    <div className="workshop-business-details">
+      <section className="knowledge-agent-session" aria-labelledby="business-workshop-title">
+        <div className="knowledge-agent-overview">
+          <p>{tr(language, "Signature workshop", "代表性工作坊")}</p>
+          <h3 id="business-workshop-title">{tr(language, "Build Your Knowledge Agent", "构建你的知识智能体")}</h3>
+          <span>{tr(language, "A practical, hands-on session delivered with Make AI Practical", "与 Make AI Practical 共同开展的实用型动手工作坊")}</span>
+          <p className="knowledge-agent-description">
+            {tr(language, "Turn the information you already collect into a useful AI knowledge agent. Work through the process step by step, build a working example, and leave with an approach you can continue improving after the workshop.", "把你平时收集的信息转化为真正有用的 AI 知识智能体。跟随工作坊一步步完成构建，带走一个可运行的示例，以及课后可以继续完善的方法。")}
+          </p>
+          <p className="community-workshop-note">
+            {tr(language, "Four successful sessions co-hosted by Yangyang and Eric", "阳阳与 Eric 已成功共同主持四场活动")}
+          </p>
+          <div className="event-facts knowledge-agent-runs">
+            <span><CalendarDays /><small>{tr(language, "First run", "首场活动")}</small>{tr(language, "14 June 2026", "2026 年 6 月 14 日")}</span>
+            <span><CalendarDays /><small>{tr(language, "Second run", "第二场")}</small>{tr(language, "9 August 2026", "2026 年 8 月 9 日")}</span>
+            <span><CalendarDays /><small>{tr(language, "Third run", "第三场")}</small>{tr(language, "13 September 2026", "2026 年 9 月 13 日")}</span>
+            <span><CalendarDays /><small>{tr(language, "Fourth run", "第四场")}</small>{tr(language, "27 September 2026", "2026 年 9 月 27 日")}</span>
+          </div>
+          <div className="knowledge-agent-highlights" aria-label={tr(language, "Workshop highlights", "工作坊亮点")}>
+            <span><Wrench aria-hidden="true" />{tr(language, "Build as you learn", "边学边做")}</span>
+            <span><Clock3 aria-hidden="true" />{tr(language, "Three-hour workshop", "三小时工作坊")}</span>
+            <span><Network aria-hidden="true" />{tr(language, "Small-group setting", "小组互动学习")}</span>
+          </div>
+        </div>
+      </section>
+      <section className="workshop-feedback" aria-labelledby="workshop-feedback-title">
+        <header>
+          <p>{tr(language, "Participant feedback", "参与者反馈")}</p>
+          <h3 id="workshop-feedback-title">{tr(language, "Four workshops. Real outcomes.", "四场工作坊，真实学习成果。")}</h3>
+          <span>{tr(language, "25 participants · 4.45/5 average rating", "25 位参与者 · 平均评分 4.45/5")}</span>
+        </header>
+        <ExpandableImage
+          src={workshopFeedbackImage}
+          alt={tr(language, "Participant feedback from the AI Workshop Series", "AI 工作坊系列参与者反馈")}
+          width={1254}
+          height={1254}
+          sizes="(max-width: 760px) 92vw, 1050px"
+          language={language}
+        />
       </section>
     </div>
   );
@@ -1693,29 +1741,6 @@ function OmdenaExperience({ language }: { language: Language }) {
   );
 }
 function Community({ language }: { language: Language }) {
-  const [workshopSubmitState, setWorkshopSubmitState] = useState<"idle" | "submitting" | "success" | "error">("idle");
-  const submitWorkshopInterest = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    setWorkshopSubmitState("submitting");
-    const form = event.currentTarget;
-    const formData = new FormData(form);
-    try {
-      const response = await fetch("https://formsubmit.co/ajax/yangyangcai.au@gmail.com", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
-          _subject: "Build Your Knowledge Agent — New Workshop Interest",
-          email: formData.get("email"),
-          workshop: "Build Your Knowledge Agent — Next Session",
-        }),
-      });
-      if (!response.ok) throw new Error("Submission failed");
-      setWorkshopSubmitState("success");
-      form.reset();
-    } catch {
-      setWorkshopSubmitState("error");
-    }
-  };
   return (
     <div className="window-page community-page">
       <PageIntro
@@ -1928,53 +1953,6 @@ function Community({ language }: { language: Language }) {
             {tr(language, "Listen on Xiaoyuzhou", "在小宇宙收听")}
             <ExternalLink size={15} aria-hidden="true" />
           </a>
-        </section>
-        <section className="knowledge-agent-session" aria-labelledby="knowledge-agent-title">
-          <div className="knowledge-agent-overview">
-            <p>{tr(language, "AI Workshop", "AI 工作坊")}</p>
-            <h3 id="knowledge-agent-title">{tr(language, "Build Your Knowledge Agent", "构建你的知识智能体")}</h3>
-            <span>{tr(language, "A practical, hands-on session by Make AI Practical", "Make AI Practical 实用型动手工作坊")}</span>
-            <p className="knowledge-agent-description">
-              {tr(language, "Turn the information you already collect into a useful AI knowledge agent. Work through the process step by step, build a working example, and leave with an approach you can continue improving after the workshop.", "把你平时收集的信息转化为真正有用的 AI 知识智能体。跟随工作坊一步步完成构建，带走一个可运行的示例，以及课后可以继续完善的方法。")}
-            </p>
-            <p className="community-workshop-note">
-              {tr(language, "Four successful sessions co-hosted by Yangyang and Eric", "阳阳与 Eric 已成功共同主持四场活动")}
-            </p>
-            <div className="event-facts knowledge-agent-runs">
-              <span><CalendarDays /><small>{tr(language, "First run", "首场活动")}</small>{tr(language, "14 June 2026", "2026 年 6 月 14 日")}</span>
-              <span><CalendarDays /><small>{tr(language, "Second run", "第二场")}</small>{tr(language, "9 August 2026", "2026 年 8 月 9 日")}</span>
-              <span><CalendarDays /><small>{tr(language, "Third run", "第三场")}</small>{tr(language, "13 September 2026", "2026 年 9 月 13 日")}</span>
-              <span><CalendarDays /><small>{tr(language, "Fourth run", "第四场")}</small>{tr(language, "27 September 2026", "2026 年 9 月 27 日")}</span>
-            </div>
-            <div className="knowledge-agent-highlights" aria-label={tr(language, "Workshop highlights", "工作坊亮点")}>
-              <span><Wrench aria-hidden="true" />{tr(language, "Build as you learn", "边学边做")}</span>
-              <span><Clock3 aria-hidden="true" />{tr(language, "Three-hour workshop", "三小时工作坊")}</span>
-              <span><Network aria-hidden="true" />{tr(language, "Small community setting", "小型社区交流")}</span>
-            </div>
-          </div>
-          <form className="workshop-interest-form" onSubmit={submitWorkshopInterest}>
-            {workshopSubmitState === "success" ? (
-              <div className="workshop-interest-success" role="status">
-                <span><Mail aria-hidden="true" /></span>
-                <h4>{tr(language, "Successfully Submitted", "提交成功")}</h4>
-                <p>{tr(language, "Thank you. Your interest has been sent to MAP, and we’ll contact you about the next workshop.", "谢谢！您的参与意向已发送给 MAP，我们会就下一期工作坊与您联系。")}</p>
-                <button type="button" onClick={() => setWorkshopSubmitState("idle")}>{tr(language, "Submit Another Email", "提交另一个邮箱")}</button>
-              </div>
-            ) : <>
-              <div>
-                <p>{tr(language, "Next Session", "下一期活动")}</p>
-                <h4>{tr(language, "Register Your Interest", "登记参与意向")}</h4>
-                <span>{tr(language, "Leave your email to hear about the next workshop.", "留下您的邮箱，以便接收下一期工作坊的消息。")}</span>
-              </div>
-              <label htmlFor="workshop-interest-email">{tr(language, "Email Address", "邮箱地址")}</label>
-              <div className="workshop-interest-controls">
-                <input id="workshop-interest-email" name="email" type="email" placeholder="you@example.com" autoComplete="email" required />
-                <button type="submit" disabled={workshopSubmitState === "submitting"}><Mail aria-hidden="true" />{workshopSubmitState === "submitting" ? tr(language, "Submitting…", "正在提交……") : tr(language, "I'm Interested", "我感兴趣")}</button>
-              </div>
-              {workshopSubmitState === "error" && <p className="workshop-interest-error" role="alert">{tr(language, "Something went wrong. Please try again.", "提交失败，请重试。")}</p>}
-              <small>{tr(language, "Your interest will be sent directly to MAP without leaving this page.", "您的参与意向会直接发送给 MAP，无需离开此页面。")}</small>
-            </>}
-          </form>
         </section>
         <div
           className="book-club-sessions"
