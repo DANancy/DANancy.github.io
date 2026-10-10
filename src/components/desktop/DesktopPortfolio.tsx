@@ -42,6 +42,7 @@ import {
   Star,
   Terminal,
   Tv,
+  Users,
   Wrench,
   X,
   Zap,
@@ -78,9 +79,10 @@ import kenChenImage from "@/assets/friends/ken-chen.jpg";
 import xiangyuzhouImage from "@/assets/friends/xiangyuzhou.jpg";
 import pingchengTechImage from "@/assets/friends/pingcheng-tech.jpg";
 import mapXiaohongshuImage from "../../../assets/Make AI Practical Xiaohongshu.png";
-import learnAiSeriesImage from "../../../assets/Use AI to Learn AI 100 Series.png";
+import makeAiPracticalImage from "../../../assets/make_ai_practical.jpg";
 import mapYangyangEventImage from "@/assets/map-yangyangcai.jpg";
-import aiWorkshopPoster from "../../../assets/workshop_3_20260913.png";
+import mapConnectEnglishImage from "../../../assets/map_connect_en.jpg";
+import aiWorkshopImage from "../../../assets/ai_workshop.png";
 import workshopFeedbackImage from "../../../assets/workshop_feedback.png";
 import bookClubSessionOneImage from "../../../assets/book_club_1.jpg";
 import bookClubSessionTwoImage from "../../../assets/book_club_2_23082026.jpg";
@@ -378,7 +380,7 @@ export function DesktopPortfolio({
         </footer>
       )}
       {active !== "overview" && <PersistentFooter language={language} />}
-      {active === "ventures" && <InterestPanel language={language} showTrigger={false} />}
+      <InterestPanel language={language} />
       <div className="original-fruit-background" aria-hidden>
         <Image src={backyardOrchard} alt="" sizes="100vw" priority />
       </div>
@@ -396,6 +398,7 @@ function InterestPanel({ language, showTrigger = true }: { language: Language; s
     ["Mentoring & Interview Guidance", "导师辅导与面试指导"],
     ["AI Data Engineering Bootcamp", "AI 数据工程训练营"],
     ["Practical AI Workshop", "实用 AI 工作坊"],
+    ["Build Something Together", "一起合作做项目"],
   ];
 
   const submitInterest = async (event: FormEvent<HTMLFormElement>) => {
@@ -462,7 +465,8 @@ function InterestPanel({ language, showTrigger = true }: { language: Language; s
         aria-controls="interest-panel"
         onClick={() => setIsOpen((value) => !value)}
       >
-        {tr(language, "Register interest", "登记意向")}
+        <Sparkles aria-hidden="true" />
+        <span>{tr(language, "Register interest", "登记意向")}</span>
       </button>}
       <div
         ref={panelRef}
@@ -475,9 +479,9 @@ function InterestPanel({ language, showTrigger = true }: { language: Language; s
       >
         <header>
           <div>
-            <span><Sparkles aria-hidden="true" /> {tr(language, "Let’s learn together", "一起学习")}</span>
+            <span><Sparkles aria-hidden="true" /> {tr(language, "Let’s learn or build together", "一起学习或共创")}</span>
             <h2 id="interest-panel-title">{tr(language, "Register your interest", "登记您的意向")}</h2>
-            <p>{tr(language, "Tell me what you would like to explore. I’ll be in touch when a suitable opportunity is available.", "告诉我您想探索的方向。有合适的活动时，我会与您联系。")}</p>
+            <p>{tr(language, "Tell me what you would like to learn, explore, or build together. I’ll reply when there’s a suitable opportunity.", "告诉我您想学习、探索或一起建设的方向。有合适的机会时，我会与您联系。")}</p>
           </div>
           <button type="button" onClick={() => setIsOpen(false)} aria-label={tr(language, "Close", "关闭")}>
             <X aria-hidden="true" />
@@ -496,7 +500,7 @@ function InterestPanel({ language, showTrigger = true }: { language: Language; s
           <input type="hidden" name="_subject" value="New website interest registration" />
           <input type="hidden" name="_captcha" value="false" />
           <fieldset className="interest-session-fieldset">
-            <legend><span>1</span>{tr(language, "Choose Your Sessions", "选择您感兴趣的活动")}</legend>
+            <legend><span>1</span>{tr(language, "Choose What Interests You", "选择您感兴趣的方向")}</legend>
             <div className="interest-options">
               {interests.map(([en, zh]) => (
                 <label key={en}>
@@ -508,11 +512,11 @@ function InterestPanel({ language, showTrigger = true }: { language: Language; s
                 <input
                   type="checkbox"
                   name="interest"
-                  value="Other Session"
+                  value="Other Interest"
                   checked={otherSelected}
                   onChange={(event) => setOtherSelected(event.target.checked)}
                 />
-                <span>{tr(language, "Other Session", "其他活动")}</span>
+                <span>{tr(language, "Other Interest", "其他方向")}</span>
               </label>
             </div>
           </fieldset>
@@ -846,19 +850,18 @@ function Overview({
 function About({ language }: { language: Language }) {
   return (
     <div className="window-page about-page">
-      <PageIntro
+       <PageIntro
         eyebrow={tr(language, "Professional profile", "职业简介")}
         title={
           <>
-            {tr(language, "Building the bridge between", "连接")}{" "}
-            <em>{tr(language, "Data", "数据")}</em> {tr(language, "and", "与")}{" "}
-            <strong>{tr(language, "Intelligence.", "智能。")}</strong>
+            <em>{tr(language, "Data lover.", "热爱数据，")}</em> {" "}
+            <strong>{tr(language, "Practical builder.", "也热衷实践。")}</strong>
           </>
         }
         description={tr(
           language,
-          "Based in Melbourne, I am a Senior Data Engineer and Data Magician working in renewable energy. I love getting curious about messy problems, dancing with data and AI, and turning ideas into practical products that people can genuinely use.",
-          "我常驻墨尔本，是一名深耕可再生能源领域的高级数据工程师与数据魔法师。我喜欢对复杂问题保持好奇，与数据和 AI 共舞，并把想法转化为人们真正用得上的实用产品。",
+          "Based in Melbourne, I’m a Senior Data Engineer working in renewable energy, an independent mentor and educator, and a community builder. Across data platforms, practical AI, workshops, and shared ventures, I enjoy turning curious ideas into useful things people can genuinely use.",
+          "我常驻墨尔本，是一名深耕可再生能源领域的高级数据工程师，也独立开展导师辅导与教学，并参与社区和合作项目。无论是数据平台、实用 AI、工作坊还是共同创业，我都喜欢把好奇的想法变成人们真正用得上的成果。",
         )}
       />
       <h3>{tr(language, "Working style", "工作方式")}</h3>
@@ -907,6 +910,38 @@ function About({ language }: { language: Language }) {
             <Sparkles />
             <strong>{tr(language, "Just do it", "先行动起来")}</strong>
           </article>
+        </div>
+      </section>
+      <section className="about-paths" aria-labelledby="about-paths-title">
+        <header>
+          <p className="page-pill">{tr(language, "What I do", "我正在做的事")}</p>
+          <h3 id="about-paths-title">{tr(language, "Different paths, one practical mindset.", "不同方向，同一种务实的行动方式。")}</h3>
+        </header>
+        <div className="about-paths-grid">
+          <Link href={language === "zh" ? "/zh-hans/work/" : "/work/"}>
+            <span className="about-path-icon work"><Archive aria-hidden="true" /></span>
+            <div>
+              <h4>{tr(language, "Professional work", "职业工作")}</h4>
+              <p>{tr(language, "Building dependable data platforms for renewable energy and helping complex delivery become clearer and more useful.", "为可再生能源构建可靠的数据平台，让复杂的交付过程更清晰、更实用。")}</p>
+            </div>
+            <ExternalLink aria-hidden="true" />
+          </Link>
+          <Link href={language === "zh" ? "/zh-hans/ventures/" : "/ventures/"}>
+            <span className="about-path-icon business"><BriefcaseBusiness aria-hidden="true" /></span>
+            <div>
+              <h4>{tr(language, "Business & ventures", "独立业务与合作创业")}</h4>
+              <p>{tr(language, "Mentoring, teaching, practical AI services, and businesses built together with trusted partners.", "开展导师辅导、教学与实用 AI 服务，也和信任的伙伴共同建设商业项目。")}</p>
+            </div>
+            <ExternalLink aria-hidden="true" />
+          </Link>
+          <Link href={language === "zh" ? "/zh-hans/community/" : "/community/"}>
+            <span className="about-path-icon community"><Network aria-hidden="true" /></span>
+            <div>
+              <h4>{tr(language, "Community & sharing", "社区与分享")}</h4>
+              <p>{tr(language, "Creating welcoming spaces to learn practical AI, exchange ideas, and grow through shared experience.", "创造开放友好的空间，一起学习实用 AI、交流想法，并在分享中共同成长。")}</p>
+            </div>
+            <ExternalLink aria-hidden="true" />
+          </Link>
         </div>
       </section>
       <hr />
@@ -1024,6 +1059,34 @@ function Work({ language }: { language: Language }) {
                   ? project.descriptionZh
                   : project.description}
               </p>
+              {index === 0 && (
+                <div className="work-achievement-list" aria-label={tr(language, "Professional recognition", "职业荣誉")}>
+                  <div className="cute-achievement agl-achievement">
+                    <span><Star aria-hidden="true" /></span>
+                    <div>
+                      <strong>FY21 Top Learners</strong>
+                      <small>AGL</small>
+                    </div>
+                    <Sparkles aria-hidden="true" />
+                  </div>
+                  <div className="cute-achievement monthly-achievement">
+                    <span><Star aria-hidden="true" /></span>
+                    <div>
+                      <strong>Monthly Awesomeness</strong>
+                      <small>Shell Energy · May 2023</small>
+                    </div>
+                    <Sparkles aria-hidden="true" />
+                  </div>
+                  <div className="cute-achievement work-achievement">
+                    <span><Star aria-hidden="true" /></span>
+                    <div>
+                      <strong>Best of 2024</strong>
+                      <small>Shell Energy</small>
+                    </div>
+                    <Sparkles aria-hidden="true" />
+                  </div>
+                </div>
+              )}
               {preview && (
                 <div className="project-preview">
                   <ExpandableImage
@@ -1101,9 +1164,10 @@ function Ventures({ language }: { language: Language }) {
       <PageIntro
         eyebrow={tr(language, "Business & Ventures", "独立业务与合作创业")}
         title={tr(language, "Independent work. Shared ventures.", "独立经营，也与伙伴共同建设。")}
-        description={tr(language, "My independent professional services alongside businesses I help build and operate with friends and partners.", "这里展示我的独立专业服务，以及与朋友和伙伴共同建设、参与经营的商业项目。")} 
-      />
-      <section className="practice-section" aria-labelledby="practice-title">
+         description={tr(language, "My independent professional services alongside businesses I help build and operate with friends and partners.", "这里展示我的独立专业服务，以及与朋友和伙伴共同建设、参与经营的商业项目。")}
+       />
+       <BusinessInterestSection language={language} />
+       <section className="practice-section" aria-labelledby="practice-title">
         <header className="ventures-heading">
           <span>{tr(language, "Independent Practice", "独立专业服务")}</span>
           <h3 id="practice-title">{tr(language, "Mentoring · Teaching · Practical AI", "辅导 · 教学 · 实用 AI")}</h3>
@@ -1112,33 +1176,58 @@ function Ventures({ language }: { language: Language }) {
           {independentPractice.map((practice, index) => {
             const title = language === "zh" ? practice.titleZh : practice.title;
             const tags = language === "zh" ? practice.tagsZh : practice.tags;
-            return (
-              <article key={practice.title} className={index === 0 ? "practice-no-image" : ""}>
-                {index > 0 && (
-                  <div className={`venture-preview practice-preview ${index === 1 ? "bootcamp-preview" : "workshop-preview"}`}>
-                    <Image
-                      src={index === 1 ? bootcampLifecycleImage : aiWorkshopPoster}
-                      alt={index === 1 ? tr(language, "AI Data Engineering Bootcamp lifecycle", "AI 数据工程训练营生命周期") : tr(language, "Practical AI workshop poster", "实用 AI 工作坊海报")}
-                      sizes="(max-width: 760px) 90vw, 420px"
-                    />
+            if (index === 0) {
+              return (
+                <article key={practice.title} className="practice-no-image mentoring-service-card">
+                  <span className="work-sharing-icon"><GraduationCap aria-hidden="true" /></span>
+                  <div className="mentoring-service-content">
+                    <p className="venture-role">{language === "zh" ? practice.roleZh : practice.role}</p>
+                    <h4>{title}</h4>
+                    <p>{language === "zh" ? practice.descriptionZh : practice.description}</p>
+                    <ProjectVisitLink href={practice.href}>{language === "zh" ? practice.linkLabelZh : practice.linkLabel} <ExternalLink aria-hidden="true" size={14} /></ProjectVisitLink>
+                    <div className="venture-tags">{tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
                   </div>
-                )}
+                </article>
+              );
+            }
+            return (
+              <article key={practice.title}>
+                <div className={`venture-preview practice-preview ${index === 1 ? "bootcamp-preview" : "workshop-preview"}`}>
+                  <ExpandableImage
+                    src={index === 1 ? bootcampLifecycleImage : workshopFeedbackImage}
+                    alt={index === 1 ? tr(language, "AI Data Engineering Bootcamp lifecycle", "AI 数据工程训练营生命周期") : tr(language, "Practical AI workshop participant feedback", "实用 AI 工作坊参与者反馈")}
+                    width={(index === 1 ? bootcampLifecycleImage : workshopFeedbackImage).width}
+                    height={(index === 1 ? bootcampLifecycleImage : workshopFeedbackImage).height}
+                    sizes="(max-width: 760px) 90vw, 420px"
+                    language={language}
+                    className="venture-expandable-image"
+                  />
+                </div>
                 <div className="venture-copy">
-                  {index === 0 && <span className="practice-service-icon"><GraduationCap aria-hidden="true" /></span>}
                   <p className="venture-role">{language === "zh" ? practice.roleZh : practice.role}</p>
                   <h4>{title}</h4>
                   <p>{language === "zh" ? practice.descriptionZh : practice.description}</p>
+                  {index === 1 && (
+                    <div className="practice-impact-badges" aria-label={tr(language, "Bootcamp delivery highlights", "训练营成果")}>
+                      <span><GraduationCap aria-hidden="true" /><b>2</b>{tr(language, "Cohorts", "期训练营")}</span>
+                    </div>
+                  )}
+                  {index === 2 && (
+                    <div className="practice-impact-badges" aria-label={tr(language, "Workshop delivery highlights", "工作坊成果")}>
+                      <span><CalendarDays aria-hidden="true" /><b>4</b>{tr(language, "Sessions", "场")}</span>
+                      <span><Users aria-hidden="true" /><b>25</b>{tr(language, "Participants", "位参与者")}</span>
+                      <span className="rating"><Star aria-hidden="true" /><b>4.45/5</b>{tr(language, "Rating", "评分")}</span>
+                    </div>
+                  )}
                   <ProjectVisitLink href={practice.href}>{language === "zh" ? practice.linkLabelZh : practice.linkLabel} <ExternalLink aria-hidden="true" size={14} /></ProjectVisitLink>
                   <div className="venture-tags">{tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
                 </div>
-                {index === 2 && <WorkshopBusinessDetails language={language} />}
               </article>
             );
           })}
         </div>
       </section>
-      <BusinessInterestSection language={language} />
-      <section className="collaborative-section" aria-labelledby="collaborative-title">
+       <section className="collaborative-section" aria-labelledby="collaborative-title">
         <header className="ventures-heading">
           <span>{tr(language, "Collaborative Ventures", "合作创业项目")}</span>
           <h3 id="collaborative-title">{tr(language, "Ventures built together.", "与伙伴一起建设的项目。")}</h3>
@@ -1151,13 +1240,27 @@ function Ventures({ language }: { language: Language }) {
           return (
             <article key={venture.title}>
               <div className={`venture-preview ${index === 1 ? "venture-logo" : ""}`}>
-                <Image src={preview} alt={index === 0 ? tr(language, "Home Essentials online store", "Home Essentials 在线商店") : tr(language, "Ren Jun Jewellery logo", "仁君珠宝标志")} sizes="(max-width: 760px) 90vw, 480px" />
+                <ExpandableImage
+                  src={preview}
+                  alt={index === 0 ? tr(language, "Home Essentials online store", "Home Essentials 在线商店") : tr(language, "Ren Jun Jewellery logo", "仁君珠宝标志")}
+                  width={preview.width}
+                  height={preview.height}
+                  sizes="(max-width: 760px) 90vw, 480px"
+                  language={language}
+                  className="venture-expandable-image"
+                />
               </div>
               <div className="venture-copy">
-                <p className="venture-role">{language === "zh" ? venture.roleZh : venture.role}</p>
-                <h4>{title}</h4>
-                <p>{language === "zh" ? venture.descriptionZh : venture.description}</p>
-                {venture.href && <ProjectVisitLink href={venture.href}>{language === "zh" ? venture.linkLabelZh : venture.linkLabel} <ExternalLink aria-hidden="true" size={14} /></ProjectVisitLink>}
+                 <p className="venture-role">{language === "zh" ? venture.roleZh : venture.role}</p>
+                 <h4>{title}</h4>
+                 <p>{language === "zh" ? venture.descriptionZh : venture.description}</p>
+                 {index === 0 && (
+                   <blockquote className="venture-testimonial">
+                     <span>{tr(language, "Partner feedback", "合作方评价")}</span>
+                     <p>“{tr(language, "Professional and highly efficient.", "专业且高效。") }”</p>
+                   </blockquote>
+                 )}
+                 {venture.href && <ProjectVisitLink href={venture.href}>{language === "zh" ? venture.linkLabelZh : venture.linkLabel} <ExternalLink aria-hidden="true" size={14} /></ProjectVisitLink>}
                 {venture.secondaryHref && <ProjectVisitLink href={venture.secondaryHref}>{language === "zh" ? venture.secondaryLinkLabelZh : venture.secondaryLinkLabel} <ExternalLink aria-hidden="true" size={14} /></ProjectVisitLink>}
                 <div className="venture-tags">{tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
               </div>
@@ -1165,43 +1268,6 @@ function Ventures({ language }: { language: Language }) {
           );
         })}
       </div>
-      </section>
-    </div>
-  );
-}
-
-function WorkshopBusinessDetails({ language }: { language: Language }) {
-  return (
-    <div className="workshop-business-details">
-      <section className="knowledge-agent-session" aria-labelledby="business-workshop-title">
-        <div className="knowledge-agent-overview">
-          <p>{tr(language, "Signature workshop", "代表性工作坊")}</p>
-          <h3 id="business-workshop-title">{tr(language, "Build Your Knowledge Agent", "构建你的知识智能体")}</h3>
-          <span>{tr(language, "A practical, hands-on session delivered with Make AI Practical", "与 Make AI Practical 共同开展的实用型动手工作坊")}</span>
-          <p className="knowledge-agent-description">
-            {tr(language, "Build a working AI knowledge agent from information you already collect—and leave with a practical approach you can keep improving.", "把日常收集的信息转化为可运行的 AI 知识智能体，并带走一套能够继续完善的实用方法。")}
-          </p>
-          <div className="knowledge-agent-highlights" aria-label={tr(language, "Workshop highlights", "工作坊亮点")}>
-            <span><Wrench aria-hidden="true" />{tr(language, "Build as you learn", "边学边做")}</span>
-            <span><Clock3 aria-hidden="true" />{tr(language, "Three-hour workshop", "三小时工作坊")}</span>
-            <span><Network aria-hidden="true" />{tr(language, "Small-group setting", "小组互动学习")}</span>
-          </div>
-        </div>
-      </section>
-      <section className="workshop-feedback" aria-labelledby="workshop-feedback-title">
-        <header>
-          <p>{tr(language, "Participant feedback", "参与者反馈")}</p>
-          <h3 id="workshop-feedback-title">{tr(language, "Four workshops. Real outcomes.", "四场工作坊，真实学习成果。")}</h3>
-          <span>{tr(language, "25 participants · 4.45/5 average rating", "25 位参与者 · 平均评分 4.45/5")}</span>
-        </header>
-        <ExpandableImage
-          src={workshopFeedbackImage}
-          alt={tr(language, "Participant feedback from the AI Workshop Series", "AI 工作坊系列参与者反馈")}
-          width={1254}
-          height={1254}
-          sizes="(max-width: 760px) 88vw, 720px"
-          language={language}
-        />
       </section>
     </div>
   );
@@ -1219,19 +1285,24 @@ function BusinessInterestSection({ language }: { language: Language }) {
       title: tr(language, "AI data engineering bootcamp", "AI 数据工程训练营"),
       description: tr(language, "Structured, hands-on learning across the data engineering lifecycle.", "围绕数据工程完整生命周期开展系统化实践学习。"),
     },
-    {
-      icon: Presentation,
-      title: tr(language, "Practical AI workshops", "实用 AI 工作坊"),
-      description: tr(language, "Small-group workshops that turn useful ideas into working solutions.", "通过小组实践，把有价值的想法转化为可运行的解决方案。"),
-    },
+     {
+       icon: Presentation,
+       title: tr(language, "Practical AI workshops", "实用 AI 工作坊"),
+       description: tr(language, "Small-group workshops that turn useful ideas into working solutions.", "通过小组实践，把有价值的想法转化为可运行的解决方案。"),
+     },
+     {
+       icon: Users,
+       title: tr(language, "Build something together", "一起合作做项目"),
+       description: tr(language, "Explore a practical idea, shared venture, or thoughtful collaboration.", "一起探索实用想法、合作项目或共同创业的可能性。"),
+     },
   ];
 
   return (
     <section className="business-interest-section" aria-labelledby="business-interest-title">
       <div className="business-interest-heading">
-        <span><Sparkles aria-hidden="true" />{tr(language, "Work with me", "与我一起学习或合作")}</span>
-        <h3 id="business-interest-title">{tr(language, "Register your interest", "登记您的兴趣")}</h3>
-        <p>{tr(language, "Choose the kind of support or learning experience you’re interested in. I’ll get in touch when a suitable opportunity is available.", "选择您感兴趣的支持或学习方式。有合适的机会时，我会与您联系。")}</p>
+         <span><Sparkles aria-hidden="true" />{tr(language, "Learn or build together", "一起学习或共创")}</span>
+         <h3 id="business-interest-title">{tr(language, "Register your interest", "登记您的兴趣")}</h3>
+         <p>{tr(language, "Whether you’re looking for support, a learning experience, or a partner for a practical idea, tell me what you have in mind.", "无论您想获得专业支持、参加学习活动，还是寻找伙伴一起做项目，都可以告诉我您的想法。")}</p>
       </div>
       <div className="business-interest-options">
         {services.map(({ icon: Icon, title, description }) => (
@@ -1784,6 +1855,7 @@ function OmdenaExperience({ language }: { language: Language }) {
   );
 }
 function Community({ language }: { language: Language }) {
+  const mapConnectPoster = language === "zh" ? mapYangyangEventImage : mapConnectEnglishImage;
   return (
     <div className="window-page community-page">
       <PageIntro
@@ -1851,7 +1923,7 @@ function Community({ language }: { language: Language }) {
             <article>
               <Network aria-hidden="true" />
               <span>
-                <b>{tr(language, "Coffee chats or online connect", "咖啡交流或线上联系")}</b>
+                <b>{tr(language, "MAP Connect", "MAP Connect 交流")}</b>
                 <small>
                   {tr(
                     language,
@@ -1896,33 +1968,73 @@ function Community({ language }: { language: Language }) {
             </figure>
             <figure>
               <ExpandableImage
-                src={learnAiSeriesImage}
-                alt={tr(language, "Use AI to Learn AI 100 Series", "用 AI 学 AI 100 系列")}
-                width={learnAiSeriesImage.width}
-                height={learnAiSeriesImage.height}
+                src={makeAiPracticalImage}
+                alt={tr(language, "Make AI Practical WeChat QR code", "Make AI Practical 微信二维码")}
+                width={makeAiPracticalImage.width}
+                height={makeAiPracticalImage.height}
                 sizes="(max-width: 520px) 100vw, 220px"
                 language={language}
               />
-              <figcaption>{tr(language, "Use AI to Learn AI · 100 Series", "用 AI 学 AI · 100 系列")}</figcaption>
+              <figcaption>{tr(language, "MAP on WeChat", "MAP 微信")}</figcaption>
             </figure>
           </div>
         </div>
         <section className="community-invite community-upcoming">
           <div className="upcoming-event-badge"><CalendarDays aria-hidden="true" />{tr(language, "Next MAP event", "MAP 下一场活动")}</div>
           <ExpandableImage
-            src={mapYangyangEventImage}
+            src={mapConnectPoster}
             alt={tr(
               language,
-              "MAP Connect Episode 3 event poster featuring Yangyang Cai",
+              "English MAP Connect Episode 3 event poster featuring Yangyang Cai",
               "MAP Connect 第三期阳阳蔡分享活动海报",
             )}
-            width={mapYangyangEventImage.width}
-            height={mapYangyangEventImage.height}
+            width={mapConnectPoster.width}
+            height={mapConnectPoster.height}
             sizes="(max-width: 900px) 100vw, 40vw"
             language={language}
             className="community-event-poster"
           />
         </section>
+        <section className="knowledge-agent-session community-knowledge-agent" aria-labelledby="community-knowledge-agent-title">
+          <div className="knowledge-agent-overview">
+            <p>{tr(language, "Latest completed event · AI community workshop", "最近一场已结束活动 · AI 社区工作坊")}</p>
+            <h3 id="community-knowledge-agent-title">{tr(language, "Build Your Knowledge Agent", "构建你的知识智能体")}</h3>
+            <span>{tr(language, "A practical, hands-on session by Make AI Practical", "Make AI Practical 实用型动手工作坊")}</span>
+            <p className="knowledge-agent-description">
+              {tr(language, "Build a working AI knowledge agent from information you already collect, and leave with a practical approach you can continue improving after the session.", "把日常收集的信息转化为可运行的 AI 知识智能体，并带走一套能够在活动后继续完善的实用方法。")}
+            </p>
+            <p className="community-workshop-note">
+              {tr(language, "Four workshops delivered for 25 participants, with an average rating of 4.45/5.", "已开展 4 场工作坊，共有 25 位参与者，平均评分为 4.45/5。")}
+            </p>
+            <div className="event-facts knowledge-agent-runs">
+              <span><CalendarDays /><small>{tr(language, "First run", "首场活动")}</small>{tr(language, "14 June 2026", "2026 年 6 月 14 日")}</span>
+              <span><CalendarDays /><small>{tr(language, "Second run", "第二场")}</small>{tr(language, "9 August 2026", "2026 年 8 月 9 日")}</span>
+              <span><CalendarDays /><small>{tr(language, "Third run", "第三场")}</small>{tr(language, "13 September 2026", "2026 年 9 月 13 日")}</span>
+              <span><CalendarDays /><small>{tr(language, "Fourth run", "第四场")}</small>{tr(language, "27 September 2026", "2026 年 9 月 27 日")}</span>
+            </div>
+            <div className="knowledge-agent-highlights" aria-label={tr(language, "Workshop highlights", "工作坊亮点")}>
+              <span><Wrench aria-hidden="true" />{tr(language, "Build as you learn", "边学边做")}</span>
+              <span><Clock3 aria-hidden="true" />{tr(language, "Three-hour workshop", "三小时工作坊")}</span>
+              <span><Network aria-hidden="true" />{tr(language, "Small-group setting", "小组互动学习")}</span>
+            </div>
+          </div>
+          <ExpandableImage
+            src={aiWorkshopImage}
+            alt={tr(language, "Build Your Knowledge Agent workshop poster", "构建你的知识智能体工作坊海报")}
+            width={aiWorkshopImage.width}
+            height={aiWorkshopImage.height}
+            sizes="(max-width: 760px) 92vw, 430px"
+            language={language}
+            className="community-knowledge-agent-poster"
+          />
+        </section>
+        <section className="map-podcast-collection" aria-labelledby="map-podcast-collection-title">
+          <header>
+            <p className="page-pill">{tr(language, "Podcast collection", "播客合集")}</p>
+            <h3 id="map-podcast-collection-title">MAP Connect Podcast</h3>
+            <span>{tr(language, "Conversations with practical AI builders and community voices.", "与实用 AI 实践者和社区伙伴展开真实对话。")}</span>
+          </header>
+          <div className="map-podcast-shelf">
         <section className="map-podcast-session" aria-labelledby="map-podcast-title">
           <div className="map-podcast-icon">
             <Headphones aria-hidden="true" />
@@ -1996,6 +2108,8 @@ function Community({ language }: { language: Language }) {
             {tr(language, "Listen on Xiaoyuzhou", "在小宇宙收听")}
             <ExternalLink size={15} aria-hidden="true" />
           </a>
+        </section>
+          </div>
         </section>
         <div
           className="book-club-sessions"
