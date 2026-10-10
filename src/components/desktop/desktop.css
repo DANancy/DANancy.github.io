@@ -2785,7 +2785,7 @@
   .work-page .project-grid>article:only-child>div:last-child{margin-top:1.2rem}
 }
 
-/* ABN services read as case studies; collaborative ventures remain brand cards. */
+/* Independent services read as case studies; collaborative ventures remain brand cards. */
 @media(min-width:761px){
   .ventures-page .practice-grid{grid-template-columns:1fr;gap:1.25rem}
   .ventures-page .practice-grid>article{

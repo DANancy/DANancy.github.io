@@ -1095,11 +1095,11 @@ function Ventures({ language }: { language: Language }) {
       <PageIntro
         eyebrow={tr(language, "Business & Ventures", "独立业务与合作创业")}
         title={tr(language, "Independent work. Shared ventures.", "独立经营，也与伙伴共同建设。")}
-        description={tr(language, "My ABN-based professional services alongside businesses I help build and operate with friends and partners.", "这里展示我通过 ABN 开展的专业服务，以及与朋友和伙伴共同建设、参与经营的商业项目。")}
+        description={tr(language, "My independent professional services alongside businesses I help build and operate with friends and partners.", "这里展示我的独立专业服务，以及与朋友和伙伴共同建设、参与经营的商业项目。")} 
       />
       <section className="practice-section" aria-labelledby="practice-title">
         <header className="ventures-heading">
-          <span>{tr(language, "Independent Practice", "ABN 独立业务")}</span>
+          <span>{tr(language, "Independent Practice", "独立专业服务")}</span>
           <h3 id="practice-title">{tr(language, "Mentoring · Teaching · Practical AI", "辅导 · 教学 · 实用 AI")}</h3>
         </header>
         <div className="venture-grid practice-grid">

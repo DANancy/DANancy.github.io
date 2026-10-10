@@ -7,7 +7,7 @@ import '@/components/desktop/desktop.css'
 const sections={
   about:{title:'关于我',description:'了解蔡阳阳在可再生能源、数据工程与实用 AI 领域的经历。'},
   work:{title:'作品',description:'探索蔡阳阳的数据工程、AI、导师辅导、电商与协作技术项目。'},
-  ventures:{title:'独立业务与合作创业',description:'了解蔡阳阳通过 ABN 开展的导师辅导与 AI 数据工程训练营，以及与伙伴共同建设的商业项目。'},
+  ventures:{title:'独立业务与合作创业',description:'了解蔡阳阳独立开展的导师辅导、AI 数据工程训练营与实用 AI 服务，以及与伙伴共同建设的商业项目。'},
   community:{title:'社区',description:'了解蔡阳阳参与 Make AI Practical、AI 工作坊、导师辅导与知识分享的经历。'},
   fun:{title:'兴趣时光',description:'书籍、动画、陶艺、游戏与活动，共同构成蔡阳阳的快乐天地。'},
   links:{title:'联系、朋友与链接',description:'联系蔡阳阳，并探索朋友们的创作，以及相关社区、项目和实用链接。'},

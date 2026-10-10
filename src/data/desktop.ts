@@ -7,7 +7,7 @@ export const projects: { title:string; description:string; tags:string[]; tagsZh
 export const independentPractice = [
   {
     title:"Mentoring & Interview Guidance", titleZh:"导师辅导与面试指导",
-    role:"Independent Practitioner · ABN Business", roleZh:"独立业务 · ABN 经营",
+    role:"Independent Practitioner", roleZh:"独立专业实践",
     description:"Practical mentoring, lecturing, and one-to-one interview guidance that helps people connect technical knowledge with real situations, build confidence, and identify useful next steps.",
     descriptionZh:"通过导师辅导、授课和一对一面试指导，帮助学习者把技术知识与真实场景连接起来，建立信心并找到切实可行的下一步。",
     tags:["Mentoring","Lecturer","1:1 Interview Guidance"], tagsZh:["导师辅导","讲师","一对一面试指导"],
@@ -15,7 +15,7 @@ export const independentPractice = [
   },
   {
     title:"AI-Data Engineering Bootcamp", titleZh:"AI 数据工程训练营",
-    role:"Founder & Instructor · ABN Business", roleZh:"创办人与讲师 · ABN 经营",
+    role:"Founder & Instructor · Independent Practice", roleZh:"创办人与讲师 · 独立专业实践",
     description:"A self-designed, 12-session (18-hour) bootcamp using a public dataset to explore the complete data engineering lifecycle, dependable delivery, and practical AI support.",
     descriptionZh:"由我自主设计并授课、共 12 节（18 小时）的训练营，通过公开数据集探索完整的数据工程生命周期、可靠交付与实用 AI 支持。",
     tags:["Data Engineering","Databricks AI","Power BI MCP","Codex"], tagsZh:["数据工程","Databricks AI","Power BI MCP","Codex"],
@@ -23,7 +23,7 @@ export const independentPractice = [
   },
   {
     title:"Practical AI Workshops", titleZh:"实用 AI 工作坊",
-    role:"Workshop Instructor · ABN Professional Service", roleZh:"工作坊讲师 · ABN 专业服务",
+    role:"Workshop Instructor · Professional Service", roleZh:"工作坊讲师 · 专业服务",
     description:"Paid, hands-on AI workshops designed to help people turn ideas and everyday information into useful, working AI solutions they can continue improving after the session.",
     descriptionZh:"通过付费的实用 AI 工作坊，帮助参与者把想法和已有信息转化为可运行、并能在课后继续完善的 AI 解决方案。",
     tags:["AI Workshops","Facilitation","Practical AI","Knowledge Agents"], tagsZh:["AI 工作坊","引导式教学","实用 AI","知识智能体"],
