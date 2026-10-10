@@ -20,6 +20,7 @@ import {
   Clapperboard,
   Clock3,
   Compass,
+  Database,
   ExternalLink,
   Flower2,
   Gamepad2,
@@ -377,7 +378,7 @@ export function DesktopPortfolio({
         </footer>
       )}
       {active !== "overview" && <PersistentFooter language={language} />}
-      <InterestPanel language={language} />
+      {active === "ventures" && <InterestPanel language={language} showTrigger={false} />}
       <div className="original-fruit-background" aria-hidden>
         <Image src={backyardOrchard} alt="" sizes="100vw" priority />
       </div>
@@ -385,18 +386,16 @@ export function DesktopPortfolio({
   );
 }
 
-function InterestPanel({ language }: { language: Language }) {
+function InterestPanel({ language, showTrigger = true }: { language: Language; showTrigger?: boolean }) {
   const [isOpen, setIsOpen] = useState(false);
   const [otherSelected, setOtherSelected] = useState(false);
   const [submitState, setSubmitState] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const panelRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const interests = [
-    ["AI Workshop", "AI 工作坊"],
-    ["Yangyang Book Club", "阳阳书友会"],
-    ["1:1 Mentoring Session", "一对一指导"],
-    ["Data Engineering Bootcamp", "数据工程训练营"],
-    ["Learning Together Newsletter", "一起学习简报"],
+    ["Mentoring & Interview Guidance", "导师辅导与面试指导"],
+    ["AI Data Engineering Bootcamp", "AI 数据工程训练营"],
+    ["Practical AI Workshop", "实用 AI 工作坊"],
   ];
 
   const submitInterest = async (event: FormEvent<HTMLFormElement>) => {
@@ -438,6 +437,12 @@ function InterestPanel({ language }: { language: Language }) {
     return () => window.removeEventListener("keydown", close);
   }, [isOpen]);
 
+  useEffect(() => {
+    const openPanel = () => setIsOpen(true);
+    window.addEventListener("open-business-interest", openPanel);
+    return () => window.removeEventListener("open-business-interest", openPanel);
+  }, []);
+
   return (
     <div className={`interest-drawer ${isOpen ? "is-open" : ""}`}>
       {isOpen && (
@@ -448,7 +453,7 @@ function InterestPanel({ language }: { language: Language }) {
           onClick={() => setIsOpen(false)}
         />
       )}
-      <button
+      {showTrigger && <button
         ref={triggerRef}
         className="interest-trigger"
         type="button"
@@ -458,7 +463,7 @@ function InterestPanel({ language }: { language: Language }) {
         onClick={() => setIsOpen((value) => !value)}
       >
         {tr(language, "Register interest", "登记意向")}
-      </button>
+      </button>}
       <div
         ref={panelRef}
         id="interest-panel"
@@ -1132,6 +1137,7 @@ function Ventures({ language }: { language: Language }) {
           })}
         </div>
       </section>
+      <BusinessInterestSection language={language} />
       <section className="collaborative-section" aria-labelledby="collaborative-title">
         <header className="ventures-heading">
           <span>{tr(language, "Collaborative Ventures", "合作创业项目")}</span>
@@ -1207,6 +1213,52 @@ function WorkshopBusinessDetails({ language }: { language: Language }) {
         />
       </section>
     </div>
+  );
+}
+
+function BusinessInterestSection({ language }: { language: Language }) {
+  const services = [
+    {
+      icon: GraduationCap,
+      title: tr(language, "Mentoring & interview guidance", "导师辅导与面试指导"),
+      description: tr(language, "One-to-one support for clearer learning and confident interviews.", "通过一对一支持，让学习方向更清晰、面试准备更有信心。"),
+    },
+    {
+      icon: Database,
+      title: tr(language, "AI data engineering bootcamp", "AI 数据工程训练营"),
+      description: tr(language, "Structured, hands-on learning across the data engineering lifecycle.", "围绕数据工程完整生命周期开展系统化实践学习。"),
+    },
+    {
+      icon: Presentation,
+      title: tr(language, "Practical AI workshops", "实用 AI 工作坊"),
+      description: tr(language, "Small-group workshops that turn useful ideas into working solutions.", "通过小组实践，把有价值的想法转化为可运行的解决方案。"),
+    },
+  ];
+
+  return (
+    <section className="business-interest-section" aria-labelledby="business-interest-title">
+      <div className="business-interest-heading">
+        <span><Sparkles aria-hidden="true" />{tr(language, "Work with me", "与我一起学习或合作")}</span>
+        <h3 id="business-interest-title">{tr(language, "Register your interest", "登记您的兴趣")}</h3>
+        <p>{tr(language, "Choose the kind of support or learning experience you’re interested in. I’ll get in touch when a suitable opportunity is available.", "选择您感兴趣的支持或学习方式。有合适的机会时，我会与您联系。")}</p>
+      </div>
+      <div className="business-interest-options">
+        {services.map(({ icon: Icon, title, description }) => (
+          <article key={title}>
+            <Icon aria-hidden="true" />
+            <div><h4>{title}</h4><p>{description}</p></div>
+          </article>
+        ))}
+      </div>
+      <button
+        type="button"
+        className="business-interest-cta"
+        onClick={() => window.dispatchEvent(new Event("open-business-interest"))}
+      >
+        <Send aria-hidden="true" />
+        {tr(language, "Register my interest", "登记我的兴趣")}
+      </button>
+    </section>
   );
 }
 

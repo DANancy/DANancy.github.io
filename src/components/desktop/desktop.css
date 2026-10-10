@@ -2845,6 +2845,31 @@
   .workshop-feedback>header{padding:1.1rem}
 }
 
+.business-interest-section{
+  margin:2rem 0 2.5rem;
+  padding:clamp(1.35rem,3vw,2rem);
+  border:2px solid #c9ddd1;
+  border-radius:22px;
+  background:linear-gradient(135deg,#eef8f2 0%,#fffaf0 100%);
+  box-shadow:0 16px 38px #234b3712;
+}
+.business-interest-heading{max-width:780px}
+.business-interest-heading>span{display:flex;align-items:center;gap:.45rem;color:#287156;text-transform:uppercase;letter-spacing:.09em;font-family:var(--font-mono);font-size:.65rem;font-weight:800}
+.business-interest-heading>span svg{width:17px;height:17px}
+.business-interest-heading h3{margin:.55rem 0 .45rem;color:#29463a;font-size:clamp(1.7rem,3vw,2.4rem);line-height:1.1}
+.business-interest-heading p{margin:0;color:#526159;line-height:1.65}
+.business-interest-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.9rem;margin-top:1.35rem}
+.business-interest-options article{display:grid;grid-template-columns:44px minmax(0,1fr);gap:.8rem;align-items:start;padding:1rem;border:1px solid #d5e2da;border-radius:14px;background:#fff}
+.business-interest-options article>svg{width:44px;height:44px;padding:10px;border-radius:12px;background:#e3f1e8;color:#276f52}
+.business-interest-options h4{margin:0;color:#304a3f;font-size:.95rem;line-height:1.3}
+.business-interest-options p{margin:.35rem 0 0;color:#66736c;font-size:.78rem;line-height:1.5}
+.business-interest-cta{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;min-height:50px;margin-top:1.35rem;padding:0 1.25rem;border:0;border-radius:11px;background:#276f52;color:#fff;cursor:pointer;font-family:var(--font-mono);font-size:.76rem;font-weight:800;transition:background-color .2s ease,box-shadow .2s ease}
+.business-interest-cta:hover{background:#175d43;box-shadow:0 8px 20px #1b523a26}
+.business-interest-cta:focus-visible{outline:3px solid #9acbb5;outline-offset:3px}
+.business-interest-cta svg{width:17px;height:17px}
+@media(max-width:900px){.business-interest-options{grid-template-columns:1fr}}
+@media(max-width:520px){.business-interest-cta{width:100%}}
+
 /* Final footer layout: a slim in-flow row that never covers the app window. */
 .desktop-shell>.desktop-footer,
 .desktop-shell[data-section="overview"]>.desktop-footer,
