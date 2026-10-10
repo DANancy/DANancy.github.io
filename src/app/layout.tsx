@@ -32,7 +32,7 @@ const jbMono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://yangyangcai.me"),
   title: {
-    default: "Yangyang Cai | Senior Data Engineer & Practical AI Builder in Melbourne",
+    default: "Yangyang Cai | Data Lover",
     template: "%s | Yangyang Cai",
   },
   description:
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     type: "profile",
     url: "/",
     siteName: "Yangyang Cai",
-    title: "Yangyang Cai | Senior Data Engineer & Practical AI Builder",
+    title: "Yangyang Cai | Data Lover",
     description:
       "Melbourne Senior Data Engineer working across renewable energy, data platforms, Databricks and practical AI.",
     locale: "en_AU",
@@ -69,7 +69,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Yangyang Cai | Senior Data Engineer & Practical AI Builder",
+    title: "Yangyang Cai | Data Lover",
     description: "Data engineering, renewable energy, Databricks and practical AI in Melbourne.",
     images: ["/assets/community-event.webp"],
   },

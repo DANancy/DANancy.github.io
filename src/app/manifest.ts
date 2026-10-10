@@ -4,7 +4,7 @@ export const dynamic = "force-static";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Yangyang Cai — Data, AI and Community",
+    name: "Yangyang Cai — Data Lover",
     short_name: "Yangyang Cai",
     description: "Senior Data Engineer and practical AI builder in Melbourne.",
     start_url: "/",

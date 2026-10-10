@@ -6,7 +6,7 @@ const profileJsonLd = {
   "@type": "ProfilePage",
   "@id": "https://yangyangcai.me/#profile",
   url: "https://yangyangcai.me/",
-  name: "Yangyang Cai — Senior Data Engineer and Practical AI Builder",
+  name: "Yangyang Cai — Data Lover",
   inLanguage: "en-AU",
   mainEntity: {
     "@type": "Person",
@@ -39,7 +39,7 @@ const profileJsonLd = {
 export const metadata = {
   alternates:{canonical:"/",languages:{en:"/","zh-Hans":"/zh-hans/","x-default":"/"}},
   openGraph:{
-    title:"Yangyang Cai | Senior Data Engineer & Practical AI Builder",
+    title:"Yangyang Cai | Data Lover",
     url:"/",
     images:[{url:"/assets/community-event.webp",width:1200,height:630,alt:"Yangyang Cai — data, AI and community"}],
   },
