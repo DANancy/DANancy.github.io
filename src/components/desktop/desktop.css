@@ -1046,10 +1046,10 @@
 .venture-copy{padding:1.6rem}
 .venture-copy h4{margin-top:.6rem;font-size:1.45rem}
 .venture-copy>p:not(.venture-role){margin-top:.7rem;color:#5d6762;line-height:1.6}
-.venture-testimonial{position:relative;margin:1.15rem .15rem .35rem;padding:.85rem 1rem .82rem 3.45rem;border:1.5px solid #a9c7b6;border-radius:18px 18px 18px 6px;background:radial-gradient(circle at 94% 18%,#cfe5d9 0 3px,transparent 4px),radial-gradient(circle at 97% 30%,#e0ece5 0 2px,transparent 3px),#fff;color:#34483e;box-shadow:3px 4px 0 #6e9d8220}
-.venture-testimonial::before{content:"“";position:absolute;left:.72rem;top:-.62rem;display:grid;place-items:center;width:38px;height:38px;border:2px solid #fff;border-radius:50%;background:#dceee4;color:#3e7758;font-family:Georgia,serif;font-size:2.35rem;font-weight:900;line-height:1;box-shadow:0 0 0 1px #a9c7b6,2px 3px 0 #6e9d8224;rotate:-7deg}
-.venture-testimonial::after{content:"";position:absolute;left:1.25rem;bottom:-8px;width:15px;height:15px;border-right:1.5px solid #a9c7b6;border-bottom:1.5px solid #a9c7b6;background:#fff;transform:rotate(45deg)}
-.venture-testimonial span{display:inline-block;padding:.18rem .42rem;border:1px solid #c4d8cc;border-radius:999px;background:#f2f7f4;color:#587064;font-family:var(--font-mono);font-size:.56rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;box-shadow:1px 2px 0 #7d9d8b1c;rotate:-1deg}
+.venture-testimonial{position:relative;margin:.78rem .15rem .35rem;padding:.85rem 1rem .82rem 3.45rem;border:1.5px solid var(--feedback-border,#d8b69f);border-radius:18px 18px 18px 6px;background:radial-gradient(circle at 94% 18%,var(--feedback-soft,#f8ded0) 0 3px,transparent 4px),radial-gradient(circle at 97% 30%,var(--feedback-soft,#f8ded0) 0 2px,transparent 3px),#fff;color:#34483e;box-shadow:3px 4px 0 var(--feedback-shadow,#b8795420)}
+.venture-testimonial::before{content:"“";position:absolute;left:.72rem;top:-.62rem;display:grid;place-items:center;width:38px;height:38px;border:2px solid #fff;border-radius:50%;background:var(--feedback-soft,#f8ded0);color:var(--feedback-ink,#92593a);font-family:Georgia,serif;font-size:2.35rem;font-weight:900;line-height:1;box-shadow:0 0 0 1px var(--feedback-border,#d8b69f),2px 3px 0 var(--feedback-shadow,#b8795424);rotate:-7deg}
+.venture-testimonial::after{content:"";position:absolute;left:1.25rem;bottom:-8px;width:15px;height:15px;border-right:1.5px solid var(--feedback-border,#d8b69f);border-bottom:1.5px solid var(--feedback-border,#d8b69f);background:#fff;transform:rotate(45deg)}
+.venture-testimonial span{display:inline-block;padding:.18rem .42rem;border:1px solid var(--feedback-border,#d8b69f);border-radius:999px;background:var(--feedback-pale,#fff3ed);color:var(--feedback-ink,#92593a);font-family:var(--font-mono);font-size:.56rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;box-shadow:1px 2px 0 var(--feedback-shadow,#b879541c);rotate:-1deg}
 .venture-testimonial p{margin:.32rem 0 0;color:#30483b;font-size:.9rem;font-weight:750;line-height:1.45}
 .venture-copy .project-visit{margin-top:1rem}
 .venture-tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:1.2rem}
@@ -3265,10 +3265,10 @@
 }
 .collaborative-section .venture-grid>article{display:flex;height:100%;flex-direction:column}
 .collaborative-section .venture-copy{display:flex;flex:1;flex-direction:column}
-.collaborative-section .venture-copy>p:not(.venture-role){min-height:8em}
+.collaborative-section .venture-grid>article:first-child{--feedback-border:#d8b69f;--feedback-soft:#f8ded0;--feedback-pale:#fff3ed;--feedback-ink:#92593a;--feedback-shadow:#b8795424}
+.collaborative-section .venture-grid>article:nth-child(2){--feedback-border:#c7b8d8;--feedback-soft:#e9def2;--feedback-pale:#f8f3fb;--feedback-ink:#6d4d82;--feedback-shadow:#76558b20}
 .collaborative-section .venture-tags{margin-top:1rem;padding-top:0}
 .collaborative-section .venture-tags span{border:0;background:#c9eee2;color:#28655a}
-@media(max-width:760px){.collaborative-section .venture-copy>p:not(.venture-role){min-height:0}}
 .ventures-page .practice-grid>article.mentoring-service-card{
   display:grid;
   grid-template-columns:72px minmax(0,1fr);

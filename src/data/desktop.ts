@@ -38,9 +38,9 @@ export const ventures = [
     role: "Business Partner · Ecommerce Venture",
     roleZh: "商业合作伙伴 · 电商项目",
     description:
-      "A collaborative ecommerce venture with friends, offering thoughtful gifts, home decor, craft supplies, and practical everyday finds. I initiated the partnership, support project coordination, and explore how AI and automation can improve everyday operations—from bulk product listing, operational reporting, customer email support, and shipping order entry to marketing, customer acquisition, and new business opportunities.",
+      "A collaborative ecommerce venture with friends, offering gifts, home decor, craft supplies, and everyday finds. I initiated the partnership, support project coordination, and explore how AI and automation can assist product listings, operational reporting, customer emails, shipping orders, and marketing.",
     descriptionZh:
-      "这是一个与朋友共同开展的电商合作项目，专注于精选礼品、家居装饰、手工材料和实用日常好物。我负责促成合作与项目协调，并探索将 AI 与自动化应用于日常运营，包括批量上架新品、整理运营报告、辅助回复客户邮件和填写发货订单，也持续尝试用 AI 支持市场营销、引流与新业务机会探索。",
+      "与朋友共同开展的电商项目，主营精选礼品、家居装饰、手工材料和日常好物。我负责促成合作与项目协调，并探索用 AI 与自动化支持新品上架、运营报告、客户邮件、发货订单及市场推广。",
     tags: ["Shopify", "Ecommerce", "Project Coordination", "Business Growth", "Workflow Automation"],
     tagsZh: ["Shopify", "电子商务", "项目协调", "商业推广", "流程自动化"],
     href: "https://home-essentials.com.au/",
@@ -53,14 +53,14 @@ export const ventures = [
   {
     title: "Ren Jun Jewellery",
     titleZh: "仁君珠宝",
-    role: "Venture Partner · Coming Soon",
-    roleZh: "创业合作伙伴 · 即将推出",
+    role: "Venture Partner · Pre-launch Startup",
+    roleZh: "创业合作伙伴 · 筹备中",
     description:
-      "An early-stage venture building AI-powered business management solutions for jewellery retail stores. As a venture partner, I lead data planning and delivery, guiding work across security and governance, pipelines, quality, and operations while using AI for brainstorming, research, and management-report prototypes. The experience lets me take part first-hand in building a company from zero to one and gradually toward scale.",
+      "A pre-launch venture exploring AI-enabled management solutions for jewellery retailers. As a venture partner, I lead the data direction, guiding governance, pipelines, quality, and operations while using AI for research, brainstorming, and report prototypes.",
     descriptionZh:
-      "一个面向珠宝零售门店、提供 AI 驱动经营管理方案的早期创业项目。我作为创业合作伙伴负责数据方向的规划与交付，带领成员推进数据安全与治理、数据管道建设、质量管理和日常运维，并利用 AI 辅助头脑风暴、业务调研与经营报表原型设计。这段经历让我亲身参与公司从 0 到 1、再逐步走向规模化的建设过程。",
-    tags: ["Jewellery Retail", "AI Solutions", "Data Strategy", "Data Governance", "Data Pipelines", "Data Operations", "Team Leadership", "Venture Building"],
-    tagsZh: ["珠宝零售", "AI 解决方案", "数据战略", "数据治理", "数据管道", "数据运维", "团队带领", "创业共建"],
+      "参与以 AI 赋能珠宝零售经营管理的筹备期创业项目。作为创业合作伙伴，我负责数据方向规划，带领成员推进数据治理、数据管道、数据质量与运维，并用 AI 辅助调研、头脑风暴和报表原型设计。",
+    tags: ["Jewellery Retail", "AI-enabled Operations", "Data Governance", "Data Pipelines", "Data Operations", "Venture Building"],
+    tagsZh: ["珠宝零售", "AI 赋能经营", "数据治理", "数据管道", "数据运维", "创业共建"],
   },
 ];
 
