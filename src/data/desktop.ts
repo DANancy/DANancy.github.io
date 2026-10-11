@@ -38,11 +38,11 @@ export const ventures = [
     role: "Business Partner · Ecommerce Venture",
     roleZh: "商业合作伙伴 · 电商项目",
     description:
-      "A collaborative ecommerce venture with friends, offering gifts, home decor, craft supplies, and everyday finds. I initiated the partnership, support project coordination, and explore how AI and automation can assist product listings, operational reporting, customer emails, shipping orders, and marketing.",
+      "A collaborative ecommerce venture with friends, offering gifts, home decor, craft supplies, and everyday finds. I brought in and initiated the project, shaped the commercial partnership, supported project coordination, and explored potential digital and data-analysis strategies.",
     descriptionZh:
-      "与朋友共同开展的电商项目，主营精选礼品、家居装饰、手工材料和日常好物。我负责促成合作与项目协调，并探索用 AI 与自动化支持新品上架、运营报告、客户邮件、发货订单及市场推广。",
-    tags: ["Shopify", "Ecommerce", "Project Coordination", "Business Growth", "Workflow Automation"],
-    tagsZh: ["Shopify", "电子商务", "项目协调", "商业推广", "流程自动化"],
+      "与朋友共同开展的电商项目，主营精选礼品、家居装饰、手工材料和日常好物。我促成并承接了这一项目，负责沟通商业合作方式、协调项目推进，并构思可行的信息化与数据分析策略。",
+    tags: ["Ecommerce", "Partnership Development", "Commercial Collaboration", "Project Coordination", "Digital Strategy"],
+    tagsZh: ["电子商务", "合作促成", "商业合作", "项目协调", "信息化策略"],
     href: "https://home-essentials.com.au/",
     linkLabel: "Visit Home Essentials",
     linkLabelZh: "访问 Home Essentials",

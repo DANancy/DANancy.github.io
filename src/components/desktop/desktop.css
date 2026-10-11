@@ -1051,6 +1051,9 @@
 .venture-testimonial::after{content:"";position:absolute;left:1.25rem;bottom:-8px;width:15px;height:15px;border-right:1.5px solid var(--feedback-border,#d8b69f);border-bottom:1.5px solid var(--feedback-border,#d8b69f);background:#fff;transform:rotate(45deg)}
 .venture-testimonial span{display:inline-block;padding:.18rem .42rem;border:1px solid var(--feedback-border,#d8b69f);border-radius:999px;background:var(--feedback-pale,#fff3ed);color:var(--feedback-ink,#92593a);font-family:var(--font-mono);font-size:.56rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;box-shadow:1px 2px 0 var(--feedback-shadow,#b879541c);rotate:-1deg}
 .venture-testimonial p{margin:.32rem 0 0;color:#30483b;font-size:.9rem;font-weight:750;line-height:1.45}
+.venture-testimonial-secondary{margin-top:.65rem}
+.venture-testimonial-secondary::before{rotate:6deg}
+.venture-testimonial-secondary span{rotate:1deg}
 .venture-copy .project-visit{margin-top:1rem}
 .venture-tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:1.2rem}
 .venture-tags span{padding:.25rem .65rem;border-radius:999px;background:#bdeade;color:#28655a;font-family:var(--font-mono);font-size:max(.6rem,10px);text-transform:uppercase}

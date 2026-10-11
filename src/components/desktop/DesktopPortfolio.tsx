@@ -1261,6 +1261,12 @@ function Ventures({ language }: { language: Language }) {
                        : tr(language, "An incredibly proactive, self-driven, and dependable partner.", "超级积极，自驱力无敌，超级靠谱的好伙伴。") }”
                    </p>
                  </blockquote>
+                 {index === 1 && (
+                   <blockquote className="venture-testimonial venture-testimonial-secondary">
+                     <span>{tr(language, "Business partner feedback", "商业合作伙伴评价")}</span>
+                     <p>“{tr(language, "A data expert, exceptionally dependable in teamwork, with clear and seamless communication.", "数据方面的专家，团队合作靠谱极了，沟通也非常顺畅。") }”</p>
+                   </blockquote>
+                 )}
                  {venture.href && <ProjectVisitLink href={venture.href}>{language === "zh" ? venture.linkLabelZh : venture.linkLabel} <ExternalLink aria-hidden="true" size={14} /></ProjectVisitLink>}
                 {venture.secondaryHref && <ProjectVisitLink href={venture.secondaryHref}>{language === "zh" ? venture.secondaryLinkLabelZh : venture.secondaryLinkLabel} <ExternalLink aria-hidden="true" size={14} /></ProjectVisitLink>}
                 <div className="venture-tags">{tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
