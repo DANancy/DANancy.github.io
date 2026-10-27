@@ -1194,14 +1194,14 @@ function CollaborativeVentureCard({
           <span>{tr(language, "Business partner feedback", "商业合作伙伴评价")}</span>
           <p>
             “{index === 0
-              ? tr(language, "Professional and highly efficient.", "专业且高效。")
-              : tr(language, "An incredibly proactive, self-driven, and dependable partner.", "超级积极，自驱力无敌，超级靠谱的好伙伴。") }”
+              ? tr(language, "Consistently professional and highly efficient in moving work forward.", "专业且高效。")
+              : tr(language, "A highly proactive, self-directed, and dependable business partner.", "超级积极，自驱力无敌，超级靠谱的好伙伴。") }”
           </p>
         </blockquote>
         {index === 1 && (
           <blockquote className="venture-testimonial venture-testimonial-secondary">
             <span>{tr(language, "Business partner feedback", "商业合作伙伴评价")}</span>
-            <p>“{tr(language, "A data expert, exceptionally dependable in teamwork, with clear and seamless communication.", "数据方面的专家，团队合作靠谱极了，沟通也非常顺畅。") }”</p>
+            <p>“{tr(language, "A trusted data specialist who brings exceptional reliability to teamwork and communicates with clarity and ease.", "数据方面的专家，团队合作靠谱极了，沟通也非常顺畅。") }”</p>
           </blockquote>
         )}
         {venture.href && <ProjectVisitLink href={venture.href}>{language === "zh" ? venture.linkLabelZh : venture.linkLabel} <ExternalLink aria-hidden="true" size={14} /></ProjectVisitLink>}
@@ -1335,6 +1335,16 @@ function Business({ language }: { language: Language }) {
                   <Clock3 aria-hidden="true" />
                   {tr(language, "Contract discussions underway", "合同洽谈中")}
                 </div>
+                <blockquote className="venture-testimonial auraflow-testimonial">
+                  <span>{tr(language, "AuraFlow Project Manager Feedback", "AuraFlow 项目经理评价")}</span>
+                  <p>
+                    {tr(
+                      language,
+                      "“Highly dependable, inspiring immediate trust and a strong sense of collaborative fit.”",
+                      "“就觉得挺靠谱的，也非常有眼缘。”",
+                    )}
+                  </p>
+                </blockquote>
               </div>
             </article>
           </div>
