@@ -112,7 +112,7 @@ const navIcons = {
   overview: House,
   about: Compass,
   work: Archive,
-  ventures: Store,
+  business: Store,
   community: Network,
   fun: PartyPopper,
   links: Globe2,
@@ -127,7 +127,7 @@ const characterPoses: Record<DesktopSection, StaticImageData> = {
   overview: characterImage,
   about: aboutCharacter,
   work: workCharacter,
-  ventures: workCharacter,
+  business: workCharacter,
   community: funCharacter,
   fun: communityCharacter,
   links: linksCharacter,
@@ -304,7 +304,7 @@ export function DesktopPortfolio({
           )}{" "}
           {active === "about" && <About language={language} />}{" "}
           {active === "work" && <Work language={language} />}{" "}
-          {active === "ventures" && <Ventures language={language} />}{" "}
+          {active === "business" && <Business language={language} />}{" "}
           {active === "community" && <Community language={language} />}{" "}
           {active === "fun" && <Fun language={language} />}{" "}
           {active === "links" && <Links language={language} />}{" "}
@@ -930,10 +930,10 @@ function About({ language }: { language: Language }) {
             </div>
             <ExternalLink aria-hidden="true" />
           </Link>
-          <Link href={language === "zh" ? "/zh-hans/ventures/" : "/ventures/"}>
+          <Link href={language === "zh" ? "/zh-hans/business/" : "/business/"}>
             <span className="about-path-icon business"><BriefcaseBusiness aria-hidden="true" /></span>
             <div>
-              <h4>{tr(language, "Business & ventures", "独立业务与合作创业")}</h4>
+              <h4>{tr(language, "Business", "独立业务与合作创业")}</h4>
               <p>{tr(language, "Mentoring, teaching, practical AI services, and businesses built together with trusted partners.", "开展导师辅导、教学与实用 AI 服务，也和信任的伙伴共同建设商业项目。")}</p>
             </div>
             <ExternalLink aria-hidden="true" />
@@ -1229,12 +1229,12 @@ function CollaborativeVentureCard({
   );
 }
 
-function Ventures({ language }: { language: Language }) {
+function Business({ language }: { language: Language }) {
   return (
     <div className="window-page ventures-page">
       <PageIntro
-        eyebrow={tr(language, "Business & Ventures", "独立业务与合作创业")}
-        title={tr(language, "Independent work. Shared ventures.", "独立经营，也与伙伴共同建设。")}
+        eyebrow={tr(language, "Business", "独立业务与合作创业")}
+        title={tr(language, "Independent services. Collaborative businesses.", "独立经营，也与伙伴共同建设。")}
          description={tr(language, "My independent professional services alongside businesses I help build and operate with friends and partners.", "这里展示我的独立专业服务，以及与朋友和伙伴共同建设、参与经营的商业项目。")}
        />
        <BusinessInterestSection language={language} />
@@ -1300,8 +1300,8 @@ function Ventures({ language }: { language: Language }) {
       </section>
        <section className="collaborative-section" aria-labelledby="collaborative-title">
         <header className="ventures-heading">
-          <span>{tr(language, "Collaborative Ventures", "合作创业项目")}</span>
-          <h3 id="collaborative-title">{tr(language, "Ventures built together.", "与伙伴一起建设的项目。")}</h3>
+          <span>{tr(language, "Collaborative Businesses", "合作创业项目")}</span>
+          <h3 id="collaborative-title">{tr(language, "Businesses built together.", "与伙伴一起建设的项目。")}</h3>
         </header>
         <div className="venture-family-group">
           <header className="venture-group-heading">
@@ -1341,7 +1341,7 @@ function Ventures({ language }: { language: Language }) {
         </div>
         <div className="venture-other-group">
           <header className="venture-group-heading compact">
-            <span>{tr(language, "Startup Venture", "创业项目")}</span>
+            <span>{tr(language, "Startup Project", "创业项目")}</span>
           </header>
           <div className="venture-grid venture-grid-single">
             <CollaborativeVentureCard venture={ventures[1]} index={1} language={language} />
@@ -3557,7 +3557,7 @@ function windowTitle(section: DesktopSection) {
     overview: "home.exe",
     about: "about.md",
     work: "data.lover",
-    ventures: "ventures.build",
+    business: "business.build",
     community: "community.ai",
     fun: "fun.app",
     links: "links.url",

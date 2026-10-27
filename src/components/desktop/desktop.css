@@ -1058,10 +1058,10 @@
 .venture-tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:1.2rem}
 .venture-tags span{padding:.25rem .65rem;border-radius:999px;background:#bdeade;color:#28655a;font-family:var(--font-mono);font-size:max(.6rem,10px);text-transform:uppercase}
 @media(max-width:760px){.venture-grid{grid-template-columns:1fr}.venture-copy{padding:1.35rem}.collaborative-section{padding-top:2.5rem}}
-.window-stage .character-ventures{right:64px;top:-52px;width:156px;height:156px;border-width:7px;overflow:visible;border-radius:50%;rotate:4deg}
-.window-stage .character-ventures img{clip-path:circle(50%);object-fit:contain;object-position:center;transform:scale(1.08);transform-origin:center}
+.window-stage .character-business{right:64px;top:-52px;width:156px;height:156px;border-width:7px;overflow:visible;border-radius:50%;rotate:4deg}
+.window-stage .character-business img{clip-path:circle(50%);object-fit:contain;object-position:center;transform:scale(1.08);transform-origin:center}
 @media(min-width:761px){.desktop-nav{grid-template-columns:repeat(4,1fr);column-gap:clamp(2rem,7vw,6rem)}}
-@media(max-width:760px){.window-stage .character-ventures{right:56px;top:-28px;width:92px;height:92px;border-width:5px}.window-stage .character-ventures img{transform:scale(1.08)}}
+@media(max-width:760px){.window-stage .character-business{right:56px;top:-28px;width:92px;height:92px;border-width:5px}.window-stage .character-business img{transform:scale(1.08)}}
 @media(min-width:761px){
   .project-grid article>div:last-child span,.omdena-tags span,.learning-card-label,.learning-card>div span,.omdena-date,.link-category,.friends-shelf-label{font-size:max(.6rem,10px)}
 }
@@ -3160,7 +3160,7 @@
 @media(max-width:760px){
   .window-stage .character-about,
   .window-stage .character-work,
-  .window-stage .character-ventures,
+  .window-stage .character-business,
   .window-stage .character-community,
   .window-stage .character-fun,
   .window-stage .character-links,
@@ -3186,7 +3186,7 @@
 @media(max-width:1200px){
   .window-stage>.character-about,
   .window-stage>.character-work,
-  .window-stage>.character-ventures,
+  .window-stage>.character-business,
   .window-stage>.character-community,
   .window-stage>.character-fun,
   .window-stage>.character-links,
@@ -3203,7 +3203,7 @@
 /* Subpage characters always live on the left; language controls own the right. */
 .window-stage>.character-about,
 .window-stage>.character-work,
-.window-stage>.character-ventures,
+.window-stage>.character-business,
 .window-stage>.character-community,
 .window-stage>.character-fun,
 .window-stage>.character-links,
@@ -3217,7 +3217,7 @@
 @media(max-width:760px){
   .window-stage>.character-about,
   .window-stage>.character-work,
-  .window-stage>.character-ventures,
+  .window-stage>.character-business,
   .window-stage>.character-community,
   .window-stage>.character-fun,
   .window-stage>.character-links,

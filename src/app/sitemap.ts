@@ -3,7 +3,7 @@ import type { MetadataRoute } from "next";
 export const dynamic = "force-static";
 
 const origin = "https://yangyangcai.me";
-const sections = ["about", "work", "community", "fun", "links", "contact"];
+const sections = ["about", "work", "business", "community", "fun", "links", "contact"];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date("2026-09-12T00:00:00+10:00");

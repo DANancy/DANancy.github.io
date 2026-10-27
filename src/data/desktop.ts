@@ -1,4 +1,4 @@
-export type DesktopSection = "overview" | "about" | "work" | "ventures" | "community" | "fun" | "links" | "contact";
+export type DesktopSection = "overview" | "about" | "work" | "business" | "community" | "fun" | "links" | "contact";
 
 export const projects: { title:string; description:string; tags:string[]; tagsZh?:string[]; tone:string; href?:string; linkLabel?:string; linkLabelZh?:string; secondaryHref?:string; secondaryLinkLabel?:string; secondaryLinkLabelZh?:string; titleZh:string; descriptionZh:string }[] = [
   { title:"Senior Data Engineer · Data Magician", titleZh:"高级数据工程师 · 数据魔法师", description:"I genuinely love what I do. I grew from a Data Analyst into a Senior Data Engineer, carrying my curiosity across the automotive and energy industries through Auto-IT, AGL, Shell Energy, and now SmartestEnergy Australia in renewable energy. Being recognised with Best of 2024 at Shell Energy reinforced the care and energy I bring to my work.\nToday, I turn technology into useful products and work end to end across Retail Operations, IT, Risk, Trading, and Finance to understand the bigger picture and create lasting value.", descriptionZh:"我真心热爱自己的工作。从数据分析师到高级数据工程师，我带着对数据的好奇心跨越汽车与能源行业，先后在 Auto-IT、AGL、Shell Energy 工作，如今在 SmartestEnergy Australia 深耕可再生能源领域。在 Shell Energy 获得 Best of 2024 的认可，也印证了我投入工作中的热情与用心。\n如今，我享受把技术转化为实用产品，并与零售运营、IT、风险、交易和财务等团队开展端到端协作，理解业务全貌并创造长期价值。", tags:["PySpark","SQL","Salesforce","Azure Data Factory","Azure Synapse","AWS","Medallion Architecture","Power BI","Data Pipelines","DevOps","End-to-End Product Delivery","Stakeholder Collaboration"], tagsZh:["PySpark","SQL","Salesforce","Azure Data Factory","Azure Synapse","AWS","奖章式架构","Power BI","数据管道","DevOps","端到端产品交付","利益相关者协作"], tone:"mint", href:"https://www.linkedin.com/in/yangyangcai", linkLabel:"View LinkedIn Profile", linkLabelZh:"查看 LinkedIn 主页" },
@@ -65,7 +65,7 @@ export const ventures = [
 ];
 
 export const navigation: { id:Exclude<DesktopSection,"overview">; label:string; labelZh:string; tone:string }[] = [
-  {id:"about",label:"About",labelZh:"关于我",tone:"mint"},{id:"work",label:"Work",labelZh:"工作",tone:"amber"},{id:"ventures",label:"Business",labelZh:"业务与创业",tone:"pink"},{id:"community",label:"Community",labelZh:"社区",tone:"cyan"},
+  {id:"about",label:"About",labelZh:"关于我",tone:"mint"},{id:"work",label:"Work",labelZh:"工作",tone:"amber"},{id:"business",label:"Business",labelZh:"业务与创业",tone:"pink"},{id:"community",label:"Community",labelZh:"社区",tone:"cyan"},
   {id:"fun",label:"Just for fun",labelZh:"兴趣",tone:"yellow"},{id:"links",label:"Connect",labelZh:"联系与链接",tone:"purple"},
 ];
 
