@@ -3314,9 +3314,9 @@
 @media(max-width:760px){
   .venture-family-group{padding:1rem;border-radius:18px}
   .venture-grid-single{grid-template-columns:1fr}
-  .venture-other-group .venture-grid-single>article{grid-template-columns:minmax(118px,36%) minmax(0,1fr)}
-  .venture-other-group .venture-grid-single .venture-preview{min-height:0}
-  .venture-other-group .venture-grid-single .venture-copy{padding:1rem}
+  .venture-other-group .venture-grid-single>article{grid-template-columns:1fr}
+  .venture-other-group .venture-grid-single .venture-preview{height:auto;min-height:0;aspect-ratio:2.18/1;border-right:0;border-bottom:1px solid #d6dfd8}
+  .venture-other-group .venture-grid-single .venture-copy{padding:1.35rem}
 }
 .ventures-page .practice-grid>article.mentoring-service-card{
   display:grid;
