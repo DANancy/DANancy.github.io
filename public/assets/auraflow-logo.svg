@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 250" role="img" aria-labelledby="title desc">
+  <title id="title">AuraFlow</title>
+  <desc id="desc">Five layered blue flowing bands beside the AuraFlow wordmark.</desc>
+  <defs>
+    <linearGradient id="band" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4d83b7"/>
+      <stop offset=".52" stop-color="#83a9cf"/>
+      <stop offset="1" stop-color="#c7d8e7"/>
+    </linearGradient>
+  </defs>
+  <rect width="720" height="250" fill="#fff"/>
+  <g fill="url(#band)">
+    <path d="M56 54 210 16 199 61 55 91Z"/>
+    <path d="M54 97 198 67 187 108 53 132Z"/>
+    <path d="M52 138 186 115 175 154 51 173Z"/>
+    <path d="M50 179 174 161 162 199 49 212Z"/>
+    <path d="M48 217 160 205 148 236 58 239Z"/>
+  </g>
+  <text x="235" y="163" fill="#101d2a" font-family="Inter, Arial, sans-serif" font-size="82" font-weight="400" letter-spacing="-3">Auraflow</text>
+</svg>

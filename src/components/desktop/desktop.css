@@ -3029,6 +3029,10 @@
   padding:.45rem;
   background:#f7f3f8;
 }
+.links-page .friends-links-grid article>.friend-cover-expand.friend-cover-screenshot>img{
+  object-fit:cover;
+  padding:0;
+}
 .links-page .friends-links-grid article>div:last-child{padding:1.25rem}
 .links-page .personal-links .links-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:1.25rem}
 .links-page .personal-links .links-grid .link-card{
@@ -3266,12 +3270,54 @@
   background:#f8faf8;
   color:var(--desk-green);
 }
+.venture-tiktok-preview{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-top:.55rem;padding:.65rem .7rem .65rem 1rem;border:1px solid #c9d6cd;border-radius:12px;background:#f8faf8;color:var(--desk-green)}
+.venture-tiktok-copy span{font-family:var(--font-mono);font-size:.72rem;font-weight:850;letter-spacing:.08em;text-transform:uppercase}
+.venture-tiktok-copy p{margin:.2rem 0 0;color:#5d6762;font-size:.78rem;line-height:1.35}
+.venture-tiktok-preview>.venture-tiktok-image{flex:0 0 56px;width:56px;height:72px;overflow:hidden;border:1px solid #d6dfd8;border-radius:8px;background:#111;cursor:zoom-in}
+.venture-tiktok-preview>.venture-tiktok-image img{width:100%;height:100%;object-fit:cover}
+.venture-tiktok-preview>.venture-tiktok-image:hover{border-color:#79b89d;box-shadow:0 4px 12px #102d2426}
 .collaborative-section .venture-grid>article{display:flex;height:100%;flex-direction:column}
 .collaborative-section .venture-copy{display:flex;flex:1;flex-direction:column}
 .collaborative-section .venture-grid>article:first-child{--feedback-border:#d8b69f;--feedback-soft:#f8ded0;--feedback-pale:#fff3ed;--feedback-ink:#92593a;--feedback-shadow:#b8795424}
 .collaborative-section .venture-grid>article:nth-child(2){--feedback-border:#c7b8d8;--feedback-soft:#e9def2;--feedback-pale:#f8f3fb;--feedback-ink:#6d4d82;--feedback-shadow:#76558b20}
+.venture-family-group{margin-top:2rem;padding:1.25rem;border:1px solid #cad8cf;border-radius:24px;background:linear-gradient(145deg,#f7fbf8,#eef5f0)}
+.venture-family-group .venture-grid{margin-top:1.25rem}
+.venture-group-heading{max-width:720px}
+.venture-group-heading>span{display:flex;align-items:center;gap:.42rem;color:var(--desk-green);font-family:var(--font-mono);font-size:.65rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+.venture-group-heading>span svg{width:16px;height:16px}
+.venture-group-heading h4{margin-top:.45rem;font-size:clamp(1.5rem,3vw,2.1rem);letter-spacing:-.025em}
+.venture-group-heading p{margin-top:.45rem;color:#5d6762;line-height:1.55}
+.venture-other-group{margin-top:2rem}
+.venture-group-heading.compact{padding-bottom:.25rem}
+.venture-grid-single{grid-template-columns:1fr}
+.venture-other-group .venture-grid>article{--feedback-border:#c7b8d8;--feedback-soft:#e9def2;--feedback-pale:#f8f3fb;--feedback-ink:#6d4d82;--feedback-shadow:#76558b20}
+.venture-other-group .venture-grid-single>article{display:grid;width:100%;grid-template-columns:minmax(220px,34%) minmax(0,1fr)}
+.venture-other-group .venture-grid-single .venture-preview{height:100%;min-height:430px;aspect-ratio:auto;border-right:1px solid #d6dfd8;border-bottom:0}
+.venture-other-group .venture-grid-single .venture-copy{justify-content:center;padding:2rem}
+.venture-placeholder-card{border-style:dashed!important;background:#f8faf8!important}
+.venture-placeholder-preview{position:relative;background:radial-gradient(circle at 50% 45%,#fff 0 20%,transparent 21%),linear-gradient(145deg,#dff1e7,#f5eadc);color:var(--desk-green)}
+.venture-placeholder-preview>svg{width:68px;height:68px;stroke-width:1.5}
+.venture-placeholder-preview.auraflow-preview{isolation:isolate;padding:1.5rem;background:#f3f7fa}
+.venture-placeholder-preview.auraflow-preview::before,.venture-placeholder-preview.auraflow-preview::after{content:"";position:absolute;z-index:-1;border:1px solid #aec4d5;border-radius:50%;opacity:.45}
+.venture-placeholder-preview.auraflow-preview::before{right:-42px;top:-68px;width:190px;height:190px}
+.venture-placeholder-preview.auraflow-preview::after{left:-68px;bottom:-88px;width:220px;height:220px}
+.venture-placeholder-preview.auraflow-preview>img{position:relative;z-index:1;width:90%;height:90%;object-fit:contain;filter:drop-shadow(0 8px 14px #50759412)}
+.venture-placeholder-signal{position:absolute;left:calc(50% + 27px);top:calc(50% - 45px);display:grid;place-items:center;width:34px;height:34px;border:3px solid #fff;border-radius:50%;background:#f1bd5c;color:#4b3a13;box-shadow:0 5px 14px #23463622}
+.venture-placeholder-signal svg{width:17px;height:17px;fill:currentColor}
+.venture-status-pill{display:flex;align-items:center;align-self:flex-start;gap:.45rem;margin-top:1rem;padding:.48rem .72rem;border:1px solid #d3b36d;border-radius:999px;background:#fff6d9;color:#79570a;font-family:var(--font-mono);font-size:.68rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase}
+.venture-status-pill svg{width:15px;height:15px}
+.auraflow-card{border-style:solid!important;background:#f7f9f8!important}
+.auraflow-card .venture-copy{justify-content:center}
+.auraflow-card .venture-status-pill{margin-top:1.25rem}
 .collaborative-section .venture-tags{margin-top:1rem;padding-top:0}
 .collaborative-section .venture-tags span{border:0;background:#c9eee2;color:#28655a}
+@media(max-width:760px){
+  .venture-family-group{padding:1rem;border-radius:18px}
+  .venture-grid-single{grid-template-columns:1fr}
+  .venture-other-group .venture-grid-single>article{grid-template-columns:minmax(118px,36%) minmax(0,1fr)}
+  .venture-other-group .venture-grid-single .venture-preview{min-height:0}
+  .venture-other-group .venture-grid-single .venture-copy{padding:1rem}
+}
 .ventures-page .practice-grid>article.mentoring-service-card{
   display:grid;
   grid-template-columns:72px minmax(0,1fr);

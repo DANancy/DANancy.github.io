@@ -59,6 +59,7 @@ import backyardOrchard from "@/assets/web/yangyang-backyard-orchard.webp";
 import bootcampLifecycleImage from "@/assets/web/data-engineering-bootcamp.png";
 import homeEssentialsImage from "@/assets/web/home-essentials.jpg";
 import renJunLogo from "../../../assets/logo.jpg";
+import homeEssentialsTikTokImage from "../../../assets/tiktok.jpg";
 import mercyBookImage from "@/assets/仁慈的关系.jpg";
 import nexusBookImage from "@/assets/智人之上.jpg";
 import alchemistBookImage from "@/assets/牧羊少年奇幻之旅.jpg";
@@ -76,8 +77,11 @@ import arinaDevImage from "@/assets/friends/arina-card-v2.jpg";
 import camMicTestImage from "@/assets/friends/cammictest.jpg";
 import huTouchUIImage from "@/assets/friends/hutouchui.jpg";
 import kenChenImage from "@/assets/friends/ken-chen.jpg";
-import xiangyuzhouImage from "@/assets/friends/xiangyuzhou.jpg";
+import xiangyuzhouImage from "@/assets/friends/xiangyuzhou-portfolio.jpg";
 import pingchengTechImage from "@/assets/friends/pingcheng-tech.jpg";
+import gulaAppIcon from "@/assets/friends/gula-app-icon.jpg";
+import ellaLiuPortfolioImage from "@/assets/friends/ella-liu-portfolio.jpg";
+import chlorophyllLearnImage from "@/assets/friends/chlorophyll-learn.jpg";
 import mapXiaohongshuImage from "../../../assets/Make AI Practical Xiaohongshu.png";
 import makeAiPracticalImage from "../../../assets/make_ai_practical.jpg";
 import mapYangyangEventImage from "@/assets/map-yangyangcai.jpg";
@@ -1157,6 +1161,74 @@ function Work({ language }: { language: Language }) {
   );
 }
 
+function CollaborativeVentureCard({
+  venture,
+  index,
+  language,
+}: {
+  venture: (typeof ventures)[number];
+  index: number;
+  language: Language;
+}) {
+  const title = language === "zh" ? venture.titleZh : venture.title;
+  const tags = language === "zh" ? venture.tagsZh : venture.tags;
+  const preview = index === 0 ? homeEssentialsImage : renJunLogo;
+  return (
+    <article>
+      <div className={`venture-preview ${index === 1 ? "venture-logo" : ""}`}>
+        <ExpandableImage
+          src={preview}
+          alt={index === 0 ? tr(language, "Home Essentials online store", "Home Essentials 在线商店") : tr(language, "Ren Jun Jewellery logo", "仁君珠宝标志")}
+          width={preview.width}
+          height={preview.height}
+          sizes="(max-width: 760px) 90vw, 480px"
+          language={language}
+          className="venture-expandable-image"
+        />
+      </div>
+      <div className="venture-copy">
+        <p className="venture-role">{language === "zh" ? venture.roleZh : venture.role}</p>
+        <h4>{title}</h4>
+        <p>{language === "zh" ? venture.descriptionZh : venture.description}</p>
+        <blockquote className="venture-testimonial">
+          <span>{tr(language, "Business partner feedback", "商业合作伙伴评价")}</span>
+          <p>
+            “{index === 0
+              ? tr(language, "Professional and highly efficient.", "专业且高效。")
+              : tr(language, "An incredibly proactive, self-driven, and dependable partner.", "超级积极，自驱力无敌，超级靠谱的好伙伴。") }”
+          </p>
+        </blockquote>
+        {index === 1 && (
+          <blockquote className="venture-testimonial venture-testimonial-secondary">
+            <span>{tr(language, "Business partner feedback", "商业合作伙伴评价")}</span>
+            <p>“{tr(language, "A data expert, exceptionally dependable in teamwork, with clear and seamless communication.", "数据方面的专家，团队合作靠谱极了，沟通也非常顺畅。") }”</p>
+          </blockquote>
+        )}
+        {venture.href && <ProjectVisitLink href={venture.href}>{language === "zh" ? venture.linkLabelZh : venture.linkLabel} <ExternalLink aria-hidden="true" size={14} /></ProjectVisitLink>}
+        {venture.secondaryHref && <ProjectVisitLink href={venture.secondaryHref}>{language === "zh" ? venture.secondaryLinkLabelZh : venture.secondaryLinkLabel} <ExternalLink aria-hidden="true" size={14} /></ProjectVisitLink>}
+        {index === 0 && (
+          <div className="venture-tiktok-preview">
+            <div className="venture-tiktok-copy">
+              <span>TikTok</span>
+              <p>{tr(language, "Scan the QR code or click to enlarge", "扫描二维码，或点击查看大图")}</p>
+            </div>
+            <ExpandableImage
+              src={homeEssentialsTikTokImage}
+              alt={tr(language, "Home Essentials TikTok QR code", "Home Essentials TikTok 二维码")}
+              width={homeEssentialsTikTokImage.width}
+              height={homeEssentialsTikTokImage.height}
+              sizes="72px"
+              language={language}
+              className="venture-tiktok-image"
+            />
+          </div>
+        )}
+        <div className="venture-tags">{tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
+      </div>
+    </article>
+  );
+}
+
 function Ventures({ language }: { language: Language }) {
   return (
     <div className="window-page ventures-page">
@@ -1231,50 +1303,50 @@ function Ventures({ language }: { language: Language }) {
           <span>{tr(language, "Collaborative Ventures", "合作创业项目")}</span>
           <h3 id="collaborative-title">{tr(language, "Ventures built together.", "与伙伴一起建设的项目。")}</h3>
         </header>
-      <div className="venture-grid">
-        {ventures.map((venture, index) => {
-          const title = language === "zh" ? venture.titleZh : venture.title;
-          const tags = language === "zh" ? venture.tagsZh : venture.tags;
-          const preview = index === 0 ? homeEssentialsImage : renJunLogo;
-          return (
-            <article key={venture.title}>
-              <div className={`venture-preview ${index === 1 ? "venture-logo" : ""}`}>
-                <ExpandableImage
-                  src={preview}
-                  alt={index === 0 ? tr(language, "Home Essentials online store", "Home Essentials 在线商店") : tr(language, "Ren Jun Jewellery logo", "仁君珠宝标志")}
-                  width={preview.width}
-                  height={preview.height}
+        <div className="venture-family-group">
+          <header className="venture-group-heading">
+            <span><House aria-hidden="true" /> {tr(language, "Family-focused projects", "以家庭为单位的项目")}</span>
+            <h4>Home Studio</h4>
+            <p>{tr(language, "Projects created around the everyday needs and possibilities of home life.", "围绕家庭生活中的日常需求与可能性开展的项目。")}</p>
+          </header>
+          <div className="venture-grid">
+            <CollaborativeVentureCard venture={ventures[0]} index={0} language={language} />
+            <article className="auraflow-card">
+              <div className="venture-preview venture-placeholder-preview auraflow-preview">
+                <Image
+                  src="/assets/auraflow-logo.svg"
+                  alt={tr(language, "AuraFlow temporary logo", "AuraFlow 临时标志")}
+                  width={720}
+                  height={250}
                   sizes="(max-width: 760px) 90vw, 480px"
-                  language={language}
-                  className="venture-expandable-image"
                 />
               </div>
               <div className="venture-copy">
-                 <p className="venture-role">{language === "zh" ? venture.roleZh : venture.role}</p>
-                 <h4>{title}</h4>
-                 <p>{language === "zh" ? venture.descriptionZh : venture.description}</p>
-                 <blockquote className="venture-testimonial">
-                   <span>{tr(language, "Business partner feedback", "商业合作伙伴评价")}</span>
-                   <p>
-                     “{index === 0
-                       ? tr(language, "Professional and highly efficient.", "专业且高效。")
-                       : tr(language, "An incredibly proactive, self-driven, and dependable partner.", "超级积极，自驱力无敌，超级靠谱的好伙伴。") }”
-                   </p>
-                 </blockquote>
-                 {index === 1 && (
-                   <blockquote className="venture-testimonial venture-testimonial-secondary">
-                     <span>{tr(language, "Business partner feedback", "商业合作伙伴评价")}</span>
-                     <p>“{tr(language, "A data expert, exceptionally dependable in teamwork, with clear and seamless communication.", "数据方面的专家，团队合作靠谱极了，沟通也非常顺畅。") }”</p>
-                   </blockquote>
-                 )}
-                 {venture.href && <ProjectVisitLink href={venture.href}>{language === "zh" ? venture.linkLabelZh : venture.linkLabel} <ExternalLink aria-hidden="true" size={14} /></ProjectVisitLink>}
-                {venture.secondaryHref && <ProjectVisitLink href={venture.secondaryHref}>{language === "zh" ? venture.secondaryLinkLabelZh : venture.secondaryLinkLabel} <ExternalLink aria-hidden="true" size={14} /></ProjectVisitLink>}
-                <div className="venture-tags">{tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
+                <p className="venture-role">{tr(language, "Home Studio · Under discussion", "Home Studio · 洽谈中")}</p>
+                <h4>AuraFlow</h4>
+                <p>
+                  {tr(
+                    language,
+                    "A home-focused IoT project bringing hardware and software together. Its scope, identity and partnership details are currently under discussion.",
+                    "一个面向家庭场景、结合软硬件的 IoT 智能项目。目前正在洽谈项目范围、品牌方向与合作细节。",
+                  )}
+                </p>
+                <div className="venture-status-pill">
+                  <Clock3 aria-hidden="true" />
+                  {tr(language, "Contract discussions underway", "合同洽谈中")}
+                </div>
               </div>
             </article>
-          );
-        })}
-      </div>
+          </div>
+        </div>
+        <div className="venture-other-group">
+          <header className="venture-group-heading compact">
+            <span>{tr(language, "Startup Venture", "创业项目")}</span>
+          </header>
+          <div className="venture-grid venture-grid-single">
+            <CollaborativeVentureCard venture={ventures[1]} index={1} language={language} />
+          </div>
+        </div>
       </section>
     </div>
   );
@@ -2917,6 +2989,20 @@ function friendLinks(language: Language) {
   return [
     {
       group: "stories" as const,
+      title: "Bedtime Stories for Kids: Gula",
+      kind: tr(language, "Friend's kids app", "朋友制作的儿童 App"),
+      description: tr(
+        language,
+        "A bedtime stories app for kids, created by a friend to make winding down feel warm and imaginative.",
+        "朋友制作的儿童睡前故事 App，用温暖而富有想象力的故事陪伴孩子入睡。",
+      ),
+      href: "https://apps.apple.com/app/id6746958416",
+      actionLabel: tr(language, "View on the App Store", "在 App Store 查看"),
+      image: gulaAppIcon,
+      icon: BookOpen,
+    },
+    {
+      group: "stories" as const,
       title: tr(language, "The Joke Shop", "The Joke Shop 喜剧现场"),
       kind: tr(language, "Live comedy", "现场喜剧"),
       description: tr(
@@ -2985,6 +3071,21 @@ function friendLinks(language: Language) {
     },
     {
       group: "tools" as const,
+      title: "Chlorophyll Learn",
+      kind: tr(language, "Friend's Claude Code plugin", "朋友制作的 Claude Code 插件"),
+      description: tr(
+        language,
+        "A Claude Code plugin created by a friend to support learning while you build.",
+        "朋友制作的 Claude Code 插件，让你在动手构建的同时更好地学习。",
+      ),
+      href: "https://github.com/matt-chlorophyll/chlorophyll-learn",
+      actionLabel: tr(language, "View on GitHub", "在 GitHub 查看"),
+      image: chlorophyllLearnImage,
+      coverMode: "screenshot" as const,
+      icon: Terminal,
+    },
+    {
+      group: "tools" as const,
       title: "CamMicTest",
       kind: tr(language, "Browser tool", "浏览器工具"),
       description: tr(
@@ -3013,6 +3114,21 @@ function friendLinks(language: Language) {
     },
     {
       group: "people" as const,
+      title: "Ella Liu",
+      kind: tr(language, "Friend's personal website", "朋友的个人网站"),
+      description: tr(
+        language,
+        "Ella Liu's personal portfolio, showcasing her work, projects, and professional journey.",
+        "Ella Liu 的个人作品集网站，展示她的作品、项目与职业经历。",
+      ),
+      href: "https://ellaliu-portfolio.vercel.app/",
+      actionLabel: tr(language, "Visit website", "访问网站"),
+      image: ellaLiuPortfolioImage,
+      coverMode: "screenshot" as const,
+      icon: Globe2,
+    },
+    {
+      group: "people" as const,
       title: "Ken Chen",
       kind: tr(language, "Personal website", "个人网站"),
       description: tr(
@@ -3037,6 +3153,7 @@ function friendLinks(language: Language) {
       href: "https://xiangyuzhou.xyz/",
       actionLabel: tr(language, "Visit website", "访问网站"),
       image: xiangyuzhouImage,
+      coverMode: "screenshot" as const,
       icon: Globe2,
     },
     {
@@ -3310,7 +3427,9 @@ function Links({ language }: { language: Language }) {
               `${friendGroups.find((group) => group.id === activeFriendGroup)?.label}朋友链接`,
             )}
           >
-            {visibleFriends.map((item) => (
+            {visibleFriends.map((item) => {
+              const FriendIcon = ("icon" in item ? item.icon : undefined) ?? Globe2;
+              return (
               <article key={item.href}>
                 {"image" in item && item.image ? (
                   <ExpandableImage
@@ -3319,11 +3438,11 @@ function Links({ language }: { language: Language }) {
                     width={720}
                     height={720}
                     language={language}
-                    className="friend-cover-expand"
+                    className={`friend-cover-expand ${"coverMode" in item && item.coverMode === "screenshot" ? "friend-cover-screenshot" : ""}`}
                   />
                 ) : (
                   <div className="friend-tool-cover" aria-hidden="true">
-                    <Globe2 />
+                    <FriendIcon />
                     <span>{item.title}</span>
                   </div>
                 )}
@@ -3353,7 +3472,8 @@ function Links({ language }: { language: Language }) {
                   </div>
                 </div>
               </article>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
