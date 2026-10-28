@@ -7,6 +7,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: [
       { userAgent: "*", allow: "/" },
       { userAgent: "OAI-SearchBot", allow: "/" },
+      { userAgent: "PerplexityBot", allow: "/" },
       { userAgent: "ChatGPT-User", allow: "/" },
     ],
     sitemap: "https://yangyangcai.me/sitemap.xml",

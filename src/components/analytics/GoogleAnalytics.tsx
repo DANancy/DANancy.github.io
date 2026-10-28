@@ -1,4 +1,8 @@
+"use client";
+
 import Script from "next/script";
+import { usePathname, useSearchParams } from "next/navigation";
+import { Suspense, useEffect } from "react";
 
 declare global {
   interface Window {
@@ -28,10 +32,29 @@ export function GoogleAnalytics() {
           gtag('js', new Date());
           gtag('config', '${measurementId}', {
             anonymize_ip: true,
-            send_page_view: true
+            send_page_view: false
           });
         `}
       </Script>
+      <Suspense fallback={null}>
+        <GoogleAnalyticsPageView measurementId={measurementId} />
+      </Suspense>
     </>
   );
+}
+
+function GoogleAnalyticsPageView({ measurementId }: { measurementId: string }) {
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    if (!window.gtag) return;
+    const query = searchParams.toString();
+    window.gtag("config", measurementId, {
+      page_path: query ? `${pathname}?${query}` : pathname,
+      anonymize_ip: true,
+    });
+  }, [measurementId, pathname, searchParams]);
+
+  return null;
 }

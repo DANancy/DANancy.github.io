@@ -298,7 +298,6 @@ export function DesktopPortfolio({
           {active === "overview" && (
             <Overview
               key={`overview-${language}`}
-              onOpen={openSection}
               language={language}
             />
           )}{" "}
@@ -312,7 +311,6 @@ export function DesktopPortfolio({
           {active !== "overview" && (
             <SubpageNavigation
               active={active}
-              onNavigate={openSection}
               language={language}
             />
           )}
@@ -557,11 +555,9 @@ function InterestPanel({ language, showTrigger = true }: { language: Language; s
 
 function SubpageNavigation({
   active,
-  onNavigate,
   language,
 }: {
   active: DesktopSection;
-  onNavigate: (section: DesktopSection) => void;
   language: Language;
 }) {
   const navRef = useRef<HTMLElement>(null);
@@ -594,10 +590,12 @@ function SubpageNavigation({
         const isActive = active === item.id;
         const label = language === "zh" ? item.labelZh : item.label;
         return (
-          <button
+          <Link
             key={item.id}
             className={isActive ? "active" : ""}
-            onClick={() => onNavigate(item.id)}
+            href={language === "zh"
+              ? item.id === "overview" ? "/zh-hans/" : `/zh-hans/${item.id}/`
+              : item.id === "overview" ? "/" : `/${item.id}/`}
             data-tooltip={label}
             aria-current={isActive ? "page" : undefined}
             aria-label={
@@ -612,7 +610,7 @@ function SubpageNavigation({
           >
             <Icon />
             <span>{label}</span>
-          </button>
+          </Link>
         );
       })}
     </nav>
@@ -807,10 +805,8 @@ function Character({
 }
 
 function Overview({
-  onOpen,
   language,
 }: {
-  onOpen: (section: DesktopSection) => void;
   language: Language;
 }) {
   return (
@@ -833,17 +829,16 @@ function Overview({
         {navigation.map((item) => {
           const Icon = navIcons[item.id];
           return (
-            <button
-              type="button"
+            <Link
               key={item.id}
               data-section-trigger={item.id}
-              onClick={() => onOpen(item.id)}
+              href={language === "zh" ? `/zh-hans/${item.id}/` : `/${item.id}/`}
             >
               <span className={`nav-icon ${item.tone}`} aria-hidden="true">
                 <Icon size={24} />
               </span>
               <b>{language === "zh" ? item.labelZh : item.label}</b>
-            </button>
+            </Link>
           );
         })}
       </nav>
@@ -868,7 +863,7 @@ function About({ language }: { language: Language }) {
           "我常驻墨尔本，是一名深耕可再生能源领域的高级数据工程师，也独立开展导师辅导与教学，并参与社区和合作项目。无论是数据平台、实用 AI、工作坊还是共同创业，我都喜欢把好奇的想法变成人们真正用得上的成果。",
         )}
       />
-      <h3>{tr(language, "Working style", "工作方式")}</h3>
+      <h2 className="section-heading">{tr(language, "Working style", "工作方式")}</h2>
       <div className="style-chips">
         <span>
           <Wrench size={15} />
@@ -919,7 +914,7 @@ function About({ language }: { language: Language }) {
       <section className="about-paths" aria-labelledby="about-paths-title">
         <header>
           <p className="page-pill">{tr(language, "What I do", "我正在做的事")}</p>
-          <h3 id="about-paths-title">{tr(language, "Different paths, one practical mindset.", "不同方向，同一种务实的行动方式。")}</h3>
+          <h2 className="section-heading" id="about-paths-title">{tr(language, "Different paths, one practical mindset.", "不同方向，同一种务实的行动方式。")}</h2>
         </header>
         <div className="about-paths-grid">
           <Link href={language === "zh" ? "/zh-hans/work/" : "/work/"}>
@@ -1042,6 +1037,7 @@ function Work({ language }: { language: Language }) {
           "记录我在数据工程、可再生能源、跨团队交付与实际技术产品中的职业经历。",
         )}
       />
+      <h2 className="section-heading">{tr(language, "Data engineering and cloud data platforms", "数据工程与云数据平台")}</h2>
       <div className="project-grid">
         {projects.map((project, index) => {
           const Icon = ProjectIcons[index];
@@ -1147,7 +1143,7 @@ function Work({ language }: { language: Language }) {
         <span className="work-sharing-icon"><Presentation aria-hidden="true" /></span>
         <div>
           <p className="page-pill">{tr(language, "Knowledge sharing at work", "公司内部知识分享")}</p>
-          <h3 id="lunch-learn-title">Lunch &amp; Learn</h3>
+          <h2 className="section-heading" id="lunch-learn-title">Lunch &amp; Learn</h2>
           <p>{tr(language, "I host and contribute to internal Lunch & Learn sessions, sharing practical knowledge and helping useful ideas travel across teams.", "我在公司内部主持并参与 Lunch & Learn 分享，通过交流实践经验，促进知识和有价值的想法在不同团队之间流动。")}</p>
           <div className="venture-tags">
             <span>{tr(language, "Lunch & Learn Host", "Lunch & Learn 主持人")}</span>
@@ -1241,7 +1237,7 @@ function Business({ language }: { language: Language }) {
        <section className="practice-section" aria-labelledby="practice-title">
         <header className="ventures-heading">
           <span>{tr(language, "Independent Practice", "独立专业服务")}</span>
-          <h3 id="practice-title">{tr(language, "Mentoring · Teaching · Practical AI", "辅导 · 教学 · 实用 AI")}</h3>
+          <h2 className="section-heading" id="practice-title">{tr(language, "Mentoring · Teaching · Practical AI", "辅导 · 教学 · 实用 AI")}</h2>
         </header>
         <div className="venture-grid practice-grid">
           {independentPractice.map((practice, index) => {
@@ -1301,7 +1297,7 @@ function Business({ language }: { language: Language }) {
        <section className="collaborative-section" aria-labelledby="collaborative-title">
         <header className="ventures-heading">
           <span>{tr(language, "Collaborative Businesses", "合作创业项目")}</span>
-          <h3 id="collaborative-title">{tr(language, "Businesses built together.", "与伙伴一起建设的项目。")}</h3>
+          <h2 className="section-heading" id="collaborative-title">{tr(language, "Businesses built together.", "与伙伴一起建设的项目。")}</h2>
         </header>
         <div className="venture-family-group">
           <header className="venture-group-heading">
@@ -1356,6 +1352,16 @@ function Business({ language }: { language: Language }) {
           <div className="venture-grid venture-grid-single">
             <CollaborativeVentureCard venture={ventures[1]} index={1} language={language} />
           </div>
+        </div>
+      </section>
+      <section className="business-faq" aria-labelledby="business-faq-title">
+        <p className="page-pill">FAQ</p>
+        <h2 className="section-heading" id="business-faq-title">{tr(language, "Practical AI learning and collaboration", "实用 AI 学习与合作")}</h2>
+        <div>
+          <details><summary>{tr(language, "Who are the practical AI workshops for?", "实用 AI 工作坊适合谁？")}</summary><p>{tr(language, "They are designed for professionals and curious learners who want to turn everyday information or an idea into a useful working solution through guided, hands-on practice.", "适合希望通过引导式实践，把日常信息或想法转化为可用解决方案的职场人士与学习者。")}</p></details>
+          <details><summary>{tr(language, "What do participants build?", "参与者会构建什么？")}</summary><p>{tr(language, "The outcome depends on the session. Existing workshops have focused on practical AI workflows and personal knowledge agents, with an emphasis on something participants can continue using afterwards.", "成果会因活动主题而异。现有工作坊主要围绕实用 AI 工作流与个人知识智能体，并强调参与者在活动结束后仍能继续使用。")}</p></details>
+          <details><summary>{tr(language, "What does the AI-Data Engineering Bootcamp cover?", "AI 数据工程训练营涵盖哪些内容？")}</summary><p>{tr(language, "The self-designed 12-session bootcamp uses a public dataset to explore the end-to-end data engineering lifecycle, dependable delivery, Databricks AI, Power BI MCP, and practical AI support.", "这套自主设计的 12 节训练营使用公开数据集，探索端到端数据工程生命周期、可靠交付、Databricks AI、Power BI MCP 与实用 AI 支持。")}</p></details>
+          <details><summary>{tr(language, "How can I discuss mentoring or a collaboration?", "如何沟通导师辅导或合作？")}</summary><p>{tr(language, "Use the interest form on this page or contact Yangyang through LinkedIn or email. Share the outcome you are looking for so the next conversation can stay practical and focused.", "可以使用本页的意向登记表，或通过 LinkedIn 和电子邮件联系阳阳。请说明希望实现的结果，以便后续沟通更务实、更聚焦。")}</p></details>
         </div>
       </section>
     </div>

@@ -3,12 +3,22 @@ import "@/components/desktop/desktop.css";
 
 const profileJsonLd = {
   "@context": "https://schema.org",
-  "@type": "ProfilePage",
-  "@id": "https://yangyangcai.me/#profile",
-  url: "https://yangyangcai.me/",
-  name: "Yangyang Cai — Data Lover",
-  inLanguage: "en-AU",
-  mainEntity: {
+  "@graph": [{
+    "@type": "WebSite",
+    "@id": "https://yangyangcai.me/#website",
+    url: "https://yangyangcai.me/",
+    name: "Yangyang Cai",
+    inLanguage: ["en-AU", "zh-Hans"],
+    publisher: { "@id": "https://yangyangcai.me/#person" },
+  }, {
+    "@type": "ProfilePage",
+    "@id": "https://yangyangcai.me/#profile",
+    url: "https://yangyangcai.me/",
+    name: "Yangyang Cai — Senior Data Engineer and Practical AI Builder",
+    inLanguage: "en-AU",
+    isPartOf: { "@id": "https://yangyangcai.me/#website" },
+    mainEntity: { "@id": "https://yangyangcai.me/#person" },
+  }, {
     "@type": "Person",
     "@id": "https://yangyangcai.me/#person",
     name: "Yangyang Cai",
@@ -31,18 +41,19 @@ const profileJsonLd = {
     sameAs: [
       "https://www.linkedin.com/in/yangyangcai",
       "https://github.com/DANancy",
-      "https://www.makeaipractical.com.au/",
     ],
-  },
+    memberOf: { "@type": "Organization", name: "Make AI Practical", url: "https://www.makeaipractical.com.au/" },
+  }],
 };
 
 export const metadata = {
   alternates:{canonical:"/",languages:{en:"/","zh-Hans":"/zh-hans/","x-default":"/"}},
   openGraph:{
-    title:"Yangyang Cai | Data Lover",
+    title:"Yangyang Cai | Senior Data Engineer & Practical AI Builder",
     url:"/",
     images:[{url:"/assets/community-event.webp",width:1200,height:630,alt:"Yangyang Cai — data, AI and community"}],
   },
+  twitter:{card:"summary_large_image",title:"Yangyang Cai | Senior Data Engineer & Practical AI Builder",description:"Melbourne Senior Data Engineer working across renewable energy, cloud data platforms, Databricks and practical AI.",images:["/assets/community-event.webp"]},
 };
 
 export default function HomePage(){

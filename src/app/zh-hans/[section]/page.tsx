@@ -11,7 +11,6 @@ const sections={
   community:{title:'社区',description:'了解蔡阳阳参与 Make AI Practical、AI 工作坊、导师辅导与知识分享的经历。'},
   fun:{title:'兴趣时光',description:'书籍、动画、陶艺、游戏与活动，共同构成蔡阳阳的快乐天地。'},
   links:{title:'联系、朋友与链接',description:'联系蔡阳阳，并探索朋友们的创作，以及相关社区、项目和实用链接。'},
-  contact:{title:'联系我',description:'通过 LinkedIn、GitHub 或电子邮件联系蔡阳阳。'},
 } as const
 
 type SectionSlug=keyof typeof sections
@@ -34,11 +33,27 @@ export async function generateMetadata({params}:{params:Promise<{section:string}
       languages:{en:'/'+section+'/', 'zh-Hans':'/zh-hans/'+section+'/', 'x-default':'/'+section+'/'},
     },
     openGraph:{title:page.title+' | 蔡阳阳',description:page.description,url:'/zh-hans/'+section+'/',type:'website',images:[{url:'/assets/community-event.webp',width:1200,height:630,alt:'蔡阳阳：数据、AI 与社区'}]},
+    twitter:{card:'summary_large_image',title:page.title+' | 蔡阳阳',description:page.description,images:['/assets/community-event.webp']},
+    other:{'content-language':'zh-CN'},
   }
 }
 
 export default async function ChineseSectionPage({params}:{params:Promise<{section:string}>}){
   const {section}=await params
   if(!(section in sections))notFound()
-  return <DesktopPortfolio initialSection={section as Exclude<DesktopSection,'overview'>}/>
+  const page=sections[section as SectionSlug]
+  const graph:Record<string,unknown>[]=[
+    {'@type':'WebPage','@id':'https://yangyangcai.me/zh-hans/'+section+'/#webpage',url:'https://yangyangcai.me/zh-hans/'+section+'/',name:page.title,description:page.description,inLanguage:'zh-Hans',isPartOf:{'@id':'https://yangyangcai.me/#website'},about:{'@id':'https://yangyangcai.me/#person'}},
+    {'@type':'BreadcrumbList',itemListElement:[{'@type':'ListItem',position:1,name:'首页',item:'https://yangyangcai.me/zh-hans/'},{'@type':'ListItem',position:2,name:page.title,item:'https://yangyangcai.me/zh-hans/'+section+'/'}]},
+  ]
+  if(section==='business')graph.push({'@type':'FAQPage',mainEntity:[
+    {'@type':'Question',name:'实用 AI 工作坊适合谁？',acceptedAnswer:{'@type':'Answer',text:'适合希望通过引导式实践，把日常信息或想法转化为可用解决方案的职场人士与学习者。'}},
+    {'@type':'Question',name:'参与者会构建什么？',acceptedAnswer:{'@type':'Answer',text:'成果会因活动主题而异。现有工作坊主要围绕实用 AI 工作流与个人知识智能体，并强调活动结束后仍能继续使用。'}},
+    {'@type':'Question',name:'AI 数据工程训练营涵盖哪些内容？',acceptedAnswer:{'@type':'Answer',text:'这套 12 节训练营使用公开数据集，探索端到端数据工程生命周期、可靠交付、Databricks AI、Power BI MCP 与实用 AI 支持。'}},
+  ]})
+  const jsonLd={
+    '@context':'https://schema.org',
+    '@graph':graph,
+  }
+  return <><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(jsonLd).replace(/</g,'\\u003c')}}/><DesktopPortfolio initialSection={section as Exclude<DesktopSection,'overview'>}/></>
 }

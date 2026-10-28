@@ -1,0 +1,25 @@
+# Yangyang Cai
+
+Yangyang Cai is a Melbourne-based Senior Data Engineer and practical AI builder working across renewable energy, cloud data platforms, Databricks, education, and community initiatives.
+
+Canonical website: https://yangyangcai.me/
+Chinese version: https://yangyangcai.me/zh-hans/
+
+## Key pages
+
+- About: https://yangyangcai.me/about/
+- Data engineering and cloud data platform work: https://yangyangcai.me/work/
+- Practical AI workshops, mentoring, and collaborative business projects: https://yangyangcai.me/business/
+- Practical AI community and knowledge sharing: https://yangyangcai.me/community/
+- Green Certificate Shortfall Analytics case study: https://yangyangcai.me/projects/green-certificate-shortfall-analytics/
+- Contact and links: https://yangyangcai.me/links/
+
+## Primary topics
+
+- Data engineering and dependable data pipelines
+- Cloud data platforms using Azure, AWS, and Databricks
+- Renewable energy data
+- Practical AI, knowledge agents, and agentic workflows
+- Hands-on AI workshops, mentoring, and knowledge sharing
+
+This file is a concise navigation aid. The canonical HTML pages remain the authoritative source.

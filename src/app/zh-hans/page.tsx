@@ -10,6 +10,8 @@ export const metadata:Metadata={
     languages:{en:'/', 'zh-Hans':'/zh-hans/', 'x-default':'/'},
   },
   openGraph:{title:'蔡阳阳 | 数据、AI 与社区',url:'/zh-hans/',images:[{url:'/assets/community-event.webp',width:1200,height:630,alt:'蔡阳阳：数据、AI 与社区'}]},
+  twitter:{card:'summary_large_image',title:'蔡阳阳 | 高级数据工程师与实用 AI 实践者',description:'了解蔡阳阳在可再生能源、云数据平台、Databricks 与实用 AI 方面的工作。',images:['/assets/community-event.webp']},
+  other:{'content-language':'zh-CN'},
 }
 
 export default function ChineseHomePage(){
