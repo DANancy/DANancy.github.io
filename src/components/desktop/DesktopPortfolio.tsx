@@ -1498,6 +1498,46 @@ function ToolsAndSkills({ language }: { language: Language }) {
       tone: "green",
     },
     {
+      title: "baoyu-design",
+      label: tr(language, "Local design agent skills", "本地设计智能体技能"),
+      description: tr(
+        language,
+        "A set of agent skills that brings a Claude Design-style workflow to local coding agents, with editors for canvases, slide decks, dashboards, and design systems.",
+        "一组智能体技能，把类 Claude Design 的工作流带到本地编程智能体中，提供画布、幻灯片、数据看板与设计系统编辑器。",
+      ),
+      topics: [
+        tr(language, "Slide decks", "幻灯片"),
+        tr(language, "Dashboards", "数据看板"),
+        tr(language, "Design systems", "设计系统"),
+      ],
+      href: "https://github.com/JimLiu/baoyu-design",
+      linkLabel: tr(language, "Explore baoyu-design", "了解 baoyu-design"),
+      watchHref: null,
+      watchLabel: null,
+      icon: Presentation,
+      tone: "blue",
+    },
+    {
+      title: "Skills For Real Engineers",
+      label: tr(language, "Engineering agent skills", "工程智能体技能"),
+      description: tr(
+        language,
+        "Matt Pocock’s small, composable agent skills for real engineering work rather than vibe coding, covering specs, TDD, debugging, code review, and handoffs.",
+        "Matt Pocock 整理的一组小而可组合的智能体技能，面向真实工程实践而非随性编码，涵盖需求规格、TDD、调试、代码评审与工作交接。",
+      ),
+      topics: [
+        "TDD",
+        tr(language, "Code review", "代码评审"),
+        tr(language, "Specs & tickets", "需求与任务拆分"),
+      ],
+      href: "https://github.com/mattpocock/skills",
+      linkLabel: tr(language, "Explore the skills", "了解这些技能"),
+      watchHref: null,
+      watchLabel: null,
+      icon: Terminal,
+      tone: "orange",
+    },
+    {
       title: "OpenMontage",
       label: tr(language, "Creative production tool", "创意制作工具"),
       description: tr(
@@ -1558,8 +1598,8 @@ function ToolsAndSkills({ language }: { language: Language }) {
         <p>
           {tr(
             language,
-             "Design intelligence, open-source production tools, and AI filmmaking case studies I explore for more thoughtful and expressive creative work.",
-             "探索设计智能、开源制作工具与 AI 电影案例，让创作更有思考，也更具表现力。",
+             "Design intelligence, agent skills, open-source production tools, and AI filmmaking case studies I explore for more thoughtful and expressive creative work.",
+             "探索设计智能、智能体技能、开源制作工具与 AI 电影案例，让创作更有思考，也更具表现力。",
           )}
         </p>
       </header>
