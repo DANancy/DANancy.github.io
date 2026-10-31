@@ -2,11 +2,14 @@
 import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+import { createPortal } from "react-dom";
 import {
   useCallback,
   useEffect,
+  useId,
   useRef,
   useState,
+  type CSSProperties,
   type FormEvent,
   type ReactNode,
 } from "react";
@@ -35,6 +38,7 @@ import {
   Link as LinkIcon,
   Mail,
   MapPin,
+  MessageCircle,
   Network,
   PartyPopper,
   Send,
@@ -44,6 +48,8 @@ import {
   Tv,
   Users,
   Wrench,
+  Pencil,
+  Trash2,
   X,
   Zap,
 } from "lucide-react";
@@ -84,8 +90,7 @@ import ellaLiuPortfolioImage from "@/assets/friends/ella-liu-portfolio.jpg";
 import chlorophyllLearnImage from "@/assets/friends/chlorophyll-learn.jpg";
 import mapXiaohongshuImage from "../../../assets/Make AI Practical Xiaohongshu.png";
 import makeAiPracticalImage from "../../../assets/make_ai_practical.jpg";
-import mapYangyangEventImage from "@/assets/map-yangyangcai.jpg";
-import mapConnectEnglishImage from "../../../assets/map_connect_en.jpg";
+import mapPracticalDayPoster from "@/assets/map-practical-day-2026.jpg";
 import aiWorkshopImage from "../../../assets/ai_workshop.png";
 import workshopFeedbackImage from "../../../assets/workshop_feedback.png";
 import bookClubSessionOneImage from "../../../assets/book_club_1.jpg";
@@ -219,6 +224,12 @@ export function DesktopPortfolio({
         ?.querySelector<HTMLElement>(".contact-page")
         ?.scrollTo({ top: 0, behavior: "auto" });
       windowRef.current?.focus({ preventScroll: true });
+      // Deep links such as /links/#guestbook land on that block instead of the top.
+      const hash = window.location.hash.slice(1);
+      if (hash)
+        windowRef.current
+          ?.querySelector<HTMLElement>(`#${CSS.escape(hash)}`)
+          ?.scrollIntoView({ block: "start", behavior: "auto" });
     });
     return () => cancelAnimationFrame(frame);
   }, [active]);
@@ -410,17 +421,34 @@ function InterestPanel({ language, showTrigger = true }: { language: Language; s
     const formData = new FormData(form);
     const selectedInterests = formData.getAll("interest").map(String);
     try {
-      const response = await fetch("https://formsubmit.co/ajax/yangyangcai.au@gmail.com", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
-          _subject: "New Website Interest Registration",
-          email: formData.get("email"),
-          interests: selectedInterests.join(", "),
-          other_session_details: formData.get("otherInterest") || "Not provided",
-        }),
-      });
-      if (!response.ok) throw new Error("Submission failed");
+      if (formsEndpoint) {
+        // Form-encoded body keeps this a simple CORS request (no preflight), which Apps Script requires.
+        const response = await fetch(formsEndpoint, {
+          method: "POST",
+          body: new URLSearchParams({
+            type: "interest",
+            email: String(formData.get("email") ?? ""),
+            interests: selectedInterests.join(", "),
+            details: String(formData.get("otherInterest") ?? ""),
+            language,
+            website: String(formData.get("website") ?? ""),
+          }),
+        });
+        const data = (await response.json()) as { ok: boolean };
+        if (!data.ok) throw new Error("Submission failed");
+      } else {
+        const response = await fetch("https://formsubmit.co/ajax/yangyangcai.au@gmail.com", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify({
+            _subject: "New Website Interest Registration",
+            email: formData.get("email"),
+            interests: selectedInterests.join(", "),
+            other_session_details: formData.get("otherInterest") || "Not provided",
+          }),
+        });
+        if (!response.ok) throw new Error("Submission failed");
+      }
       setSubmitState("success");
       form.reset();
       setOtherSelected(false);
@@ -501,6 +529,7 @@ function InterestPanel({ language, showTrigger = true }: { language: Language; s
         ) : <form onSubmit={submitInterest}>
           <input type="hidden" name="_subject" value="New website interest registration" />
           <input type="hidden" name="_captcha" value="false" />
+          <input className="guestbook-honeypot" name="website" type="text" tabIndex={-1} autoComplete="off" aria-hidden="true" />
           <fieldset className="interest-session-fieldset">
             <legend><span>1</span>{tr(language, "Choose What Interests You", "选择您感兴趣的方向")}</legend>
             <div className="interest-options">
@@ -822,6 +851,25 @@ function Overview({
           "墨尔本高级数据工程师与 AI 实践者，负责可再生能源领域的端到端数据管道与产品支持。工作之外，我通过授课、工作坊、社区运营和商业探索，推动数据与 AI 落地。",
         )}
       </p>
+      <div className="overview-actions">
+        <button
+          className="overview-interest-button"
+          type="button"
+          onClick={() => window.dispatchEvent(new Event("open-business-interest"))}
+        >
+          <Sparkles aria-hidden="true" size={16} />
+          {tr(language, "Learn or build with me", "和我一起学习或共创")}
+          <span aria-hidden="true">→</span>
+        </button>
+        <Link
+          className="overview-guestbook-link"
+          href={language === "zh" ? "/zh-hans/links/#guestbook" : "/links/#guestbook"}
+        >
+          <MessageCircle aria-hidden="true" size={16} />
+          {tr(language, "Leave me a note", "去留言板给我留言")}
+          <span aria-hidden="true">→</span>
+        </Link>
+      </div>
       <nav
         className="desktop-nav"
         aria-label={tr(language, "Portfolio sections", "作品集栏目")}
@@ -2016,7 +2064,6 @@ function OmdenaExperience({ language }: { language: Language }) {
   );
 }
 function Community({ language }: { language: Language }) {
-  const mapConnectPoster = language === "zh" ? mapYangyangEventImage : mapConnectEnglishImage;
   return (
     <div className="window-page community-page">
       <PageIntro
@@ -2143,14 +2190,14 @@ function Community({ language }: { language: Language }) {
         <section className="community-invite community-upcoming">
           <div className="upcoming-event-badge"><CalendarDays aria-hidden="true" />{tr(language, "Next MAP event", "MAP 下一场活动")}</div>
           <ExpandableImage
-            src={mapConnectPoster}
+            src={mapPracticalDayPoster}
             alt={tr(
               language,
-              "English MAP Connect Episode 3 event poster featuring Yangyang Cai",
-              "MAP Connect 第三期阳阳蔡分享活动海报",
+              "2026 Make AI Practical Day poster: 8 November 2026, 2–5pm, University of Melbourne Building 189, with speakers Carmen Zhu, Wesley Li, Loki Yan, and Carol Liu",
+              "2026 Make AI Practical Day 活动海报：2026 年 11 月 8 日下午 2 点至 5 点，墨尔本大学 189 号楼，分享嘉宾 Carmen Zhu、Wesley Li、Loki Yan 与 Carol Liu",
             )}
-            width={mapConnectPoster.width}
-            height={mapConnectPoster.height}
+            width={mapPracticalDayPoster.width}
+            height={mapPracticalDayPoster.height}
             sizes="(max-width: 900px) 100vw, 40vw"
             language={language}
             className="community-event-poster"
@@ -2320,34 +2367,18 @@ function Community({ language }: { language: Language }) {
                 "如果你足够爱自己，那么爱就会溢出来。",
               )}
             </blockquote>
-            <ol>
-              {[
-                tr(
-                  language,
-                  "Cognitive Awakening: Unlocking the Inner Drive for Self-Change",
-                  "《认知觉醒》",
-                ),
-                tr(language, "The Water of Canglang", "《沧浪之水》"),
-                tr(language, "Earthbound", "《落在地球》"),
-                tr(
-                  language,
-                  "Wu Zhihong's Psychology",
-                  "《武志红的心理学》",
-                ),
-                tr(language, "The Alchemist", "《牧羊少年奇遇记》"),
-                tr(
-                  language,
-                  "The 7 Habits of Highly Effective People",
-                  "《高效人士的七个习惯》",
-                ),
-                tr(language, "The Order of Time", "《时间的秩序》"),
-              ].map((book, index) => (
-                <li key={book}>
-                  <span>{String(index + 1).padStart(2, "0")}</span>
-                  <b>{book}</b>
-                </li>
-              ))}
-            </ol>
+            <BookClubList
+              language={language}
+              books={[
+                [tr(language, "Cognitive Awakening: Unlocking the Inner Drive for Self-Change", "《认知觉醒》")],
+                [tr(language, "The Water of Canglang", "《沧浪之水》")],
+                [tr(language, "Earthbound", "《落在地球》")],
+                [tr(language, "Wu Zhihong's Psychology", "《武志红的心理学》")],
+                [tr(language, "The Alchemist", "《牧羊少年奇遇记》"), "The Alchemist Paulo Coelho"],
+                [tr(language, "The 7 Habits of Highly Effective People", "《高效人士的七个习惯》"), "The 7 Habits of Highly Effective People Stephen Covey"],
+                [tr(language, "The Order of Time", "《时间的秩序》"), "The Order of Time Carlo Rovelli"],
+              ]}
+            />
           </div>
         </section>
         <section className="book-club-session">
@@ -2394,40 +2425,107 @@ function Community({ language }: { language: Language }) {
                 "运动可以缓解疲劳，并有助于减缓认知下降。",
               )}
             </blockquote>
-            <ol>
-              {[
-                tr(language, "Never Let Me Go", "《莫失莫忘》"),
-                tr(language, "Liao-Fan's Four Lessons", "《了凡四训》"),
-                tr(language, "Treat Time as a Friend", "《把时间当作朋友》"),
-                tr(language, "The Road to Financial Freedom", "《财富自由之路》"),
-                tr(
-                  language,
-                  "The Science of Recharging After Work",
-                  "《下班后疲惫的神经科学》",
-                ),
-                tr(
-                  language,
-                  "Four Thousand Weeks: Time Management for Mortals",
-                  "《人生只有四千个礼拜》",
-                ),
-                tr(
-                  language,
-                  "Finding My Bella Vita: A Story of Family, Food, Fame and Working Out Who You Are",
-                  "《寻找我的美好人生：关于家庭、美食、名望与寻找自我的故事》",
-                ),
-                tr(language, "The Five Love Languages", "《爱的五种语言》"),
-              ].map((book, index) => (
-                <li key={book}>
-                  <span>{String(index + 1).padStart(2, "0")}</span>
-                  <b>{book}</b>
-                </li>
-              ))}
-            </ol>
+            <BookClubList
+              language={language}
+              books={[
+                [tr(language, "Never Let Me Go", "《莫失莫忘》"), "Never Let Me Go Kazuo Ishiguro"],
+                [tr(language, "Liao-Fan's Four Lessons", "《了凡四训》"), "Liao-Fan's Four Lessons"],
+                [tr(language, "Treat Time as a Friend", "《把时间当作朋友》")],
+                [tr(language, "The Road to Financial Freedom", "《财富自由之路》")],
+                [tr(language, "The Science of Recharging After Work", "《下班后疲惫的神经科学》")],
+                [tr(language, "Four Thousand Weeks: Time Management for Mortals", "《人生只有四千个礼拜》"), "Four Thousand Weeks Oliver Burkeman"],
+                [tr(language, "Finding My Bella Vita: A Story of Family, Food, Fame and Working Out Who You Are", "《寻找我的美好人生：关于家庭、美食、名望与寻找自我的故事》"), "Finding My Bella Vita"],
+                [tr(language, "The Five Love Languages", "《爱的五种语言》"), "The Five Love Languages Gary Chapman"],
+              ]}
+            />
           </div>
         </section>
         </div>
+        <p className="book-affiliate-note book-club-affiliate-note">
+          {tr(
+            language,
+            "Tap the little smiling book to peek on Amazon. As an Amazon Associate I earn from qualifying purchases.",
+            "点一下微笑的小书本，就能去 Amazon 看看。作为 Amazon 联盟成员，我会从符合条件的购买中获得佣金。",
+          )}
+        </p>
       </div>
     </div>
+  );
+}
+
+const amazonAssociateTag = "yangyangcai-22";
+
+function amazonBookUrl(query: string) {
+  return `https://www.amazon.com.au/s?${new URLSearchParams({ k: query, i: "stripbooks", tag: amazonAssociateTag })}`;
+}
+
+function BookClubList({ books, language }: { books: [title: string, amazonQuery?: string][]; language: Language }) {
+  return (
+    <ol>
+      {books.map(([title, amazonQuery], index) => {
+        const content = (
+          <>
+            <span>{String(index + 1).padStart(2, "0")}</span>
+            <b>{title}</b>
+            {amazonQuery && (
+              <span className="book-club-peek" aria-hidden="true">
+                <CuteBookIcon />
+              </span>
+            )}
+          </>
+        );
+        return (
+          <li key={title}>
+            {amazonQuery ? (
+              <a
+                href={amazonBookUrl(amazonQuery)}
+                target="_blank"
+                rel="sponsored noopener noreferrer"
+                aria-label={tr(language, `${title} on Amazon`, `在 Amazon 查看${title}`)}
+                title={tr(language, "Peek on Amazon", "去 Amazon 看看")}
+              >
+                {content}
+              </a>
+            ) : (
+              content
+            )}
+          </li>
+        );
+      })}
+    </ol>
+  );
+}
+
+// Search links stay valid when a specific edition goes out of stock.
+function BookBuyLink({ query, language }: { query: string; language: Language }) {
+  const label = tr(language, "Peek on Amazon", "去 Amazon 看看");
+  return (
+    <a
+      className="book-buy-link"
+      href={amazonBookUrl(query)}
+      target="_blank"
+      rel="sponsored noopener noreferrer"
+      aria-label={tr(language, `${query} on Amazon`, `在 Amazon 查看 ${query}`)}
+      data-tip={label}
+    >
+      <CuteBookIcon />
+    </a>
+  );
+}
+
+// A smiling little book with a heart: the clickable mark for Amazon book links.
+function CuteBookIcon() {
+  return (
+    <svg className="cute-book" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+      <path className="cute-book-heart" d="M25 3.6c.9-1.3 3.2-1 3.2.9 0 1.6-2 2.9-3.2 3.8-1.2-.9-3.2-2.2-3.2-3.8 0-1.9 2.3-2.2 3.2-.9z" />
+      <rect x="5" y="7.5" width="20" height="19" rx="4.5" fill="#ffcf6b" stroke="#b5761a" strokeWidth="1.6" />
+      <rect x="7.5" y="22" width="15" height="2.6" rx="1.3" fill="#fff6dc" />
+      <circle cx="11.6" cy="14.6" r="1.5" fill="#4a2f0a" />
+      <circle cx="18.4" cy="14.6" r="1.5" fill="#4a2f0a" />
+      <ellipse cx="9.4" cy="17.6" rx="1.7" ry="1" fill="#ff9aa2" />
+      <ellipse cx="20.6" cy="17.6" rx="1.7" ry="1" fill="#ff9aa2" />
+      <path d="M12.7 17.4q2.3 2.6 4.6 0" fill="none" stroke="#4a2f0a" strokeWidth="1.4" strokeLinecap="round" />
+    </svg>
   );
 }
 
@@ -2470,6 +2568,7 @@ function Books({ language }: { language: Language }) {
             <p className="book-author">Eric Jorgenson</p>
             <p className="book-published"><CalendarDays />{tr(language, "Published in August 2020", "出版于 2020 年 8 月")}</p>
             <p className="book-summary">{tr(language, "A curated collection of Naval Ravikant’s ideas on building wealth, exercising judgment, and finding lasting happiness.", "一本整理纳瓦尔·拉维坎特关于创造财富、提升判断力与寻找长期幸福观点的作品。")}</p>
+            <BookBuyLink query="The Almanack of Naval Ravikant Eric Jorgenson" language={language} />
           </div>
         </article>
         <article className="book-entry">
@@ -2532,6 +2631,7 @@ function Books({ language }: { language: Language }) {
                 "讲述信息网络如何塑造权力、社会与真相。",
               )}
             </p>
+            <BookBuyLink query="Nexus Yuval Noah Harari" language={language} />
           </div>
         </article>
         <article className="book-entry">
@@ -2562,6 +2662,7 @@ function Books({ language }: { language: Language }) {
                 "一个关于梦想、勇气与寻找自己道路的旅程。",
               )}
             </p>
+            <BookBuyLink query="The Alchemist Paulo Coelho" language={language} />
           </div>
         </article>
         <article className="book-entry">
@@ -2594,6 +2695,7 @@ function Books({ language }: { language: Language }) {
                 "一部关于陷入困境的 IT 团队如何通过 DevOps 改善流程、协作与交付的商业小说。",
               )}
             </p>
+            <BookBuyLink query="The Phoenix Project Gene Kim" language={language} />
           </div>
         </article>
         <article className="book-entry">
@@ -2624,9 +2726,17 @@ function Books({ language }: { language: Language }) {
                 "一部关于教育、自我重塑，以及走出原生世界寻找人生方向的回忆录。",
               )}
             </p>
+            <BookBuyLink query="Educated Tara Westover" language={language} />
           </div>
         </article>
       </div>
+      <p className="book-affiliate-note">
+        {tr(
+          language,
+          "As an Amazon Associate I earn from qualifying purchases. Buying through these links costs you nothing extra.",
+          "作为 Amazon 联盟成员，我会从符合条件的购买中获得佣金，通过这些链接购买不会让你多花钱。",
+        )}
+      </p>
     </div>
   );
 }
@@ -3421,6 +3531,7 @@ function Links({ language }: { language: Language }) {
           </article>
         </div>
       </section>
+      <Guestbook language={language} />
       <section className="loved-links">
         <header>
           <div>
@@ -3616,6 +3727,793 @@ function Links({ language }: { language: Language }) {
     </div>
   );
 }
+type NoteColor = "yellow" | "mint" | "pink" | "cyan" | "purple";
+type NoteShape = "cloud" | "star" | "tree" | "candy" | "note";
+type GuestbookMessage = {
+  id?: string;
+  date: string;
+  name: string;
+  message: string;
+  messageEn?: string;
+  messageZh?: string;
+  color?: string;
+  shape?: string;
+};
+type MyNote = GuestbookMessage & { id: string; editKey: string };
+
+const noteColors: NoteColor[] = ["cyan", "mint", "yellow", "pink", "purple"];
+const noteShapes: NoteShape[] = ["cloud", "star", "tree", "candy", "note"];
+const noteTilts = [-3, 2, -1.5, 3, -2.5, 1.5];
+const maxNoteLength = 500;
+const myNotesStorageKey = "guestbook-my-notes";
+
+// One Apps Script endpoint serves both the guestbook and the interest form.
+const formsEndpoint = process.env.NEXT_PUBLIC_GUESTBOOK_URL;
+
+function toNoteColor(value?: string): NoteColor {
+  return noteColors.includes(value as NoteColor) ? (value as NoteColor) : "cyan";
+}
+
+// Notes are translated server-side so each language page can show its own version.
+function noteText(note: GuestbookMessage, language: Language) {
+  return (language === "zh" ? note.messageZh : note.messageEn) || note.message;
+}
+
+function toNoteShape(value?: string): NoteShape {
+  return noteShapes.includes(value as NoteShape) ? (value as NoteShape) : "cloud";
+}
+
+// Edit keys live only in this browser; without storage the visitor simply can't edit later.
+function readMyNotes(): MyNote[] {
+  try {
+    const stored = JSON.parse(window.localStorage.getItem(myNotesStorageKey) ?? "[]");
+    return Array.isArray(stored) ? stored.filter((note) => note?.id && note?.editKey) : [];
+  } catch {
+    return [];
+  }
+}
+
+function writeMyNotes(notes: MyNote[]) {
+  try {
+    window.localStorage.setItem(myNotesStorageKey, JSON.stringify(notes));
+  } catch {}
+}
+
+function NoteShapeArt({ shape }: { shape: NoteShape }) {
+  const clipId = useId();
+  return (
+    <svg className="note-shape-art" viewBox="0 0 200 200" aria-hidden="true" focusable="false">
+      {shape === "cloud" && (
+        <g className="note-fill">
+          <circle cx="62" cy="116" r="44" />
+          <circle cx="104" cy="80" r="54" />
+          <circle cx="150" cy="110" r="44" />
+          <circle cx="100" cy="128" r="46" />
+          <rect x="28" y="112" width="146" height="54" rx="27" />
+        </g>
+      )}
+      {shape === "star" && (
+        <polygon
+          className="note-fill note-star"
+          points="100.0,10.0 129.4,65.5 191.3,76.3 147.6,121.5 156.4,183.7 100.0,156.0 43.6,183.7 52.4,121.5 8.7,76.3 70.6,65.5"
+        />
+      )}
+      {shape === "tree" && (
+        <>
+          <rect className="note-trunk" x="86" y="146" width="28" height="48" rx="5" />
+          <g className="note-fill">
+            <circle cx="100" cy="66" r="56" />
+            <circle cx="58" cy="102" r="42" />
+            <circle cx="142" cy="102" r="42" />
+            <circle cx="100" cy="112" r="48" />
+          </g>
+        </>
+      )}
+      {shape === "candy" && (
+        <>
+          <defs>
+            <clipPath id={clipId}>
+              <rect x="44" y="56" width="112" height="88" rx="44" />
+            </clipPath>
+          </defs>
+          <g className="note-fill">
+            <polygon points="50,100 8,60 22,100 8,140" />
+            <polygon points="150,100 192,60 178,100 192,140" />
+            <rect x="44" y="56" width="112" height="88" rx="44" />
+          </g>
+          <g className="note-stripes" clipPath={`url(#${clipId})`}>
+            <rect x="40" y="20" width="14" height="160" transform="rotate(30 100 100)" />
+            <rect x="96" y="20" width="14" height="160" transform="rotate(30 100 100)" />
+            <rect x="152" y="20" width="14" height="160" transform="rotate(30 100 100)" />
+          </g>
+        </>
+      )}
+      {shape === "note" && (
+        <>
+          <path className="note-fill" d="M14 14 H186 V156 L156 186 H14 Z" />
+          <path className="note-fold" d="M186 156 L156 156 L156 186 Z" />
+        </>
+      )}
+    </svg>
+  );
+}
+
+type NoteSize = "s" | "m" | "l";
+type NoteBadge = "pending" | "hidden" | "example";
+type BoardItem = { note: GuestbookMessage; status?: NoteBadge };
+
+// Labelled example notes keep the wall lively until enough real notes are approved;
+// each approved note replaces one example, so they retire on their own.
+const exampleNotesTarget = 5;
+const exampleNotes: GuestbookMessage[] = [
+  { id: "example-cloud", date: "", name: "Alex", shape: "cloud", color: "cyan", message: "Hello from Melbourne! Pick a shape, write a note, and pin it here.", messageEn: "Hello from Melbourne! Pick a shape, write a note, and pin it here.", messageZh: "来自墨尔本的问候！选个形状，写张便签，贴到这里吧。" },
+  { id: "example-star", date: "", name: "小雨", shape: "star", color: "yellow", message: "你的网站好可爱，桌面风格太有创意了！", messageEn: "Your site is so cute. The desktop style is really creative!", messageZh: "你的网站好可爱，桌面风格太有创意了！" },
+  { id: "example-tree", date: "", name: "Sam", shape: "tree", color: "mint", message: "Planting a little tree here. Come back and watch the wall grow!", messageEn: "Planting a little tree here. Come back and watch the wall grow!", messageZh: "在这里种一棵小树，常回来看看留言墙慢慢长大吧！" },
+  { id: "example-candy", date: "", name: "Mia", shape: "candy", color: "pink", message: "Sweet site!", messageEn: "Sweet site!", messageZh: "好甜的网站！" },
+  { id: "example-note", date: "", name: "Leo", shape: "note", color: "purple", message: "Just passing by and enjoyed reading about your pottery.", messageEn: "Just passing by and enjoyed reading about your pottery.", messageZh: "路过看看，很喜欢你写的陶艺故事。" },
+];
+
+const noteSizePx: Record<NoteSize, number> = { s: 140, m: 180, l: 230 };
+const boardPadding = 28;
+const boardGap = 26;
+const noteFooterHeight = 40;
+
+// Longer notes get bigger shapes. Chinese characters take about twice the room of Latin ones.
+function noteSize(text: string): NoteSize {
+  const weight = Array.from(text).reduce((sum, char) => sum + (/[\u3000-\u9fff\uff00-\uffef]/.test(char) ? 2 : 1), 0);
+  return weight <= 40 ? "s" : weight <= 140 ? "m" : "l";
+}
+
+// Fills columns top to bottom, then flows right, so a crowded board grows sideways and pans.
+function layoutBoard(sizes: number[], height: number, minWidth: number) {
+  const columns: { width: number; height: number; items: { index: number; size: number }[] }[] = [];
+  sizes.forEach((size, index) => {
+    const itemHeight = size + noteFooterHeight;
+    let column = columns[columns.length - 1];
+    if (!column || (column.items.length > 0 && column.height + boardGap + itemHeight > height - boardPadding * 2)) {
+      column = { width: 0, height: 0, items: [] };
+      columns.push(column);
+    }
+    column.height += (column.items.length ? boardGap : 0) + itemHeight;
+    column.width = Math.max(column.width, size);
+    column.items.push({ index, size });
+  });
+
+  const positions: { x: number; y: number }[] = [];
+  let x = boardPadding;
+  for (const column of columns) {
+    let y = boardPadding + Math.max(0, (height - boardPadding * 2 - column.height) / 2);
+    for (const { index, size } of column.items) {
+      // A little deterministic jitter so the board looks hand-pinned rather than gridded.
+      const jitterX = ((index * 37) % 19) - 9;
+      const jitterY = ((index * 53) % 11) - 5;
+      positions[index] = { x: x + (column.width - size) / 2 + jitterX, y: y + jitterY };
+      y += size + noteFooterHeight + boardGap;
+    }
+    x += column.width + boardGap;
+  }
+  const contentWidth = x - boardGap + boardPadding;
+  const offset = contentWidth < minWidth ? (minWidth - contentWidth) / 2 : 0;
+  return {
+    positions: positions.map((position) => ({ x: position.x + offset, y: position.y })),
+    width: Math.max(contentWidth, minWidth),
+  };
+}
+
+function GuestbookNote({
+  note,
+  index,
+  language,
+  status,
+  size,
+  position,
+  onOpen,
+}: {
+  note: GuestbookMessage;
+  index: number;
+  language: Language;
+  status?: NoteBadge;
+  size: NoteSize;
+  position: { x: number; y: number };
+  onOpen: (opener: HTMLButtonElement) => void;
+}) {
+  const initial = Array.from(note.name.trim())[0]?.toUpperCase() ?? "?";
+  return (
+    <li
+      className={`guestbook-note note-${toNoteColor(note.color)} shape-${toNoteShape(note.shape)} size-${size}${status && status !== "example" ? " is-pending" : ""}`}
+      style={{
+        "--tilt": `${noteTilts[index % noteTilts.length]}deg`,
+        left: position.x,
+        top: position.y,
+        width: noteSizePx[size],
+        animationDelay: `${Math.min(index, 12) * 40}ms`,
+      } as CSSProperties}
+    >
+      <button
+        type="button"
+        className="guestbook-note-shape"
+        onClick={(event) => onOpen(event.currentTarget)}
+        aria-label={tr(language, `Read the note from ${note.name}`, `查看 ${note.name} 的便签`)}
+      >
+        <NoteShapeArt shape={toNoteShape(note.shape)} />
+        <span className="guestbook-note-text">{noteText(note, language)}</span>
+      </button>
+      {status && (
+        <em className={`guestbook-pending-badge${status === "example" ? " is-example" : ""}`}>
+          {status === "pending"
+            ? tr(language, "Waiting for review", "审核中")
+            : status === "hidden"
+              ? tr(language, "Not shown publicly", "未公开")
+              : tr(language, "Example", "示例")}
+        </em>
+      )}
+      <footer>
+        <span className="guestbook-avatar" aria-hidden="true">{initial}</span>
+        <b>{note.name}</b>
+        {note.date && <time dateTime={note.date}>{note.date}</time>}
+      </footer>
+    </li>
+  );
+}
+
+function GuestbookBoard({
+  items,
+  language,
+  placeholder,
+  expanded,
+  onToggleExpanded,
+  onOpen,
+}: {
+  items: BoardItem[];
+  language: Language;
+  // Shown inside the board when there are no notes, so loading never changes the board's size.
+  placeholder?: ReactNode;
+  expanded: boolean;
+  onToggleExpanded: () => void;
+  onOpen: (note: GuestbookMessage, opener: HTMLButtonElement) => void;
+}) {
+  const viewportRef = useRef<HTMLDivElement>(null);
+  const dragRef = useRef<{ x: number; y: number; left: number; top: number; moved: boolean } | null>(null);
+  const suppressClickRef = useRef(false);
+  const [box, setBox] = useState({ width: 0, height: 0 });
+  const [dragging, setDragging] = useState(false);
+
+  useEffect(() => {
+    const viewport = viewportRef.current;
+    if (!viewport) return;
+    const observer = new ResizeObserver(([entry]) =>
+      setBox({ width: entry.contentRect.width, height: entry.contentRect.height }),
+    );
+    observer.observe(viewport);
+    return () => observer.disconnect();
+  }, []);
+
+  const sizes = items.map(({ note }) => noteSize(noteText(note, language)));
+  const layout = box.height ? layoutBoard(sizes.map((size) => noteSizePx[size]), box.height, box.width) : null;
+  const overflowing = layout ? layout.width > box.width + 1 : false;
+
+  // Mouse drag pans the board; touch keeps native swiping, which already pans an overflowing box.
+  const endDrag = () => {
+    if (dragRef.current?.moved) suppressClickRef.current = true;
+    dragRef.current = null;
+    setDragging(false);
+  };
+
+  return (
+    <div className={`guestbook-board${expanded ? " is-expanded" : ""}`}>
+      <div className="guestbook-board-bar">
+        <span className="guestbook-board-hint" aria-hidden={!overflowing}>
+          {overflowing && tr(language, "Drag or swipe to see more notes", "拖动或滑动查看更多便签")}
+        </span>
+        {(items.length > 0 || expanded) && (
+          <button type="button" onClick={onToggleExpanded}>
+            {expanded ? <X size={15} aria-hidden="true" /> : <Sparkles size={15} aria-hidden="true" />}
+            {expanded ? tr(language, "Close full screen", "退出全屏") : tr(language, "View full screen", "全屏查看")}
+          </button>
+        )}
+      </div>
+      <div
+        ref={viewportRef}
+        className={`guestbook-board-viewport${overflowing ? " can-drag" : ""}${dragging ? " is-dragging" : ""}`}
+        role="region"
+        tabIndex={0}
+        aria-label={tr(language, "Guestbook notes", "留言便签墙")}
+        onPointerDown={(event) => {
+          if (event.pointerType !== "mouse" || event.button !== 0 || !overflowing) return;
+          const viewport = event.currentTarget;
+          dragRef.current = { x: event.clientX, y: event.clientY, left: viewport.scrollLeft, top: viewport.scrollTop, moved: false };
+        }}
+        onPointerMove={(event) => {
+          const drag = dragRef.current;
+          if (!drag) return;
+          const dx = event.clientX - drag.x;
+          const dy = event.clientY - drag.y;
+          if (!drag.moved && Math.abs(dx) + Math.abs(dy) > 5) {
+            drag.moved = true;
+            setDragging(true);
+          }
+          if (drag.moved) {
+            event.currentTarget.scrollLeft = drag.left - dx;
+            event.currentTarget.scrollTop = drag.top - dy;
+          }
+        }}
+        onPointerUp={endDrag}
+        onPointerLeave={endDrag}
+        onClickCapture={(event) => {
+          // A drag that ends on a note should not also open it.
+          if (suppressClickRef.current) {
+            suppressClickRef.current = false;
+            event.stopPropagation();
+            event.preventDefault();
+          }
+        }}
+      >
+        {items.length === 0 && placeholder}
+        {layout && items.length > 0 && (
+          <ul style={{ width: layout.width, height: box.height }}>
+            {items.map(({ note, status }, index) => (
+              <GuestbookNote
+                key={note.id ?? `${note.date}-${note.name}-${index}`}
+                note={note}
+                index={index}
+                language={language}
+                status={status}
+                size={sizes[index]}
+                position={layout.positions[index]}
+                onOpen={(opener) => onOpen(note, opener)}
+              />
+            ))}
+          </ul>
+        )}
+      </div>
+    </div>
+  );
+}
+
+function Guestbook({ language }: { language: Language }) {
+  const [messages, setMessages] = useState<GuestbookMessage[]>([]);
+  const [myNotes, setMyNotes] = useState<MyNote[]>([]);
+  const [statuses, setStatuses] = useState<Record<string, string>>({});
+  const [loadState, setLoadState] = useState<"loading" | "ready" | "error">(formsEndpoint ? "loading" : "ready");
+  const [submitState, setSubmitState] = useState<"idle" | "submitting" | "created" | "updated" | "deleted" | "missing" | "error" | "rate_limited">("idle");
+  const [name, setName] = useState("");
+  const [draft, setDraft] = useState("");
+  const [color, setColor] = useState<NoteColor>("cyan");
+  const [shape, setShape] = useState<NoteShape>("cloud");
+  const [editingId, setEditingId] = useState<string | null>(null);
+  const [openNote, setOpenNote] = useState<GuestbookMessage | null>(null);
+  const [confirmingDelete, setConfirmingDelete] = useState(false);
+  const [showOriginal, setShowOriginal] = useState(false);
+  const [expanded, setExpanded] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
+  const messageRef = useRef<HTMLTextAreaElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const openerRef = useRef<HTMLButtonElement | null>(null);
+  const prompts: [string, string][] = [
+    [tr(language, "Say hi", "打个招呼"), tr(language, "Hi Yangyang! ", "阳阳你好！")],
+    [tr(language, "We met at MAP", "在 MAP 认识"), tr(language, "We met at a Make AI Practical event. ", "我们在 Make AI Practical 活动上认识。")],
+    [tr(language, "Workshop thoughts", "工作坊感想"), tr(language, "About the workshop: ", "关于工作坊：")],
+    [tr(language, "Just passing by", "路过看看"), tr(language, "Just passing by and enjoyed your site. ", "路过逛逛，很喜欢你的网站。")],
+  ];
+  const colorLabels: Record<NoteColor, string> = {
+    cyan: tr(language, "Sea blue", "海盐蓝"),
+    mint: tr(language, "Mint green", "薄荷绿"),
+    yellow: tr(language, "Sunny yellow", "阳光黄"),
+    pink: tr(language, "Peach pink", "蜜桃粉"),
+    purple: tr(language, "Lavender", "薰衣草紫"),
+  };
+  const shapeLabels: Record<NoteShape, string> = {
+    cloud: tr(language, "Cloud", "云朵"),
+    star: tr(language, "Star", "星星"),
+    tree: tr(language, "Tree", "小树"),
+    candy: tr(language, "Candy", "糖果"),
+    note: tr(language, "Note", "便签"),
+  };
+
+  useEffect(() => {
+    if (!formsEndpoint) return;
+    const stored = readMyNotes();
+    const ids = stored.map((note) => note.id).join(",");
+    let cancelled = false;
+    fetch(ids ? `${formsEndpoint}?mine=${encodeURIComponent(ids)}` : formsEndpoint)
+      .then((response) => response.json())
+      .then((data: { ok: boolean; messages?: GuestbookMessage[]; mine?: Record<string, string> }) => {
+        if (cancelled) return;
+        if (!data.ok) throw new Error("Guestbook unavailable");
+        // Forget notes the owner has since removed from the sheet.
+        const kept = data.mine ? stored.filter((note) => note.id in data.mine!) : stored;
+        if (kept.length !== stored.length) writeMyNotes(kept);
+        setMyNotes(kept);
+        setStatuses(data.mine ?? {});
+        setMessages(data.messages ?? []);
+        setLoadState("ready");
+      })
+      .catch(() => {
+        if (cancelled) return;
+        setMyNotes(stored);
+        setLoadState("error");
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const closeNote = useCallback(() => {
+    setOpenNote(null);
+    setConfirmingDelete(false);
+    openerRef.current?.focus();
+  }, []);
+
+  useEffect(() => {
+    if (!openNote) return;
+    dialogRef.current?.focus();
+    const close = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.stopPropagation();
+        closeNote();
+      }
+    };
+    window.addEventListener("keydown", close, true);
+    return () => window.removeEventListener("keydown", close, true);
+  }, [openNote, closeNote]);
+
+  useEffect(() => {
+    if (!expanded || openNote) return;
+    const close = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.stopPropagation();
+        setExpanded(false);
+      }
+    };
+    window.addEventListener("keydown", close, true);
+    return () => window.removeEventListener("keydown", close, true);
+  }, [expanded, openNote]);
+
+  const openBoardNote = (note: GuestbookMessage, opener: HTMLButtonElement) => {
+    openerRef.current = opener;
+    setConfirmingDelete(false);
+    setShowOriginal(false);
+    setOpenNote(note);
+  };
+
+  const saveMyNotes = (notes: MyNote[]) => {
+    setMyNotes(notes);
+    writeMyNotes(notes);
+  };
+
+  const forgetNote = (id: string) => {
+    saveMyNotes(myNotes.filter((note) => note.id !== id));
+    setMessages((current) => current.filter((message) => message.id !== id));
+  };
+
+  const addPrompt = (starter: string) => {
+    setDraft((current) => (current.trim() ? `${current.trimEnd()} ${starter}` : starter).slice(0, maxNoteLength));
+    messageRef.current?.focus();
+  };
+
+  const resetForm = () => {
+    setEditingId(null);
+    setName("");
+    setDraft("");
+  };
+
+  const startEditing = (note: MyNote) => {
+    setEditingId(note.id);
+    setName(note.name);
+    setDraft(note.message);
+    setColor(toNoteColor(note.color));
+    setShape(toNoteShape(note.shape));
+    setSubmitState("idle");
+    setOpenNote(null);
+    setConfirmingDelete(false);
+    formRef.current?.scrollIntoView({ block: "center", behavior: "smooth" });
+    messageRef.current?.focus({ preventScroll: true });
+  };
+
+  const post = async (body: Record<string, string>) => {
+    // Form-encoded body keeps this a simple CORS request (no preflight), which Apps Script requires.
+    const response = await fetch(formsEndpoint!, { method: "POST", body: new URLSearchParams({ ...body, language }) });
+    return (await response.json()) as {
+      ok: boolean;
+      error?: string;
+      id?: string;
+      editKey?: string;
+      date?: string;
+      messageEn?: string;
+      messageZh?: string;
+    };
+  };
+
+  const submitMessage = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (!formsEndpoint) return;
+    setSubmitState("submitting");
+    const honeypot = String(new FormData(event.currentTarget).get("website") ?? "");
+    const editing = editingId ? myNotes.find((note) => note.id === editingId) : undefined;
+    try {
+      const fields = { name, message: draft, color, shape, website: honeypot };
+      const data = editing
+        ? await post({ type: "guestbook_update", id: editing.id, editKey: editing.editKey, ...fields })
+        : await post({ type: "guestbook", ...fields });
+      if (!data.ok) {
+        if (data.error === "not_found" && editing) {
+          forgetNote(editing.id);
+          resetForm();
+          setSubmitState("missing");
+        } else {
+          setSubmitState(data.error === "rate_limited" ? "rate_limited" : "error");
+        }
+        return;
+      }
+      const saved = { name: name.trim(), message: draft.trim(), messageEn: data.messageEn, messageZh: data.messageZh, color, shape };
+      if (editing) {
+        saveMyNotes(myNotes.map((note) => (note.id === editing.id ? { ...note, ...saved } : note)));
+        setMessages((current) => current.filter((message) => message.id !== editing.id));
+        setStatuses((current) => ({ ...current, [editing.id]: "Pending" }));
+        setSubmitState("updated");
+      } else if (data.id && data.editKey) {
+        saveMyNotes([{ id: data.id, editKey: data.editKey, date: data.date ?? "", ...saved }, ...myNotes]);
+        setStatuses((current) => ({ ...current, [data.id!]: "Pending" }));
+        setSubmitState("created");
+      } else {
+        setSubmitState("created");
+      }
+      resetForm();
+    } catch {
+      setSubmitState("error");
+    }
+  };
+
+  const deleteNote = async (note: MyNote) => {
+    setSubmitState("submitting");
+    try {
+      const data = await post({ type: "guestbook_delete", id: note.id, editKey: note.editKey });
+      if (!data.ok && data.error !== "not_found") {
+        setSubmitState("error");
+        return;
+      }
+      forgetNote(note.id);
+      if (editingId === note.id) resetForm();
+      setSubmitState(data.ok ? "deleted" : "missing");
+      closeNote();
+    } catch {
+      setSubmitState("error");
+    }
+  };
+
+  const myNotesById = new Map(myNotes.map((note) => [note.id, note]));
+  const approvedIds = new Set(messages.map((message) => message.id).filter(Boolean));
+  const myUnpublished = myNotes.filter((note) => !approvedIds.has(note.id));
+  const wall: BoardItem[] = [
+    ...myUnpublished.map((note) => ({ note, status: statuses[note.id] === "Hidden" ? ("hidden" as const) : ("pending" as const) })),
+    ...messages.map((note) => ({ note })),
+    ...exampleNotes
+      .slice(0, Math.max(0, exampleNotesTarget - messages.length))
+      .map((note) => ({ note, status: "example" as const })),
+  ];
+  const openOwnNote = openNote?.id ? myNotesById.get(openNote.id) : undefined;
+  const disabled = !formsEndpoint;
+  const busy = submitState === "submitting";
+
+  return (
+    <section className="guestbook-section" id="guestbook" aria-labelledby="guestbook-title">
+      <header>
+        <p className="page-pill">{tr(language, "Guestbook", "留言板")}</p>
+        <h3 id="guestbook-title">{tr(language, "Stick a note on my wall", "在我的留言墙上贴张便签")}</h3>
+        <p>{tr(language, "Say hello, share a thought, or tell me what brought you here. Pick a shape and colour and pin it up. Notes appear after a quick review, and you can edit or delete yours from this browser.", "打个招呼、分享想法，或告诉我你是怎么来到这里的。选个形状和颜色贴上去吧！便签审核后会出现在墙上，你也可以在这个浏览器里修改或删除自己的便签。")}</p>
+      </header>
+      <div className="guestbook-layout">
+        <form ref={formRef} className={`guestbook-form note-${color}`} onSubmit={submitMessage}>
+          <span className="guestbook-tape" aria-hidden="true" />
+          {editingId && (
+            <p className="guestbook-editing">
+              <Pencil size={14} aria-hidden="true" />
+              {tr(language, "Editing your note. Saving sends it back for review.", "正在修改你的便签，保存后会重新审核。")}
+              <button type="button" onClick={() => { resetForm(); setSubmitState("idle"); }}>
+                {tr(language, "Cancel", "取消")}
+              </button>
+            </p>
+          )}
+          <div className="guestbook-prompts" role="group" aria-label={tr(language, "Message ideas", "留言灵感")}>
+            {prompts.map(([label, starter]) => (
+              <button key={label} type="button" onClick={() => addPrompt(starter)} disabled={disabled}>
+                {label}
+              </button>
+            ))}
+          </div>
+          <label className="guestbook-message-field">
+            <span>{tr(language, "Your note", "便签内容")}</span>
+            <textarea
+              ref={messageRef}
+              id="guestbook-message"
+              name="message"
+              required
+              maxLength={maxNoteLength}
+              rows={5}
+              value={draft}
+              onChange={(event) => setDraft(event.target.value)}
+              placeholder={tr(language, "Write something nice…", "写点什么吧……")}
+              disabled={disabled}
+            />
+            <small aria-live="polite">{draft.length}/{maxNoteLength}</small>
+          </label>
+          <label className="guestbook-name-field">
+            <span>{tr(language, "Signed", "署名")}</span>
+            <input
+              id="guestbook-name"
+              name="name"
+              type="text"
+              required
+              maxLength={40}
+              autoComplete="name"
+              value={name}
+              onChange={(event) => setName(event.target.value)}
+              placeholder={tr(language, "Your name", "你的名字")}
+              disabled={disabled}
+            />
+          </label>
+          <fieldset className="guestbook-shapes" disabled={disabled}>
+            <legend>{tr(language, "Shape", "形状")}</legend>
+            {noteShapes.map((option) => (
+              <label key={option} title={shapeLabels[option]}>
+                <input
+                  type="radio"
+                  name="shape"
+                  value={option}
+                  checked={shape === option}
+                  onChange={() => setShape(option)}
+                />
+                <NoteShapeArt shape={option} />
+                <span>{shapeLabels[option]}</span>
+              </label>
+            ))}
+          </fieldset>
+          <fieldset className="guestbook-colors" disabled={disabled}>
+            <legend>{tr(language, "Colour", "颜色")}</legend>
+            {noteColors.map((option) => (
+              <label key={option} className={`note-${option}`} title={colorLabels[option]}>
+                <input
+                  type="radio"
+                  name="color"
+                  value={option}
+                  checked={color === option}
+                  onChange={() => setColor(option)}
+                />
+                <span className="visually-hidden">{colorLabels[option]}</span>
+              </label>
+            ))}
+          </fieldset>
+          <input className="guestbook-honeypot" name="website" type="text" tabIndex={-1} autoComplete="off" aria-hidden="true" />
+          <button className="guestbook-submit" type="submit" disabled={disabled || busy}>
+            <Send size={16} aria-hidden="true" />
+            {busy
+              ? tr(language, "Saving…", "保存中…")
+              : editingId
+                ? tr(language, "Save changes", "保存修改")
+                : tr(language, "Pin it to the wall", "贴到墙上")}
+          </button>
+          <p className="guestbook-status" role="status">
+            {disabled && tr(language, "The guestbook is opening soon.", "留言板即将开放。")}
+            {submitState === "created" && tr(language, "Pinned! Your note will join the wall once it has been reviewed.", "贴好啦！审核通过后，你的便签就会出现在墙上。")}
+            {submitState === "updated" && tr(language, "Saved. Your updated note will be reviewed again.", "已保存！修改后的便签会重新审核。")}
+            {submitState === "deleted" && tr(language, "Your note has been deleted.", "你的便签已删除。")}
+            {submitState === "missing" && tr(language, "That note is no longer on the wall, so there is nothing to change.", "这张便签已经不在墙上了，无法修改。")}
+            {submitState === "rate_limited" && tr(language, "Lots of notes right now. Please try again in a minute.", "当前留言较多，请稍后再试。")}
+            {submitState === "error" && tr(language, "That didn’t go through. Please try again later.", "操作失败，请稍后再试。")}
+          </p>
+        </form>
+        <div className="guestbook-wall" aria-live="polite">
+          {!expanded && (
+            <GuestbookBoard
+              items={loadState === "loading" ? [] : wall}
+              language={language}
+              placeholder={
+                loadState === "loading" ? (
+                  <div className="guestbook-board-message is-loading">
+                    <span className="guestbook-ghosts" aria-hidden="true">
+                      <i /><i /><i />
+                    </span>
+                    {tr(language, "Collecting notes…", "正在收集便签…")}
+                  </div>
+                ) : loadState === "error" ? (
+                  <div className="guestbook-board-message">
+                    {tr(language, "The notes could not be loaded right now. Please refresh to try again.", "暂时无法加载便签，请刷新页面重试。")}
+                  </div>
+                ) : (
+                  <div className="guestbook-board-message">
+                    <MessageCircle aria-hidden="true" size={22} />
+                    {tr(language, "The wall is still empty. Yours could be the first note!", "墙上还空空的，来贴第一张便签吧！")}
+                  </div>
+                )
+              }
+              expanded={false}
+              onToggleExpanded={() => setExpanded(true)}
+              onOpen={openBoardNote}
+            />
+          )}
+          {expanded && (
+            <p className="guestbook-empty">{tr(language, "The wall is open in full screen.", "便签墙正在全屏显示。")}</p>
+          )}
+        </div>
+      </div>
+      {/* Overlays are portalled to <body>: the animated desktop window would otherwise trap them. */}
+      {expanded && createPortal(
+        <div className="guestbook-board-layer">
+          <GuestbookBoard
+            items={wall}
+            language={language}
+            expanded
+            onToggleExpanded={() => setExpanded(false)}
+            onOpen={openBoardNote}
+          />
+        </div>,
+        document.body,
+      )}
+      {openNote && createPortal(
+        <div className="guestbook-dialog-layer">
+          <button className="guestbook-dialog-backdrop" type="button" aria-label={tr(language, "Close note", "关闭便签")} onClick={closeNote} />
+          <div
+            ref={dialogRef}
+            className={`guestbook-dialog note-${toNoteColor(openNote.color)}`}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="guestbook-dialog-title"
+            tabIndex={-1}
+          >
+            <button className="guestbook-dialog-close" type="button" onClick={closeNote} aria-label={tr(language, "Close", "关闭")}>
+              <X size={18} aria-hidden="true" />
+            </button>
+            <div className="guestbook-dialog-shape" aria-hidden="true">
+              <NoteShapeArt shape={toNoteShape(openNote.shape)} />
+            </div>
+            <h4 id="guestbook-dialog-title">{tr(language, `From ${openNote.name}`, `来自 ${openNote.name}`)}</h4>
+            {openNote.id?.startsWith("example-") && (
+              <small className="guestbook-example-note">
+                {tr(language, "An example note. Examples step aside as real notes arrive.", "这是一张示例便签，等真正的留言多起来就会退场。")}
+              </small>
+            )}
+            {openNote.date && <time dateTime={openNote.date}>{openNote.date}</time>}
+            <p>{showOriginal ? openNote.message : noteText(openNote, language)}</p>
+            {noteText(openNote, language) !== openNote.message && (
+              <button className="guestbook-original-toggle" type="button" onClick={() => setShowOriginal((value) => !value)}>
+                {showOriginal ? tr(language, "Show translation", "查看译文") : tr(language, "Show original", "查看原文")}
+              </button>
+            )}
+            {openOwnNote && (
+              <div className="guestbook-dialog-actions">
+                {confirmingDelete ? (
+                  <>
+                    <span>{tr(language, "Delete this note for good?", "确定要永久删除这张便签吗？")}</span>
+                    <button type="button" className="danger" onClick={() => deleteNote(openOwnNote)} disabled={busy}>
+                      <Trash2 size={15} aria-hidden="true" />
+                      {tr(language, "Yes, delete", "确认删除")}
+                    </button>
+                    <button type="button" onClick={() => setConfirmingDelete(false)}>
+                      {tr(language, "Keep it", "先不删")}
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <button type="button" onClick={() => startEditing(openOwnNote)}>
+                      <Pencil size={15} aria-hidden="true" />
+                      {tr(language, "Edit", "修改")}
+                    </button>
+                    <button type="button" className="danger" onClick={() => setConfirmingDelete(true)}>
+                      <Trash2 size={15} aria-hidden="true" />
+                      {tr(language, "Delete", "删除")}
+                    </button>
+                  </>
+                )}
+              </div>
+            )}
+          </div>
+        </div>,
+        document.body,
+      )}
+    </section>
+  );
+}
+
 function LinkedInMark() {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true">

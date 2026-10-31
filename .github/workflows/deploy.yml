@@ -30,6 +30,7 @@ jobs:
       - run: npm run build
         env:
           NEXT_PUBLIC_GA_MEASUREMENT_ID: ${{ vars.NEXT_PUBLIC_GA_MEASUREMENT_ID }}
+          NEXT_PUBLIC_GUESTBOOK_URL: ${{ vars.NEXT_PUBLIC_GUESTBOOK_URL }}
 
       - name: Ensure CNAME survives export
         run: cp CNAME out/CNAME
