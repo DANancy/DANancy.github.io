@@ -5,8 +5,12 @@ const CONFIG = Object.freeze({
   maxMessageLength: 500,
   maxInterestDetailsLength: 500,
   maxPublicMessages: 50,
-  // Site-wide cap on new submissions per minute, to slow down spam bursts.
+  // Site-wide caps that slow spam bursts and keep a flood from filling the inbox.
   maxSubmissionsPerMinute: 10,
+  maxSubmissionsPerDay: 200,
+  maxEmailsPerDay: 30,
+  // Bots submit the instant a page loads; people take longer than this.
+  minFillMs: 3000,
   publicCacheSeconds: 60,
 });
 
@@ -142,9 +146,8 @@ function saveGuestbookMessage_(data) {
   if (!name || !message) {
     return json_({ ok: false, error: "missing_fields" });
   }
-  if (!allowSubmission_()) {
-    return json_({ ok: false, error: "rate_limited" });
-  }
+  const blocked = checkLimits_(data);
+  if (blocked) return json_({ ok: false, error: blocked });
 
   const id = Utilities.getUuid();
   const editKey = Utilities.getUuid();
@@ -165,8 +168,7 @@ function saveGuestbookMessage_(data) {
     safeCell_(translated.zh),
   ]);
 
-  MailApp.sendEmail({
-    to: CONFIG.notificationEmail,
+  notify_({
     subject: `New guestbook message from ${name}`,
     body: [
       "A visitor left a message on yangyangcai.me. It stays hidden until you set its Status to Approved.",
@@ -196,9 +198,8 @@ function updateGuestbookMessage_(data) {
   if (!name || !message) {
     return json_({ ok: false, error: "missing_fields" });
   }
-  if (!allowSubmission_()) {
-    return json_({ ok: false, error: "rate_limited" });
-  }
+  const blocked = checkLimits_(data);
+  if (blocked) return json_({ ok: false, error: blocked });
 
   // Translate before taking the lock; it is the slowest step.
   const translated = translateMessage_(message);
@@ -227,8 +228,7 @@ function updateGuestbookMessage_(data) {
   }
   CacheService.getScriptCache().remove("approved");
 
-  MailApp.sendEmail({
-    to: CONFIG.notificationEmail,
+  notify_({
     subject: `Guestbook message edited by ${name}`,
     body: [
       "A visitor edited their guestbook message. It is back to Pending until you approve it again.",
@@ -285,9 +285,8 @@ function saveInterest_(data) {
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > 254) {
     return json_({ ok: false, error: "invalid_email" });
   }
-  if (!allowSubmission_()) {
-    return json_({ ok: false, error: "rate_limited" });
-  }
+  const blocked = checkLimits_(data);
+  if (blocked) return json_({ ok: false, error: blocked });
 
   const interests = cleanText_(data.interests, 300) || "Not specified";
   const details = cleanText_(data.details, CONFIG.maxInterestDetailsLength);
@@ -301,8 +300,7 @@ function saveInterest_(data) {
     "New",
   ]);
 
-  MailApp.sendEmail({
-    to: CONFIG.notificationEmail,
+  notify_({
     subject: "New website interest registration",
     body: [
       "A visitor registered their interest on yangyangcai.me.",
@@ -330,13 +328,113 @@ function appendRow_(definition, row) {
   }
 }
 
-function allowSubmission_() {
+/**
+ * Returns an error code when a submission should be refused, or "" when it may proceed.
+ * Counts towards the per-minute and per-day caps only when it passes the fill-time check.
+ */
+function checkLimits_(data) {
+  const elapsed = Number(data.elapsedMs);
+  if (!(elapsed >= CONFIG.minFillMs)) return "too_fast";
+
   const cache = CacheService.getScriptCache();
-  const key = `submissions-${Math.floor(Date.now() / 60000)}`;
-  const count = Number(cache.get(key)) || 0;
-  if (count >= CONFIG.maxSubmissionsPerMinute) return false;
-  cache.put(key, String(count + 1), 120);
-  return true;
+  const minuteKey = `submissions-${Math.floor(Date.now() / 60000)}`;
+  const minuteCount = Number(cache.get(minuteKey)) || 0;
+  if (minuteCount >= CONFIG.maxSubmissionsPerMinute) return "rate_limited";
+
+  let dailyLimitReached = false;
+  withDailyCounters_((counters) => {
+    if (counters.submissions >= CONFIG.maxSubmissionsPerDay) {
+      dailyLimitReached = true;
+      return;
+    }
+    counters.submissions += 1;
+    if (counters.submissions === CONFIG.maxSubmissionsPerDay) counters.alertDue = true;
+  });
+  if (dailyLimitReached) return "rate_limited";
+
+  cache.put(minuteKey, String(minuteCount + 1), 120);
+  sendDailyLimitAlert_();
+  return "";
+}
+
+/** Sends one notification, staying within the daily email budget. */
+function notify_(message) {
+  let mode = "skip";
+  withDailyCounters_((counters) => {
+    if (counters.emails < CONFIG.maxEmailsPerDay) {
+      counters.emails += 1;
+      mode = "send";
+    } else if (!counters.emailSummarySent) {
+      counters.emailSummarySent = true;
+      mode = "summary";
+    }
+  });
+  if (mode === "send") {
+    sendMail_(message);
+  } else if (mode === "summary") {
+    sendMail_({
+      subject: "yangyangcai.me: email notifications paused for today",
+      body: [
+        `More than ${CONFIG.maxEmailsPerDay} submissions arrived today, so notifications are paused until tomorrow (${CONFIG.timezone}).`,
+        "New guestbook notes and interest registrations are still being saved. Please review them in the sheet.",
+        "",
+        `Sheet: ${openSpreadsheet_().getUrl()}`,
+      ].join("\n"),
+    });
+  }
+}
+
+function sendDailyLimitAlert_() {
+  let due = false;
+  withDailyCounters_((counters) => {
+    if (counters.alertDue && !counters.alertSent) {
+      counters.alertSent = true;
+      due = true;
+    }
+  });
+  if (!due) return;
+  sendMail_({
+    subject: "yangyangcai.me: daily submission limit reached",
+    body: [
+      `The website received ${CONFIG.maxSubmissionsPerDay} submissions today, which is unusual and may be spam.`,
+      "New submissions are refused until tomorrow. Already-saved rows are untouched.",
+      "If this was genuine traffic, raise maxSubmissionsPerDay in Code.gs and deploy a new version.",
+      "",
+      `Sheet: ${openSpreadsheet_().getUrl()}`,
+    ].join("\n"),
+  });
+}
+
+function sendMail_(message) {
+  try {
+    MailApp.sendEmail(Object.assign({ to: CONFIG.notificationEmail, name: "yangyangcai.me" }, message));
+  } catch (error) {
+    // A mail quota error must not lose the submission that was already saved.
+    console.error(error);
+  }
+}
+
+/** Reads and updates today's counters under the script lock. Counters reset each day. */
+function withDailyCounters_(update) {
+  const lock = LockService.getScriptLock();
+  lock.waitLock(10000);
+  try {
+    const store = PropertiesService.getScriptProperties();
+    const today = Utilities.formatDate(new Date(), CONFIG.timezone, "yyyy-MM-dd");
+    let counters;
+    try {
+      counters = JSON.parse(store.getProperty("DAILY_COUNTERS") || "{}");
+    } catch (_error) {
+      counters = {};
+    }
+    if (counters.date !== today) {
+      counters = { date: today, submissions: 0, emails: 0, emailSummarySent: false, alertDue: false, alertSent: false };
+    }
+    update(counters);
+    store.setProperty("DAILY_COUNTERS", JSON.stringify(counters));
+  } finally {
+    lock.releaseLock();
+  }
 }
 
 function openSpreadsheet_() {

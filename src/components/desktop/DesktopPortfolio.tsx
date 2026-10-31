@@ -404,7 +404,8 @@ export function DesktopPortfolio({
 function InterestPanel({ language, showTrigger = true }: { language: Language; showTrigger?: boolean }) {
   const [isOpen, setIsOpen] = useState(false);
   const [otherSelected, setOtherSelected] = useState(false);
-  const [submitState, setSubmitState] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [submitState, setSubmitState] = useState<"idle" | "submitting" | "success" | "error" | "too_fast" | "rate_limited">("idle");
+  const mountedAtRef = useRef(0);
   const panelRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const interests = [
@@ -413,6 +414,10 @@ function InterestPanel({ language, showTrigger = true }: { language: Language; s
     ["Practical AI Workshop", "实用 AI 工作坊"],
     ["Build Something Together", "一起合作做项目"],
   ];
+
+  useEffect(() => {
+    mountedAtRef.current = Date.now();
+  }, []);
 
   const submitInterest = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -432,10 +437,14 @@ function InterestPanel({ language, showTrigger = true }: { language: Language; s
             details: String(formData.get("otherInterest") ?? ""),
             language,
             website: String(formData.get("website") ?? ""),
+            elapsedMs: String(Date.now() - mountedAtRef.current),
           }),
         });
-        const data = (await response.json()) as { ok: boolean };
-        if (!data.ok) throw new Error("Submission failed");
+        const data = (await response.json()) as { ok: boolean; error?: string };
+        if (!data.ok) {
+          setSubmitState(data.error === "too_fast" || data.error === "rate_limited" ? data.error : "error");
+          return;
+        }
       } else {
         const response = await fetch("https://formsubmit.co/ajax/yangyangcai.au@gmail.com", {
           method: "POST",
@@ -567,9 +576,13 @@ function InterestPanel({ language, showTrigger = true }: { language: Language; s
             <span><i>2</i>{tr(language, "Your Email Address", "您的邮箱地址")}</span>
             <input name="email" type="email" autoComplete="email" placeholder="you@example.com" required />
           </label>
-          {submitState === "error" && (
+          {(submitState === "error" || submitState === "too_fast" || submitState === "rate_limited") && (
             <p className="interest-submit-error" role="alert">
-              {tr(language, "Something went wrong. Please check your connection and try again.", "提交失败，请检查网络连接后重试。")}
+              {submitState === "too_fast"
+                ? tr(language, "That was quick! Please wait a few seconds and submit again.", "提交得太快啦，请稍等几秒再试。")
+                : submitState === "rate_limited"
+                  ? tr(language, "Lots of submissions right now. Please try again a little later.", "当前提交较多，请稍后再试。")
+                  : tr(language, "Something went wrong. Please check your connection and try again.", "提交失败，请检查网络连接后重试。")}
             </p>
           )}
           <button className="interest-submit" type="submit" disabled={submitState === "submitting"}>
@@ -4075,7 +4088,8 @@ function Guestbook({ language }: { language: Language }) {
   const [myNotes, setMyNotes] = useState<MyNote[]>([]);
   const [statuses, setStatuses] = useState<Record<string, string>>({});
   const [loadState, setLoadState] = useState<"loading" | "ready" | "error">(formsEndpoint ? "loading" : "ready");
-  const [submitState, setSubmitState] = useState<"idle" | "submitting" | "created" | "updated" | "deleted" | "missing" | "error" | "rate_limited">("idle");
+  const [submitState, setSubmitState] = useState<"idle" | "submitting" | "created" | "updated" | "deleted" | "missing" | "error" | "rate_limited" | "too_fast">("idle");
+  const mountedAtRef = useRef(0);
   const [name, setName] = useState("");
   const [draft, setDraft] = useState("");
   const [color, setColor] = useState<NoteColor>("cyan");
@@ -4109,6 +4123,10 @@ function Guestbook({ language }: { language: Language }) {
     candy: tr(language, "Candy", "糖果"),
     note: tr(language, "Note", "便签"),
   };
+
+  useEffect(() => {
+    mountedAtRef.current = Date.now();
+  }, []);
 
   useEffect(() => {
     if (!formsEndpoint) return;
@@ -4212,7 +4230,11 @@ function Guestbook({ language }: { language: Language }) {
 
   const post = async (body: Record<string, string>) => {
     // Form-encoded body keeps this a simple CORS request (no preflight), which Apps Script requires.
-    const response = await fetch(formsEndpoint!, { method: "POST", body: new URLSearchParams({ ...body, language }) });
+    // elapsedMs lets the backend turn away bots that submit the moment the page loads.
+    const response = await fetch(formsEndpoint!, {
+      method: "POST",
+      body: new URLSearchParams({ ...body, language, elapsedMs: String(Date.now() - mountedAtRef.current) }),
+    });
     return (await response.json()) as {
       ok: boolean;
       error?: string;
@@ -4241,7 +4263,7 @@ function Guestbook({ language }: { language: Language }) {
           resetForm();
           setSubmitState("missing");
         } else {
-          setSubmitState(data.error === "rate_limited" ? "rate_limited" : "error");
+          setSubmitState(data.error === "rate_limited" || data.error === "too_fast" ? data.error : "error");
         }
         return;
       }
@@ -4399,6 +4421,7 @@ function Guestbook({ language }: { language: Language }) {
             {submitState === "deleted" && tr(language, "Your note has been deleted.", "你的便签已删除。")}
             {submitState === "missing" && tr(language, "That note is no longer on the wall, so there is nothing to change.", "这张便签已经不在墙上了，无法修改。")}
             {submitState === "rate_limited" && tr(language, "Lots of notes right now. Please try again in a minute.", "当前留言较多，请稍后再试。")}
+            {submitState === "too_fast" && tr(language, "That was quick! Please wait a few seconds and pin it again.", "贴得太快啦，请稍等几秒再试。")}
             {submitState === "error" && tr(language, "That didn’t go through. Please try again later.", "操作失败，请稍后再试。")}
           </p>
         </form>

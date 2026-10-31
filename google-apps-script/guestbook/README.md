@@ -27,7 +27,7 @@ Until `NEXT_PUBLIC_GUESTBOOK_URL` is set, the guestbook shows "opening soon" and
 2. Run `setup` again. It is safe to re-run: existing rows are kept and missing tabs or columns are added.
 3. Use **Deploy → Manage deployments → Edit (pencil)**, choose **New version**, and deploy. Keep the same `/exec` URL.
 
-Update the script **before** deploying a website change that depends on it.
+Deploy the website and the script in the order that keeps old and new versions compatible. For example, the fill-time check needs the website to send `elapsedMs` first, so the website goes live before the script update.
 
 ## Managing submissions
 
@@ -60,10 +60,14 @@ Interest tab:
 - `type=guestbook_delete`: `id`, `editKey`.
 - `type=interest`: `email` (required), `interests` (comma-separated), `details` (optional, up to 500).
 
-It responds with `{ "ok": true }`, or `{ "ok": false, "error": "missing_fields" | "invalid_email" | "not_found" | "rate_limited" | "server_error" }`. `not_found` means the note doesn't exist or the edit key doesn't match..
+It responds with `{ "ok": true }`, or `{ "ok": false, "error": "missing_fields" | "invalid_email" | "not_found" | "too_fast" | "rate_limited" | "server_error" }`. `not_found` means the note doesn't exist or the edit key doesn't match.
 
 ## Behaviour
 
-- New submissions are capped at 10 per minute across the whole site to slow down spam bursts.
+- Spam protections, all adjustable in `CONFIG` at the top of `Code.gs`:
+  - Submissions sent less than 3 seconds after the page loaded are refused (`too_fast`). The website sends `elapsedMs` with every request; requests without it are refused too.
+  - At most 10 submissions per minute and 200 per day across the whole site (`rate_limited`). Reaching the daily cap sends one alert email; the count resets at midnight Sydney time.
+  - At most 30 notification emails per day. After that you get one "notifications paused" email, and submissions keep being saved to the sheet.
+  - A hidden honeypot field silently drops submissions from simple bots.
 - A script lock prevents simultaneous submissions from overwriting one another.
 - Spreadsheet-formula prefixes in submitted text are escaped.
