@@ -55,7 +55,34 @@ function setup() {
   styleSheet_(interest, INTEREST, [165, 240, 320, 360, 90, 110]);
   interest.getRange("C:D").setWrap(true);
 
-  return `Setup complete: ${spreadsheet.getUrl()}`;
+  const translated = backfillTranslations_(guestbook);
+  return `Setup complete (${translated} older notes translated): ${spreadsheet.getUrl()}`;
+}
+
+/**
+ * Fills in missing English or Chinese versions, for notes saved before translation existed.
+ * Cells that already have text, including hand-corrected translations, are left alone.
+ */
+function backfillTranslations_(sheet) {
+  const lastRow = sheet.getLastRow();
+  if (lastRow < 2) return 0;
+  const range = sheet.getRange(2, 11, lastRow - 1, 2);
+  const messages = sheet.getRange(2, 3, lastRow - 1, 1).getValues();
+  const cells = range.getValues();
+  let count = 0;
+  cells.forEach((row, index) => {
+    const message = String(messages[index][0] || "").trim();
+    if (!message || (row[0] && row[1])) return;
+    const translated = translateMessage_(message);
+    if (!row[0]) row[0] = safeCell_(translated.en);
+    if (!row[1]) row[1] = safeCell_(translated.zh);
+    count += 1;
+  });
+  if (count) {
+    range.setValues(cells);
+    CacheService.getScriptCache().remove("approved");
+  }
+  return count;
 }
 
 /** Receives a guestbook message or an interest registration from the website. */
