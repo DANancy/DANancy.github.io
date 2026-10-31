@@ -3453,7 +3453,7 @@
 .guestbook-note time{opacity:.65;font-variant-numeric:tabular-nums}
 .guestbook-avatar{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--note-accent);color:#fff;font-weight:700;font-size:.74rem}
 .guestbook-note.is-pending .guestbook-note-shape{opacity:.8}
-.guestbook-pending-badge{position:absolute;top:-.4rem;right:0;padding:.15rem .55rem;border:1px dashed var(--note-accent);border-radius:999px;background:#fff;color:var(--note-accent);font-size:.68rem;font-style:normal;font-weight:700;letter-spacing:.03em;rotate:4deg}
+.guestbook-pending-badge{position:absolute;top:12%;right:4%;padding:.15rem .55rem;border:1px dashed var(--note-accent);border-radius:999px;background:#fff;color:var(--note-accent);font-size:.68rem;font-style:normal;font-weight:700;letter-spacing:.03em;rotate:4deg}
 .guestbook-pending-badge.is-example{border-style:solid;border-color:#8a9a91;color:#55665d;background:#f6f8f6}
 .guestbook-example-note{font-size:.78rem;font-style:italic;opacity:.75}
 .guestbook-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.6rem;min-height:200px;margin:0;padding:1.5rem;border:2px dashed #c2d6ca;border-radius:6px 6px 18px 6px;background:#ffffffa6;color:#4f6b5c;font-weight:600;text-align:center;rotate:1.2deg}
@@ -3488,7 +3488,7 @@
   .guestbook-section>header>p:last-child{text-align:left}
   .guestbook-layout{grid-template-columns:1fr;gap:1.75rem}
   .guestbook-form{rotate:0deg}
-  .guestbook-board-viewport{height:470px}
+  .guestbook-board-viewport{height:400px}
   .guestbook-board-layer{padding-top:calc(64px + env(safe-area-inset-top, 0px))}
 }
 @media(prefers-reduced-motion:reduce){
@@ -3530,3 +3530,23 @@ a:hover .cute-book-heart,a:focus-visible .cute-book-heart{scale:1.35}
 .book-club-copy li a:hover .book-club-peek svg{animation:book-wiggle .5s ease-in-out}
 .book-club-affiliate-note{grid-column:1/-1;margin-top:.5rem}
 @media(prefers-reduced-motion:reduce){.book-club-copy li a{transition:none}}
+
+/* Compact board for phones (set by width, so it also applies in narrow windows) */
+.guestbook-board.is-compact .guestbook-board-bar{flex-wrap:nowrap;min-height:0}
+.guestbook-board.is-compact .guestbook-board-hint{font-size:.74rem}
+.guestbook-board.is-compact .guestbook-board-bar button{padding:.3rem .7rem;font-size:.74rem}
+.guestbook-board.is-compact .guestbook-note{gap:.2rem}
+.guestbook-board.is-compact .guestbook-note footer{gap:.3rem;font-size:.7rem}
+.guestbook-board.is-compact .guestbook-note footer b{font-size:.8rem}
+.guestbook-board.is-compact .guestbook-note time{display:none}
+.guestbook-board.is-compact .guestbook-avatar{width:20px;height:20px;font-size:.66rem}
+.guestbook-board.is-compact .guestbook-pending-badge{padding:.1rem .4rem;font-size:.6rem}
+.guestbook-board.is-compact .size-s{--text-size:.68rem}
+.guestbook-board.is-compact .size-m{--text-size:.7rem}
+.guestbook-board.is-compact .size-l{--text-size:.74rem}
+.guestbook-board.is-compact .shape-cloud.size-m,.guestbook-board.is-compact .shape-cloud.size-l{--text-lines:3}
+.guestbook-board.is-compact .shape-star{--text-size:.62rem}
+.guestbook-board.is-compact .shape-star.size-m,.guestbook-board.is-compact .shape-star.size-l{--text-lines:3}
+.guestbook-board.is-compact .shape-tree.size-m{--text-lines:3}.guestbook-board.is-compact .shape-tree.size-l{--text-lines:4}
+.guestbook-board.is-compact .shape-candy{--text-size:.64rem}
+.guestbook-board.is-compact .shape-note.size-s{--text-lines:4}.guestbook-board.is-compact .shape-note.size-m{--text-lines:5}.guestbook-board.is-compact .shape-note.size-l{--text-lines:6}

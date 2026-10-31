@@ -3866,10 +3866,12 @@ const exampleNotes: GuestbookMessage[] = [
   { id: "example-note", date: "", name: "Leo", shape: "note", color: "purple", message: "Just passing by and enjoyed reading about your pottery.", messageEn: "Just passing by and enjoyed reading about your pottery.", messageZh: "路过看看，很喜欢你写的陶艺故事。" },
 ];
 
-const noteSizePx: Record<NoteSize, number> = { s: 140, m: 180, l: 230 };
-const boardPadding = 28;
-const boardGap = 26;
-const noteFooterHeight = 40;
+// Phones get a compact board: smaller notes so a screen shows a 2×2 block with the next column peeking in.
+const boardMetrics = {
+  regular: { sizes: { s: 140, m: 180, l: 230 } as Record<NoteSize, number>, padding: 28, gap: 26, footer: 40, jitter: 1 },
+  compact: { sizes: { s: 110, m: 128, l: 156 } as Record<NoteSize, number>, padding: 10, gap: 12, footer: 32, jitter: 0.4 },
+};
+const compactBoardWidth = 520;
 
 // Longer notes get bigger shapes. Chinese characters take about twice the room of Latin ones.
 function noteSize(text: string): NoteSize {
@@ -3878,7 +3880,17 @@ function noteSize(text: string): NoteSize {
 }
 
 // Fills columns top to bottom, then flows right, so a crowded board grows sideways and pans.
-function layoutBoard(sizes: number[], height: number, minWidth: number) {
+function layoutBoard(
+  sizes: number[],
+  height: number,
+  minWidth: number,
+  {
+    padding: boardPadding,
+    gap: boardGap,
+    footer: noteFooterHeight,
+    jitter,
+  }: { padding: number; gap: number; footer: number; jitter: number },
+) {
   const columns: { width: number; height: number; items: { index: number; size: number }[] }[] = [];
   sizes.forEach((size, index) => {
     const itemHeight = size + noteFooterHeight;
@@ -3898,8 +3910,8 @@ function layoutBoard(sizes: number[], height: number, minWidth: number) {
     let y = boardPadding + Math.max(0, (height - boardPadding * 2 - column.height) / 2);
     for (const { index, size } of column.items) {
       // A little deterministic jitter so the board looks hand-pinned rather than gridded.
-      const jitterX = ((index * 37) % 19) - 9;
-      const jitterY = ((index * 53) % 11) - 5;
+      const jitterX = (((index * 37) % 19) - 9) * jitter;
+      const jitterY = (((index * 53) % 11) - 5) * jitter;
       positions[index] = { x: x + (column.width - size) / 2 + jitterX, y: y + jitterY };
       y += size + noteFooterHeight + boardGap;
     }
@@ -3919,6 +3931,7 @@ function GuestbookNote({
   language,
   status,
   size,
+  width,
   position,
   onOpen,
 }: {
@@ -3927,6 +3940,7 @@ function GuestbookNote({
   language: Language;
   status?: NoteBadge;
   size: NoteSize;
+  width: number;
   position: { x: number; y: number };
   onOpen: (opener: HTMLButtonElement) => void;
 }) {
@@ -3938,7 +3952,7 @@ function GuestbookNote({
         "--tilt": `${noteTilts[index % noteTilts.length]}deg`,
         left: position.x,
         top: position.y,
-        width: noteSizePx[size],
+        width,
         animationDelay: `${Math.min(index, 12) * 40}ms`,
       } as CSSProperties}
     >
@@ -4001,8 +4015,10 @@ function GuestbookBoard({
     return () => observer.disconnect();
   }, []);
 
+  const compact = box.width > 0 && box.width < compactBoardWidth;
+  const metrics = compact ? boardMetrics.compact : boardMetrics.regular;
   const sizes = items.map(({ note }) => noteSize(noteText(note, language)));
-  const layout = box.height ? layoutBoard(sizes.map((size) => noteSizePx[size]), box.height, box.width) : null;
+  const layout = box.height ? layoutBoard(sizes.map((size) => metrics.sizes[size]), box.height, box.width, metrics) : null;
   const overflowing = layout ? layout.width > box.width + 1 : false;
 
   // Mouse drag pans the board; touch keeps native swiping, which already pans an overflowing box.
@@ -4013,15 +4029,22 @@ function GuestbookBoard({
   };
 
   return (
-    <div className={`guestbook-board${expanded ? " is-expanded" : ""}`}>
+    <div className={`guestbook-board${expanded ? " is-expanded" : ""}${compact ? " is-compact" : ""}`}>
       <div className="guestbook-board-bar">
         <span className="guestbook-board-hint" aria-hidden={!overflowing}>
-          {overflowing && tr(language, "Drag or swipe to see more notes", "拖动或滑动查看更多便签")}
+          {overflowing &&
+            (compact
+              ? tr(language, "Swipe for more →", "左右滑动查看更多 →")
+              : tr(language, "Drag or swipe to see more notes", "拖动或滑动查看更多便签"))}
         </span>
         {(items.length > 0 || expanded) && (
           <button type="button" onClick={onToggleExpanded}>
             {expanded ? <X size={15} aria-hidden="true" /> : <Sparkles size={15} aria-hidden="true" />}
-            {expanded ? tr(language, "Close full screen", "退出全屏") : tr(language, "View full screen", "全屏查看")}
+            {expanded
+              ? tr(language, "Close full screen", "退出全屏")
+              : compact
+                ? tr(language, "Full screen", "全屏")
+                : tr(language, "View full screen", "全屏查看")}
           </button>
         )}
       </div>
@@ -4072,6 +4095,7 @@ function GuestbookBoard({
                 language={language}
                 status={status}
                 size={sizes[index]}
+                width={metrics.sizes[sizes[index]]}
                 position={layout.positions[index]}
                 onOpen={(opener) => onOpen(note, opener)}
               />
