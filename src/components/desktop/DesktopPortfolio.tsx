@@ -1676,6 +1676,26 @@ function LearningNext({ language }: { language: Language }) {
       tone: "green",
     },
     {
+      title: "Google Skills · Gemini Enterprise",
+      label: tr(language, "Free learning bundle", "免费学习大礼包"),
+      description: tr(
+        language,
+        "Work through Google Skills, a free learning library for Google Cloud and AI, then put it into practice with CX Agent Studio by building generative AI virtual agents with Gemini Enterprise.",
+        "通过免费的 Google Skills 系统学习 Google Cloud 与 AI，再结合 CX Agent Studio 动手实践，用 Gemini Enterprise 构建生成式 AI 虚拟客服智能体。",
+      ),
+      topics: [
+        tr(language, "Free courses", "免费课程"),
+        "Gemini Enterprise",
+        tr(language, "CX agents", "客户体验智能体"),
+      ],
+      href: "https://www.skills.google/",
+      linkLabel: tr(language, "Start on Google Skills", "前往 Google Skills"),
+      secondaryHref: "https://docs.cloud.google.com/gemini-enterprise-cx/cx-agent-studio",
+      secondaryLinkLabel: tr(language, "Explore CX Agent Studio", "了解 CX Agent Studio"),
+      icon: Sparkles,
+      tone: "blue",
+    },
+    {
       title: "Pi Coding Agent",
       label: tr(language, "Agent workflows", "智能体工作流"),
       description: tr(
@@ -1728,8 +1748,8 @@ function LearningNext({ language }: { language: Language }) {
         <p>
           {tr(
             language,
-            "Four directions I am exploring through certification, platforms, tools, and hands-on practice.",
-            "通过认证、平台、工具与动手实践，探索四个新的方向。",
+            "Five directions I am exploring through certification, platforms, tools, and hands-on practice.",
+            "通过认证、平台、工具与动手实践，探索五个新的方向。",
           )}
         </p>
       </header>
@@ -1763,6 +1783,12 @@ function LearningNext({ language }: { language: Language }) {
                 {goal.linkLabel}
                 <ExternalLink size={14} />
               </a>
+              {"secondaryHref" in goal && (
+                <a href={goal.secondaryHref} target="_blank" rel="noreferrer">
+                  {goal.secondaryLinkLabel}
+                  <ExternalLink size={14} />
+                </a>
+              )}
             </article>
           );
         })}

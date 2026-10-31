@@ -46,6 +46,7 @@ export default async function SectionPage({params}:{params:Promise<{section:stri
     {"@type":"Question",name:"Who are the practical AI workshops for?",acceptedAnswer:{"@type":"Answer",text:"Professionals and curious learners who want to turn everyday information or an idea into a useful working solution through guided, hands-on practice."}},
     {"@type":"Question",name:"What do participants build?",acceptedAnswer:{"@type":"Answer",text:"Workshop outcomes vary by session. Existing workshops have focused on practical AI workflows and personal knowledge agents that participants can continue using afterwards."}},
     {"@type":"Question",name:"What does the AI-Data Engineering Bootcamp cover?",acceptedAnswer:{"@type":"Answer",text:"The 12-session bootcamp uses a public dataset to explore the end-to-end data engineering lifecycle, dependable delivery, Databricks AI, Power BI MCP, and practical AI support."}},
+    {"@type":"Question",name:"How can I discuss mentoring or a collaboration?",acceptedAnswer:{"@type":"Answer",text:"Use the interest form on this page or contact Yangyang through LinkedIn or email. Share the outcome you are looking for so the next conversation can stay practical and focused."}},
   ]});
   const jsonLd={
     "@context":"https://schema.org",
