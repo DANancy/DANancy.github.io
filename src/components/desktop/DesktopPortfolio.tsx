@@ -61,11 +61,11 @@ import communityCharacter from "@/assets/web/character-community.png";
 import funCharacter from "@/assets/web/character-fun.png";
 import linksCharacter from "@/assets/web/character-links.png";
 import contactCharacter from "@/assets/web/character-contact.png";
-import backyardOrchard from "@/assets/web/yangyang-backyard-orchard.webp";
+import backyardOrchard from "@/assets/optimized/yangyang-backyard-orchard.webp";
 import bootcampLifecycleImage from "@/assets/web/data-engineering-bootcamp.png";
 import homeEssentialsImage from "@/assets/web/home-essentials.jpg";
 import renJunLogo from "../../../assets/logo.jpg";
-import homeEssentialsTikTokImage from "../../../assets/tiktok.jpg";
+import homeEssentialsTikTokImage from "@/assets/optimized/tiktok.webp";
 import mercyBookImage from "@/assets/仁慈的关系.jpg";
 import nexusBookImage from "@/assets/智人之上.jpg";
 import alchemistBookImage from "@/assets/牧羊少年奇幻之旅.jpg";
@@ -76,13 +76,13 @@ import navalAlmanackBookImage from "@/assets/books/naval-almanack.jpg";
 import hammerPhilosophyImage from "@/assets/books/friend-hammer-philosophy.jpg";
 import soWhatPodcastImage from "../../../assets/so_what.jpg";
 import jokeShopImage from "@/assets/friends/joke-shop-card-v2.jpg";
-import chatAndChillImage from "../../../assets/chat_chil.png";
+import chatAndChillImage from "@/assets/optimized/chat_chil.webp";
 import growWithRuiImage from "../../../assets/grow-with-rui-card.png";
 import lunaWenBlogImage from "../../../assets/friends_or.jpg";
 import arinaDevImage from "@/assets/friends/arina-card-v2.jpg";
 import camMicTestImage from "@/assets/friends/cammictest.jpg";
 import huTouchUIImage from "@/assets/friends/hutouchui.jpg";
-import kenChenImage from "@/assets/friends/ken-chen.jpg";
+import kenChenImage from "@/assets/optimized/ken-chen.webp";
 import xiangyuzhouImage from "@/assets/friends/xiangyuzhou-portfolio.jpg";
 import pingchengTechImage from "@/assets/friends/pingcheng-tech.jpg";
 import gulaAppIcon from "@/assets/friends/gula-app-icon.jpg";
@@ -90,23 +90,23 @@ import ellaLiuPortfolioImage from "@/assets/friends/ella-liu-portfolio.jpg";
 import chlorophyllLearnImage from "@/assets/friends/chlorophyll-learn.jpg";
 import mapXiaohongshuImage from "../../../assets/Make AI Practical Xiaohongshu.png";
 import makeAiPracticalImage from "../../../assets/make_ai_practical.jpg";
-import mapPracticalDayPoster from "@/assets/map-practical-day-2026.jpg";
-import aiWorkshopImage from "../../../assets/ai_workshop.png";
-import workshopFeedbackImage from "../../../assets/workshop_feedback.png";
-import bookClubSessionOneImage from "../../../assets/book_club_1.jpg";
-import bookClubSessionTwoImage from "../../../assets/book_club_2_23082026.jpg";
+import mapPracticalDayPoster from "@/assets/optimized/map-practical-day-2026.webp";
+import aiWorkshopImage from "@/assets/optimized/ai_workshop.webp";
+import workshopFeedbackImage from "@/assets/optimized/workshop_feedback.webp";
+import bookClubSessionOneImage from "@/assets/optimized/book_club_1.webp";
+import bookClubSessionTwoImage from "@/assets/optimized/book_club_2_23082026.webp";
 import potteryOneImage from "@/assets/web/pottery_1.webp";
 import potteryTwoImage from "@/assets/web/pottery_2.webp";
 import potteryThreeImage from "@/assets/web/pottery_3.webp";
-import splitFictionImage from "@/assets/Split Fiction.png";
-import itTakesTwoImage from "@/assets/it_takes_two.png";
-import hogwartsLegacyImage from "@/assets/hogwarts_legacy.png";
+import splitFictionImage from "@/assets/optimized/split-fiction.webp";
+import itTakesTwoImage from "@/assets/optimized/it_takes_two.webp";
+import hogwartsLegacyImage from "@/assets/optimized/hogwarts_legacy.webp";
 import pokemonGoImage from "@/assets/pokemon_go.png";
-import fanRenImage from "@/assets/donghua-fan-ren.png";
-import guangYinImage from "@/assets/donghua-guang-yin.jpg";
-import muShenImage from "@/assets/donghua-mu-shen.png";
+import fanRenImage from "@/assets/optimized/donghua-fan-ren.webp";
+import guangYinImage from "@/assets/optimized/donghua-guang-yin.webp";
+import muShenImage from "@/assets/optimized/donghua-mu-shen.webp";
 import xianNiImage from "@/assets/donghua-xian-ni.jpg";
-import jianLaiImage from "@/assets/donghua-jian-lai.jpg";
+import jianLaiImage from "@/assets/optimized/donghua-jian-lai.webp";
 import digitalTwinsCertificate from "@/assets/omdena/omdena-digitaltwins-cert.jpg";
 import skyMapsCertificate from "@/assets/omdena/omdena-skymaps-cert.jpg";
 import needEnergyImage from "@/assets/omdena/omdena-needenergy.jpg";
@@ -837,7 +837,7 @@ function Character({
       )}
       <Image
         src={characterPoses[active]}
-        alt=""
+        alt={tr(language, "Yangyang Cai illustrated character", "蔡阳阳的卡通形象")}
         width={393}
         height={373}
         priority
@@ -855,7 +855,7 @@ function Overview({
     <div className="overview-content">
       <h1>
         <span>{tr(language, "hi!", "你好！")}</span>{" "}
-        <strong>{tr(language, "i’m Yangyang", "我是阳阳")}</strong>
+        <strong>{tr(language, "i’m Yangyang Cai", "我是蔡阳阳")}</strong>
       </h1>
       <p className="overview-intro">
         {tr(
@@ -1306,11 +1306,11 @@ function Business({ language }: { language: Language }) {
             const tags = language === "zh" ? practice.tagsZh : practice.tags;
             if (index === 0) {
               return (
-                <article key={practice.title} className="practice-no-image mentoring-service-card">
+                <article key={practice.title} id="mentoring" className="practice-no-image mentoring-service-card">
                   <span className="work-sharing-icon"><GraduationCap aria-hidden="true" /></span>
                   <div className="mentoring-service-content">
                     <p className="venture-role">{language === "zh" ? practice.roleZh : practice.role}</p>
-                    <h4>{title}</h4>
+                    <h3>{title}</h3>
                     <p>{language === "zh" ? practice.descriptionZh : practice.description}</p>
                     <ProjectVisitLink href={practice.href}>{language === "zh" ? practice.linkLabelZh : practice.linkLabel} <ExternalLink aria-hidden="true" size={14} /></ProjectVisitLink>
                     <div className="venture-tags">{tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
@@ -1319,7 +1319,7 @@ function Business({ language }: { language: Language }) {
               );
             }
             return (
-              <article key={practice.title}>
+              <article key={practice.title} id={index === 1 ? "bootcamp" : "workshops"}>
                 <div className={`venture-preview practice-preview ${index === 1 ? "bootcamp-preview" : "workshop-preview"}`}>
                   <ExpandableImage
                     src={index === 1 ? bootcampLifecycleImage : workshopFeedbackImage}
@@ -1333,7 +1333,7 @@ function Business({ language }: { language: Language }) {
                 </div>
                 <div className="venture-copy">
                   <p className="venture-role">{language === "zh" ? practice.roleZh : practice.role}</p>
-                  <h4>{title}</h4>
+                  <h3>{title}</h3>
                   <p>{language === "zh" ? practice.descriptionZh : practice.description}</p>
                   {index === 1 && (
                     <div className="practice-impact-badges" aria-label={tr(language, "Bootcamp delivery highlights", "训练营成果")}>

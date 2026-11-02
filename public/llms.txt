@@ -22,6 +22,9 @@ Also known as: Nancy Cai, 蔡阳阳
 - About: https://yangyangcai.me/about/
 - Data engineering and cloud data platform work: https://yangyangcai.me/work/
 - Practical AI workshops, mentoring, and collaborative business projects: https://yangyangcai.me/business/
+  - AI-Data Engineering Bootcamp: https://yangyangcai.me/business/#bootcamp
+  - Practical AI workshops: https://yangyangcai.me/business/#workshops
+  - Mentoring and interview guidance: https://yangyangcai.me/business/#mentoring
 - Practical AI community and knowledge sharing: https://yangyangcai.me/community/
 - Green Certificate Shortfall Analytics case study: https://yangyangcai.me/projects/green-certificate-shortfall-analytics/
 - Contact and links: https://yangyangcai.me/links/

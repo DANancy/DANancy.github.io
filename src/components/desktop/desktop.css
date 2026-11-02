@@ -1044,7 +1044,7 @@
 .practice-preview.workshop-preview{background:#fff8f1;padding:.75rem}
 .practice-preview.workshop-preview img{object-fit:contain}
 .venture-copy{padding:1.6rem}
-.venture-copy h4{margin-top:.6rem;font-size:1.45rem}
+.venture-copy h3,.venture-copy h4{margin-top:.6rem;font-size:1.45rem}
 .venture-copy>p:not(.venture-role){margin-top:.7rem;color:#5d6762;line-height:1.6}
 .venture-testimonial{position:relative;margin:.78rem .15rem .35rem;padding:.85rem 1rem .82rem 3.45rem;border:1.5px solid var(--feedback-border,#d8b69f);border-radius:18px 18px 18px 6px;background-color:#fff!important;background-image:radial-gradient(circle at 94% 18%,var(--feedback-soft,#f8ded0) 0 3px,transparent 4px),radial-gradient(circle at 97% 30%,var(--feedback-soft,#f8ded0) 0 2px,transparent 3px);color:#34483e;box-shadow:3px 4px 0 var(--feedback-shadow,#b8795420)}
 .venture-testimonial::before{content:"“";position:absolute;left:.72rem;top:-.62rem;display:grid;place-items:center;width:38px;height:38px;border:2px solid #fff;border-radius:50%;background:var(--feedback-soft,#f8ded0);color:var(--feedback-ink,#92593a);font-family:Georgia,serif;font-size:2.35rem;font-weight:900;line-height:1;box-shadow:0 0 0 1px var(--feedback-border,#d8b69f),2px 3px 0 var(--feedback-shadow,#b8795424);rotate:-7deg}
@@ -2858,7 +2858,7 @@
     justify-content:center;
     padding:2rem;
   }
-  .ventures-page .practice-grid .venture-copy h4{font-size:clamp(1.55rem,2.5vw,2rem)}
+  .ventures-page .practice-grid .venture-copy h3,.ventures-page .practice-grid .venture-copy h4{font-size:clamp(1.55rem,2.5vw,2rem)}
   .ventures-page .practice-grid .venture-tags{margin-top:1.25rem}
 }
 @media(max-width:760px){
@@ -3328,7 +3328,10 @@
   background:linear-gradient(135deg,#f3faf6,#fffaf0);
 }
 .mentoring-service-content{min-width:0}
-.mentoring-service-content h4{margin:.65rem 0 0;font-size:clamp(1.5rem,2.5vw,2rem)}
+.mentoring-service-content h3,.mentoring-service-content h4{margin:.65rem 0 0;font-size:clamp(1.5rem,2.5vw,2rem)}
+/* Deep links (#mentoring, #bootcamp, #workshops, #guestbook) land below the sticky window bar. */
+.section-window{scroll-padding-top:64px}
+@media(max-width:760px){.desktop-shell{scroll-padding-top:16px}}
 .mentoring-service-content>p:not(.venture-role){margin:.7rem 0 0;color:#5d6762;font-size:1rem;line-height:1.7}
 .mentoring-service-content .venture-tags{margin-top:1.25rem}
 @media(max-width:760px){

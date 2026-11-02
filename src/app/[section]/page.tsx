@@ -8,7 +8,7 @@ import { defaultOgImage } from "@/lib/og";
 const sections = {
   about:{title:"About",description:"Meet Yangyang Cai, a Melbourne Senior Data Engineer and practical AI builder working across renewable energy, data platforms, education, and community."},
   work:{title:"Data Engineering & Cloud Data Platform Work",description:"Explore Yangyang Cai's data engineering work across renewable energy, Azure, AWS, Databricks, data pipelines, and modern cloud data platforms."},
-  business:{title:"Practical AI Workshops, Mentoring & Business",description:"Explore Yangyang Cai's practical AI workshops, AI data engineering training, mentoring, and collaborative business projects in Melbourne."},
+  business:{title:"Practical AI Workshops & Data Engineering Bootcamp in Melbourne",description:"Explore Yangyang Cai's practical AI workshops, AI data engineering training, mentoring, and collaborative business projects in Melbourne."},
   community:{title:"Practical AI Community & Knowledge Sharing",description:"Discover Yangyang Cai's Make AI Practical community work, hands-on AI workshops, mentoring, podcasts, and knowledge sharing in Melbourne."},
   fun:{title:"Just for Fun",description:"Books, animation, pottery, games, and events that keep Yangyang Cai curious beyond data and AI."},
   links:{title:"Contact, Friends & Links",description:"Contact Yangyang Cai and explore creative work by friends, communities, projects, and useful related links."},
