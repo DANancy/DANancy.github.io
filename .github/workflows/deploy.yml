@@ -29,7 +29,15 @@ jobs:
 
       - run: npm ci
 
-      - run: npm run build
+      # Turbopack's next/font/google resolution fails intermittently ("queries have exactly one entry"); retry clean builds.
+      - name: Build
+        run: |
+          for attempt in 1 2 3; do
+            rm -rf .next out
+            npm run build && exit 0
+            echo "::warning::Build attempt $attempt failed; retrying"
+          done
+          exit 1
         env:
           NEXT_PUBLIC_GA_MEASUREMENT_ID: ${{ vars.NEXT_PUBLIC_GA_MEASUREMENT_ID }}
           NEXT_PUBLIC_GUESTBOOK_URL: ${{ vars.NEXT_PUBLIC_GUESTBOOK_URL }}
