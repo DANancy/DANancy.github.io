@@ -213,7 +213,7 @@ export function DesktopPortfolio({
     return () => window.removeEventListener("keydown", close);
   }, [openSection]);
   useEffect(() => {
-    document.documentElement.lang = language === "zh" ? "zh-CN" : "en";
+    document.documentElement.lang = language === "zh" ? "zh-Hans" : "en";
   }, [language]);
   useEffect(() => {
     if (active === "overview") return;

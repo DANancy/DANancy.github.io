@@ -123,7 +123,7 @@ header.site-nav {
   min-height: 64px;
 }
 .brand-group { display: flex; align-items: center; gap: var(--sp-lg); flex-wrap: wrap; }
-.brand { display: flex; align-items: center; gap: var(--sp-sm); font-weight: 600; font-size: 1.05rem; color: var(--text-primary); }
+.brand { display: flex; align-items: center; gap: var(--sp-sm); font-weight: 600; font-size: 1.05rem; color: var(--text-primary); text-decoration: none; }
 .brand .mark {
   width: 32px; height: 32px; border-radius: var(--r-md);
   background: linear-gradient(135deg, var(--accent-cyan), var(--ink-deep));

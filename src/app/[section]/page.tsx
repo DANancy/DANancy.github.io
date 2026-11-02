@@ -3,9 +3,10 @@ import { notFound } from "next/navigation";
 import { DesktopPortfolio } from "@/components/desktop/DesktopPortfolio";
 import type { DesktopSection } from "@/data/desktop";
 import "@/components/desktop/desktop.css";
+import { defaultOgImage } from "@/lib/og";
 
 const sections = {
-  about:{title:"About Yangyang Cai",description:"Meet Yangyang Cai, a Melbourne Senior Data Engineer and practical AI builder working across renewable energy, data platforms, education, and community."},
+  about:{title:"About",description:"Meet Yangyang Cai, a Melbourne Senior Data Engineer and practical AI builder working across renewable energy, data platforms, education, and community."},
   work:{title:"Data Engineering & Cloud Data Platform Work",description:"Explore Yangyang Cai's data engineering work across renewable energy, Azure, AWS, Databricks, data pipelines, and modern cloud data platforms."},
   business:{title:"Practical AI Workshops, Mentoring & Business",description:"Explore Yangyang Cai's practical AI workshops, AI data engineering training, mentoring, and collaborative business projects in Melbourne."},
   community:{title:"Practical AI Community & Knowledge Sharing",description:"Discover Yangyang Cai's Make AI Practical community work, hands-on AI workshops, mentoring, podcasts, and knowledge sharing in Melbourne."},
@@ -29,8 +30,8 @@ export async function generateMetadata({params}:{params:Promise<{section:string}
     title:page.title,
     description:page.description,
     alternates:{canonical:`/${section}/`,languages:{en:`/${section}/`,"zh-Hans":`/zh-hans/${section}/`,"x-default":`/${section}/`}},
-    openGraph:{title:`${page.title} | Yangyang Cai`,description:page.description,url:`/${section}/`,type:"website",locale:"en_AU",images:[{url:"/assets/community-event.webp",width:1200,height:630,alt:"Yangyang Cai — data engineering, practical AI and community"}]},
-    twitter:{card:"summary_large_image",title:`${page.title} | Yangyang Cai`,description:page.description,images:["/assets/community-event.webp"]},
+    openGraph:{title:`${page.title} | Yangyang Cai`,description:page.description,url:`/${section}/`,type:"website",locale:"en_AU",images:[defaultOgImage]},
+    twitter:{card:"summary_large_image",title:`${page.title} | Yangyang Cai`,description:page.description,images:[defaultOgImage.url]},
   };
 }
 

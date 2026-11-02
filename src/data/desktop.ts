@@ -19,7 +19,7 @@ export const independentPractice = [
     description:"Successfully delivered across two cohorts, this self-designed 12-session (18-hour) bootcamp uses a public dataset to explore the complete data engineering lifecycle, dependable delivery, and practical AI support.",
     descriptionZh:"已成功完成两期。这是一套由我自主设计并授课、共 12 节（18 小时）的训练营，通过公开数据集探索完整的数据工程生命周期、可靠交付与实用 AI 支持。",
     tags:["Data Engineering","Databricks AI","Power BI MCP","Codex"], tagsZh:["数据工程","Databricks AI","Power BI MCP","Codex"],
-    href:"https://yangyangcai.me/projects/green-certificate-shortfall-analytics", linkLabel:"View Portfolio Demo", linkLabelZh:"查看作品集演示",
+    href:"https://yangyangcai.me/projects/green-certificate-shortfall-analytics/", linkLabel:"View Portfolio Demo", linkLabelZh:"查看作品集演示",
   },
   {
     title:"Practical AI Workshops", titleZh:"实用 AI 工作坊",

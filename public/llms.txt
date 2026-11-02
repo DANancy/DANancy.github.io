@@ -4,6 +4,18 @@ Yangyang Cai is a Melbourne-based Senior Data Engineer and practical AI builder 
 
 Canonical website: https://yangyangcai.me/
 Chinese version: https://yangyangcai.me/zh-hans/
+Also known as: Nancy Cai, 蔡阳阳
+
+## Key facts
+
+- Role: Senior Data Engineer at SmartestEnergy Australia, in the renewable energy industry, based in Melbourne, Victoria, Australia.
+- Experience: 10+ years in data engineering, data platforms and analytics; grew from Data Analyst to Senior Data Engineer across Auto-IT, AGL, Shell Energy and SmartestEnergy Australia.
+- Recognition: Best of 2024 (Shell Energy), Monthly Awesomeness (Shell Energy, May 2023), FY21 Top Learners (AGL).
+- Teaching: Founder and instructor of the AI-Data Engineering Bootcamp, a self-designed 12-session (18-hour) course delivered across two cohorts.
+- Workshops: Practical AI workshops delivered across four sessions for 25 participants, with an average rating of 4.45/5; Data & AI Lecturer with Make AI Practical (https://www.makeaipractical.com.au/).
+- Volunteer AI work: Four Omdena real-world AI challenges, progressing from Machine Learning Engineer to Lead Machine Learning Engineer.
+- Core tools: PySpark, SQL, Databricks, Azure Data Factory, Azure Synapse, AWS, Power BI, medallion architecture.
+- Profiles: LinkedIn https://www.linkedin.com/in/yangyangcai · GitHub https://github.com/DANancy
 
 ## Key pages
 

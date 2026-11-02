@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation'
 import { DesktopPortfolio } from '@/components/desktop/DesktopPortfolio'
 import type { DesktopSection } from '@/data/desktop'
 import '@/components/desktop/desktop.css'
+import { defaultOgImage } from '@/lib/og'
 
 const sections={
   about:{title:'关于我',description:'了解蔡阳阳在可再生能源、数据工程与实用 AI 领域的经历。'},
@@ -32,9 +33,8 @@ export async function generateMetadata({params}:{params:Promise<{section:string}
       canonical:'/zh-hans/'+section+'/',
       languages:{en:'/'+section+'/', 'zh-Hans':'/zh-hans/'+section+'/', 'x-default':'/'+section+'/'},
     },
-    openGraph:{title:page.title+' | 蔡阳阳',description:page.description,url:'/zh-hans/'+section+'/',type:'website',images:[{url:'/assets/community-event.webp',width:1200,height:630,alt:'蔡阳阳：数据、AI 与社区'}]},
-    twitter:{card:'summary_large_image',title:page.title+' | 蔡阳阳',description:page.description,images:['/assets/community-event.webp']},
-    other:{'content-language':'zh-CN'},
+    openGraph:{title:page.title+' | 蔡阳阳',description:page.description,url:'/zh-hans/'+section+'/',type:'website',locale:'zh_CN',images:[defaultOgImage]},
+    twitter:{card:'summary_large_image',title:page.title+' | 蔡阳阳',description:page.description,images:[defaultOgImage.url]},
   }
 }
 

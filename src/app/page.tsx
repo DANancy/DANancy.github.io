@@ -1,5 +1,7 @@
 import { DesktopPortfolio } from "@/components/desktop/DesktopPortfolio";
 import "@/components/desktop/desktop.css";
+import { personJsonLd } from "@/lib/person";
+import { defaultOgImage } from "@/lib/og";
 
 const profileJsonLd = {
   "@context": "https://schema.org",
@@ -18,32 +20,7 @@ const profileJsonLd = {
     inLanguage: "en-AU",
     isPartOf: { "@id": "https://yangyangcai.me/#website" },
     mainEntity: { "@id": "https://yangyangcai.me/#person" },
-  }, {
-    "@type": "Person",
-    "@id": "https://yangyangcai.me/#person",
-    name: "Yangyang Cai",
-    alternateName: "Nancy Cai",
-    url: "https://yangyangcai.me/",
-    jobTitle: "Senior Data Engineer",
-    description:
-      "Melbourne Senior Data Engineer working across renewable energy, data platforms, Databricks and practical AI.",
-    homeLocation: { "@type": "Place", name: "Melbourne, Victoria, Australia" },
-    knowsAbout: [
-      "Data engineering",
-      "Databricks",
-      "PySpark",
-      "SQL",
-      "Azure Data Factory",
-      "Renewable energy data",
-      "Practical artificial intelligence",
-      "Data platform architecture",
-    ],
-    sameAs: [
-      "https://www.linkedin.com/in/yangyangcai",
-      "https://github.com/DANancy",
-    ],
-    memberOf: { "@type": "Organization", name: "Make AI Practical", url: "https://www.makeaipractical.com.au/" },
-  }],
+  }, personJsonLd],
 };
 
 export const metadata = {
@@ -51,9 +28,9 @@ export const metadata = {
   openGraph:{
     title:"Yangyang Cai | Senior Data Engineer & Practical AI Builder",
     url:"/",
-    images:[{url:"/assets/community-event.webp",width:1200,height:630,alt:"Yangyang Cai — data, AI and community"}],
+    images:[defaultOgImage],
   },
-  twitter:{card:"summary_large_image",title:"Yangyang Cai | Senior Data Engineer & Practical AI Builder",description:"Melbourne Senior Data Engineer working across renewable energy, cloud data platforms, Databricks and practical AI.",images:["/assets/community-event.webp"]},
+  twitter:{card:"summary_large_image",title:"Yangyang Cai | Senior Data Engineer & Practical AI Builder",description:"Melbourne Senior Data Engineer working across renewable energy, cloud data platforms, Databricks and practical AI.",images:[defaultOgImage.url]},
 };
 
 export default function HomePage(){

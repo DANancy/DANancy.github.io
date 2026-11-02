@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import { greenCertificateOgImage } from "@/lib/og";
 
 const projectJsonLd = {
   "@context": "https://schema.org",
+  "@graph": [{
   "@type": "CreativeWork",
   "@id": "https://yangyangcai.me/projects/green-certificate-shortfall-analytics/#project",
   url: "https://yangyangcai.me/projects/green-certificate-shortfall-analytics/",
@@ -18,6 +20,14 @@ const projectJsonLd = {
     { "@type": "Thing", name: "Small-scale technology certificates" },
   ],
   image: "https://yangyangcai.me/assets/certificate-market.webp",
+  }, {
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://yangyangcai.me/" },
+      { "@type": "ListItem", position: 2, name: "Business", item: "https://yangyangcai.me/business/" },
+      { "@type": "ListItem", position: 3, name: "Australian Green Certificate Shortfall Analytics", item: "https://yangyangcai.me/projects/green-certificate-shortfall-analytics/" },
+    ],
+  }],
 };
 
 export const metadata: Metadata = {
@@ -37,13 +47,13 @@ export const metadata: Metadata = {
     url: "/projects/green-certificate-shortfall-analytics/",
     title: "Australian Green Certificate Shortfall Analytics | Yangyang Cai",
     description: "A practical, end-to-end renewable-energy data engineering case study using Australian certificate data.",
-    images: [{ url: "/assets/certificate-market.webp", width: 1200, height: 630, alt: "Green certificate analytics project" }],
+    images: [greenCertificateOgImage],
   },
   twitter: {
     card: "summary_large_image",
     title: "Australian Green Certificate Shortfall Analytics",
     description: "An end-to-end renewable-energy data engineering case study by Yangyang Cai.",
-    images: ["/assets/certificate-market.webp"],
+    images: [greenCertificateOgImage.url],
   },
 };
 

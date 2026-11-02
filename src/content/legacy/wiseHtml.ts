@@ -2,7 +2,7 @@ export const wiseBodyHtml = `
 <header class="site-nav">
   <div class="nav-inner">
     <div class="brand-group">
-      <div class="brand"><span class="mark">YC</span> Yangyang Cai</div>
+      <a class="brand" href="/" aria-label="Yangyang Cai home"><span class="mark">YC</span> Yangyang Cai</a>
       <span class="brand-sub">Independent Bootcamp Portfolio Demo</span>
     </div>
     <nav class="links">

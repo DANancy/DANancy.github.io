@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Fraunces, Fredoka, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
+import { defaultOgImage } from "@/lib/og";
 
 const fraunces = Fraunces({
   variable: "--font-fraunces",
@@ -65,13 +66,13 @@ export const metadata: Metadata = {
       "Melbourne Senior Data Engineer working across renewable energy, data platforms, Databricks and practical AI.",
     locale: "en_AU",
     alternateLocale: ["zh_CN"],
-    images: [{ url: "/assets/community-event.webp", width: 1200, height: 630, alt: "Yangyang Cai — data, AI and community" }],
+    images: [defaultOgImage],
   },
   twitter: {
     card: "summary_large_image",
     title: "Yangyang Cai | Senior Data Engineer & Practical AI Builder",
     description: "Data engineering, renewable energy, Databricks and practical AI in Melbourne.",
-    images: ["/assets/community-event.webp"],
+    images: [defaultOgImage.url],
   },
   robots: {
     index: true,
