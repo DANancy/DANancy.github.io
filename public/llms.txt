@@ -15,6 +15,7 @@ Also known as: Nancy Cai, 蔡阳阳
 - Workshops: Practical AI workshops delivered across four sessions for 25 participants, with an average rating of 4.45/5; Data & AI Lecturer with Make AI Practical (https://www.makeaipractical.com.au/).
 - Volunteer AI work: Four Omdena real-world AI challenges, progressing from Machine Learning Engineer to Lead Machine Learning Engineer.
 - Core tools: PySpark, SQL, Databricks, Azure Data Factory, Azure Synapse, AWS, Power BI, medallion architecture.
+- Media: Guest on MAP Connect 03, "用 AI 做生意：机会，在人与人真诚的连接里" (又怎样 SO WHAT podcast, 6 Nov 2026): https://www.xiaoyuzhoufm.com/episode/6ae58e5ac96c8942ec151319
 - Profiles: LinkedIn https://www.linkedin.com/in/yangyangcai · GitHub https://github.com/DANancy
 
 ## Key pages

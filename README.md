@@ -1,6 +1,6 @@
 # Yangyang Cai: Desktop Portfolio
 
-A static, single-page portfolio inspired by a calm desktop workspace. The overview loads first; About, Work, Community, Books, Just for Fun, and Contact open as separate in-page windows without route changes.
+A static portfolio inspired by a calm desktop workspace, in English and Simplified Chinese (`/zh-hans/`). Each section (About, Work, Business, Community, Just for Fun, Links) is its own pre-rendered route shown as a desktop window, so every page is crawlable on its own.
 
 ## Development
 
@@ -11,7 +11,12 @@ npm run lint
 npm run build
 ```
 
-The Next.js static export is written to `out/`. GitHub Pages deployment runs through `.github/workflows/deploy.yml` after pushes to `main`.
+The Next.js static export is written to `out/`. `npm run build` also runs `scripts/set-html-lang.mjs`, which marks the Chinese pages `lang="zh-Hans"`. GitHub Pages deployment runs through `.github/workflows/deploy.yml` after pushes to `main` (Node 22; the build is retried up to 3 times because Turbopack's Google Fonts loader fails intermittently).
+
+Other scripts:
+
+- `node scripts/validate-seo.mjs`: after a build, checks internal links, JSON-LD and that `robots.txt`, `sitemap.xml` and `llms.txt` exist
+- `node scripts/optimize-images.mjs`: regenerates web-sized WebP copies of heavy images into `src/assets/optimized/`
 
 ## Content and assets
 
@@ -20,6 +25,8 @@ The Next.js static export is written to `out/`. GitHub Pages deployment runs thr
 - Main interaction component: `src/components/desktop/DesktopPortfolio.tsx`
 - Visual system: `src/components/desktop/desktop.css`
 - Analytics integration: `src/components/analytics/GoogleAnalytics.tsx`
+- SEO: per-page metadata in `src/app/**/page.tsx`, shared entities in `src/lib/` (`person.ts`, `podcast.ts`, `og.tsx`), generated share images in `src/app/og/`, plus `src/app/sitemap.ts`, `src/app/robots.ts` and `public/llms.txt`
+- Design decisions and SEO history: `design.md`
 - Imported application images: `src/assets/`
 - URL-addressable static images: `public/assets/`
 

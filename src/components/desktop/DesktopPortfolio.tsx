@@ -62,6 +62,7 @@ import funCharacter from "@/assets/web/character-fun.png";
 import linksCharacter from "@/assets/web/character-links.png";
 import contactCharacter from "@/assets/web/character-contact.png";
 import backyardOrchard from "@/assets/optimized/yangyang-backyard-orchard.webp";
+import backyardOrchardSmall from "@/assets/optimized/yangyang-backyard-orchard-1024.webp";
 import bootcampLifecycleImage from "@/assets/web/data-engineering-bootcamp.png";
 import homeEssentialsImage from "@/assets/web/home-essentials.jpg";
 import renJunLogo from "../../../assets/logo.jpg";
@@ -226,10 +227,16 @@ export function DesktopPortfolio({
       windowRef.current?.focus({ preventScroll: true });
       // Deep links such as /links/#guestbook land on that block instead of the top.
       const hash = window.location.hash.slice(1);
-      if (hash)
-        windowRef.current
-          ?.querySelector<HTMLElement>(`#${CSS.escape(hash)}`)
-          ?.scrollIntoView({ block: "start", behavior: "auto" });
+      const target = hash ? windowRef.current?.querySelector<HTMLElement>(`#${CSS.escape(hash)}`) : null;
+      if (target) {
+        target.scrollIntoView({ block: "start", behavior: "auto" });
+        // On desktop the window panel scrolls; scrollIntoView also nudges the page behind it, so undo that.
+        const panel = windowRef.current;
+        if (panel && panel.scrollHeight > panel.clientHeight) {
+          panel.closest<HTMLElement>(".desktop-shell")?.scrollTo({ top: 0 });
+          window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+        }
+      }
     });
     return () => cancelAnimationFrame(frame);
   }, [active]);
@@ -395,7 +402,11 @@ export function DesktopPortfolio({
       {active !== "overview" && <PersistentFooter language={language} />}
       <InterestPanel language={language} />
       <div className="original-fruit-background" aria-hidden>
-        <Image src={backyardOrchard} alt="" sizes="100vw" priority />
+        {/* Decorative backdrop: load after text-critical files, and send phones a smaller copy. */}
+        <picture>
+          <source media="(max-width: 760px)" srcSet={backyardOrchardSmall.src} />
+          <Image src={backyardOrchard} alt="" sizes="100vw" loading="eager" fetchPriority="low" />
+        </picture>
       </div>
     </main>
   );
@@ -499,7 +510,6 @@ function InterestPanel({ language, showTrigger = true }: { language: Language; s
         ref={triggerRef}
         className="interest-trigger"
         type="button"
-        aria-label={tr(language, "Register your interest", "登记意向")}
         aria-expanded={isOpen}
         aria-controls="interest-panel"
         onClick={() => setIsOpen((value) => !value)}
@@ -797,7 +807,7 @@ function LanguageSwitch({
         type="button"
         className={language === "en" ? "active" : ""}
         aria-pressed={language === "en"}
-        aria-label={tr(language, "Switch to English", "切换到英文")}
+        aria-label={tr(language, "EN – switch to English", "EN – 切换到英文")}
         onClick={() => onLanguageChange("en")}
       >
         EN
@@ -806,7 +816,7 @@ function LanguageSwitch({
         type="button"
         className={language === "zh" ? "active" : ""}
         aria-pressed={language === "zh"}
-        aria-label={tr(language, "Switch to Chinese", "切换到中文")}
+        aria-label={tr(language, "中文 – switch to Chinese", "中文 – 切换到中文")}
         onClick={() => onLanguageChange("zh")}
       >
         中文
@@ -1363,7 +1373,7 @@ function Business({ language }: { language: Language }) {
         <div className="venture-family-group">
           <header className="venture-group-heading">
             <span><House aria-hidden="true" /> {tr(language, "Family-focused projects", "以家庭为单位的项目")}</span>
-            <h4>Home Studio</h4>
+            <h3>Home Studio</h3>
             <p>{tr(language, "Projects created around the everyday needs and possibilities of home life.", "围绕家庭生活中的日常需求与可能性开展的项目。")}</p>
           </header>
           <div className="venture-grid">
@@ -1457,14 +1467,14 @@ function BusinessInterestSection({ language }: { language: Language }) {
     <section className="business-interest-section" aria-labelledby="business-interest-title">
       <div className="business-interest-heading">
          <span><Sparkles aria-hidden="true" />{tr(language, "Learn or build together", "一起学习或共创")}</span>
-         <h3 id="business-interest-title">{tr(language, "Register your interest", "登记您的兴趣")}</h3>
+         <h2 id="business-interest-title">{tr(language, "Register your interest", "登记您的兴趣")}</h2>
          <p>{tr(language, "Whether you’re looking for support, a learning experience, or a partner for a practical idea, tell me what you have in mind.", "无论您想获得专业支持、参加学习活动，还是寻找伙伴一起做项目，都可以告诉我您的想法。")}</p>
       </div>
       <div className="business-interest-options">
         {services.map(({ icon: Icon, title, description }) => (
           <article key={title}>
             <Icon aria-hidden="true" />
-            <div><h4>{title}</h4><p>{description}</p></div>
+            <div><h3>{title}</h3><p>{description}</p></div>
           </article>
         ))}
       </div>
@@ -1599,6 +1609,46 @@ function ToolsAndSkills({ language }: { language: Language }) {
       tone: "orange",
     },
     {
+      title: "Agent Skills by mblode",
+      label: tr(language, "Quality agent skills", "质量把关智能体技能"),
+      description: tr(
+        language,
+        "Matthew Blode’s open-source agent skills that help AI coding agents ship polished, production-quality work instead of AI slop.",
+        "Matthew Blode 的开源智能体技能集，帮助 AI 编程助手交付精致、可上线的成果，而不是粗糙的 AI 产出。",
+      ),
+      topics: [
+        tr(language, "Code quality", "代码质量"),
+        tr(language, "UI polish", "界面打磨"),
+        tr(language, "Skill authoring", "技能编写"),
+      ],
+      href: "https://github.com/mblode/agent-skills",
+      linkLabel: tr(language, "Explore the skills", "了解这些技能"),
+      watchHref: null,
+      watchLabel: null,
+      icon: Wrench,
+      tone: "blue",
+    },
+    {
+      title: "FAT Agent",
+      label: tr(language, "Website audit plugin", "网站审查插件"),
+      description: tr(
+        language,
+        "A free, open-source Claude Code plugin that audits a live website for SEO, security, accessibility and speed, then helps fix what it finds.",
+        "免费开源的 Claude Code 插件，可审查线上网站的 SEO、安全、无障碍与速度，并协助修复发现的问题。",
+      ),
+      topics: [
+        "SEO",
+        tr(language, "Security", "安全"),
+        tr(language, "Accessibility", "无障碍"),
+      ],
+      href: "https://github.com/spruikco/fat-agent-skill",
+      linkLabel: tr(language, "Explore FAT Agent", "了解 FAT Agent"),
+      watchHref: null,
+      watchLabel: null,
+      icon: Bug,
+      tone: "green",
+    },
+    {
       title: "OpenMontage",
       label: tr(language, "Creative production tool", "创意制作工具"),
       description: tr(
@@ -1649,13 +1699,13 @@ function ToolsAndSkills({ language }: { language: Language }) {
          <p className="page-pill">
            {tr(language, "Creative experiments", "创意实验")}
          </p>
-        <h3>
+        <h2>
           {tr(
             language,
              "Creative Systems I’m Exploring",
              "正在探索的创意系统",
           )}
-        </h3>
+        </h2>
         <p>
           {tr(
             language,
@@ -1673,7 +1723,7 @@ function ToolsAndSkills({ language }: { language: Language }) {
                 <Icon aria-hidden="true" />
               </span>
               <p className="learning-card-label">{tool.label}</p>
-              <h4>{tool.title}</h4>
+              <h3>{tool.title}</h3>
               <p>{tool.description}</p>
               <div>
                 {tool.topics.map((topic) => (
@@ -2256,6 +2306,44 @@ function Community({ language }: { language: Language }) {
             <span>{tr(language, "Conversations with practical AI builders and community voices.", "与实用 AI 实践者和社区伙伴展开真实对话。")}</span>
           </header>
           <div className="map-podcast-shelf">
+        <section className="map-podcast-session map-podcast-featured" aria-labelledby="map-podcast-title-03">
+          <div className="map-podcast-icon">
+            <Headphones aria-hidden="true" />
+          </div>
+          <div className="map-podcast-copy">
+            <span className="map-podcast-guest-badge"><Star aria-hidden="true" />{tr(language, "I’m the guest on this episode", "本期嘉宾是我")}</span>
+            <p>{tr(language, "MAP Connect Podcast · Episode 03", "MAP Connect 播客 · 第 03 期")}</p>
+            <h3 id="map-podcast-title-03">
+              {tr(
+                language,
+                "Doing Business with AI: Opportunity Lives in Genuine Human Connection",
+                "用 AI 做生意：机会，在人与人真诚的连接里",
+              )}
+            </h3>
+            <p className="map-podcast-description">
+              {tr(
+                language,
+                "I share a product I built that never took off, why I listen to what people are working on before talking about AI, how helping a friend with a website grew into running Home Essentials together, and how to decide when a task should go to AI.",
+                "我分享了一个做出来却没推广起来的产品、认识新朋友时为什么先听别人在做什么、从帮朋友做网站到一起经营 Home Essentials，以及如何判断一件事该不该交给 AI。",
+              )}
+            </p>
+            <div className="map-podcast-meta">
+              <span><Clock3 aria-hidden="true" />{tr(language, "25 minutes", "25 分钟")}</span>
+              <span><CalendarDays aria-hidden="true" />{tr(language, "Published 6 November 2026", "发布于 2026 年 11 月 6 日")}</span>
+              <span><Presentation aria-hidden="true" />{tr(language, "Host Maggie · Guest Yangyang Cai", "主持 Maggie · 嘉宾 蔡阳阳")}</span>
+            </div>
+          </div>
+          <a
+            className="map-podcast-cta"
+            href="https://www.xiaoyuzhoufm.com/episode/6ae58e5ac96c8942ec151319"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <Headphones size={17} aria-hidden="true" />
+            {tr(language, "Listen on Xiaoyuzhou", "在小宇宙收听")}
+            <ExternalLink size={15} aria-hidden="true" />
+          </a>
+        </section>
         <section className="map-podcast-session" aria-labelledby="map-podcast-title">
           <div className="map-podcast-icon">
             <Headphones aria-hidden="true" />
@@ -3505,7 +3593,6 @@ function Links({ language }: { language: Language }) {
     { id: "people" as const, label: tr(language, "People & Services", "人物与服务") },
     { id: "tools" as const, label: tr(language, "Tools & Technology", "工具与科技") },
   ];
-  const visibleFriends = friends.filter((item) => item.group === activeFriendGroup);
   return (
     <div className="window-page links-page">
       <PageIntro
@@ -3633,10 +3720,11 @@ function Links({ language }: { language: Language }) {
               `${friendGroups.find((group) => group.id === activeFriendGroup)?.label}朋友链接`,
             )}
           >
-            {visibleFriends.map((item) => {
+            {/* Every group stays in the HTML so crawlers see all links; inactive tabs are just hidden. */}
+            {friends.map((item) => {
               const FriendIcon = ("icon" in item ? item.icon : undefined) ?? Globe2;
               return (
-              <article key={item.href}>
+              <article key={item.href} hidden={item.group !== activeFriendGroup}>
                 {"image" in item && item.image ? (
                   <ExpandableImage
                     src={item.image}

@@ -10,6 +10,19 @@ No new content; only changes to how existing pages are built and described.
 2. **Headings & name**: home h1 → `i’m Yangyang Cai` / `我是蔡阳阳`; Business offerings promoted h4 → h3 with anchors `#mentoring`, `#bootcamp`, `#workshops` (also listed in `llms.txt`); avatar alt text added.
 3. **Titles**: Business → `Practical AI Workshops & Data Engineering Bootcamp in Melbourne`; Chinese About/Work/Business/Community titles made descriptive.
 
+## 0b. Done: performance & security pass (2026-11-05, approved in chat)
+
+1. **Mobile speed**: orchard backdrop no longer preloaded at high priority (`fetchPriority="low"`), phones get a 1024px copy (77 KB vs 234 KB); Google Analytics loads `lazyOnload`.
+2. **Crawlable links**: all Links-page friend groups render in HTML (inactive tabs use `hidden`), so People and Tools entries are indexable.
+3. **New tool links**: FAT Agent (spruikco/fat-agent-skill) and Agent Skills by mblode added to Fun → "Creative Systems I'm Exploring" (not "Made by friends": neither is by a friend).
+4. **Security**: case-study chat renders visitor questions as text, not HTML; Next.js 16.2.10 → 16.4.5 (clears the critical advisory); `npm audit fix` leaves 8 moderate lint-tool-only findings.
+
+5. **Follow-ups (2026-11-06)**: MAP Connect 03 (Yangyang as guest) featured first on Community with `PodcastEpisode` JSON-LD and an llms.txt entry; heading order fixed on Business and Fun (tags only, pixel-identical); EN/中文/Register-interest accessible names now include the visible text; desktop hash links no longer shift the window; CI on Node 22 with checkout/setup-node v5; README refreshed.
+
+6. **Phone nav (2026-11-06, chosen by owner)**: the bottom bar is a swipeable row of icon + label links with the current page centred, replacing the 7-column dock whose cells were narrower than the links (labels overlapped); extra end space keeps Connect clear of the Register interest tab.
+
+Not done (needs owner or design decision): undeploy the unused `knowledge-agent-interest` Apps Script; self-host fonts (372 KB, also fixes the flaky build); colour contrast of the orange home heading (#ed8b00, 2.53:1) and a Fun-page label (#b86632 on #f7eee8, 3.68:1); mobile podcast cards are wider than their shelf and clip on the right.
+
 Sections below are the deferred Notes plan, kept for when writing becomes possible.
 
 

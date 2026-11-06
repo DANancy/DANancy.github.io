@@ -236,7 +236,13 @@ export default function GreenCertificateLegacyPage() {
       const isUser = role === "user";
       row.innerHTML = `
     <div class="chat-avatar ${isUser ? "user" : "bot"}">${isUser ? "YC" : "AI"}</div>
-    <div class="chat-bubble ${isUser ? "q" : "a"} ${extraClass || ""}">${html}</div>`;
+    <div class="chat-bubble ${isUser ? "q" : "a"} ${extraClass || ""}"></div>`;
+      // Visitor questions are plain text; only the built-in answers carry markup.
+      const bubble = row.querySelector<HTMLElement>(".chat-bubble");
+      if (bubble) {
+        if (isUser) bubble.textContent = html;
+        else bubble.innerHTML = html;
+      }
       thread.appendChild(row);
       thread.scrollTop = thread.scrollHeight;
     }

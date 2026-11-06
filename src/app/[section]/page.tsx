@@ -4,6 +4,7 @@ import { DesktopPortfolio } from "@/components/desktop/DesktopPortfolio";
 import type { DesktopSection } from "@/data/desktop";
 import "@/components/desktop/desktop.css";
 import { defaultOgImage } from "@/lib/og";
+import { guestEpisodesJsonLd } from "@/lib/podcast";
 
 const sections = {
   about:{title:"About",description:"Meet Yangyang Cai, a Melbourne Senior Data Engineer and practical AI builder working across renewable energy, data platforms, education, and community."},
@@ -49,6 +50,7 @@ export default async function SectionPage({params}:{params:Promise<{section:stri
     {"@type":"Question",name:"What does the AI-Data Engineering Bootcamp cover?",acceptedAnswer:{"@type":"Answer",text:"The 12-session bootcamp uses a public dataset to explore the end-to-end data engineering lifecycle, dependable delivery, Databricks AI, Power BI MCP, and practical AI support."}},
     {"@type":"Question",name:"How can I discuss mentoring or a collaboration?",acceptedAnswer:{"@type":"Answer",text:"Use the interest form on this page or contact Yangyang through LinkedIn or email. Share the outcome you are looking for so the next conversation can stay practical and focused."}},
   ]});
+  if(section==="community") graph.push(...guestEpisodesJsonLd);
   const jsonLd={
     "@context":"https://schema.org",
     "@graph":graph,

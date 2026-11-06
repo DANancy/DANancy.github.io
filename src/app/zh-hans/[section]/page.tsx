@@ -4,6 +4,7 @@ import { DesktopPortfolio } from '@/components/desktop/DesktopPortfolio'
 import type { DesktopSection } from '@/data/desktop'
 import '@/components/desktop/desktop.css'
 import { defaultOgImage } from '@/lib/og'
+import { guestEpisodesJsonLd } from '@/lib/podcast'
 
 const sections={
   about:{title:'关于我：墨尔本高级数据工程师',description:'了解蔡阳阳在可再生能源、数据工程与实用 AI 领域的经历。'},
@@ -52,6 +53,7 @@ export default async function ChineseSectionPage({params}:{params:Promise<{secti
     {'@type':'Question',name:'AI 数据工程训练营涵盖哪些内容？',acceptedAnswer:{'@type':'Answer',text:'这套 12 节训练营使用公开数据集，探索端到端数据工程生命周期、可靠交付、Databricks AI、Power BI MCP 与实用 AI 支持。'}},
     {'@type':'Question',name:'如何沟通导师辅导或合作？',acceptedAnswer:{'@type':'Answer',text:'可以使用本页的意向登记表，或通过 LinkedIn 和电子邮件联系阳阳。请说明希望实现的结果，以便后续沟通更务实、更聚焦。'}},
   ]})
+  if(section==='community') graph.push(...guestEpisodesJsonLd)
   const jsonLd={
     '@context':'https://schema.org',
     '@graph':graph,

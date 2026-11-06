@@ -27,6 +27,7 @@ const sources = [
 
 // The orchard backdrop renders full-width on every page, so keep its width and trade a little quality for size.
 const backdrop = { source: "src/assets/web/yangyang-backyard-orchard.webp", quality: 62 };
+const mobileBackdropWidth = 1024;
 
 fs.mkdirSync(outputDir, { recursive: true });
 
@@ -43,3 +44,10 @@ async function write(source, quality, resize) {
 
 for (const source of sources) await write(source, 80, true);
 await write(backdrop.source, backdrop.quality, false);
+
+// Phones get a narrower backdrop via <picture> in DesktopPortfolio.
+await sharp(backdrop.source)
+  .resize({ width: mobileBackdropWidth })
+  .webp({ quality: backdrop.quality })
+  .toFile(path.join(outputDir, `yangyang-backyard-orchard-${mobileBackdropWidth}.webp`));
+console.log(`backdrop → ${mobileBackdropWidth}px mobile copy`);
