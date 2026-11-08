@@ -49,14 +49,18 @@ export function GoogleAnalytics() {
   );
 }
 
+// Only the landing page view is sent here: GA4 Enhanced Measurement ("page changes based on
+// browser history events") already records client-side navigations, so sending those too doubles them.
+let landingPageViewSent = false;
+
 function GoogleAnalyticsPageView() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    const query = searchParams.toString();
+    if (landingPageViewSent) return;
+    landingPageViewSent = true;
     trackEvent("page_view", {
-      page_path: query ? `${pathname}?${query}` : pathname,
       page_location: window.location.href,
       page_title: document.title,
     });
