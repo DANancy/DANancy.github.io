@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Fraunces, Fredoka, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     template: "%s | Yangyang Cai",
   },
   description:
-    "Yangyang Cai is a Melbourne Senior Data Engineer working across renewable energy, Databricks, data platforms and practical AI. Explore her projects, workshops and community work.",
+    "Melbourne Senior Data Engineer in renewable energy and practical AI builder. Explore Yangyang Cai's data projects, AI workshops, bootcamp and community.",
   applicationName: "Yangyang Cai Portfolio",
   authors: [{ name: "Yangyang Cai", url: "https://yangyangcai.me" }],
   creator: "Yangyang Cai",
@@ -81,7 +81,13 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: "/favicon.svg",
+    apple: "/apple-icon.png",
   },
+  referrer: "strict-origin-when-cross-origin",
+};
+
+export const viewport: Viewport = {
+  themeColor: "#276f52",
 };
 
 export default function RootLayout({

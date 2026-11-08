@@ -33,7 +33,7 @@ const projectJsonLd = {
 export const metadata: Metadata = {
   title: "Australian Green Certificate Shortfall Analytics",
   description:
-    "An end-to-end data engineering portfolio project by Yangyang Cai exploring Australian LGC and STC certificate shortfalls with public data, analytics and visualisation.",
+    "Yangyang Cai's end-to-end data engineering case study of Australian LGC and STC certificate shortfalls, using public data, analytics and visualisation.",
   keywords: [
     "Australian renewable energy certificate data",
     "LGC shortfall analytics",

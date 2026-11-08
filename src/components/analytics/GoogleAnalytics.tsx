@@ -11,6 +11,11 @@ declare global {
   }
 }
 
+/** Sends a GA4 event. Safe before gtag.js loads (calls queue in dataLayer) and when analytics is disabled. */
+export function trackEvent(name: string, params: Record<string, unknown> = {}) {
+  window.gtag?.("event", name, params);
+}
+
 export function GoogleAnalytics() {
   const measurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
@@ -20,41 +25,42 @@ export function GoogleAnalytics() {
 
   return (
     <>
+      {/* Defines the gtag queue while the HTML is parsed, so page views and events sent
+          before the deferred gtag.js finishes loading are queued instead of dropped. */}
+      <script
+        id="google-analytics-init"
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            window.gtag = window.gtag || function(){dataLayer.push(arguments);};
+            gtag('js', new Date());
+            gtag('config', '${measurementId}', { send_page_view: false });
+          `,
+        }}
+      />
       <Script
         src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`}
         strategy="lazyOnload"
       />
-      <Script id="google-analytics" strategy="lazyOnload">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          window.gtag = gtag;
-          gtag('js', new Date());
-          gtag('config', '${measurementId}', {
-            anonymize_ip: true,
-            send_page_view: false
-          });
-        `}
-      </Script>
       <Suspense fallback={null}>
-        <GoogleAnalyticsPageView measurementId={measurementId} />
+        <GoogleAnalyticsPageView />
       </Suspense>
     </>
   );
 }
 
-function GoogleAnalyticsPageView({ measurementId }: { measurementId: string }) {
+function GoogleAnalyticsPageView() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    if (!window.gtag) return;
     const query = searchParams.toString();
-    window.gtag("config", measurementId, {
+    trackEvent("page_view", {
       page_path: query ? `${pathname}?${query}` : pathname,
-      anonymize_ip: true,
+      page_location: window.location.href,
+      page_title: document.title,
     });
-  }, [measurementId, pathname, searchParams]);
+  }, [pathname, searchParams]);
 
   return null;
 }

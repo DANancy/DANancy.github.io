@@ -23,7 +23,9 @@ No new content; only changes to how existing pages are built and described.
 
 7. **Home event button (2026-11-08, owner's design)**: an orange pill next to "Leave me a note" (same style) linking straight to the Community event card (`/community/#next-map-event`). Labels follow `mapEvent.date` in `src/data/desktop.ts`: "Upcoming event / 近期活动" and "Next MAP event" until that day ends (Melbourne), then "Latest event / 最新活动" and "Latest MAP event". Static HTML uses the build time; browsers re-check with their own clock. For a new event, update the date with the poster and link; set `eventShortcut` to `null` to hide the button.
 
-Not done (needs owner or design decision): undeploy the unused `knowledge-agent-interest` Apps Script; self-host fonts (372 KB, also fixes the flaky build); colour contrast of the orange home heading (#ed8b00, 2.53:1) and a Fun-page label (#b86632 on #f7eee8, 3.68:1); mobile podcast cards are wider than their shelf and clip on the right.
+8. **Measurement & small fixes (2026-11-08, from a FAT Agent audit)**: Google Analytics now queues calls from first paint and sends an explicit `page_view` per route (the deferred loader had been dropping landing page views); new events `generate_lead` (interest form) and `guestbook_note`, sent via `trackEvent()` in `src/components/analytics/GoogleAnalytics.tsx`. Home and case-study descriptions shortened to under 155 characters; added `theme-color`, `referrer` and a 180px `apple-icon.png`.
+
+Not done (needs owner or design decision): undeploy the unused `knowledge-agent-interest` Apps Script; self-host fonts (372 KB, also fixes the flaky build); privacy page for GA and form data; colour contrast of the orange home heading (#ed8b00, 2.53:1) and a Fun-page label (#b86632 on #f7eee8, 3.68:1); mobile podcast cards are wider than their shelf and clip on the right.
 
 Sections below are the deferred Notes plan, kept for when writing becomes possible.
 

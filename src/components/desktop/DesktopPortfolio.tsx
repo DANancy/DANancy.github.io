@@ -114,6 +114,7 @@ import skyMapsCertificate from "@/assets/omdena/omdena-skymaps-cert.jpg";
 import needEnergyImage from "@/assets/omdena/omdena-needenergy.jpg";
 import needEnergyCertificate from "@/assets/omdena/omdena-needenergy-cert.jpg";
 import brainpoolCertificate from "@/assets/omdena/omdena-brainpool-cert.jpg";
+import { trackEvent } from "@/components/analytics/GoogleAnalytics";
 
 const navIcons = {
   overview: House,
@@ -285,7 +286,7 @@ export function DesktopPortfolio({
   }, [active]);
   useEffect(() => {
     if (active !== "overview")
-      window.gtag?.("event", "portfolio_section_view", {
+      trackEvent("portfolio_section_view", {
         section: active,
         language,
       });
@@ -481,6 +482,8 @@ function InterestPanel({ language, showTrigger = true }: { language: Language; s
         if (!response.ok) throw new Error("Submission failed");
       }
       setSubmitState("success");
+      // GA4 recommended lead event, so form sign-ups can be counted as conversions.
+      trackEvent("generate_lead", { form: "interest", interests: selectedInterests.join(", "), language });
       form.reset();
       setOtherSelected(false);
     } catch {
@@ -4418,6 +4421,7 @@ function Guestbook({ language }: { language: Language }) {
       } else {
         setSubmitState("created");
       }
+      if (!editing) trackEvent("guestbook_note", { language });
       resetForm();
     } catch {
       setSubmitState("error");
