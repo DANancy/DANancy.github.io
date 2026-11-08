@@ -64,9 +64,19 @@ export const ventures = [
   },
 ];
 
-// Home-screen shortcut to the Make AI Practical section; set to null to hide it when there is no event to announce.
-export const eventShortcut: { label:string; labelZh:string; anchor:string } | null = {
-  label:"New event", labelZh:"最新活动", anchor:"make-ai-practical",
+// The event on the Community event card. For a new event, update this date along with the poster and link;
+// labels switch from "upcoming" to "latest" automatically once the day is over (Melbourne time).
+export const mapEvent = { date:"2026-11-08" };
+
+export function isEventPast(date: string, now: number) {
+  return now > Date.parse(`${date}T23:59:59+10:00`);
+}
+
+// Home-page button to the Community event card; set to null to hide it.
+export const eventShortcut: { anchor:string; upcoming:{ label:string; labelZh:string }; past:{ label:string; labelZh:string } } | null = {
+  anchor:"next-map-event",
+  upcoming:{ label:"Upcoming event", labelZh:"近期活动" },
+  past:{ label:"Latest event", labelZh:"最新活动" },
 };
 
 export const navigation: { id:Exclude<DesktopSection,"overview">; label:string; labelZh:string; tone:string }[] = [

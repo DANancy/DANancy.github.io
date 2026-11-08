@@ -3495,7 +3495,7 @@
   .guestbook-board-layer{padding-top:calc(64px + env(safe-area-inset-top, 0px))}
 }
 @media(prefers-reduced-motion:reduce){
-  .overview-guestbook-link,.overview-guestbook-link span,.overview-interest-button,.overview-interest-button span,.guestbook-note,.guestbook-prompts button,.guestbook-submit,.guestbook-colors label,.guestbook-shapes label{transition:none}
+  .overview-guestbook-link,.overview-guestbook-link span,.overview-event-link,.overview-event-link span,.overview-interest-button,.overview-interest-button span,.guestbook-note,.guestbook-prompts button,.guestbook-submit,.guestbook-colors label,.guestbook-shapes label{transition:none}
   .guestbook-note,.guestbook-dialog,.guestbook-ghosts i{animation:none}
 }
 
@@ -3595,16 +3595,10 @@ a:hover .cute-book-heart,a:focus-visible .cute-book-heart{scale:1.35}
   .section-window>.subpage-nav>a svg{width:18px;height:18px}
 }
 
-/* Home "New event" shortcut: same tile as the other sections, plus a NEW badge; links to the MAP section. */
-.nav-icon.event{position:relative;background:#ffe9d6;color:#c2410c}
-.nav-new-badge{position:absolute;top:-7px;right:-12px;padding:.12rem .38rem;border-radius:999px;background:#e8590c;color:#fff;font-family:var(--font-mono);font-size:.5rem;font-style:normal;font-weight:800;letter-spacing:.06em;line-height:1.2;box-shadow:0 3px 8px #e8590c40}
-/* Seven tiles: keep two rows on desktop (4 + 3, last row centred) and centre the odd tile on phones. */
-@media(min-width:761px){
-  .desktop-nav:has(.desktop-nav-event){grid-template-columns:repeat(8,minmax(0,1fr));column-gap:clamp(.75rem,2vw,1.5rem)}
-  .desktop-nav:has(.desktop-nav-event)>a{grid-column:span 2}
-  .desktop-nav:has(.desktop-nav-event)>a:nth-child(5){grid-column:2 / span 2}
-}
-@media(max-width:760px){
-  .desktop-nav>a.desktop-nav-event:nth-child(odd){grid-column:1 / -1}
-}
-@media(max-width:760px){#make-ai-practical{scroll-margin-top:24px}}
+/* Home "New event" button: same pill as "Leave me a note", in orange; links to the Next MAP event card. */
+.overview-event-link{display:inline-flex;align-items:center;gap:.45rem;padding:.5rem 1rem;border:1px solid #f7c9a4;border-radius:999px;background:#fff4eb;color:#b4400a;font-size:.88rem;font-weight:700;text-decoration:none;transition:background .2s,border-color .2s}
+.overview-event-link:hover{background:#ffe7d4;border-color:#eda774}
+.overview-event-link:focus-visible{outline:3px solid #f0a46b;outline-offset:2px}
+.overview-event-link span{transition:translate .2s}
+.overview-event-link:hover span{translate:3px 0}
+@media(max-width:760px){#next-map-event{scroll-margin-top:24px}}

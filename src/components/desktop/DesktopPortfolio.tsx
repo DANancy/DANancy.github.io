@@ -9,6 +9,7 @@ import {
   useId,
   useRef,
   useState,
+  useSyncExternalStore,
   type CSSProperties,
   type FormEvent,
   type ReactNode,
@@ -53,7 +54,7 @@ import {
   X,
   Zap,
 } from "lucide-react";
-import { eventShortcut, independentPractice, navigation, projects, ventures, type DesktopSection } from "@/data/desktop";
+import { eventShortcut, independentPractice, isEventPast, mapEvent, navigation, projects, ventures, type DesktopSection } from "@/data/desktop";
 import characterImage from "@/assets/web/yangyang-character.webp";
 import aboutCharacter from "@/assets/web/character-about.png";
 import workCharacter from "@/assets/web/character-work.png";
@@ -125,6 +126,16 @@ const navIcons = {
   contact: Send,
 };
 type Language = "en" | "zh";
+
+// Whether the Community event has ended: the static HTML uses the build time, the browser re-checks with its own clock.
+const noSubscribe = () => () => {};
+function useMapEventIsPast() {
+  return useSyncExternalStore(
+    noSubscribe,
+    () => isEventPast(mapEvent.date, Date.now()),
+    () => isEventPast(mapEvent.date, Number(process.env.BUILD_TIME) || Date.now()),
+  );
+}
 const languageStorageKey = "portfolio-language";
 const focusReturnStorageKey = "portfolio-focus-return";
 const tr = (language: Language, en: string, zh: string) =>
@@ -861,6 +872,7 @@ function Overview({
 }: {
   language: Language;
 }) {
+  const eventIsPast = useMapEventIsPast();
   return (
     <div className="overview-content">
       <h1>
@@ -892,6 +904,19 @@ function Overview({
           {tr(language, "Leave me a note", "去留言板给我留言")}
           <span aria-hidden="true">→</span>
         </Link>
+        {eventShortcut && (
+          <Link
+            className="overview-event-link"
+            href={`${language === "zh" ? "/zh-hans" : ""}/community/#${eventShortcut.anchor}`}
+          >
+            <CalendarDays aria-hidden="true" size={16} />
+            {(() => {
+              const label = eventIsPast ? eventShortcut.past : eventShortcut.upcoming;
+              return language === "zh" ? label.labelZh : label.label;
+            })()}
+            <span aria-hidden="true">→</span>
+          </Link>
+        )}
       </div>
       <nav
         className="desktop-nav"
@@ -912,18 +937,6 @@ function Overview({
             </Link>
           );
         })}
-        {eventShortcut && (
-          <Link
-            className="desktop-nav-event"
-            href={`${language === "zh" ? "/zh-hans" : ""}/community/#${eventShortcut.anchor}`}
-          >
-            <span className="nav-icon event" aria-hidden="true">
-              <CalendarDays size={24} />
-              <i className="nav-new-badge">{tr(language, "NEW", "新")}</i>
-            </span>
-            <b>{language === "zh" ? eventShortcut.labelZh : eventShortcut.label}</b>
-          </Link>
-        )}
       </nav>
     </div>
   );
@@ -2139,6 +2152,7 @@ function OmdenaExperience({ language }: { language: Language }) {
   );
 }
 function Community({ language }: { language: Language }) {
+  const eventIsPast = useMapEventIsPast();
   return (
     <div className="window-page community-page">
       <PageIntro
@@ -2150,7 +2164,7 @@ function Community({ language }: { language: Language }) {
           "我参与建设的社区，以及帮助人们学习、交流想法并建立有意义职业联系的行业活动。",
         )}
       />
-      <div className="community-layout" id="make-ai-practical">
+      <div className="community-layout">
         <div className="community-copy">
           <header className="community-organisation-heading">
             <p>
@@ -2262,8 +2276,8 @@ function Community({ language }: { language: Language }) {
             </figure>
           </div>
         </div>
-        <section className="community-invite community-upcoming">
-          <div className="upcoming-event-badge"><CalendarDays aria-hidden="true" />{tr(language, "Next MAP event", "MAP 下一场活动")}</div>
+        <section className="community-invite community-upcoming" id="next-map-event">
+          <div className="upcoming-event-badge"><CalendarDays aria-hidden="true" />{eventIsPast ? tr(language, "Latest MAP event", "MAP 最近一场活动") : tr(language, "Next MAP event", "MAP 下一场活动")}</div>
           <ExpandableImage
             src={mapPracticalDayPoster}
             alt={tr(
