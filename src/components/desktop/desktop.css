@@ -3594,3 +3594,17 @@ a:hover .cute-book-heart,a:focus-visible .cute-book-heart{scale:1.35}
   }
   .section-window>.subpage-nav>a svg{width:18px;height:18px}
 }
+
+/* Home "New event" shortcut: same tile as the other sections, plus a NEW badge; links to the MAP section. */
+.nav-icon.event{position:relative;background:#ffe9d6;color:#c2410c}
+.nav-new-badge{position:absolute;top:-7px;right:-12px;padding:.12rem .38rem;border-radius:999px;background:#e8590c;color:#fff;font-family:var(--font-mono);font-size:.5rem;font-style:normal;font-weight:800;letter-spacing:.06em;line-height:1.2;box-shadow:0 3px 8px #e8590c40}
+/* Seven tiles: keep two rows on desktop (4 + 3, last row centred) and centre the odd tile on phones. */
+@media(min-width:761px){
+  .desktop-nav:has(.desktop-nav-event){grid-template-columns:repeat(8,minmax(0,1fr));column-gap:clamp(.75rem,2vw,1.5rem)}
+  .desktop-nav:has(.desktop-nav-event)>a{grid-column:span 2}
+  .desktop-nav:has(.desktop-nav-event)>a:nth-child(5){grid-column:2 / span 2}
+}
+@media(max-width:760px){
+  .desktop-nav>a.desktop-nav-event:nth-child(odd){grid-column:1 / -1}
+}
+@media(max-width:760px){#make-ai-practical{scroll-margin-top:24px}}

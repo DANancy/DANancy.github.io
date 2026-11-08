@@ -64,6 +64,11 @@ export const ventures = [
   },
 ];
 
+// Home-screen shortcut to the Make AI Practical section; set to null to hide it when there is no event to announce.
+export const eventShortcut: { label:string; labelZh:string; anchor:string } | null = {
+  label:"New event", labelZh:"最新活动", anchor:"make-ai-practical",
+};
+
 export const navigation: { id:Exclude<DesktopSection,"overview">; label:string; labelZh:string; tone:string }[] = [
   {id:"about",label:"About",labelZh:"关于我",tone:"mint"},{id:"work",label:"Work",labelZh:"工作",tone:"amber"},{id:"business",label:"Business",labelZh:"业务与创业",tone:"pink"},{id:"community",label:"Community",labelZh:"社区",tone:"cyan"},
   {id:"fun",label:"Just for fun",labelZh:"兴趣",tone:"yellow"},{id:"links",label:"Connect",labelZh:"联系与链接",tone:"purple"},

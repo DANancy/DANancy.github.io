@@ -21,6 +21,8 @@ No new content; only changes to how existing pages are built and described.
 
 6. **Phone nav (2026-11-06, chosen by owner)**: the bottom bar is a swipeable row of icon + label links with the current page centred, replacing the 7-column dock whose cells were narrower than the links (labels overlapped); extra end space keeps Connect clear of the Register interest tab.
 
+7. **Home "New event" tile (2026-11-08, owner's design)**: a seventh home tile styled like the others with a NEW badge, linking to `/community/#make-ai-practical` (the MAP block with the Next MAP event card). Turn it off by setting `eventShortcut` to `null` in `src/data/desktop.ts`. Desktop keeps two rows (4 + 3, centred); phones centre the odd tile.
+
 Not done (needs owner or design decision): undeploy the unused `knowledge-agent-interest` Apps Script; self-host fonts (372 KB, also fixes the flaky build); colour contrast of the orange home heading (#ed8b00, 2.53:1) and a Fun-page label (#b86632 on #f7eee8, 3.68:1); mobile podcast cards are wider than their shelf and clip on the right.
 
 Sections below are the deferred Notes plan, kept for when writing becomes possible.

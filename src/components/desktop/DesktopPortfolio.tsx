@@ -53,7 +53,7 @@ import {
   X,
   Zap,
 } from "lucide-react";
-import { independentPractice, navigation, projects, ventures, type DesktopSection } from "@/data/desktop";
+import { eventShortcut, independentPractice, navigation, projects, ventures, type DesktopSection } from "@/data/desktop";
 import characterImage from "@/assets/web/yangyang-character.webp";
 import aboutCharacter from "@/assets/web/character-about.png";
 import workCharacter from "@/assets/web/character-work.png";
@@ -912,6 +912,18 @@ function Overview({
             </Link>
           );
         })}
+        {eventShortcut && (
+          <Link
+            className="desktop-nav-event"
+            href={`${language === "zh" ? "/zh-hans" : ""}/community/#${eventShortcut.anchor}`}
+          >
+            <span className="nav-icon event" aria-hidden="true">
+              <CalendarDays size={24} />
+              <i className="nav-new-badge">{tr(language, "NEW", "新")}</i>
+            </span>
+            <b>{language === "zh" ? eventShortcut.labelZh : eventShortcut.label}</b>
+          </Link>
+        )}
       </nav>
     </div>
   );
@@ -2138,7 +2150,7 @@ function Community({ language }: { language: Language }) {
           "我参与建设的社区，以及帮助人们学习、交流想法并建立有意义职业联系的行业活动。",
         )}
       />
-      <div className="community-layout">
+      <div className="community-layout" id="make-ai-practical">
         <div className="community-copy">
           <header className="community-organisation-heading">
             <p>
