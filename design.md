@@ -25,6 +25,10 @@ No new content; only changes to how existing pages are built and described.
 
 8. **Measurement & small fixes (2026-11-08, from a FAT Agent audit)**: Google Analytics now queues calls from first paint and sends the landing `page_view` explicitly (the deferred loader had been dropping it); later navigations are left to GA4 Enhanced Measurement's history-change page views, so they are not double-counted; new events `generate_lead` (interest form) and `guestbook_note`, sent via `trackEvent()` in `src/components/analytics/GoogleAnalytics.tsx`. Home and case-study descriptions shortened to under 155 characters; added `theme-color`, `referrer` and a 180px `apple-icon.png`.
 
+9. **New tool link (2026-11-09)**: NVIDIA Auto Ontology added to Fun → "Creative Systems I'm Exploring".
+
+10. **MAP Connect #4 + signup tracking (2026-11-09)**: the Community event card now shows MAP Connect #4 (24 Nov 2026, Yifei Wang) with a "Register on Eventbrite" button that hides once the event has passed; event details live in `mapEvent` (`src/data/desktop.ts`). The home event button's accessible name includes the event name. Any click on an Eventbrite link sends `workshop_signup_click`.
+
 Not done (needs owner or design decision): undeploy the unused `knowledge-agent-interest` Apps Script; self-host fonts (372 KB, also fixes the flaky build); privacy page for GA and form data; colour contrast of the orange home heading (#ed8b00, 2.53:1) and a Fun-page label (#b86632 on #f7eee8, 3.68:1); mobile podcast cards are wider than their shelf and clip on the right.
 
 Sections below are the deferred Notes plan, kept for when writing becomes possible.

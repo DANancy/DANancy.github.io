@@ -92,7 +92,7 @@ import ellaLiuPortfolioImage from "@/assets/friends/ella-liu-portfolio.jpg";
 import chlorophyllLearnImage from "@/assets/friends/chlorophyll-learn.jpg";
 import mapXiaohongshuImage from "../../../assets/Make AI Practical Xiaohongshu.png";
 import makeAiPracticalImage from "../../../assets/make_ai_practical.jpg";
-import mapPracticalDayPoster from "@/assets/optimized/map-practical-day-2026.webp";
+import mapEventPoster from "@/assets/optimized/map-connect-04-2026.webp";
 import aiWorkshopImage from "@/assets/optimized/ai_workshop.webp";
 import workshopFeedbackImage from "@/assets/optimized/workshop_feedback.webp";
 import bookClubSessionOneImage from "@/assets/optimized/book_club_1.webp";
@@ -911,6 +911,10 @@ function Overview({
           <Link
             className="overview-event-link"
             href={`${language === "zh" ? "/zh-hans" : ""}/community/#${eventShortcut.anchor}`}
+            aria-label={(() => {
+              const label = eventIsPast ? eventShortcut.past : eventShortcut.upcoming;
+              return language === "zh" ? `${label.labelZh}：${mapEvent.nameZh}` : `${label.label}: ${mapEvent.name}`;
+            })()}
           >
             <CalendarDays aria-hidden="true" size={16} />
             {(() => {
@@ -1677,6 +1681,26 @@ function ToolsAndSkills({ language }: { language: Language }) {
       tone: "green",
     },
     {
+      title: "Auto Ontology · NVIDIA",
+      label: tr(language, "Agentic analytics context layer", "智能分析语义上下文层"),
+      description: tr(
+        language,
+        "NVIDIA’s open-source framework that builds an ontology from enterprise metadata, so agents get trusted business definitions for text-to-SQL, with validation, provenance and MCP access.",
+        "NVIDIA 开源框架：从企业元数据构建本体，为智能体的 text-to-SQL 提供可信的业务定义，并支持校验、溯源与 MCP 接入。",
+      ),
+      topics: [
+        tr(language, "Ontology", "本体"),
+        "Text-to-SQL",
+        "MCP",
+      ],
+      href: "https://github.com/NVIDIA/auto-ontology",
+      linkLabel: tr(language, "Explore Auto Ontology", "了解 Auto Ontology"),
+      watchHref: null,
+      watchLabel: null,
+      icon: Database,
+      tone: "orange",
+    },
+    {
       title: "OpenMontage",
       label: tr(language, "Creative production tool", "创意制作工具"),
       description: tr(
@@ -2282,18 +2306,24 @@ function Community({ language }: { language: Language }) {
         <section className="community-invite community-upcoming" id="next-map-event">
           <div className="upcoming-event-badge"><CalendarDays aria-hidden="true" />{eventIsPast ? tr(language, "Latest MAP event", "MAP 最近一场活动") : tr(language, "Next MAP event", "MAP 下一场活动")}</div>
           <ExpandableImage
-            src={mapPracticalDayPoster}
+            src={mapEventPoster}
             alt={tr(
               language,
-              "2026 Make AI Practical Day poster: 8 November 2026, 2–5pm, University of Melbourne Building 189, with speakers Carmen Zhu, Wesley Li, Loki Yan, and Carol Liu",
-              "2026 Make AI Practical Day 活动海报：2026 年 11 月 8 日下午 2 点至 5 点，墨尔本大学 189 号楼，分享嘉宾 Carmen Zhu、Wesley Li、Loki Yan 与 Carol Liu",
+              "MAP Connect #4 poster: From Generative AI to Agentic Systems, an online Mandarin interview with Yifei Wang (Founder & CEO, AIBUILD) on Tuesday 24 November 2026, 7:30–8:30pm Melbourne time",
+              "MAP Connect 第四期海报：让 AI 真正行动起来，交给 AI 去办。分享嘉宾 Yifei Wang（AIBUILD 创始人兼 CEO），2026 年 11 月 24 日周二晚 7:30–8:30（墨尔本时间），线上直播，全程中文",
             )}
-            width={mapPracticalDayPoster.width}
-            height={mapPracticalDayPoster.height}
+            width={mapEventPoster.width}
+            height={mapEventPoster.height}
             sizes="(max-width: 900px) 100vw, 40vw"
             language={language}
             className="community-event-poster"
           />
+          {!eventIsPast && (
+            <a className="eventbrite-button community-upcoming-cta" href={mapEvent.registerUrl} target="_blank" rel="noreferrer">
+              {tr(language, "Register on Eventbrite", "在 Eventbrite 报名")}
+              <ExternalLink aria-hidden="true" size={15} />
+            </a>
+          )}
         </section>
         <section className="knowledge-agent-session community-knowledge-agent" aria-labelledby="community-knowledge-agent-title">
           <div className="knowledge-agent-overview">

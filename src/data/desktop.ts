@@ -64,9 +64,14 @@ export const ventures = [
   },
 ];
 
-// The event on the Community event card. For a new event, update this date along with the poster and link;
+// The event on the Community event card. For a new event, update these fields along with the poster;
 // labels switch from "upcoming" to "latest" automatically once the day is over (Melbourne time).
-export const mapEvent = { date:"2026-11-08" };
+export const mapEvent = {
+  date:"2026-11-24",
+  name:"MAP Connect #4: From Generative AI to Agentic Systems",
+  nameZh:"MAP Connect 第四期：让 AI 真正行动起来",
+  registerUrl:"https://www.eventbrite.com.au/e/in-mandarin-map-connect-4-from-generative-ai-to-agentic-systems-tickets-2004340503401",
+};
 
 export function isEventPast(date: string, now: number) {
   return now > Date.parse(`${date}T23:59:59+10:00`);

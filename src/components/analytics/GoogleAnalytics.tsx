@@ -45,6 +45,7 @@ export function GoogleAnalytics() {
       <Suspense fallback={null}>
         <GoogleAnalyticsPageView />
       </Suspense>
+      <SignupClickTracker />
     </>
   );
 }
@@ -65,6 +66,25 @@ function GoogleAnalyticsPageView() {
       page_title: document.title,
     });
   }, [pathname, searchParams]);
+
+  return null;
+}
+
+// Clicks on any Eventbrite link are the closest signal to an actual registration.
+function SignupClickTracker() {
+  useEffect(() => {
+    const onClick = (event: MouseEvent) => {
+      const link = (event.target as Element | null)?.closest?.("a[href*='eventbrite.']");
+      if (!(link instanceof HTMLAnchorElement)) return;
+      trackEvent("workshop_signup_click", {
+        link_url: link.href.split("?")[0],
+        link_text: link.textContent?.trim().slice(0, 100),
+        page_path: window.location.pathname,
+      });
+    };
+    document.addEventListener("click", onClick, { capture: true });
+    return () => document.removeEventListener("click", onClick, { capture: true });
+  }, []);
 
   return null;
 }
