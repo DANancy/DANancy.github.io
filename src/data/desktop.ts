@@ -67,10 +67,10 @@ export const ventures = [
 // The event on the Community event card. For a new event, update these fields along with the poster;
 // labels switch from "upcoming" to "latest" automatically once the day is over (Melbourne time).
 export const mapEvent = {
-  date:"2026-11-24",
-  name:"MAP Connect #4: From Generative AI to Agentic Systems",
-  nameZh:"MAP Connect 第四期：让 AI 真正行动起来",
-  registerUrl:"https://www.eventbrite.com.au/e/in-mandarin-map-connect-4-from-generative-ai-to-agentic-systems-tickets-2004340503401",
+  date:"2026-11-22",
+  name:"Stop Asking, Start Building: Hands-on Claude Workshop for Ops, Finance & HR",
+  nameZh:"Claude 实战工作坊：3 小时搭建你的 AI 工作流",
+  registerUrl:"https://www.eventbrite.com.au/e/stop-asking-start-building-hands-on-claude-workshop-for-ops-finance-hr-tickets-2003051035568",
 };
 
 export function isEventPast(date: string, now: number) {

@@ -3348,7 +3348,7 @@
 .overview-guestbook-link:hover span{translate:3px 0}
 
 /* Homepage actions */
-.overview-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem;margin-top:1.1rem}
+.overview-actions{display:flex;flex-direction:column;align-items:center;gap:.6rem;margin-top:1.1rem}
 .overview-interest-button{display:inline-flex;align-items:center;gap:.45rem;padding:.5rem 1.05rem;border:1px solid #174f3b;border-radius:999px;background:#276f52;color:#fff;font:inherit;font-size:.88rem;font-weight:700;cursor:pointer;box-shadow:0 6px 16px #102d2422;transition:background .2s,box-shadow .2s}
 .overview-interest-button:hover{background:#174f3b;box-shadow:0 8px 20px #102d2433}
 .overview-interest-button:focus-visible{outline:3px solid #9acbb5;outline-offset:2px}

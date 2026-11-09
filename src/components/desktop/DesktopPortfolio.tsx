@@ -92,7 +92,7 @@ import ellaLiuPortfolioImage from "@/assets/friends/ella-liu-portfolio.jpg";
 import chlorophyllLearnImage from "@/assets/friends/chlorophyll-learn.jpg";
 import mapXiaohongshuImage from "../../../assets/Make AI Practical Xiaohongshu.png";
 import makeAiPracticalImage from "../../../assets/make_ai_practical.jpg";
-import mapEventPoster from "@/assets/optimized/map-connect-04-2026.webp";
+import mapEventPoster from "@/assets/optimized/map-claude-workshop-2026.webp";
 import aiWorkshopImage from "@/assets/optimized/ai_workshop.webp";
 import workshopFeedbackImage from "@/assets/optimized/workshop_feedback.webp";
 import bookClubSessionOneImage from "@/assets/optimized/book_club_1.webp";
@@ -2309,8 +2309,8 @@ function Community({ language }: { language: Language }) {
             src={mapEventPoster}
             alt={tr(
               language,
-              "MAP Connect #4 poster: From Generative AI to Agentic Systems, an online Mandarin interview with Yifei Wang (Founder & CEO, AIBUILD) on Tuesday 24 November 2026, 7:30–8:30pm Melbourne time",
-              "MAP Connect 第四期海报：让 AI 真正行动起来，交给 AI 去办。分享嘉宾 Yifei Wang（AIBUILD 创始人兼 CEO），2026 年 11 月 24 日周二晚 7:30–8:30（墨尔本时间），线上直播，全程中文",
+              "Make AI Practical workshop poster, Claude edition: Done with manual repetitive tasks? Build your AI workflow in 3 hours. Bring your tasks and leave with 2 custom AI tools for finance, ops and HR. Co-hosted by Maggie and Michelle on Sunday 22 November 2026, 1–4pm, at 167 Coleman Parade, Glen Waverley. Only 15 seats; early bird A$99 until 15 November (A$119 after)",
+              "Make AI Practical 工作坊海报（Claude 版）：告别重复的手工任务，3 小时搭建你的 AI 工作流。带上你的任务和难题，带走 2 个定制 AI 工具，适合财务、运营和 HR。由 Maggie 和 Michelle 共同主持，2026 年 11 月 22 日周日下午 1–4 点，Glen Waverley 167 Coleman Parade，仅 15 个名额；11 月 15 日前早鸟价 A$99（原价 A$119）",
             )}
             width={mapEventPoster.width}
             height={mapEventPoster.height}
