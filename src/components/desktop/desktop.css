@@ -960,6 +960,13 @@
 .knowledge-agent-session{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(300px,.95fr);gap:1.25rem;padding:1.25rem;border:1px solid #cfe0d5;border-radius:18px;background:linear-gradient(135deg,#f4faf6,#fff);box-shadow:0 14px 32px #2d493810}
 .knowledge-agent-overview>p:first-child,.workshop-interest-form>div>p{margin:0;color:#287156;text-transform:uppercase;letter-spacing:.09em;font-family:var(--font-mono);font-size:.62rem;font-weight:700}
 .knowledge-agent-overview h3{margin:.35rem 0 .2rem;color:#29463a;font-size:clamp(1.55rem,2.8vw,2.2rem);line-height:1.15}
+/* Co-host sticker on the Knowledge Agent card: same playful motion as the podcast guest sticker, in the card's green. */
+.knowledge-agent-cohost{display:flex;align-items:center;gap:.4rem;width:fit-content;max-width:100%;margin:.45rem 0 .55rem;padding:.38rem .8rem;border:2px solid #fff;border-radius:999px;background:linear-gradient(135deg,#7fdcaa,#2f9a6c);color:#0f3626;font-size:.8rem;font-weight:800;box-shadow:0 6px 14px #1f6b4a40;rotate:-2.5deg;transform-origin:left center;animation:guest-sticker-in .7s cubic-bezier(.34,1.56,.64,1) both}
+.knowledge-agent-cohost svg{flex:none}
+.community-knowledge-agent:hover .knowledge-agent-cohost{animation:guest-wiggle .5s ease-in-out}
+.community-knowledge-agent:hover .knowledge-agent-cohost .map-podcast-guest-wave{animation:guest-wave 1.2s ease-in-out}
+@media(max-width:520px){.knowledge-agent-cohost{gap:.3rem;padding:.3rem .6rem;font-size:.7rem}.knowledge-agent-cohost svg{width:13px;height:13px}}
+@media(prefers-reduced-motion:reduce){.knowledge-agent-cohost,.community-knowledge-agent:hover .knowledge-agent-cohost,.community-knowledge-agent:hover .knowledge-agent-cohost .map-podcast-guest-wave{animation:none}}
 .knowledge-agent-overview>span,.workshop-interest-form>div>span{color:#65716a;font-size:.78rem;line-height:1.5}
 .knowledge-agent-description{margin:.9rem 0 0;color:#526159;font-size:.84rem;line-height:1.65}
 .knowledge-agent-runs{grid-template-columns:1fr 1fr;margin:.65rem 0 0}
@@ -3561,8 +3568,17 @@ a:hover .cute-book-heart,a:focus-visible .cute-book-heart{scale:1.35}
 .learning-card h3{grid-column:2;min-height:0;margin:.28rem 0 .65rem;color:#35323d;font-family:var(--font-sans);font-size:1.05rem;font-weight:600;line-height:1.25}
 /* Featured episode: Yangyang is the guest. */
 .map-podcast-session.map-podcast-featured{border:2px solid #e9b44c;background:linear-gradient(135deg,#fff8e8,#fff);box-shadow:0 16px 36px #b9852a24}
-.map-podcast-guest-badge{display:flex;align-items:center;gap:.35rem;width:fit-content;margin:0 0 .45rem;padding:.25rem .6rem;border-radius:999px;background:#f6c453;color:#5a3d00;font-size:.68rem;font-weight:700}
-.map-podcast-guest-badge svg{width:13px;height:13px;fill:currentColor}
+/* "Guest" sticker on the episode where Yangyang is the guest: tilted, wiggles in, the hand waves. */
+.map-podcast-guest-badge{display:flex;align-items:center;gap:.4rem;width:fit-content;max-width:100%;margin:.1rem 0 .6rem;padding:.38rem .8rem;border:2px solid #fff;border-radius:999px;background:linear-gradient(135deg,#ffd45e,#ff9f5a);color:#4a2a00;font-size:.8rem;font-weight:800;white-space:nowrap;box-shadow:0 6px 14px #d4780040;rotate:-2.5deg;transform-origin:left center;animation:guest-sticker-in .7s cubic-bezier(.34,1.56,.64,1) both}
+.map-podcast-guest-badge svg{flex:none;width:15px;height:15px}
+.map-podcast-guest-wave{display:inline-block;transform-origin:70% 80%;animation:guest-wave 2.4s ease-in-out .8s 3}
+.map-podcast-featured:hover .map-podcast-guest-badge{animation:guest-wiggle .5s ease-in-out}
+.map-podcast-featured:hover .map-podcast-guest-wave{animation:guest-wave 1.2s ease-in-out}
+@media(max-width:520px){.map-podcast-guest-badge{gap:.3rem;padding:.3rem .6rem;font-size:.7rem}.map-podcast-guest-badge svg{width:13px;height:13px}}
+@keyframes guest-sticker-in{from{opacity:0;scale:.6;rotate:-12deg}to{opacity:1;scale:1;rotate:-2.5deg}}
+@keyframes guest-wiggle{0%,100%{rotate:-2.5deg}25%{rotate:2deg}50%{rotate:-4deg}75%{rotate:1deg}}
+@keyframes guest-wave{0%,60%,100%{rotate:0deg}10%,30%{rotate:16deg}20%,40%{rotate:-8deg}}
+@media(prefers-reduced-motion:reduce){.map-podcast-guest-badge,.map-podcast-guest-wave,.map-podcast-featured:hover .map-podcast-guest-badge,.map-podcast-featured:hover .map-podcast-guest-wave{animation:none}}
 
 /* Phone nav: a swipeable row of icon + label links (replaces the 7-column dock, whose cells were narrower than the links and overlapped). */
 @media(max-width:760px){

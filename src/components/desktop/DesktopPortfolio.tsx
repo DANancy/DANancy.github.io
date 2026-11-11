@@ -31,6 +31,7 @@ import {
   Globe2,
   GraduationCap,
   Headphones,
+  Mic,
   Heart,
   House,
   Lightbulb,
@@ -1581,6 +1582,26 @@ function ReadingNext({ language }: { language: Language }) {
 function ToolsAndSkills({ language }: { language: Language }) {
   const tools = [
     {
+      title: "Apache Doris",
+      label: tr(language, "Real-time analytics database", "实时分析数据库"),
+      description: tr(
+        language,
+        "An open-source, real-time analytics database on an MPP architecture that runs OLAP queries, lakehouse analytics and hybrid search at petabyte scale on a single engine.",
+        "开源实时分析数据库，基于 MPP 架构，用一个引擎即可在 PB 级数据上运行 OLAP 查询、湖仓分析和混合检索。",
+      ),
+      topics: [
+        "OLAP",
+        "Lakehouse",
+        tr(language, "Hybrid search", "混合检索"),
+      ],
+      href: "https://doris.apache.org/",
+      linkLabel: tr(language, "Explore Apache Doris", "了解 Apache Doris"),
+      watchHref: null,
+      watchLabel: null,
+      icon: Zap,
+      tone: "blue",
+    },
+    {
       title: "UI/UX Pro Max",
       label: tr(language, "Design intelligence skill", "设计智能技能"),
       description: tr(
@@ -2329,6 +2350,7 @@ function Community({ language }: { language: Language }) {
           <div className="knowledge-agent-overview">
             <p>{tr(language, "Latest completed event · AI community workshop", "最近一场已结束活动 · AI 社区工作坊")}</p>
             <h3 id="community-knowledge-agent-title">{tr(language, "Build Your Knowledge Agent", "构建你的知识智能体")}</h3>
+            <strong className="knowledge-agent-cohost"><Users aria-hidden="true" size={15} />{tr(language, "Guess who co-hosted? Me!", "猜猜谁是联合主持？就是我！")}<span className="map-podcast-guest-wave" aria-hidden="true">🙌</span></strong>
             <span>{tr(language, "A practical, hands-on session by Make AI Practical", "Make AI Practical 实用型动手工作坊")}</span>
             <p className="knowledge-agent-description">
               {tr(language, "Build a working AI knowledge agent from information you already collect, and leave with a practical approach you can continue improving after the session.", "把日常收集的信息转化为可运行的 AI 知识智能体，并带走一套能够在活动后继续完善的实用方法。")}
@@ -2370,7 +2392,7 @@ function Community({ language }: { language: Language }) {
             <Headphones aria-hidden="true" />
           </div>
           <div className="map-podcast-copy">
-            <span className="map-podcast-guest-badge"><Star aria-hidden="true" />{tr(language, "I’m the guest on this episode", "本期嘉宾是我")}</span>
+            <span className="map-podcast-guest-badge"><Mic aria-hidden="true" />{tr(language, "Guess who? It’s me!", "猜猜嘉宾是谁？是我！")}<span className="map-podcast-guest-wave" aria-hidden="true">👋</span></span>
             <p>{tr(language, "MAP Connect Podcast · Episode 03", "MAP Connect 播客 · 第 03 期")}</p>
             <h3 id="map-podcast-title-03">
               {tr(
